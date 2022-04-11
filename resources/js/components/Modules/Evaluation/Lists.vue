@@ -1,0 +1,157 @@
+<template>
+<div>
+    <div class="card-body">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/" target="_self" class="">{{ prospectus.academic_year}}</a></li>
+                    <li class="breadcrumb-item active"><span aria-current="location">{{prospectus.level}}</span></li>
+                    <li class="breadcrumb-item active"><span aria-current="location">{{prospectus.semester}}</span></li>
+                </ol>
+            </div>
+            <div class="float-end" v-if="failed > 0">
+                <i class='bx bxs-error-circle bx-tada text-danger h4' style="margin-left: -22px; position: absolute;"></i><span class="text-muted font-size-11">Scholar has <span class="text-danger fw-bold">{{failed}}</span> failing marks.</span>
+            </div>
+        </div>
+        <div class="table-responsive mt-n3">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th style="width: 5%;">#</th>
+                        <th style="width: 15%;" class="text-center">Code</th>
+                        <th class="text-center" style="width: 60%;">Subject</th>
+                        <th class="text-center" style="width: 10%;">Unit</th>
+                        <th class="text-center" style="width: 10%;">Grade</th>
+                    </tr>
+                </thead>
+            </table>
+            <simplebar class="align-items-center d-flex justify-content-center"
+                :style="{ height: (height - 272) + 'px' }">
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(list,index) in lists" v-bind:key="list.id" :class="[(list.grade == 5 || list.grade == 'F' || list.grade == 'f') ? 'table-danger' : '']">
+                            <td style="width: 5%;">{{ index+1 }}</td>
+                            <td style="width: 15%;" class="text-center">{{list.code}} <span v-if="list.is_lab == true" class="text-warning fw-bold">(Lab)</span></td>
+                            <td style="width: 60%;" class="text-center">{{list.subject}} <span v-if="list.is_lab == true" class="text-warning fw-bold">(Lab)</span></td>
+                            <td style="width: 10%;" class="text-center">{{list.unit}}</td>
+                            <td style="width: 10%;" class="text-center">
+                                <input type="text" v-model="list.grade" :disabled="prospectus.is_locked == 1" class="text-center mt-n1 mb-n2 form-control form-control-sm" style="text-transform: uppercase">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </simplebar>
+        </div>
+        <Confirm @status="message" ref="confirm"/>
+    </div>
+    <div class="card-body border-top" style="padding: 12px;">
+        <div class="table-responsive" style="margin-top: -12px; margin-bottom: -27px;">
+            <table class="table align-middle">
+                <tbody>
+                    <tr>
+                        <td colspan="2" class="border-0">
+                            <b-button v-if="prospectus.is_locked == 0" @click="locked(prospectus.id)" type="button" class="btn-sm" variant="primary">
+                                <i class="bx bxs-lock-alt "></i>
+                            </b-button>
+                            <b-button v-if="prospectus.is_locked == 0" @click="save" type="button" class="btn-sm w-lg" variant="primary">Save</b-button>
+                        </td>
+                        <td style="width: 10%;" class="border-0 text-center">
+                            <h5 class="m-0 text-info fw-bold">{{ units }}</h5>
+                        </td>
+                        <td style="width: 10%;" class="border-0 text-center">
+                            <h4 class="m-0 mt-n1 text-success">{{ total }}</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+    import Confirm from './Modals/Confirm.vue';
+    import Swal from "sweetalert2";
+    import simplebar from "simplebar-vue";
+    export default {
+        props: ['height','lists','prospectus'],
+        data() {
+            return {
+                currentUrl: window.location.origin,
+                errors: []
+            }
+        },
+
+        computed: {
+            units: function () {
+                var sum = 0;
+                if(this.lists != undefined){
+                    this.lists.forEach(e => {
+                        sum += Number(e.unit);
+                    });
+                }
+                return sum
+            },
+
+            total: function () {
+                var sum = 0; var tot = 0;
+                if(this.lists != undefined){
+                    this.lists.forEach(e => {
+                        if(e.is_nonacademic == false){
+                            tot++;
+                            if(e.grade == 'F' || e.grade == 'f'){
+
+                            }else{
+                                sum += Number(e.grade);
+                            }
+                        }
+                    });
+                }
+                return (sum/tot).toFixed(3);
+            },
+
+            failed: function(){
+                var count = 0;
+                this.lists.forEach(e => {
+                    if(e.grade == 'F' || e.grade == 'f' || e.grade > 3){
+                        count = count + 1;
+                    }
+                });
+                return count;
+            }
+        },
+
+        methods: {
+            save(evt) {
+                evt.preventDefault();
+                axios.post(this.currentUrl + '/request/evaluation/grading/store', {
+                    id: this.id,
+                    lists: this.lists
+                })
+                .then(response => {
+                    // Swal.fire("Grades Saved!", "", "success");
+                    this.$emit('status', response.data.data);
+                })
+                .catch(error => {
+                    if (error.response.status == 422) {
+                        this.errors = error.response.data.errors;
+                    }
+                });
+            },
+
+            locked(id){
+                this.$bvModal.show("confirm");
+                this.$refs.confirm.set(id);
+            },
+    
+            message(list){
+                this.prospectus.is_locked = list.is_locked;
+                this.$bvModal.hide("confirm"); 
+                this.$emit('status', list);  
+            }
+        },
+        components: { simplebar, Swal, Confirm }
+    }
+
+</script>

@@ -29,10 +29,10 @@
                 axios.get(this.currentUrl + '/lists')
                 .then(response => {
                     // this.lists = response.data;
-                    // this.dropdowns = response.data.dropdowns;
+                    this.dropdowns = response.data.dropdowns;
                     this.user = response.data.profile;
-                    // this.regions = response.data.regions;
-                    // this.expenses = response.data.expenses;
+                    this.regions = response.data.regions;
+                    this.expenses = response.data.expenses;
                 })
                 .catch(err => console.log(err));
             },

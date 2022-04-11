@@ -1,26 +1,139 @@
 const routes = [{
-    path: '/home',
-    component: () =>
-        import ('../Views/Home.vue'),
-    name: 'home',
-}, {
-    path: '/profile',
-    component: () =>
-        import ('../Views/Profile.vue'),
-    name: 'profile',
-}, {
-    path: '/users',
-    component: () =>
-        import ('../Views/Users/Index.vue'),
-    name: 'users',
-    beforeEnter: admin
-}, {
-    path: '/logs',
-    component: () =>
-        import ('../Views/Users/Logs.vue'),
-    name: 'logs',
-    beforeEnter: admin
-}];
+        path: '/home',
+        component: () =>
+            import ('../Views/Home.vue'),
+        name: 'home',
+    }, {
+        path: '/profile',
+        component: () =>
+            import ('../Views/Profile.vue'),
+        name: 'profile',
+    }, {
+        path: '/users',
+        component: () =>
+            import ('../Views/Users/Index.vue'),
+        name: 'users',
+        beforeEnter: admin
+    },
+    {
+        path: '/schools',
+        component: () =>
+            import ('../Views/Schools/Index.vue'),
+        name: 'schools',
+        beforeEnter: admin
+    },
+    {
+        path: '/school/:id',
+        component: () =>
+            import ('../Views/Schools/Profile.vue'),
+        name: 'school/profile',
+        beforeEnter: admin
+    },
+    {
+        path: '/Downloads',
+        component: () =>
+            import ('../Views/Download.vue'),
+        name: 'downloads',
+        beforeEnter: admin
+    }, {
+        path: '/logs',
+        component: () =>
+            import ('../Views/Users/Logs.vue'),
+        name: 'logs',
+        beforeEnter: admin
+    },
+    /////////////////////////////////////////
+    /// S C H O O L  C O O R D I N A T O R///
+    /////////////////////////////////////////
+    {
+        path: '/qualifier/lists',
+        component: () =>
+            import ('../Views/Qualifiers/Index.vue'),
+        name: 'qualifier/lists',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/qualifier/sync',
+        component: () =>
+            import ('../Views/Qualifiers/Sync.vue'),
+        name: 'qualifier/sync',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/qualifier/import',
+        component: () =>
+            import ('../Views/Qualifiers/Import.vue'),
+        name: 'qualifier/import',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/scholars',
+        component: () =>
+            import ('../Views/Scholars/Index.vue'),
+        name: 'scholars',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/scholar/import',
+        component: () =>
+            import ('../Views/Scholars/Import.vue'),
+        name: 'scholar/import',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/scholar/create',
+        component: () =>
+            import ('../Views/Scholars/Create.vue'),
+        name: 'scholar/create',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/scholar/reports',
+        component: () =>
+            import ('../Views/Scholars/Report.vue'),
+        name: 'scholar/reports',
+        beforeEnter: coordinator
+    },
+
+    {
+        path: '/evaluations',
+        component: () =>
+            import ('../Views/Evaluation.vue'),
+        name: 'evaluations',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/benefits',
+        component: () =>
+            import ('../Views/Benefit.vue'),
+        name: 'evaluations',
+        beforeEnter: coordinator
+    },
+    /////////////////////////////////////////
+    /// A C C O U N T I N G///
+    /////////////////////////////////////////
+    {
+        path: '/allotments',
+        component: () =>
+            import ('../Views/Accounting/Allotment.vue'),
+        name: 'allotments',
+        beforeEnter: coordinator
+    },
+    {
+        path: '/allotment/:id',
+        component: () =>
+            import ('../Views/Accounting/AllotmentView.vue'),
+        name: 'allotment/view',
+        beforeEnter: coordinator,
+    },
+    {
+        path: '/disbursements',
+        component: () =>
+            import ('../Views/Accounting/Disbursement.vue'),
+        name: 'disbursements',
+        beforeEnter: coordinator
+    },
+];
 
 
 

@@ -98,6 +98,9 @@
         "users": {
             "text": "Users"
         },
+        "downloads": {
+            "text": "Downloads"
+        },
         "logs": {
             "text": "Logs"
         },
@@ -120,8 +123,11 @@
                 "disbursements": "Disbursements"
             }
         },
-        "enrollments": {
-            "text": "Enrollments"
+        "evaluations": {
+            "text": "Evaluations"
+        },
+        "benefits": {
+            "text": "Financial Benefits"
         }
     }
 }

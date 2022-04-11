@@ -34,15 +34,173 @@ Route::prefix('request')->group(function(){
                 Route::post('/verify', 'verify');
             });
         });
+
+        Route::prefix('school')->group(function(){
+            Route::controller(App\Http\Controllers\SchoolController::class)->group(function () {
+                Route::get('/lists/{key}/{count}', 'lists');
+                Route::get('/view/{id}', 'view');
+                Route::post('/course/store', 'course');
+                Route::post('/semester/store', 'semester');
+                Route::get('/semester/{id}/{year}', 'semesteryear');
+            });
+        });
+
+        Route::prefix('prospectus')->group(function(){
+            Route::controller(App\Http\Controllers\Evaluation\ProspectusController::class)->group(function () {
+                Route::get('/{school}/{course}/{count}/{keyword}', 'index');
+                Route::get('/{id}', 'view');
+                Route::post('/store', 'store');
+                Route::get('/select/{id}', 'select');
+            });
+        });
+
+        Route::prefix('download')->group(function(){
+            Route::controller(App\Http\Controllers\DownloadController::class)->group(function () {
+                Route::get('/info', 'index');
+            });
+        });
+
+        Route::prefix('search')->group(function(){
+            Route::controller(App\Http\Controllers\ListController::class)->group(function () {
+                Route::post('/schools', 'schools');
+                Route::post('/courses', 'courses');
+                Route::post('/scholars', 'scholars');
+            });
+        });
+    });
+
+
+    Route::middleware(['auth','role:Scholarship Coordinator,Scholarship Staff'])->group(function () {
+        Route::prefix('qualifier')->group(function(){
+            Route::controller(App\Http\Controllers\Qualifier\IndexController::class)->group(function () {
+                Route::get('{count}/{category}/{year}/{keyword}', 'index');
+            });
+        });
+
+        Route::prefix('scholar')->group(function(){
+            Route::controller(App\Http\Controllers\Scholar\IndexController::class)->group(function () {
+                Route::get('/{status}/{category}/{counts}/{year}/{key}/{array}/{array2}', 'lists');
+                Route::post('/store', 'store');
+                Route::post('/status', 'status');
+                Route::get('/{id}', 'view');
+                Route::post('/subcourse/store', 'subcourse');
+                Route::get('filter/{status}/{school}/{year}/{level}/{key}', 'filter');
+            });
+
+            Route::prefix('reports')->group(function(){
+                Route::controller(App\Http\Controllers\Scholar\ReportController::class)->group(function () {
+                    Route::get('/category', 'category');
+                    Route::get('/status', 'status');
+                    Route::get('/totals', 'totals');
+                    Route::get('/dashboard', 'dashboard');
+                    Route::get('/cats', 'cats');
+                });
+            });
+        });
+
+        Route::prefix('evaluation')->group(function(){
+            Route::prefix('enrollment')->group(function(){
+                Route::controller(App\Http\Controllers\Evaluation\EnrollmentController::class)->group(function () {
+                    Route::get('/search/{key}', 'search');
+                    Route::post('/store', 'store');
+                    Route::get('/lists/{id}', 'lists');
+                    Route::get('/prospectus/{key}', 'prospectus');
+                    Route::post('/switch', 'switch');
+                });
+                Route::controller(App\Http\Controllers\Evaluation\ReportController::class)->group(function () {
+                    Route::get('/reports', 'reports');
+                });
+            });
+
+            Route::prefix('grading')->group(function(){
+                Route::controller(App\Http\Controllers\Evaluation\GradeController::class)->group(function () {
+                    Route::post('/store', 'store');
+                });
+            });
+
+            Route::prefix('prospectus')->group(function(){
+                Route::controller(App\Http\Controllers\Evaluation\ProspectusController::class)->group(function () {
+                    Route::get('/{school}/{course}/{count}/{keyword}', 'index');
+                    Route::get('/{id}', 'view');
+                    Route::post('/store', 'store');
+                    Route::get('/select/{id}', 'select');
+                });
+            });
+        });
+
+        Route::prefix('benefit')->group(function(){
+            Route::controller(App\Http\Controllers\Benefit\IndexController::class)->group(function () {
+                Route::post('/store', 'store');
+                Route::get('/{id}/{counts}', 'index');
+                Route::get('/stipend/x/{id}', 'stipend');
+                Route::get('/breakdown/x/{id}', 'breakdown');
+                Route::get('/{keyword}/{year}/{count}', 'lists');
+                Route::get('/{array}', 'profile');
+            });
+        });
+
+        Route::prefix('school')->group(function(){
+            Route::controller(App\Http\Controllers\SchoolController::class)->group(function () {
+                Route::get('/semester/{id}/{year}', 'semesteryear');
+                Route::get('/subcourses/{school}/{course}', 'subcourses');
+            });
+        });
+
+        Route::prefix('accounting')->group(function(){
+            Route::prefix('allotment')->group(function(){
+                Route::controller(App\Http\Controllers\Accounting\AllotmentController::class)->group(function () {
+                    Route::post('/store', 'store');
+                    Route::get('/{key}/{counts}', 'index');
+                    Route::get('/{id}', 'view');
+                    Route::post('/list/store', 'storeList');
+                });
+            });
+
+            Route::prefix('disbursement')->group(function(){
+                Route::controller(App\Http\Controllers\Accounting\DisbursementController::class)->group(function () {  
+                    Route::post('/store', 'store');
+                    Route::get('/{key}/{counts}', 'index');
+                });
+            });
+        });
+
     });
 
 });
 
+Route::prefix('excel')->group(function(){
+    Route::post('/qualifier/import', [App\Http\Controllers\Qualifier\ImportController::class, 'index']);
+    Route::post('/qualifier/store', [App\Http\Controllers\Qualifier\ImportController::class, 'store']);
+
+    Route::post('/scholar/import', [App\Http\Controllers\Scholar\ImportController::class, 'index']);
+    Route::post('/scholar/store', [App\Http\Controllers\Scholar\ImportController::class, 'store']);
+});
+
+
 Route::prefix('lists')->group(function(){
     Route::get('/', [App\Http\Controllers\ListController::class, 'index']);
     Route::get('/logs/{key}/{count}', [App\Http\Controllers\HomeController::class, 'logs']);
+
+    Route::controller(App\Http\Controllers\ListController::class)->group(function () {
+        Route::get('/','index');
+        Route::get('/provinces/{code}', 'provinces');
+        Route::get('/municipalities/{code}', 'municipalities');
+        Route::get('/barangays/{code}', 'barangays');
+
+        Route::prefix('search')->group(function(){
+            Route::post('/schools', 'schools');
+            Route::post('/courses', 'courses');
+            // Route::post('/scholars', 'Lists\SearchController@scholars');
+        });
+    });
 });
 
+Route::prefix('sync')->group(function(){
+    Route::get('/addresses/{type}/{category}', [App\Http\Controllers\Sync\IndexController::class, 'addresses']);
+    Route::get('/lists/{type}/{category}', [App\Http\Controllers\Sync\IndexController::class, 'lists']);
+    Route::get('/schools/{type}/{category}/{agency?}', [App\Http\Controllers\Sync\IndexController::class, 'schools']);
+    // Route::get('/logs/{key}/{count}', [App\Http\Controllers\HomeController::class, 'logs']);
+});
 /*
 |--------------------------------------------------------------------------
 | Web Routes
