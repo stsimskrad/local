@@ -24,9 +24,10 @@ return new class extends Migration
             $table->string('gender',8)->nullable();
             $table->string('mobile',15)->nullable();
             $table->date('birthday')->nullable();
-            $table->string('avatar',200)->default('avatar.jpg');
             $table->json('information');
             $table->boolean('is_completed')->default(1);
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

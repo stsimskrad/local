@@ -42,7 +42,7 @@
                         <th class="text-center"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="align-middle">
                     <tr v-for="list in lists" v-bind:key="list.id">
                         <td>
                             <div class="avatar-xs">

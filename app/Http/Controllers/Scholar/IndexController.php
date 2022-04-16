@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Scholar;
 
+use App\Models\User;
 use Hashids\Hashids;
 use App\Models\Prospectus;
 use App\Models\Profile;
 use App\Models\Qualifier;
 use App\Models\Scholar;
 use App\Models\ScholarAddress;
-use App\Models\ScholarSchool;
+use App\Models\ScholarEducation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Traits\StatusTrait;
@@ -27,7 +28,9 @@ class IndexController extends Controller
         $education = (!empty(json_decode($array2))) ? json_decode($array2) : NULL;
 
         ($keyword == '-') ? $keyword = '' : $keyword;
-        $data = Scholar::with('profile')->with('address.municipality.province.region')->with('school.school.school','school.course')
+        $data = Scholar::with('profile.user')
+        ->with('address.municipality.province.region')
+        ->with('education.school.school','education.course')
         ->whereHas('profile',function ($query) use ($keyword) {
             $query->where(\DB::raw('concat(firstname," ",lastname)'), 'LIKE', '%'.$keyword.'%')->orWhere(\DB::raw('concat(lastname," ",firstname)'), 'LIKE', '%'.$keyword.'%');
         })
@@ -39,7 +42,7 @@ class IndexController extends Controller
                 (property_exists($location, 'barangay')) ? $query->where('barangay_code',$location->barangay) : '';
            }
         })
-        ->whereHas('school',function ($query) use ($education) {
+        ->whereHas('education',function ($query) use ($education) {
             if(!empty($education)){
                 (property_exists($education, 'school')) ? $query->where('school_id',$education->school) : '';
                 (property_exists($education, 'course')) ? $query->where('course_id',$education->course) : '';
@@ -58,13 +61,12 @@ class IndexController extends Controller
     {
         $data = \DB::transaction(function () use ($request){
             if($request->editable == "true"){
-                $data = Scholar::with('profile')->with('school.school')->where('id',$request->id)->first();
+                $data = Scholar::with('profile')->with('education.school')->where('id',$request->id)->first();
                 $data->update($request->except('editable'));
-                // dd($data);
                 ($request->status_id) ? $this->storeStatus($request) : '';
                 if($request->type == 'old'){
-                    $data->school()->update($request->except('editable','is_completed','type'));
-                    $data = Scholar::with('profile')->with('address.municipality.province.region')->with('school.school.school','school.course')->where('id',$request->id)->first();
+                    $data->education()->update($request->except('editable','is_completed','type'));
+                    $data = Scholar::with('profile')->with('address.municipality.province.region')->with('education.school.school','education.course')->where('id',$request->id)->first();
                 }
                 // $profile = Profile::where('scholar_id',$request->id)->first();
                 // $profile->update($request->except('email','img','editable'));
@@ -90,15 +92,17 @@ class IndexController extends Controller
             }elseif($request->editable == "address"){
                 $data = ScholarAddress::where('scholar_id',$request->scholar_id)->first();
                 $data->update($request->except('editable'));
-                $data = Scholar::with('profile')->with('school.school')->where('id',$request->scholar_id)->first();
+                $data = Scholar::with('profile')->with('education.school')->where('id',$request->scholar_id)->first();
                 return $data;
             }else{
                 $info = [];
                 $data = Scholar::create($request->all());
                 $data->address()->create(array_merge($request->all(), ['type' => 'original']));
-                $data->school()->create(['information' => json_encode($info)]);
+                $data->education()->create(['information' => json_encode($info)]);
                 if($data){
-                    $wee = Qualifier::where('id',$request->qualifier_id)->update(['is_qualified' => 1]);
+                    $user = User::create(array_merge($request->all(), ['password' => bcrypt('dost9ict'),'role' => 'Scholar']));
+                    $data->profile()->update(['user_id'=> $user->id]);
+                    $qualifier = Qualifier::where('id',$request->qualifier_id)->update(['is_qualified' => 1]);
                     return $data;
                 }
             }
@@ -110,14 +114,14 @@ class IndexController extends Controller
     {
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($id);
-        $data = Scholar::with('profile','school.school','address.region','address.province','address.municipality','address.barangay')->where('id',$id)->first();
+        $data = Scholar::with('profile','education.school','address.region','address.province','address.municipality','address.barangay')->where('id',$id)->first();
         return new IndexResource($data);
     }  
 
     public function filter($status,$school,$year,$level,$keyword)
     {
         $query = Scholar::query();
-        $query = $query->with('profile')->with('status')->with('school.school.school','school.course');
+        $query = $query->with('profile')->with('status')->with('education.school.school','education.course');
         if($keyword != '-'){
             $query->whereHas('profile',function ($query) use ($keyword) {
                 $query->where(\DB::raw('concat(firstname," ",lastname)'), 'LIKE', '%'.$keyword.'%')->orWhere(\DB::raw('concat(lastname," ",firstname)'), 'LIKE', '%'.$keyword.'%');
@@ -128,7 +132,7 @@ class IndexController extends Controller
                 ($year == '-') ? '' : $query->where('awarded_year',$year);
                 ($status == '-') ? '' : $query->where('status_id',$status);
             });
-            $query->whereHas('school',function ($query) use ($school,$level) {
+            $query->whereHas('education',function ($query) use ($school,$level) {
                 ($school == '-') ? '' : $query->where('school_id',$school);
                 ($level == '-') ? '' : $query->where('level_id',$level);
                 $query->where('course_id','!=',NULL);
@@ -156,7 +160,7 @@ class IndexController extends Controller
         $data->subcourse_id = $request->subcourse_id;
         $data->information = json_encode($information);
         if($data->save()){
-            $data = Scholar::with('profile')->with('school.school')->with('enrollments')->with('course.lists')->with('subcourse.subcourse')
+            $data = Scholar::with('profile')->with('education.school')->with('enrollments')->with('course.lists')->with('subcourse.subcourse')
             ->where('id',$request->id)
             ->first();
             return new GradingResource($data);

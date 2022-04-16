@@ -19,6 +19,9 @@
             </div>
             <div class="col-xl-6 col-sm-6">
                 <ul class="list-inline user-chat-nav text-end mb-0 dropdown">
+                    <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;" v-if="selected.length > 0">     
+                        <i class='bx bx-check-square text-success h4' style="margin-left: -22px; position: absolute;"></i> <span class="text-muted font-size-11">{{selected.length}} Qualifiers selected</span>
+                    </li>
                     <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">     
                         <i class='bx bxs-error-circle text-warning h4' style="margin-left: -22px; position: absolute;"></i> <span class="text-muted font-size-11">With Remarks</span>
                     </li>
@@ -35,23 +38,37 @@
                             <i class='bx bx-chevron-right h4'></i>
                         </a>
                     </li>
+                    <li class="list-inline-item d-non d-sm-inline-block">
+                        <div data-toggle="tooltip" data-placement="top" title="" data-original-title="Filter by Award year">
+                            <button type="button" class="btn btn-light"><span class="d-none d-sm-inline-block"> <i class='bx bx-mail-send'></i></span></button>                                 
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
         
          <div class="table-responsive">
             <table class="table table-centered table-nowrap">
-                <thead class="thead-light">
-                    <tr class="font-size-11">
-                        <th style="width: 2%;"></th>
+                <thead class="thead-light align-middle">
+                        <tr class="font-size-11">
+                        <th>
+                           <!-- <b-form-checkbox :value="'all'" @input="checkAll()" v-model="isCheckAll" unchecked-value="not_accepted" checked plain style="font-size: 16px;"> </b-form-checkbox> -->
+                        </th>
+                        <th style="width: 1%;"></th>
                         <th>Name</th>
                         <th class="text-center">Program</th>
                         <th class="text-center">Contact</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="align-middle">
                     <tr v-for="user in users" v-bind:key="user.id" :class="[(user.info.requirements.count > 0) ? 'table-warning' : '']">
+                        <td style="width: 1%;">
+                            <b-form-checkbox :id="'customCheck_'+user.id" v-on:change='updateCheckall()'
+                                :value="user.id" v-model="selected" unchecked-value="not_accepted" checked plain 
+                                style="font-size: 16px;">
+                            </b-form-checkbox>
+                        </td>
                         <td>
                             <div class="avatar-xs" v-if="user.avatar == 'n/a'">
                                 <span class="avatar-title rounded-circle">{{user.lastname.charAt(0)}}</span>
@@ -74,7 +91,7 @@
                         </td>
                         <td class="text-end">
                             <button type="button" @click="warning(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count > 0"><i class='bx text-warning bxs-info-circle'></i></button>
-                            <button type="button" @click="scholar(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count < 1"><i class='bx text-info bx-plus-medical'></i></button>
+                            <button type="button" @click="addScholar(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count < 1"><i class='bx text-info bx-plus-medical'></i></button>
                             <button type="button" @click="refer(user)" class="bg-light btn btn-light"><i class='bx bx-transfer-alt'></i></button>
                             <!-- <button type="button" @click="scholar(user)" class="btn btn-sm btn-danger w-sm waves-effect waves-light">Add Scholar</button> -->
                         </td>
@@ -104,9 +121,11 @@ export default {
             keyword: '',
             users : [],
             categories: [],
+            selected: [],
             category: '-',
             year: '-',
             show: false,
+            isCheckAll: false,
         }
     },
 
@@ -137,6 +156,11 @@ export default {
             axios.get(page_url)
             .then(response => {
                 this.users = response.data.data;
+                if (this.isCheckAll == 'all') { // Check all
+                    for (var key in this.users) {
+                        this.selected.push(this.users[key].id);
+                    }
+                }
                 vm.makePagination(response.data.meta, response.data.links);
             })
             .catch(err => console.log(err));
@@ -183,7 +207,7 @@ export default {
             this.$bvModal.show("referral");
         },
 
-        scholar(user){
+        addScholar(user){
             this.editable = 'confirmed';
             this.$refs.add.set(user);
             this.$bvModal.show("add");
@@ -213,6 +237,26 @@ export default {
                 this.editable = false;
             }
         },
+
+        checkAll: function () {
+            // this.isCheckAll = !this.isCheckAll;
+            if (this.isCheckAll == 'all') { // Check all
+                for (var key in this.users) {
+                    this.selected.push(this.users[key].id);
+                }
+            } else {
+                this.selected = [];
+            }
+        },
+
+        updateCheckall: function () {
+            // if (this.selected.length == this.users.length) {
+            //     this.isCheckAll = true;
+            // } else {
+            //     this.isCheckAll = false;
+            // }
+        },
+
     }, components :{ Warning, Profile, Add, Referral }
 }
 </script>

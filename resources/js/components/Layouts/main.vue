@@ -48,7 +48,7 @@
         </Vertical>
 
         <Horizontal :user="user" v-if="layoutType === 'horizontal'">
-            <router-view :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
+            <router-view :user="user" :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
         </Horizontal>
     </div>
 </template>

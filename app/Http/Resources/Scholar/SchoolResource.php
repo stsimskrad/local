@@ -15,13 +15,14 @@ class SchoolResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => ($this->school) ? $this->school->school->id: 'n/a',
-            'name' => ($this->school) ? $this->school->school->name: 'n/a',
-            'avatar' => ($this->school) ?$this->school->school->avatar: '',
-            'shortcut' => ($this->school) ? $this->school->shortcut: '',
-            'campus' => ($this->school) ? $this->school->campus: '',
-            'is_main' => ($this->school) ? $this->school->is_main : '',
-            'address' => ($this->school) ? ucwords($this->school->address) : ''
+            'id' => $this->id,
+            'name' => $this->school->name,
+            'avatar' => $this->school->avatar,
+            'shortcut' => $this->shortcut,
+            'campus' => $this->campus,
+            'address' => ucwords($this->address)
         ];
+
+        return parent::toArray($request);
     }
 }

@@ -3,6 +3,24 @@ const routes = [{
         component: () =>
             import ('../Views/Home.vue'),
         name: 'home',
+        children: [{
+                path: "profile",
+                name: "profilee",
+                component: () =>
+                    import ('../Modules/Home/Scholar/Views/Profile.vue'),
+            }, {
+                path: "financial",
+                name: "financial",
+                component: () =>
+                    import ('../Modules/Home/Scholar/Views/Financial.vue'),
+            },
+            {
+                path: "enrollment",
+                name: "enrollment",
+                component: () =>
+                    import ('../Modules/Home/Scholar/Views/Enrollment.vue'),
+            },
+        ]
     }, {
         path: '/profile',
         component: () =>

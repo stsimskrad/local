@@ -13,8 +13,8 @@ class ListsResource extends JsonResource
         $hashids = new Hashids('krad',10);
         $id = $hashids->encode($this->id);
 
-        $address = ['name' => (is_array($info->address)) ? $info->address->name2 : $info->address, 'is_migrated' => 0];
-        $course = ['name' => $info->course];
+        $this->education->addressInfo = ['name' => (is_array($info->address)) ? $info->address->name2 : $info->address, 'is_migrated' => 0];
+        $this->education->courseInfo = ['name' => $info->course];
         
         return [
             'id' => $this->id,
@@ -26,12 +26,13 @@ class ListsResource extends JsonResource
             'status' => $this->status,
             'is_completed' => $this->is_completed,
             'is_undergrad' => $this->is_undergrad,
-            'profile' => new ProfileResource($this->profile),   
+            'profile' => new ProfileResource($this->profile), 
             'address' => ($this->address) ? new AddressResource($this->address) : $address,
-            'school' => new SchoolResource($this->school),
-            'course' => ($this->school->course) ? new CourseResource($this->school) : $course,
+            // 'school' => new SchoolResource($this->school),
+            // 'course' => ($this->school->course) ? new CourseResource($this->school) : $course,
+            'education' =>  new EducationResource($this->education),
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'updated_at' => $this->updated_at,
         ];
     }
 }

@@ -679,6 +679,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "tbody",
+          { staticClass: "align-middle" },
           _vm._l(_vm.lists, function (list) {
             return _c("tr", { key: list.id }, [
               _c("td", [

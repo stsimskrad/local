@@ -2,7 +2,7 @@
     <div class="row g-3">
         <div class="col-xl-6">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="padding-bottom: -15px; margin-bottom: -15px;">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
                             <div class="text-muted">
@@ -36,7 +36,7 @@
                         style="cursor: pointer;"></i>
                     <p class="text-muted fw-bold">Philippine Addresses</p>
                 </div>
-                <div class="card-body border-top">
+                <div class="card-body border-top mb-n3">
                     <div v-if="loading1 == false" class="mt-n3">
                         <div role="alert" aria-live="polite" aria-atomic="true"
                             class="mt-2 alert alert-dismissible alert-warning">
@@ -48,10 +48,10 @@
                         <div class="row">
                             <div class="col-sm-3" v-for="(value, name, index) in addresses" v-bind:key="index">
                                 <div>
-                                    <div class="font-size-24 text-primary mb-2"><i class="bx bxs-cloud-download"></i>
+                                    <div class="font-size-24 text-primary mb-0"><i class="bx bxs-cloud-download"></i>
                                     </div>
-                                    <p class="text-muted mb-2">{{name}}</p>
-                                    <p>{{value.downloaded}} <span class="text-muted">of</span> <span
+                                    <p class="text-muted mb-0">{{name}}</p>
+                                    <p class="mt-0">{{value.downloaded}} <span class="text-muted">of</span> <span
                                             :class="[(value.downloaded != value.count ? 'text-danger' : '')]">{{value.count}}</span>
                                     </p>
                                     <div class="mt-3"><button @click="download(name,index)"
@@ -65,7 +65,7 @@
                             <i class='bx bx-loader-circle bx-spin bx-rotate-90 h1'></i>
                         </div>
                     </div>
-                    <div v-if="loading1 == false" class="mt-4">
+                    <div v-if="loading1 == false" class="mt-4 mb-0">
                         <!-- <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-dismissible alert-warning">
                             <i class="mdi mdi-alert-circle-outline me-2"></i>Municipality and Barangay district can be updated later on.
                         </div> -->
@@ -118,8 +118,8 @@
                                     <div class="text-sm-start mt-4 mt-sm-0">
                                         <p class="text-muted mb-0">Campuses : <span class="fw-bold">{{ school.regional.downloaded_campuses}} of {{ school.regional.campuses}}</span> downloaded</p>
                                         <p class="text-muted mb-2">Other Campuses : <span class="fw-bold">{{ school.regional.other_campuses}}</span> downloaded</p>
-                                        <!-- <button type="button" @click="downloadSchools" class="btn btn-primary btn-sm w-md me-1">Download</button>
-                                        <button class="btn btn-light btn-sm w-md">Request</button> -->
+                                        <button type="button" @click="downloadSchools" class="btn btn-primary btn-sm w-md me-1">Download</button>
+                                        <button class="btn btn-light btn-sm w-md">Request</button>
                                     </div>
                                 </div>
                             </div>
@@ -139,12 +139,12 @@
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-hover mb-0 mt-n1">
                                     <tbody>
-                                        <tr class="font-size-11">
+                                        <!-- <tr class="font-size-11">
                                             <th>Name</th>
                                             <th class="text-center">Count</th>
                                             <th class="text-center">Pending</th>
                                             <th></th>
-                                        </tr>
+                                        </tr> -->
                                         <tr v-for="(value, name, index) in lists" v-bind:key="index">
                                             <td>
                                                 <a href="javascript: void(0);" class="text-dark fw-medium">
@@ -190,7 +190,10 @@
                 pagination: {},
                 addresses: [],
                 lists: [],
-                school: {},
+                school: {
+                    overall : '',
+                    regional: ''
+                },
                 loading1: false,
                 loading2: false,
                 loading3: false,

@@ -10,15 +10,25 @@
             <div class="row font-size-11 mt-2">
                 <div class="col-sm-12">
                     <p class="fw-bold text-danger mb-0">{{user.address.name.toUpperCase()}}</p>
-                    <p class="fw-bold text-dark mb-0">{{user.school.name }}</p>
-                    <p class="text-dark mb-0">{{user.course.name }} </p>
+                    <p class="fw-bold text-dark mb-0">{{ (user.education.school != 'n/a') ? user.education.school.name : user.education.school}}</p>
+                    <p class="text-dark mb-0">{{user.education.course }} </p>
                 </div>
             </div>
         </blockquote>
 
         <form @submit.prevent="submit" class="customform">
             <div class="row customerform">
-                <div class="col-md-12">
+                <div class="col-md-12" v-if="!user.education.has_school">
+                    <label>School: <span v-if="errors.school_id" class="haveerror">({{ errors.school_id[0] }})</span></label>
+                    <multiselect v-model="school" id="ajax" label="name" track-by="id"
+                        placeholder="Search School" open-direction="bottom" :options="schools"
+                        :searchable="true" 
+                        :allow-empty="false"
+                        :show-labels="false"
+                        @search-change="asyncSchool">
+                    </multiselect> 
+                </div>
+                <div class="col-md-12" v-if="!user.education.has_course">
                     <label>Course: <span v-if="errors.course_id" class="haveerror">({{ errors.course_id[0] }})</span></label>
                     <multiselect v-model="course" id="ajax" label="name" track-by="id"
                         placeholder="Search Course" open-direction="bottom" :options="courses"
@@ -27,6 +37,21 @@
                         :show-labels="false"
                         @search-change="asyncCourse">
                     </multiselect> 
+                </div>
+                <div class="col-md-12" v-if="!user.education.has_level">
+                    <label>Level: <span v-if="errors.level_id" class="haveerror">({{ errors.level_id[0] }})</span></label>
+                    <multiselect 
+                        v-model="level" 
+                        id="ajax" 
+                        label="name" track-by="id"
+                        placeholder="Search Level" 
+                        open-direction="bottom" 
+                        :options="levels"
+                        :searchable="true" 
+                        :allow-empty="false"
+                        :show-labels="false">
+                    </multiselect> 
+                </div>
                     <!-- <div class="row">
                         <div class="col-md-12">
                             <label>School: <span v-if="errors.school_id" class="haveerror">({{ errors.school_id[0] }})</span></label>
@@ -63,7 +88,6 @@
                             </multiselect> 
                         </div>
                     </div>    -->
-                </div>
                 <div class="col-md-12 mt-4">
                     <button type="submit" class="btn btn-info btn-sm btn-block waves-effect waves-light mb-4">UPDATE SCHOLAR</button>
                 </div>
@@ -84,7 +108,7 @@
                     profile: {},
                     address: {name: ''},
                     status: {},
-                    school: {},
+                    education: {school: ''},
                     course: {}
                 },
                 profile_id : '',
@@ -114,18 +138,19 @@
             },
 
             submit(){
-                axios.post(this.currentUrl + '/request/scholar/store', {
-                    id: this.user.id,
-                    // school_id: (this.school != '') ? this.school.id : '',
-                    course_id: (this.course != '') ? this.course.id : '',
-                    // level_id: (this.level != '') ? this.level.id : '',
-                    // region_code: (this.region != '') ? this.region.code : '',
-                    // province_code: (this.province != '') ? this.province.code : '',
-                    // municipality_code: (this.municipality != '') ? this.municipality.code : '',
-                    is_completed: 1,
-                    type: 'old',
-                    editable: true
-                })
+                let data = new FormData();
+
+                data.append('id', this.user.id);
+                data.append('is_completed', 1);
+                data.append('type', 'old');
+                data.append('editable', 'true');
+                
+                (!this.user.education.has_school) ? data.append('school_id',(this.school != '') ? this.school.id : '') : '';
+                (!this.user.education.has_course) ? data.append('course_id', (this.course != '') ? this.course.id : '') : '';
+                (!this.user.education.has_level) ? data.append('level_id', (this.level != '') ? this.level.id : '') : '';
+
+
+                axios.post(this.currentUrl + '/request/scholar/store', data)
                 .then(response => {
                     this.$emit('status', response.data.data);
                     this.clear();

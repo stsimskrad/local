@@ -16,7 +16,7 @@ class ProfileResource extends JsonResource
     {
         return [
             'email' => $this->email,
-            'avatar' => $this->avatar,
+            'avatar' => ($this->user) ? $this->user->avatar : 'avatar.jpg',
             'gender' => $this->gender,
             'firstname' => strtoupper($this->firstname),
             'middlename' => strtoupper($this->middlename),

@@ -123,8 +123,9 @@
                             <p class="font-size-11 text-muted mb-0">{{(user.is_undergrad) ? 'Undergraduate' : 'JLSS Program' }}</p>
                         </td>
                         <td class="text-center">
-                            <h5 class="font-size-11 mb-0 text-dark">{{(user.school == null) ? user.school : user.school.name }}  {{(user.school == null) ? '' : (user.school.is_main == 1) ? '' : ' - '+user.school.campus }}</h5>
-                            <p class="font-size-11 text-muted mb-0">{{ user.course.name.toUpperCase() }}</p>
+                            <!-- user.education.name }}  {{(user.school == null) ? '' : (user.school.is_main == 1) ? '' : ' - '+user.school.campus }} -->
+                            <h5 class="font-size-11 mb-0 text-dark">{{ (user.education.school == 'n/a') ? 'n/a' :  user.education.school.name}}</h5> 
+                            <p class="font-size-11 text-muted mb-0">{{ (user.education.course == 'n/a') ? 'n/a' : user.education.course.name }}</p>
                         </td>
                         <td class="text-center fw-bold text-primary">{{user.awarded_year}}</td>
                         <td class="text-center">

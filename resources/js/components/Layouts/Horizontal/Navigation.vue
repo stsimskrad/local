@@ -104,7 +104,7 @@ export default {
                   :href="item.link"
                   role="button"
                 >
-                  <i :class="`bx ${item.icon} mr-2`"></i>{{ $t(item.label) }}
+                  <i :class="`bx ${item.icon} me-2`"></i>{{ $t(item.label) }}
                   <div class="arrow-down" v-if="hasItems(item)"></div>
                 </a>
 
@@ -116,7 +116,7 @@ export default {
                   id="topnav-components"
                   role="button"
                 >
-                  <i :class="`bx ${item.icon} mr-1`"></i>
+                  <i :class="`bx ${item.icon} me-1`"></i>
                   {{ $t(item.label) }}
                   <div class="arrow-down"></div>
                 </a>

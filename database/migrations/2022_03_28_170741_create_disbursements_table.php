@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->tinyInteger('expense_id')->unsigned()->index();
             $table->foreign('expense_id')->references('id')->on('expenses')->onDelete('cascade');
-            $table->integer('added_by')->unsigned()->index();
+            $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
         });

@@ -3,10 +3,12 @@
 //
 .chat-leftsidebar {
     @media (min-width: 992px) {
-        min-width: 260px;
+        min-width: 230px;
+        //230px default;
     }
     @media (min-width: 1200px) {
-        min-width: 330px;
+        min-width: 390px;
+        //330px;
     }
     .chat-leftsidebar-nav {
         .nav {

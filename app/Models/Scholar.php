@@ -13,14 +13,12 @@ class Scholar extends Model
         'lrn', 
         'category_id',
         'status_id',
-        // 'level_id',
-        // 'course_id',
-        // 'school_id',
         'old_id',
         'profile_id',
         'awarded_year',
         'is_completed',
-        'is_undergrad'
+        'is_undergrad',
+        'is_enrolled'
     ];
 
     public function profile()
@@ -48,9 +46,9 @@ class Scholar extends Model
         return $this->hasMany('App\Models\ScholarEnrollment', 'scholar_id')->orderBy('created_at','DESC');
     } 
 
-    public function school()
+    public function education()
     {
-        return $this->hasOne('App\Models\ScholarSchool', 'scholar_id');
+        return $this->hasOne('App\Models\ScholarEducation', 'scholar_id');
     } 
 
     public function status()
@@ -62,21 +60,6 @@ class Scholar extends Model
     {
         return $this->belongsTo('App\Models\Dropdown', 'category_id', 'id');
     }   
-    
-    // public function level()
-    // {
-    //     return $this->belongsTo('App\Models\Dropdown', 'level_id', 'id');
-    // }
-
-    // public function course()
-    // {
-    //     return $this->belongsTo('App\Models\Course', 'course_id', 'id');
-    // }
-
-    // public function school()
-    // {
-    //     return $this->belongsTo('App\Models\SchoolCampus', 'school_id', 'id');
-    // }
 
     public function getUpdatedAtAttribute($value)
     {

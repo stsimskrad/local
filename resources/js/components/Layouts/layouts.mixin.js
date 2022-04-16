@@ -3,9 +3,9 @@ export default {
         return {
             layout: {
                 type: "vertical",
-                sidebar: "dark",
+                sidebar: "icon",
                 width: "fluid",
-                topbar: "dark",
+                topbar: "icon",
                 loader: false
             }
         };
@@ -16,14 +16,16 @@ export default {
             this.layout = {
                 ...this.layout,
                 ...layout,
-                sidebar:
-                    layout?.type === "horizontal"
-                        ? layout?.topbar || this.layout.topbar
-                        : layout?.sidebar || this.layout.sidebar
+                sidebar: layout ?.type === "horizontal" ?
+                    layout ?.topbar || this.layout.topbar :
+                    layout ?.sidebar || this.layout.sidebar
             };
         }
     },
     methods: {
+		mixinMethod (val) {
+			this.layout.type = val;
+		},
         changeMode(mode) {
             let cssUrl = document.getElementById("layout-css").href;
             cssUrl = cssUrl.split("/");
@@ -145,18 +147,18 @@ export default {
             handler(newLayout, oldLayout) {
                 if (newLayout) {
                     if (
-                        newLayout.sidebar !== oldLayout?.sidebar ||
-                        newLayout.type !== oldLayout?.type
+                        newLayout.sidebar !== oldLayout ?.sidebar ||
+                        newLayout.type !== oldLayout ?.type
                     ) {
                         this.changeSidebar(newLayout.sidebar);
                     }
                     if (
-                        newLayout.topbar !== oldLayout?.topbar ||
-                        newLayout.type !== oldLayout?.type
+                        newLayout.topbar !== oldLayout ?.topbar ||
+                        newLayout.type !== oldLayout ?.type
                     ) {
                         this.changeTopbar(newLayout.topbar);
                     }
-                    if (newLayout.width !== oldLayout?.width) {
+                    if (newLayout.width !== oldLayout ?.width) {
                         this.changeWidth(newLayout.width);
                     }
                 }

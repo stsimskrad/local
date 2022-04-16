@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\UserProfile', 'user_id');
     } 
 
+    public function scholar()
+    {
+        return $this->hasOne('App\Models\Profile', 'user_id');
+    } 
+
     public function hasRole($roles)
     {
         foreach ($roles as $role) {

@@ -8,6 +8,7 @@ import Footer from "../Layouts/Horizontal/Footer.vue";
  * Horizontal-layout
  */
 export default {
+    props: ['user'],
     components: {
         HorizontalTopbar,
         HorizontalNav,
@@ -65,14 +66,15 @@ export default {
         </div>
         <!-- Begin page -->
         <div id="layout-wrapper">
-            <HorizontalTopbar />
-            <HorizontalNav />
+            <HorizontalTopbar :user="user"/>
+            <!-- <HorizontalNav :user="user"/> -->
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+            <div class="main-content" style="margin-top: -40px;">
                 <div class="page-content">
-                    <div class="container-fluid">
+                    <div class="account-pages px-4">
+                        <!-- account-pages p-4  || container-fluid-->
                         <slot />
                     </div>
                     <!-- container-fluid -->

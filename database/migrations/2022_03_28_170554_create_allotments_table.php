@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('code')->unique(); 
             $table->string('check_no'); 
             $table->string('remarks'); 
-            $table->integer('added_by')->unsigned()->index();
+            $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade');
             $table->date('credited_at');
             $table->date('checked_at');

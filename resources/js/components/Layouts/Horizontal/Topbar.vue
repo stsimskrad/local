@@ -2,19 +2,20 @@
 import simplebar from "simplebar-vue";
 
 export default {
+  props: ['user'],
   components: {
     simplebar,
   },
   data() {
     return {
-
+      currentUrl: window.location.origin,
       text: null,
       flag: null,
       value: null,
     };
   },
   mounted() {
-    this.value = this.languages.find((x) => x.language === i18n.locale);
+    this.value = "";
     this.text = this.value.title;
     this.flag = this.value.flag;
   },
@@ -60,7 +61,8 @@ export default {
 
 <template>
   <header id="page-topbar">
-    <div class="navbar-header">
+    <div class="navbar-header" style="max-width: 99%"> 
+      <!-- style="max-width: 99%;" -->
       <div class="d-flex">
         <!-- LOGO -->
         <div class="navbar-brand-box">
@@ -75,10 +77,10 @@ export default {
 
           <a href="/" class="logo logo-light">
             <span class="logo-sm">
-              <img src="/images/logo-light.svg" alt height="22" />
+              <img src="/images/sei.png" alt height="30" />
             </span>
             <span class="logo-lg">
-              <img src="/images/logo-light.png" alt height="19" />
+              <img src="/images/logo-dost.png" alt height="19" />
             </span>
           </a>
         </div>
@@ -350,39 +352,25 @@ export default {
           menu-class="dropdown-menu-end"
         >
           <template v-slot:button-content>
-            <img
-              class="rounded-circle header-profile-user"
-              src="/images/users/avatar-1.jpg"
-              alt="Header Avatar"
-            />
-            <span class="d-none d-xl-inline-block ml-1">{{
-              $t("navbar.dropdown.henry.text")
-            }}</span>
-            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+              <img class="rounded-circle header-profile-user" :src="currentUrl+'/images/avatars/'+user.avatar" alt="n/a" />
+              <span class="d-none d-xl-inline-block ms-1">{{ user.profile.firstname }} {{ user.profile.lastname }}</span>
+              <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
           </template>
           <!-- item-->
-          <b-dropdown-item href="/contacts/profile">
-            <i class="bx bx-user font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.profile") }}
-          </b-dropdown-item>
-          <b-dropdown-item href="javascript: void(0);">
-            <i class="bx bx-wallet font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.mywallet") }}
+          <b-dropdown-item>
+            <router-link :to="'profile'">
+              <i class="bx bx-user font-size-16 align-middle me-1"></i>
+              {{ $t("navbar.dropdown.henry.list.profile") }}
+            </router-link>
           </b-dropdown-item>
           <b-dropdown-item class="d-block" href="javascript: void(0);">
             <span class="badge bg-success float-end">11</span>
             <i class="bx bx-wrench font-size-16 align-middle me-1"></i>
             {{ $t("navbar.dropdown.henry.list.settings") }}
           </b-dropdown-item>
-          <b-dropdown-item href="javascript: void(0);">
-            <i class="bx bx-lock-open font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.lockscreen") }}
-          </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <a href="/logout" class="dropdown-item text-danger">
-            <i
-              class="bx bx-power-off font-size-16 align-middle me-1 text-danger"
-            ></i>
+            <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
             {{ $t("navbar.dropdown.henry.list.logout") }}
           </a>
         </b-dropdown>

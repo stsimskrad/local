@@ -18,6 +18,7 @@ Vue.use(vClickOutside);
 Vue.use(VueToast);
 
 Vue.component("layout", require("./components/Layouts/main.vue").default);
+Vue.component("installation", require("./components/Modules/Exclusion/Installation.vue").default);
 
 import Layouts from "./components/Layouts/layouts.mixin";
 import router from './components/Router/index';
@@ -32,6 +33,13 @@ const app = new Vue({
         currentUrl: window.location.origin,
         windowHeight: window.innerHeight,
         windowWidth: window.innerWidth,
+    },
+    mounted() {
+        if (window.User.role == "Scholar") {
+            this.mixinMethod('horizontal');
+        } else {
+            this.mixinMethod('vertical');
+        }
     },
     computed: {
         height: function() {

@@ -22,7 +22,7 @@ class QualifierResource extends JsonResource
             'is_undergrad' => $this->is_undergrad,
             'year' => $this->year,
             'profile_id' => $this->profile->id,
-            'avatar' => $this->profile->avatar,
+            'avatar' => 'avatar.jpg',
             'firstname' => $this->profile->firstname,
             'lastname' => $this->profile->lastname,
             'middlename' => $this->profile->middlename,

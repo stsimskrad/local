@@ -15,6 +15,7 @@ use App\Models\LocationBarangay;
 use Illuminate\Http\Request;
 use App\Http\Resources\DefaultResource;
 use App\Http\Resources\School\SearchResource;
+use App\Http\Resources\ViewResource;
 
 class ListController extends Controller
 {
@@ -30,9 +31,13 @@ class ListController extends Controller
     }
 
     public function profile()
-    {
-        $data = User::with('profile')->where('id',\Auth::id())->first();
-        return $data;
+    {   
+        if(\Auth::user()->role == 'Scholar'){
+            $data = User::with('scholar.scholar.status','scholar.scholar.category')->where('id',\Auth::id())->first();
+        }else{
+            $data = User::with('profile')->where('id',\Auth::id())->first();
+        }
+        return new ViewResource($data);
     }
 
     public function dropdowns(){

@@ -201,6 +201,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -719,6 +720,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dropdowns', 'regions'],
@@ -733,7 +758,9 @@ __webpack_require__.r(__webpack_exports__);
           name: ''
         },
         status: {},
-        school: {},
+        education: {
+          school: ''
+        },
         course: {}
       },
       profile_id: '',
@@ -765,18 +792,15 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      axios.post(this.currentUrl + '/request/scholar/store', {
-        id: this.user.id,
-        // school_id: (this.school != '') ? this.school.id : '',
-        course_id: this.course != '' ? this.course.id : '',
-        // level_id: (this.level != '') ? this.level.id : '',
-        // region_code: (this.region != '') ? this.region.code : '',
-        // province_code: (this.province != '') ? this.province.code : '',
-        // municipality_code: (this.municipality != '') ? this.municipality.code : '',
-        is_completed: 1,
-        type: 'old',
-        editable: true
-      }).then(function (response) {
+      var data = new FormData();
+      data.append('id', this.user.id);
+      data.append('is_completed', 1);
+      data.append('type', 'old');
+      data.append('editable', 'true');
+      !this.user.education.has_school ? data.append('school_id', this.school != '' ? this.school.id : '') : '';
+      !this.user.education.has_course ? data.append('course_id', this.course != '' ? this.course.id : '') : '';
+      !this.user.education.has_level ? data.append('level_id', this.level != '' ? this.level.id : '') : '';
+      axios.post(this.currentUrl + '/request/scholar/store', data).then(function (response) {
         _this.$emit('status', response.data.data);
 
         _this.clear();
@@ -2049,21 +2073,21 @@ var render = function () {
                       _c("h5", { staticClass: "font-size-11 mb-0 text-dark" }, [
                         _vm._v(
                           _vm._s(
-                            user.school == null ? user.school : user.school.name
-                          ) +
-                            "  " +
-                            _vm._s(
-                              user.school == null
-                                ? ""
-                                : user.school.is_main == 1
-                                ? ""
-                                : " - " + user.school.campus
-                            )
+                            user.education.school == "n/a"
+                              ? "n/a"
+                              : user.education.school.name
+                          )
                         ),
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
-                        _vm._v(_vm._s(user.course.name.toUpperCase())),
+                        _vm._v(
+                          _vm._s(
+                            user.education.course == "n/a"
+                              ? "n/a"
+                              : user.education.course.name
+                          )
+                        ),
                       ]),
                     ]),
                     _vm._v(" "),
@@ -2800,11 +2824,17 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "fw-bold text-dark mb-0" }, [
-              _vm._v(_vm._s(_vm.user.school.name)),
+              _vm._v(
+                _vm._s(
+                  _vm.user.education.school != "n/a"
+                    ? _vm.user.education.school.name
+                    : _vm.user.education.school
+                )
+              ),
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "text-dark mb-0" }, [
-              _vm._v(_vm._s(_vm.user.course.name) + " "),
+              _vm._v(_vm._s(_vm.user.education.course) + " "),
             ]),
           ]),
         ]),
@@ -2823,43 +2853,124 @@ var render = function () {
         },
         [
           _c("div", { staticClass: "row customerform" }, [
-            _c(
-              "div",
-              { staticClass: "col-md-12" },
-              [
-                _c("label", [
-                  _vm._v("Course: "),
-                  _vm.errors.course_id
-                    ? _c("span", { staticClass: "haveerror" }, [
-                        _vm._v("(" + _vm._s(_vm.errors.course_id[0]) + ")"),
-                      ])
-                    : _vm._e(),
-                ]),
-                _vm._v(" "),
-                _c("multiselect", {
-                  attrs: {
-                    id: "ajax",
-                    label: "name",
-                    "track-by": "id",
-                    placeholder: "Search Course",
-                    "open-direction": "bottom",
-                    options: _vm.courses,
-                    searchable: true,
-                    "allow-empty": false,
-                    "show-labels": false,
-                  },
-                  on: { "search-change": _vm.asyncCourse },
-                  model: {
-                    value: _vm.course,
-                    callback: function ($$v) {
-                      _vm.course = $$v
-                    },
-                    expression: "course",
-                  },
-                }),
-              ],
-              1
-            ),
+            !_vm.user.education.has_school
+              ? _c(
+                  "div",
+                  { staticClass: "col-md-12" },
+                  [
+                    _c("label", [
+                      _vm._v("School: "),
+                      _vm.errors.school_id
+                        ? _c("span", { staticClass: "haveerror" }, [
+                            _vm._v("(" + _vm._s(_vm.errors.school_id[0]) + ")"),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("multiselect", {
+                      attrs: {
+                        id: "ajax",
+                        label: "name",
+                        "track-by": "id",
+                        placeholder: "Search School",
+                        "open-direction": "bottom",
+                        options: _vm.schools,
+                        searchable: true,
+                        "allow-empty": false,
+                        "show-labels": false,
+                      },
+                      on: { "search-change": _vm.asyncSchool },
+                      model: {
+                        value: _vm.school,
+                        callback: function ($$v) {
+                          _vm.school = $$v
+                        },
+                        expression: "school",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.user.education.has_course
+              ? _c(
+                  "div",
+                  { staticClass: "col-md-12" },
+                  [
+                    _c("label", [
+                      _vm._v("Course: "),
+                      _vm.errors.course_id
+                        ? _c("span", { staticClass: "haveerror" }, [
+                            _vm._v("(" + _vm._s(_vm.errors.course_id[0]) + ")"),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("multiselect", {
+                      attrs: {
+                        id: "ajax",
+                        label: "name",
+                        "track-by": "id",
+                        placeholder: "Search Course",
+                        "open-direction": "bottom",
+                        options: _vm.courses,
+                        searchable: true,
+                        "allow-empty": false,
+                        "show-labels": false,
+                      },
+                      on: { "search-change": _vm.asyncCourse },
+                      model: {
+                        value: _vm.course,
+                        callback: function ($$v) {
+                          _vm.course = $$v
+                        },
+                        expression: "course",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.user.education.has_level
+              ? _c(
+                  "div",
+                  { staticClass: "col-md-12" },
+                  [
+                    _c("label", [
+                      _vm._v("Level: "),
+                      _vm.errors.level_id
+                        ? _c("span", { staticClass: "haveerror" }, [
+                            _vm._v("(" + _vm._s(_vm.errors.level_id[0]) + ")"),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("multiselect", {
+                      attrs: {
+                        id: "ajax",
+                        label: "name",
+                        "track-by": "id",
+                        placeholder: "Search Level",
+                        "open-direction": "bottom",
+                        options: _vm.levels,
+                        searchable: true,
+                        "allow-empty": false,
+                        "show-labels": false,
+                      },
+                      model: {
+                        value: _vm.level,
+                        callback: function ($$v) {
+                          _vm.level = $$v
+                        },
+                        expression: "level",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-12 mt-4" }, [
               _c(

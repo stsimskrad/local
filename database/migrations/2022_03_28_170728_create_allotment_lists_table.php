@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('expense_id')->references('id')->on('expenses')->onDelete('cascade');
             $table->integer('allotment_id')->unsigned()->index();
             $table->foreign('allotment_id')->references('id')->on('allotments')->onDelete('cascade');
-            $table->integer('added_by')->unsigned()->index();
+            $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

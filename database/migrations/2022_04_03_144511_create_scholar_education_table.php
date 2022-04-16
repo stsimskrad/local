@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('scholar_schools', function (Blueprint $table) {
+        Schema::create('scholar_education', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->bigInteger('scholar_id')->unsigned()->index();
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scholar_schools');
+        Schema::dropIfExists('scholar_education');
     }
 };

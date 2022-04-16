@@ -55668,12 +55668,12 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 @media (min-width: 992px) {
   .chat-leftsidebar {
-    min-width: 260px;
+    min-width: 230px;
   }
 }
 @media (min-width: 1200px) {
   .chat-leftsidebar {
-    min-width: 330px;
+    min-width: 390px;
   }
 }
 .chat-leftsidebar .chat-leftsidebar-nav .nav {

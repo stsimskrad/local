@@ -25,7 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(\Auth::user()->is_active){
+            return view('home');
+        }else{
+            if(\Auth::user()->role == 'Super Administrator'){
+                return view('installation');
+            }else{
+                return view('home');
+            }
+        }
+
+        return view('home');    
     }
 
     public function logs($keyword,$count){

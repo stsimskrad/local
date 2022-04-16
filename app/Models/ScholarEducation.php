@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ScholarSchool extends Model
+class ScholarEducation extends Model
 {
     use HasFactory;
-
     protected $fillable = ['information','course_id','school_id'];
 
     public function scholar()

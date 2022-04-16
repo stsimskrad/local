@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(0);
             $table->integer('school_course_id')->unsigned()->index();
             $table->foreign('school_course_id')->references('id')->on('school_courses')->onDelete('cascade');
-            $table->integer('added_by')->unsigned()->index();
+            $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
         });

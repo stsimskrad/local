@@ -137,6 +137,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -152,9 +169,11 @@ __webpack_require__.r(__webpack_exports__);
       keyword: '',
       users: [],
       categories: [],
+      selected: [],
       category: '-',
       year: '-',
-      show: false
+      show: false,
+      isCheckAll: false
     };
   },
   created: function created() {
@@ -183,6 +202,14 @@ __webpack_require__.r(__webpack_exports__);
       page_url = page_url || this.currentUrl + '/request/qualifier/' + this.counts + '/' + c + '/' + y + '/' + key;
       axios.get(page_url).then(function (response) {
         _this.users = response.data.data;
+
+        if (_this.isCheckAll == 'all') {
+          // Check all
+          for (var key in _this.users) {
+            _this.selected.push(_this.users[key].id);
+          }
+        }
+
         vm.makePagination(response.data.meta, response.data.links);
       })["catch"](function (err) {
         return console.log(err);
@@ -223,7 +250,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.referral.set(user);
       this.$bvModal.show("referral");
     },
-    scholar: function scholar(user) {
+    addScholar: function addScholar(user) {
       this.editable = 'confirmed';
       this.$refs.add.set(user);
       this.$bvModal.show("add");
@@ -256,6 +283,23 @@ __webpack_require__.r(__webpack_exports__);
 
         this.editable = false;
       }
+    },
+    checkAll: function checkAll() {
+      // this.isCheckAll = !this.isCheckAll;
+      if (this.isCheckAll == 'all') {
+        // Check all
+        for (var key in this.users) {
+          this.selected.push(this.users[key].id);
+        }
+      } else {
+        this.selected = [];
+      }
+    },
+    updateCheckall: function updateCheckall() {// if (this.selected.length == this.users.length) {
+      //     this.isCheckAll = true;
+      // } else {
+      //     this.isCheckAll = false;
+      // }
     }
   },
   components: {
@@ -460,9 +504,8 @@ __webpack_require__.r(__webpack_exports__);
         category_id: this.user.category_id.id,
         is_undergrad: this.user.is_undergrad,
         status_id: 30,
-        // school_id: (this.school != '') ? this.school.id : '',
-        // course_id: (this.course != '') ? this.course.id : '',
-        // level_id: (this.level != '') ? this.level.id : '',
+        is_completed: 0,
+        email: this.user.email,
         awarded_year: new Date().getFullYear(),
         address: this.user.info.address.street,
         region_code: this.region != '' ? this.region.code : '',
@@ -1506,6 +1549,31 @@ var render = function () {
             "ul",
             { staticClass: "list-inline user-chat-nav text-end mb-0 dropdown" },
             [
+              _vm.selected.length > 0
+                ? _c(
+                    "li",
+                    {
+                      staticClass: "list-inline-item d-non d-sm-inline-block",
+                      staticStyle: { "margin-right": "50px" },
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "bx bx-check-square text-success h4",
+                        staticStyle: {
+                          "margin-left": "-22px",
+                          position: "absolute",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-muted font-size-11" }, [
+                        _vm._v(
+                          _vm._s(_vm.selected.length) + " Qualifiers selected"
+                        ),
+                      ]),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _vm._m(0),
               _vm._v(" "),
               _c(
@@ -1577,6 +1645,8 @@ var render = function () {
                   ),
                 ]
               ),
+              _vm._v(" "),
+              _vm._m(1),
             ]
           ),
         ]),
@@ -1584,10 +1654,11 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
         _c("table", { staticClass: "table table-centered table-nowrap" }, [
-          _vm._m(1),
+          _vm._m(2),
           _vm._v(" "),
           _c(
             "tbody",
+            { staticClass: "align-middle" },
             _vm._l(_vm.users, function (user) {
               return _c(
                 "tr",
@@ -1598,6 +1669,36 @@ var render = function () {
                   ],
                 },
                 [
+                  _c(
+                    "td",
+                    { staticStyle: { width: "1%" } },
+                    [
+                      _c("b-form-checkbox", {
+                        staticStyle: { "font-size": "16px" },
+                        attrs: {
+                          id: "customCheck_" + user.id,
+                          value: user.id,
+                          "unchecked-value": "not_accepted",
+                          checked: "",
+                          plain: "",
+                        },
+                        on: {
+                          change: function ($event) {
+                            return _vm.updateCheckall()
+                          },
+                        },
+                        model: {
+                          value: _vm.selected,
+                          callback: function ($$v) {
+                            _vm.selected = $$v
+                          },
+                          expression: "selected",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
                   _c("td", [
                     user.avatar == "n/a"
                       ? _c("div", { staticClass: "avatar-xs" }, [
@@ -1703,7 +1804,7 @@ var render = function () {
                             attrs: { type: "button" },
                             on: {
                               click: function ($event) {
-                                return _vm.scholar(user)
+                                return _vm.addScholar(user)
                               },
                             },
                           },
@@ -1779,9 +1880,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-light" }, [
+    return _c(
+      "li",
+      { staticClass: "list-inline-item d-non d-sm-inline-block" },
+      [
+        _c(
+          "div",
+          {
+            attrs: {
+              "data-toggle": "tooltip",
+              "data-placement": "top",
+              title: "",
+              "data-original-title": "Filter by Award year",
+            },
+          },
+          [
+            _c(
+              "button",
+              { staticClass: "btn btn-light", attrs: { type: "button" } },
+              [
+                _c("span", { staticClass: "d-none d-sm-inline-block" }, [
+                  _c("i", { staticClass: "bx bx-mail-send" }),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light align-middle" }, [
       _c("tr", { staticClass: "font-size-11" }, [
-        _c("th", { staticStyle: { width: "2%" } }),
+        _c("th"),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "1%" } }),
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Scholar;
 use App\Models\Scholar;
 use App\Models\Profile;
 use App\Models\Dropdown;
-use App\Models\ScholarSchool;
+use App\Models\ScholarEducation;
 use App\Imports\ScholarImport;
 use App\Models\LocationMunicipality;
 use Maatwebsite\Excel\Facades\Excel;
@@ -84,7 +84,7 @@ class ImportController extends Controller
                                 'created_at'	=> now(),
                                 'updated_at'	=> now()
                             ];
-                            $s = ScholarSchool::insertOrIgnore($school);
+                            $s = ScholarEducation::insertOrIgnore($school);
                             $address = $this->checkAddress($scholar['address'],$q->id);
                             array_push($success,$scholar['id']);
                             \DB::commit();

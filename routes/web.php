@@ -23,12 +23,18 @@ Auth::routes(['register' => false]);
 */
 
 Route::prefix('request')->group(function(){
+    Route::middleware(['auth','role:Super Administrator,Scholarship Coordinator,Scholar'])->group(function () {
+        Route::prefix('user')->group(function(){
+            Route::controller(App\Http\Controllers\UserController::class)->group(function () {
+                Route::get('/logs', 'logs');
+            });
+        });
+    });
 
     Route::middleware(['auth','role:Super Administrator'])->group(function () {
         Route::prefix('user')->group(function(){
             Route::controller(App\Http\Controllers\UserController::class)->group(function () {
                 Route::get('/lists/{key}/{counts}', 'lists');
-                Route::get('/logs', 'logs');
                 Route::post('/password', 'password');
                 Route::post('/store', 'store');
                 Route::post('/verify', 'verify');
@@ -164,6 +170,14 @@ Route::prefix('request')->group(function(){
             });
         });
 
+    });
+
+    Route::middleware(['auth','role:Scholar'])->group(function () {
+        Route::prefix('info')->group(function(){
+            Route::controller(App\Http\Controllers\Scholar\ProfileController::class)->group(function () {
+                Route::get('/', 'index');
+            });
+        });
     });
 
 });
