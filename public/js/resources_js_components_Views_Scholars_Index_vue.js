@@ -808,6 +808,8 @@ __webpack_require__.r(__webpack_exports__);
         if (error.response.status == 422) {
           _this.errors = error.response.data.errors;
           _this.isLoading = false;
+        } else {
+          _this.errors = [];
         }
       });
     },
@@ -2083,8 +2085,8 @@ var render = function () {
                       _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
                         _vm._v(
                           _vm._s(
-                            user.education.course == "n/a"
-                              ? "n/a"
+                            !Object.keys(user.education.course).includes("name")
+                              ? user.education.course
                               : user.education.course.name
                           )
                         ),
@@ -2308,7 +2310,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Program")]),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Program ")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center" }, [_vm._v("Education")]),
         _vm._v(" "),

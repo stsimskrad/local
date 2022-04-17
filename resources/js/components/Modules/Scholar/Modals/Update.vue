@@ -158,8 +158,11 @@
                 .catch(error => {
                     if (error.response.status == 422) {
                         this.errors = error.response.data.errors;
-                         this.isLoading = false;
+                        this.isLoading = false;
+                    }else{
+                        this.errors = [];
                     }
+                    
                 });
             },
 

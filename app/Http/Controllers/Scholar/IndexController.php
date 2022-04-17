@@ -65,7 +65,7 @@ class IndexController extends Controller
                 $data->update($request->except('editable'));
                 ($request->status_id) ? $this->storeStatus($request) : '';
                 if($request->type == 'old'){
-                    $data->education()->update($request->except('editable','is_completed','type'));
+                    $data->education()->update($request->except('id','editable','is_completed','type'));
                     $data = Scholar::with('profile')->with('address.municipality.province.region')->with('education.school.school','education.course')->where('id',$request->id)->first();
                 }
                 // $profile = Profile::where('scholar_id',$request->id)->first();

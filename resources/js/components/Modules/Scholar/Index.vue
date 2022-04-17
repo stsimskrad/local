@@ -94,7 +94,7 @@
                     <tr class="font-size-11">
                         <th style="width: 2%;"></th>
                         <th>Name</th>
-                        <th class="text-center">Program</th>
+                        <th class="text-center">Program </th>
                         <th class="text-center">Education</th>
                         <th class="text-center">Awarded Year</th>
                         <th class="text-center">Status</th>
@@ -125,7 +125,7 @@
                         <td class="text-center">
                             <!-- user.education.name }}  {{(user.school == null) ? '' : (user.school.is_main == 1) ? '' : ' - '+user.school.campus }} -->
                             <h5 class="font-size-11 mb-0 text-dark">{{ (user.education.school == 'n/a') ? 'n/a' :  user.education.school.name}}</h5> 
-                            <p class="font-size-11 text-muted mb-0">{{ (user.education.course == 'n/a') ? 'n/a' : user.education.course.name }}</p>
+                            <p class="font-size-11 text-muted mb-0">{{ (!Object.keys(user.education.course).includes('name'))  ? user.education.course : user.education.course.name }}</p>
                         </td>
                         <td class="text-center fw-bold text-primary">{{user.awarded_year}}</td>
                         <td class="text-center">
