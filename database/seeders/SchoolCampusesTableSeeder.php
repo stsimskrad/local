@@ -28,8 +28,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -40,8 +40,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 2,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -52,8 +52,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 3,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -64,8 +64,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 4,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -76,8 +76,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 5,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -88,8 +88,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097332000',
                 'school_id' => 6,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             6 => 
             array (
@@ -100,8 +100,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097201000',
                 'school_id' => 7,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             7 => 
             array (
@@ -112,8 +112,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097202000',
                 'school_id' => 8,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             8 => 
             array (
@@ -124,8 +124,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097322000',
                 'school_id' => 10,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             9 => 
             array (
@@ -136,8 +136,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097202000',
                 'school_id' => 11,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             10 => 
             array (
@@ -148,8 +148,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097202000',
                 'school_id' => 12,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             11 => 
             array (
@@ -160,8 +160,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097202000',
                 'school_id' => 13,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             12 => 
             array (
@@ -172,8 +172,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097322000',
                 'school_id' => 14,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             13 => 
             array (
@@ -184,8 +184,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097218000',
                 'school_id' => 15,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             14 => 
             array (
@@ -196,8 +196,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '097322000',
                 'school_id' => 16,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             15 => 
             array (
@@ -208,8 +208,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 1,
                 'municipality_code' => '153617000',
                 'school_id' => 17,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             16 => 
             array (
@@ -220,8 +220,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 0,
                 'municipality_code' => '098302000',
                 'school_id' => 17,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             17 => 
             array (
@@ -232,8 +232,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 0,
                 'municipality_code' => '097218000',
                 'school_id' => 17,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             18 => 
             array (
@@ -244,8 +244,8 @@ class SchoolCampusesTableSeeder extends Seeder
                 'is_main' => 0,
                 'municipality_code' => '098305000',
                 'school_id' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         
