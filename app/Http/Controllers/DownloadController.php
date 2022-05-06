@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agency;
+use App\Models\ListAgency;
 use App\Models\LocationProvince;
 use App\Models\LocationMunicipality;
 use App\Models\LocationBarangay;
@@ -13,7 +13,7 @@ class DownloadController extends Controller
     public function index()
     {
         $agency_id = config('app.agency');
-        $agency = Agency::with('region')->where('id',$agency_id)->first();
+        $agency = ListAgency::with('region')->where('id',$agency_id)->first();
 
         $region_code = $agency->region_code;
         // $region = LocationProvince::with('municipalities.barangays')->where('region_code',$region_code)->get();

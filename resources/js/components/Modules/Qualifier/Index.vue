@@ -47,7 +47,7 @@
             </div>
         </div>
         
-         <div class="table-responsive">
+        <div class="table-responsive">
             <table class="table table-centered table-nowrap">
                 <thead class="thead-light align-middle">
                         <tr class="font-size-11">
@@ -82,7 +82,7 @@
                             <p class="font-size-11 text-muted mb-0">{{user.barangay}}, {{user.municipality}}, {{user.province}}</p>
                         </td>
                         <td class="text-center">
-                            <h5 class="font-size-13 mb-0 text-dark">{{user.category_id.name}}</h5>
+                            <h5 class="font-size-13 mb-0 text-dark">{{user.program_id.name}}</h5>
                             <p class="font-size-12 text-muted mb-0">{{user.spas_id}}</p>
                         </td>
                         <td class="text-center">
@@ -178,13 +178,8 @@ export default {
             this.fetch(this.currentUrl + '/request/qualifiers/'+this.counts+'/'+this.category+'/'+this.year+'/'+key);
         },
 
-        sync(){
-            $("#sync").modal('show');
-        },
-
         edit(user){
             this.editable = true;
-            $("#new").modal('show');
             this.$refs.create.edit(user,true);
         },
 
@@ -208,7 +203,7 @@ export default {
         },
 
         addScholar(user){
-            this.editable = 'confirmed';
+            this.editable = 'qualifier';
             this.$refs.add.set(user);
             this.$bvModal.show("add");
         },
@@ -221,7 +216,7 @@ export default {
                     Vue.$toast.success('<strong>Successfully Updated</strong>', {
                         position: 'bottom-right'
                     });
-                }else if(this.editable == 'confirmed'){
+                }else if(this.editable == 'qualifier'){
                     let i = this.users.map(item => item.id).indexOf(user); 
                     this.users.splice(i, 1);
                     Vue.$toast.success('<strong>Qualifier was added as Scholar</strong>', {

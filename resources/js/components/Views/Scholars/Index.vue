@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body" :style="{ height: height + 'px' }">
-                    <Index @status="message" :regions="regions" :dropdowns="dropdowns" />
+                    <Index @status="message" :programs="programs" :regions="regions" :dropdowns="dropdowns" />
                 </div>
             </div>
         </div>
@@ -17,14 +17,14 @@
     import PageHeader from '../../Layouts/Header.vue';
 
     export default {
-        props: ['dropdowns','regions'],
+        props: ['dropdowns','regions', 'programs', 'benefits'],
         components: { PageHeader, Index },
         data() {
             return {
                 currentUrl: window.location.origin,
                 height: this.$parent.$parent.$parent.height, 
                 title: "Scholars",
-                category: 'all',
+                program: 'all',
                 ss: 'all',
             };
         },
@@ -33,7 +33,7 @@
                 return [
                     {text: "Home", href: "/",},
                     {text: "Scholars", href: "/",},
-                    {text: this.category, active: true,},
+                    {text: this.program, active: true,},
                     {text: this.ss, active: true,},
                 ];
             }
@@ -41,8 +41,8 @@
         methods : {
             message(...args){
                 const [x,y] = args;
-                if(x == 'category'){
-                    this.category = y;
+                if(x == 'program'){
+                    this.program = y;
                 }else{
                     this.ss = y;
                 }

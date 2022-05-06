@@ -11,7 +11,7 @@ class Scholar extends Model
     protected $fillable = [
         'spas_id',
         'lrn', 
-        'category_id',
+        'program_id',
         'status_id',
         'old_id',
         'profile_id',
@@ -53,12 +53,12 @@ class Scholar extends Model
 
     public function status()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'status_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'status_id', 'id');
     }
 
-    public function category()
+    public function program()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'category_id', 'id');
+        return $this->belongsTo('App\Models\ListProgram', 'program_id', 'id');
     }   
 
     public function getUpdatedAtAttribute($value)

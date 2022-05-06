@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('avatar',200)->default('school.jpg');
             $table->tinyInteger('class_id')->unsigned()->index();
-            $table->foreign('class_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('class_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->tinyInteger('term_id')->unsigned()->index();
-            $table->foreign('term_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('term_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->tinyInteger('grading_id')->unsigned()->index();
-            $table->foreign('grading_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('grading_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->timestamps();
         });
     }

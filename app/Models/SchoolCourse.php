@@ -15,7 +15,7 @@ class SchoolCourse extends Model
 
     public function prospectuses()
     {
-        return $this->hasMany('App\Models\Prospectus', 'school_course_id');
+        return $this->hasMany('App\Models\SchoolCourseProspectus', 'school_course_id');
     } 
 
     public function getTypeAttribute($value)
@@ -25,7 +25,7 @@ class SchoolCourse extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course', 'course_id', 'id');
+        return $this->belongsTo('App\Models\ListCourse', 'course_id', 'id');
     }
 
     public function school()

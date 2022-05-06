@@ -22,8 +22,8 @@ class GradingResource extends JsonResource
             'awarded_year' => $this->awarded_year,
             'profile' => new ProfileResource($this->profile),
             'status' => $this->status,   
-            'school' => new SchoolResource($this->school),
-            'course' => ($this->school->course) ? new CourseResource($this->school) : $course,
+            'school' => new SchoolResource($this->education->school),
+            'course' => ($this->education->course) ? new CourseResource($this->education) : '',
             'enrollments' => EnrollmentResource::collection($this->enrollments)
         ];
     }

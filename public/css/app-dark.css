@@ -55673,7 +55673,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 @media (min-width: 1200px) {
   .chat-leftsidebar {
-    min-width: 390px;
+    min-width: 330px;
   }
 }
 .chat-leftsidebar .chat-leftsidebar-nav .nav {

@@ -8,7 +8,7 @@
                         <input type="text" class="form-control"  v-model="company" style="text-transform: capitalize;">
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Address: <span v-if="errors.address" class="haveerror">({{ errors.address[0] }})</span></label>
                         <input type="text" class="form-control"  v-model="address" style="text-transform: capitalize;">
@@ -21,10 +21,18 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Period: <span v-if="errors.period" class="haveerror">({{ errors.period[0] }})</span></label>
-                        <input type="text" class="form-control"  v-model="period" style="text-transform: capitalize;" placeholder="January 2020 - January 2021">
-                    </div>
+                    <label>Start At: <span v-if="errors.start_at" class="haveerror">({{ errors.start_at[0] }})</span></label>
+                    <date-picker
+                        v-model="period1" format="YYYY-MM-DD"
+                        lang="en" placeholder="Select Month"
+                    ></date-picker>
+                </div>
+                <div class="col-md-6">
+                    <label>End At: <span v-if="errors.end_at" class="haveerror">({{ errors.end_at[0] }})</span></label>
+                    <date-picker
+                        v-model="period2" format="YYYY-MM-DD"
+                        lang="en" placeholder="Select Date"
+                    ></date-picker>
                 </div>
                 <div class="col-md-12 mt-4">
                     <div class="alert alert-warning alert-dismissible fade show align-middle" role="alert">
@@ -38,7 +46,9 @@
     </b-modal>
 </template>
 <script>
+    import DatePicker from "vue2-datepicker";
     export default {
+        components : {DatePicker},
         props: ['user'],
         data(){
             return {
@@ -48,7 +58,8 @@
                 company: '',
                 address: '',
                 position: '',
-                period: '',
+                period1: '',
+                period2: '',
                 job: false
                 
             }
@@ -63,7 +74,8 @@
                     company: this.company,
                     address: this.address,
                     position: this.position,
-                    period: this.period,
+                    start_at: this.period1,
+                    end_at: this.period2,
                     job: this.job,
                     type: 'History'
                 })
@@ -82,7 +94,8 @@
                 this.company = '';
                 this.address = '';
                 this.position = '';
-                this.period = '';
+                this.start_at = '';
+                this.end_at = '';
                 this.errors = [];
             }
         }

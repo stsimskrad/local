@@ -40,6 +40,7 @@ class ScholarRequest extends FormRequest
             'level_id' => 'sometimes|required',
             'course_id' => 'sometimes|required',
             'school_id' => 'sometimes|required',
+            'award_id' => 'sometimes|required',
             'awarded_year' => 'sometimes|required',
             'lnr' => 'nullable|string',
             'spas' => 'nullable|string',

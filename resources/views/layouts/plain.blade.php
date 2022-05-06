@@ -10,11 +10,9 @@ $css_file = "css/app.css";
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ url('sei.ico') }}">
-    <title>
-        @yield('title', config('app.name', 'Skote'))
-    </title>
-    <meta content="Skote is a fully featured premium Vuejs admin dashboard template built on top of awesome Bootstrap 5"
-        name="description" />
+    <title>@yield('title', config('app.name', 'STSIMS'))</title>
+    <script>window.User = {!! json_encode(optional(auth()->user())->only('role')) !!}</script>
+    <meta content="STSIMS - DOST IX" name="description" />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset($css_file) }}" rel="stylesheet" id="layout-css">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />

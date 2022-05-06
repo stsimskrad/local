@@ -94,6 +94,8 @@
             clear(){
                 this.school = '';
                 this.course = '';
+                this.fil = {};
+                this.$emit('status', this.fil);
             }
             
         }, components : { Multiselect }

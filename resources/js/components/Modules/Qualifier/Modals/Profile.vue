@@ -10,7 +10,7 @@
             <div class="row font-size-11 mt-3">
                 <div class="col-sm-3">
                     <h6 class="text-muted font-size-12"><i class="bx bx-list-ul me-1 text-primary"></i>Category</h6>
-                    <p class="font-weight-bold text-dark mb-0">{{user.category_id.name}}</p>
+                    <p class="font-weight-bold text-dark mb-0">{{user.program_id.name}}</p>
                 </div>
                 <div class="col-sm-3">
                     <h6 class="text-muted font-size-12"><i class="bx bx-calendar me-1 text-primary"></i>Birthday</h6>
@@ -46,7 +46,7 @@
                 currentUrl: window.location.origin,
                 errors: [],
                 user: {
-                    category_id : {},
+                    program_id : {},
                     info : {
                         requirements: {},
                         address: {}

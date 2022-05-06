@@ -49,7 +49,7 @@
                     </td>
                     <td class="text-center">
                         <h5 class="font-size-13 mb-0 text-dark">{{info.information.position}}</h5>
-                        <p class="font-size-12 text-muted mb-0">{{info.information.period}}</p>
+                        <p class="font-size-12 text-muted mb-0">{{ formDate(info.information.start_at) }} - {{formDate(info.information.end_at) }}</p>
                     </td>
                     <td class="text-center">
                         <i :class="(info.information.is_related) ? 'bx bxs-check-circle text-success' : 'bx bxs-x-circle text-danger'"></i>
@@ -132,6 +132,10 @@
                     this.$bvModal.hide("history");
                     this.editable = false;
                 }
+            },
+
+            formDate(data){
+                return new Date(data).toDateString().split(' ').slice(1).join(' ');
             }
         }, components : { History }
     }

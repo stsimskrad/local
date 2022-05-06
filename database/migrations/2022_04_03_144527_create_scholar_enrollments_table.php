@@ -18,11 +18,12 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->boolean('is_clear')->default(0);
             $table->boolean('is_locked')->default(0);
+            $table->boolean('is_given')->default(0);
             $table->json('attachment');
             $table->integer('semester_id')->unsigned()->index();
             $table->foreign('semester_id')->references('id')->on('school_semesters')->onDelete('cascade');
             $table->tinyInteger('level_id')->unsigned()->index();
-            $table->foreign('level_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->bigInteger('scholar_id')->unsigned()->index();
             $table->foreign('scholar_id')->references('id')->on('scholars')->onDelete('cascade');
             $table->bigInteger('added_by')->unsigned()->index();

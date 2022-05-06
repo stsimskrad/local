@@ -206,7 +206,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dropdowns', 'regions'],
+  props: ['dropdowns', 'regions', 'programs'],
   data: function data() {
     return {
       currentUrl: window.location.origin,
@@ -215,7 +215,7 @@ __webpack_require__.r(__webpack_exports__);
       pagination: {},
       keyword: '',
       users: [],
-      category: '-',
+      program: '-',
       status: '-',
       year: '-',
       arr: {},
@@ -230,11 +230,6 @@ __webpack_require__.r(__webpack_exports__);
     statuses: function statuses() {
       return this.dropdowns.filter(function (x) {
         return x.classification === 'Status';
-      });
-    },
-    categories: function categories() {
-      return this.dropdowns.filter(function (x) {
-        return x.classification === 'Category';
       });
     }
   },
@@ -254,14 +249,17 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var vm = this;
-      var key, s, c, y, a, e;
-      this.keyword != '' && this.keyword != null ? key = this.keyword : key = '-';
-      this.status != '' && this.status != null ? s = this.status : s = '-';
-      this.category != '' && this.category != null ? c = this.category : c = '-';
-      this.year === '' || this.year == null ? y = '-' : y = this.year;
-      Object.keys(this.arr).length == 0 ? a = '-' : a = JSON.stringify(this.arr);
-      Object.keys(this.arr2).length == 0 ? e = '-' : e = JSON.stringify(this.arr2);
-      page_url = page_url || this.currentUrl + '/request/scholar/' + s + '/' + c + '/' + this.counts + '/' + y + '/' + key + '/' + a + '/' + e;
+      var info = {
+        'keyword': this.keyword != '' && this.keyword != null ? this.keyword : '',
+        'status': this.status != '' && this.status != null ? this.status : '',
+        'program': this.program != '' && this.program != null ? this.program : '',
+        'year': this.year === '' || this.year == null ? '' : this.year,
+        'counts': this.counts
+      };
+      info = Object.keys(info).length == 0 ? '-' : JSON.stringify(info);
+      var location = Object.keys(this.arr).length == 0 ? '-' : JSON.stringify(this.arr);
+      var education = Object.keys(this.arr2).length == 0 ? '-' : JSON.stringify(this.arr2);
+      page_url = page_url || this.currentUrl + '/request/scholar/' + info + '/' + education + '/' + location;
       axios.get(page_url).then(function (response) {
         _this.users = response.data.data;
         vm.makePagination(response.data.meta, response.data.links);
@@ -271,9 +269,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     filter: function filter(data, name, type) {
       switch (type) {
-        case 'category':
-          this.category = data;
-          this.$emit('status', 'category', name);
+        case 'program':
+          this.program = data;
+          this.$emit('status', 'program', name);
           break;
 
         case 'status':
@@ -282,13 +280,17 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
 
-      var vm = this;
-      var key, a, e;
-      this.year === '' || this.year == null ? this.year = '-' : this.year = this.year;
-      this.keyword != '' && this.keyword != null ? key = this.keyword : key = '-';
-      Object.keys(this.arr).length == 0 ? a = '-' : a = JSON.stringify(this.arr);
-      Object.keys(this.arr2).length == 0 ? e = '-' : e = JSON.stringify(this.arr2);
-      this.fetch(this.currentUrl + '/request/scholar/' + this.status + '/' + this.category + '/' + this.counts + '/' + this.year + '/' + key + '/' + a + '/' + e);
+      var info = {
+        'keyword': this.keyword != '' && this.keyword != null ? this.keyword : '-',
+        'status': this.status != '' && this.status != null ? this.status : '-',
+        'program': this.program != '' && this.program != null ? this.program : '-',
+        'year': this.year === '' || this.year == null ? '-' : this.year,
+        'counts': this.counts
+      };
+      info = Object.keys(info).length == 0 ? '-' : JSON.stringify(info);
+      var location = Object.keys(this.arr).length == 0 ? '-' : JSON.stringify(this.arr);
+      var education = Object.keys(this.arr2).length == 0 ? '-' : JSON.stringify(this.arr2);
+      this.fetch(this.currentUrl + '/request/scholar/' + info + '/' + education + '/' + location);
     },
     update: function update(user) {
       this.editable = true;
@@ -457,6 +459,8 @@ __webpack_require__.r(__webpack_exports__);
     clear: function clear() {
       this.school = '';
       this.course = '';
+      this.fil = {};
+      this.$emit('status', this.fil);
     }
   },
   components: {
@@ -624,7 +628,9 @@ __webpack_require__.r(__webpack_exports__);
       this.region = '';
       this.province = '';
       this.municipality = '';
-      this.barangay = ''; // this.$bvModal.hide("filter");
+      this.barangay = '';
+      this.fil = {};
+      this.$emit('status', this.fil);
     }
   },
   components: {
@@ -728,22 +734,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dropdowns', 'regions'],
@@ -752,7 +742,7 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       errors: [],
       user: {
-        category: {},
+        program: {},
         profile: {},
         address: {
           name: ''
@@ -765,17 +755,19 @@ __webpack_require__.r(__webpack_exports__);
       },
       profile_id: '',
       lrn: '',
-      category_id: '',
+      program_id: '',
       schools: [],
       courses: [],
       level: '',
       school: '',
       course: '',
+      award: '',
       provinces: [],
       municipalities: [],
       region: '',
       province: '',
-      municipality: ''
+      municipality: '',
+      has_award: false
     };
   },
   computed: {
@@ -783,11 +775,17 @@ __webpack_require__.r(__webpack_exports__);
       return this.dropdowns.filter(function (x) {
         return x.classification === 'Level';
       });
+    },
+    awards: function awards() {
+      return this.dropdowns.filter(function (x) {
+        return x.classification === 'Award';
+      });
     }
   },
   methods: {
     set: function set(data) {
       this.user = data;
+      this.errors = [];
     },
     submit: function submit() {
       var _this = this;
@@ -800,6 +798,7 @@ __webpack_require__.r(__webpack_exports__);
       !this.user.education.has_school ? data.append('school_id', this.school != '' ? this.school.id : '') : '';
       !this.user.education.has_course ? data.append('course_id', this.course != '' ? this.course.id : '') : '';
       !this.user.education.has_level ? data.append('level_id', this.level != '' ? this.level.id : '') : '';
+      this.has_award ? data.append('award_id', this.award != '' ? this.award.id : '') : '';
       axios.post(this.currentUrl + '/request/scholar/store', data).then(function (response) {
         _this.$emit('status', response.data.data);
 
@@ -873,6 +872,7 @@ __webpack_require__.r(__webpack_exports__);
       this.municipality = '';
       this.school = '';
       this.course = '';
+      this.award = '';
       this.$bvModal.hide("update");
     }
   },
@@ -913,7 +913,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dropdowns', 'regions'],
+  props: ['dropdowns', 'regions', 'programs', 'benefits'],
   components: {
     PageHeader: _Layouts_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Index: _Modules_Scholar_Index_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -923,7 +923,7 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       height: this.$parent.$parent.$parent.height,
       title: "Scholars",
-      category: 'all',
+      program: 'all',
       ss: 'all'
     };
   },
@@ -936,7 +936,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "Scholars",
         href: "/"
       }, {
-        text: this.category,
+        text: this.program,
         active: true
       }, {
         text: this.ss,
@@ -953,8 +953,8 @@ __webpack_require__.r(__webpack_exports__);
       var x = args[0],
           y = args[1];
 
-      if (x == 'category') {
-        this.category = y;
+      if (x == 'program') {
+        this.program = y;
       } else {
         this.ss = y;
       }
@@ -1776,12 +1776,10 @@ var render = function () {
                             "a",
                             {
                               staticClass: "dropdown-item",
-                              class: [
-                                _vm.category == "-" ? "text-primary" : "",
-                              ],
+                              class: [_vm.program == "-" ? "text-primary" : ""],
                               on: {
                                 click: function ($event) {
-                                  return _vm.filter("-", "all", "category")
+                                  return _vm.filter("-", "all", "program")
                                 },
                               },
                             },
@@ -1791,28 +1789,22 @@ var render = function () {
                         _vm._v(" "),
                         _c(
                           "li",
-                          _vm._l(_vm.categories, function (status) {
+                          _vm._l(_vm.programs, function (p) {
                             return _c(
                               "a",
                               {
-                                key: status.id,
+                                key: p.id,
                                 staticClass: "dropdown-item",
                                 class: [
-                                  _vm.category == status.id
-                                    ? "text-primary"
-                                    : "",
+                                  _vm.program == p.id ? "text-primary" : "",
                                 ],
                                 on: {
                                   click: function ($event) {
-                                    return _vm.filter(
-                                      status.id,
-                                      status.name,
-                                      "category"
-                                    )
+                                    return _vm.filter(p.id, p.name, "program")
                                   },
                                 },
                               },
-                              [_vm._v(_vm._s(status.name))]
+                              [_vm._v(_vm._s(p.name))]
                             )
                           }),
                           0
@@ -2059,7 +2051,7 @@ var render = function () {
                     _vm._v(" "),
                     _c("td", { staticClass: "text-center" }, [
                       _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                        _vm._v(_vm._s(user.category.name)),
+                        _vm._v(_vm._s(user.program.name)),
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
@@ -2813,7 +2805,7 @@ var render = function () {
                   " "
               ),
               _c("span", { staticClass: "text-muted font-size-11 ml-2" }, [
-                _vm._v("(" + _vm._s(_vm.user.category.name) + ")"),
+                _vm._v("(" + _vm._s(_vm.user.program.name) + ")"),
               ]),
             ]),
           ]),
@@ -2974,6 +2966,99 @@ var render = function () {
                 )
               : _vm._e(),
             _vm._v(" "),
+            _vm.user.status.name == "Graduated"
+              ? _c("div", { staticClass: "col-md-12 mt-2 mb-1" }, [
+                  _c("div", { staticClass: "form-check" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.has_award,
+                          expression: "has_award",
+                        },
+                      ],
+                      staticClass: "form-check-input",
+                      attrs: { type: "checkbox", id: "gridCheck" },
+                      domProps: {
+                        checked: Array.isArray(_vm.has_award)
+                          ? _vm._i(_vm.has_award, null) > -1
+                          : _vm.has_award,
+                      },
+                      on: {
+                        change: function ($event) {
+                          var $$a = _vm.has_award,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.has_award = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.has_award = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.has_award = $$c
+                          }
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-check-label",
+                        attrs: { for: "gridCheck" },
+                      },
+                      [_vm._v("Does the scholar has Academic award?")]
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.user.status.name == "Graduated" && _vm.has_award == true
+              ? _c(
+                  "div",
+                  { staticClass: "col-md-12" },
+                  [
+                    _c("label", [
+                      _vm._v("Award: "),
+                      _vm.errors.award_id
+                        ? _c("span", { staticClass: "haveerror" }, [
+                            _vm._v("(" + _vm._s(_vm.errors.award_id[0]) + ")"),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("multiselect", {
+                      attrs: {
+                        id: "ajax",
+                        label: "name",
+                        "track-by": "id",
+                        placeholder: "Select Award",
+                        "open-direction": "bottom",
+                        options: _vm.awards,
+                        searchable: true,
+                        "allow-empty": false,
+                        "show-labels": false,
+                      },
+                      model: {
+                        value: _vm.award,
+                        callback: function ($$v) {
+                          _vm.award = $$v
+                        },
+                        expression: "award",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "col-md-12 mt-4" }, [
               _c(
                 "button",
@@ -3030,7 +3115,11 @@ var render = function () {
               },
               [
                 _c("Index", {
-                  attrs: { regions: _vm.regions, dropdowns: _vm.dropdowns },
+                  attrs: {
+                    programs: _vm.programs,
+                    regions: _vm.regions,
+                    dropdowns: _vm.dropdowns,
+                  },
                   on: { status: _vm.message },
                 }),
               ],

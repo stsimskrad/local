@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Qualifier;
 
 use App\Models\Profile;
-use App\Models\Dropdown;
+use App\Models\ListProgram;
 use App\Models\Qualifier;
 use App\Imports\QualifierImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -97,7 +97,7 @@ class ImportController extends Controller
                 $count = Qualifier::where('spas_id',$qualifier['spas_id'])->count();
                 if($count == 0){
 
-                    $dropdown_id = Dropdown::where('classification','Category')->where('name',$qualifier['category'])->pluck('id')->first();
+                    $program_id = ListProgram::where('name',$qualifier['category'])->pluck('id')->first();
                     
                     $address = [
                         'name' => $qualifier['information']['address']['name'],
@@ -155,7 +155,7 @@ class ImportController extends Controller
                             'spas_id' => $qualifier['spas_id'],
                             'school_code' => 'n/a',
                             'course_id' => 'n/a',
-                            'category_id' => $dropdown_id,
+                            'program_id' => $program_id,
                             'profile_id' => $profile->id,
                             'is_undergrad' => $qualifier['type'],
                             'is_waiting' => ($qualifier['information']['requirements']['count'] > 0) ? true : false,

@@ -29,17 +29,17 @@ class School extends Model
 
     public function class()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'class_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'class_id', 'id');
     }
 
     public function term()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'term_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'term_id', 'id');
     }
 
     public function grading()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'grading_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'grading_id', 'id');
     }
 
     public function getNameAttribute($value){

@@ -1342,7 +1342,10 @@ var render = function () {
       [
         _c(
           "router-link",
-          { staticClass: "text-body", attrs: { to: { name: "prospectus" } } },
+          {
+            staticClass: "text-body",
+            attrs: { to: { name: "reimbursement" } },
+          },
           [
             _c("div", { staticClass: "p-1" }, [
               _c("div", { staticClass: "d-flex mt-1" }, [

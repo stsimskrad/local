@@ -18,6 +18,8 @@ class EducationResource extends JsonResource
             'school' => ($this->school == null) ? 'n/a' : new SchoolResource($this->school),
             'level' => ($this->level == null) ? 'n/a' : $this->level,
             'course' => ($this->course == null) ? $this->courseInfo['name'] : $this->course,
+            'subcourse' => $this->subcourse,
+            'information' => $this->information,
             'has_school' => ($this->school == null) ? false : true,
             'has_level' => ($this->level == null) ? false : true,
             'has_course' => ($this->course == null) ? false : true,

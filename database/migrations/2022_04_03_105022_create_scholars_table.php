@@ -21,10 +21,10 @@ return new class extends Migration
             $table->boolean('is_completed')->default(1);
             $table->boolean('is_enrolled')->default(0);
             $table->boolean('is_undergrad');
-            $table->tinyInteger('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->tinyInteger('program_id')->unsigned()->index();
+            $table->foreign('program_id')->references('id')->on('list_programs')->onDelete('cascade');
             $table->tinyInteger('status_id')->unsigned()->index();
-            $table->foreign('status_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->bigInteger('profile_id')->unsigned()->index();
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->string('old_id')->default('n/a');

@@ -57,7 +57,7 @@
                                 <label class="card-radio-label mb-2">
                                     <input type="radio" name="currency" id="buycurrencyoption1" class="card-radio-input">
 
-                                    <div class="card-radio">
+                                    <div class="card-radio" @click="print('graduated')">
                                         <div>
                                             <i class='bx bxs-award font-size-24 text-warning align-middle me-2'></i>
                                             <span>Graduates <span class="font-size-10 text-muted">(w/ honor)</span></span>
@@ -70,7 +70,7 @@
 
                         <div class="col-xl-4">
                             <div class="mb-3">
-                                <label class="card-radio-label mb-2">
+                                <label class="card-radio-label mb-2" @click="print('graduates')">
                                     <input type="radio" name="currency" id="buycurrencyoption2" class="card-radio-input">
 
                                     <div class="card-radio">
@@ -86,7 +86,7 @@
 
                         <div class="col-xl-4">
                             <div class="mb-3">
-                                <label class="card-radio-label mb-2">
+                                <label class="card-radio-label mb-2" @click="print('scholars')">
                                     <input type="radio" name="currency" id="buycurrencyoption3" class="card-radio-input">
 
                                     <div class="card-radio">
@@ -130,13 +130,16 @@
             </div>
 
         </div>
-
+        <Print :dropdowns="dropdowns" :programs="programs" ref="print"/>
     </div>
 </template>
 
 
 <script>
+    import Print from "./Modals/Print.vue";
     export default {
+        props: ['dropdowns','programs'],
+        components : { Print },
         data() {
             return {
                 currentUrl: window.location.origin,
@@ -172,27 +175,32 @@
         methods: {
             category() {
                 axios.get(this.currentUrl + '/request/scholar/reports/category')
-                    .then(response => {
-                        this.categories = response.data;
-                        return this.categories.sort((a, b) => b.count - a.count);
-                    })
-                    .catch(err => console.log(err));
+                .then(response => {
+                    this.categories = response.data;
+                    return this.categories.sort((a, b) => b.count - a.count);
+                })
+                .catch(err => console.log(err));
             },
 
             status() {
                 axios.get(this.currentUrl + '/request/scholar/reports/status')
-                    .then(response => {
-                        this.statuses = response.data;
-                    })
-                    .catch(err => console.log(err));
+                .then(response => {
+                    this.statuses = response.data;
+                })
+                .catch(err => console.log(err));
             },
 
             totals() {
                 axios.get(this.currentUrl + '/request/scholar/reports/totals')
-                    .then(response => {
-                        this.stats = response.data;
-                    })
-                    .catch(err => console.log(err));
+                .then(response => {
+                    this.stats = response.data;
+                })
+                .catch(err => console.log(err));
+            },
+
+            print(type){
+                this.$bvModal.show("print");
+                this.$refs.print.set(type);
             }
         },
     }

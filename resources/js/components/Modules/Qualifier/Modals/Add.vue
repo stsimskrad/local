@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <div class="mr-3"><i class="bx bxs-quote-alt-left text-primary font-size-14"></i></div>
                 <div>
-                    <p class="mb-1 fw-bold" v-bind:class="[(user.gender == 0? 'text-danger' : 'text-primary')]">{{ user.lastname}}, {{ user.firstname}} {{ user.middlename }} <span class="text-muted font-size-11 ml-2">({{user.category_id.name}})</span> </p>
+                    <p class="mb-1 fw-bold" v-bind:class="[(user.gender == 0? 'text-danger' : 'text-primary')]">{{ user.lastname}}, {{ user.firstname}} {{ user.middlename }} <span class="text-muted font-size-11 ml-2">({{user.program_id.name}})</span> </p>
                 </div>
             </div>
             <div class="row font-size-11 mt-2">
@@ -79,49 +79,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>School: <span v-if="errors.school_id" class="haveerror">({{ errors.school_id[0] }})</span></label>
-                            <multiselect v-model="school" id="ajax" label="name" track-by="id"
-                                placeholder="Search School" open-direction="bottom" :options="schools"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false"
-                                @search-change="asyncSchool">
-                            </multiselect> 
-                        </div>
-                        <div class="col-md-12">
-                            <label>Course: <span v-if="errors.course_id" class="haveerror">({{ errors.course_id[0] }})</span></label>
-                            <multiselect v-model="course" id="ajax" label="name" track-by="id"
-                                placeholder="Search Course" open-direction="bottom" :options="courses"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false"
-                                @search-change="asyncCourse">
-                            </multiselect> 
-                        </div>
-                        <div class="col-md-12">
-                            <label>Level: <span v-if="errors.level_id" class="haveerror">({{ errors.level_id[0] }})</span></label>
-                            <multiselect 
-                                v-model="level" 
-                                id="ajax" 
-                                label="name" track-by="id"
-                                placeholder="Search Level" 
-                                open-direction="bottom" 
-                                :options="levels"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false">
-                            </multiselect> 
-                        </div>
-                    </div>   
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        
-                    </div>   
-                </div> -->
                 <div class="col-md-12 mt-4">
                     <button type="submit" class="btn btn-info btn-sm btn-block waves-effect waves-light mb-4">COMFIRM SCHOLAR</button>
                 </div>
@@ -138,11 +95,11 @@
                 currentUrl: window.location.origin,
                 errors: [],
                 user: {
-                    category_id: {}
+                    program_id: {}
                 },
                 profile_id : '',
                 lrn: '',
-                category_id: '',
+                program_id: '',
                 schools: [],
                 courses: [],
                 level: '',
@@ -173,7 +130,7 @@
                     qualifier_id: this.user.id,
                     spas_id: this.user.spas_id,
                     profile_id: this.user.profile_id,
-                    category_id: this.user.category_id.id,
+                    program_id: this.user.program_id.id,
                     is_undergrad: this.user.is_undergrad,
                     status_id : 30,
                     is_completed: 0,
@@ -183,7 +140,8 @@
                     region_code: (this.region != '') ? this.region.code : '',
                     province_code: (this.province != '') ? this.province.code : '',
                     municipality_code: (this.municipality != '') ? this.municipality.code : '',
-                    barangay_code: (this.barangay != '') ? this.barangay.code : ''
+                    barangay_code: (this.barangay != '') ? this.barangay.code : '',
+                    editable: 'qualifier'
                 })
                 .then(response => {
                     this.$emit('status', response.data.data);

@@ -20,13 +20,59 @@ const routes = [{
                 component: () =>
                     import ('../Modules/Home/Scholar/Views/Enrollment.vue'),
             },
+            {
+                path: "reimbursement",
+                name: "reimbursement",
+                component: () =>
+                    import ('../Modules/Home/Scholar/Views/Reimbursement.vue'),
+            },
         ]
     }, {
         path: '/profile',
         component: () =>
             import ('../Views/Profile.vue'),
-        name: 'profile',
-    }, {
+        name: 'profile'
+    },
+
+    {
+        path: '/scholar/:id',
+        component: () =>
+            import ('../views/Scholars/Profile.vue'),
+        name: 'scholar/profile',
+        beforeEnter: coordinator,
+        children: [{
+                path: "profile",
+                name: "profilee/view",
+                component: () =>
+                    import ('../Modules/Scholar/View/Profile/Index.vue'),
+            }, {
+                path: "financial",
+                name: "financial/view",
+                component: () =>
+                    import ('../Modules/Scholar/View/Financial/Index.vue'),
+            },
+            {
+                path: "trace",
+                name: "trace/view",
+                component: () =>
+                    import ('../Modules/Scholar/View/Trace/Index.vue'),
+            },
+            {
+                path: "enrollment",
+                name: "enrollment/view",
+                component: () =>
+                    import ('../Modules/Scholar/View/Enrollment/Index.vue'),
+            },
+            {
+                path: "prospectus",
+                name: "prospectus/view",
+                component: () =>
+                    import ('../Modules/Scholar/View/Prospectus/Index.vue'),
+            }
+        ]
+    },
+
+    {
         path: '/users',
         component: () =>
             import ('../Views/Users/Index.vue'),

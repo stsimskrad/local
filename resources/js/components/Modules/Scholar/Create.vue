@@ -38,14 +38,14 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>Category: <span v-if="errors.category_id" class="haveerror">({{ errors.category_id[0] }})</span></label>
+                                <label>Program: <span v-if="errors.program_id" class="haveerror">({{ errors.program_id[0] }})</span></label>
                                 <multiselect 
-                                    v-model="user.category_id" 
-                                    :options="categories"
+                                    v-model="user.program_id" 
+                                    :options="programs"
                                     :show-labels="false"
                                     label="name" track-by="id" 
                                     :allow-empty="false"
-                                    placeholder="Select Category">
+                                    placeholder="Select Program">
                                 </multiselect>
                             </div>
                         </div>
@@ -259,7 +259,7 @@
     import Multiselect from 'vue-multiselect';
     import myUpload from 'vue-image-crop-upload/upload-2.vue';
     export default {
-        props: ['regions','dropdowns'],
+        props: ['regions','dropdowns','programs'],
         data(){
             return {
                 currentUrl: window.location.origin,
@@ -281,7 +281,7 @@
                     mother: '',
                     lrn: '',
                     spas: '',
-                    category_id: '',
+                    program_id: '',
                     status_id: '',
                     awarded_year: '',
                     spas_id: '',
@@ -321,9 +321,6 @@
         computed:{
             statuses : function() {
                 return this.dropdowns.filter(x => x.classification === 'Status');
-            },
-            categories : function() {
-                return this.dropdowns.filter(x => x.classification === 'Category');
             },
             levels : function() {
                 return this.dropdowns.filter(x => x.classification === 'Level');
@@ -371,13 +368,14 @@
                 data.append('course_id', (this.user.course != undefined) ? this.user.course.id : '');
                 data.append('school_id', (this.user.school != undefined) ? this.user.school.id : '');
                 data.append('level_id', (this.user.level != undefined) ? this.user.level.id : '');
-                data.append('category_id', (this.user.category_id != undefined) ? this.user.category_id.id : '');
+                data.append('program_id', (this.user.program_id != undefined) ? this.user.program_id.id : '');
                 data.append('status_id', (this.user.status_id != undefined) ? this.user.status_id.id : '');
                 data.append('region_code', (this.user.region != undefined) ? this.user.region.code : '');
                 data.append('province_code', (this.user.province != undefined) ? this.user.province.code : '');
                 data.append('municipality_code', (this.user.municipality != undefined) ? this.user.municipality.code : '');
                 data.append('address', (this.user.address != undefined) ? this.user.address : '');
-                data.append('editable', 'new');
+                data.append('is_undergrad',1);
+                data.append('editable', 'single');
 
                 axios.post(this.currentUrl + '/request/scholar/store', data)
                 .then(response => {
@@ -386,7 +384,7 @@
                         position: 'bottom-right'
                     });
                     this.isLoading = false;
-                    this.$router.push({ name: 'scholar/lists'})
+                    this.$router.push({ name: 'scholars'})
                 })
                 .catch(error => {
                     if (error.response.status == 422) {

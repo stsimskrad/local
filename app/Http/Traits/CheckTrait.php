@@ -2,9 +2,10 @@
 
 namespace App\Http\Traits;
 
-use App\Models\Course;
-use App\Models\Agency;
-use App\Models\Dropdown;
+use App\Models\ListCourse;
+use App\Models\ListAgency;
+use App\Models\ListDropdown;
+use App\Models\ListProgram;
 use App\Models\SchoolCampus;
 use App\Models\ScholarAddress;
 use App\Models\LocationMunicipality;
@@ -13,7 +14,7 @@ use App\Http\Resources\DefaultResource;
 trait CheckTrait {
     public static function level($data) 
     {
-        $dropdown_id = Dropdown::where('classification','Level')->where('name',$data)->pluck('id')->first();
+        $dropdown_id = ListDropdown::where('classification','Level')->where('name',$data)->pluck('id')->first();
         return $dropdown_id;
     }
 
@@ -29,7 +30,7 @@ trait CheckTrait {
             $data = $data;
         }
 
-        $dropdown_id = Dropdown::where('classification','Category')->where('name',$data)->pluck('id')->first();
+        $dropdown_id = ListProgram::where('name',$data)->pluck('id')->first();
         return $dropdown_id;
     }
 
@@ -52,7 +53,7 @@ trait CheckTrait {
     }
 
     public function checkCourse($type){
-        $data = Course::where('abbreviation',$type)->pluck('id')->first();
+        $data = ListCourse::where('abbreviation',$type)->pluck('id')->first();
         ($data != null) ? $data = $data : $data = NULL;
         return $data;
     }
@@ -67,7 +68,7 @@ trait CheckTrait {
     public function checkAddress($address,$id){
         $is_within = 1;
         $agency_id = config('app.agency');
-        $agency = Agency::with('region')->where('id',$agency_id)->pluck('region_code');
+        $agency = ListAgency::with('region')->where('id',$agency_id)->pluck('region_code');
 
         $data = LocationMunicipality::with('province.region')
         ->where(function($query) use ($address) {  

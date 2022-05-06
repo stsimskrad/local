@@ -28,8 +28,6 @@ class ListsResource extends JsonResource
             'is_undergrad' => $this->is_undergrad,
             'profile' => new ProfileResource($this->profile), 
             'address' => ($this->address) ? new AddressResource($this->address) : $address,
-            // 'school' => new SchoolResource($this->school),
-            // 'course' => ($this->school->course) ? new CourseResource($this->school) : $course,
             'education' =>  new EducationResource($this->education),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

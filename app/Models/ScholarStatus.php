@@ -18,7 +18,7 @@ class ScholarStatus extends Model
 
     public function status()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'status_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'status_id', 'id');
     }
 
     public function user()

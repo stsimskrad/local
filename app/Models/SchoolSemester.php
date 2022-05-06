@@ -24,18 +24,18 @@ class SchoolSemester extends Model
 
     public function semester()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'semester_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'semester_id', 'id');
     }
 
-    public function getStartAtAttribute($value)
-    {
-        return date('M Y', strtotime($value));
-    }
+    // public function getStartAtAttribute($value)
+    // {
+    //     return date('M Y', strtotime($value));
+    // }
 
-    public function getEndAtAttribute($value)
-    {
-        return date('M Y', strtotime($value));
-    }
+    // public function getEndAtAttribute($value)
+    // {
+    //     return date('M Y', strtotime($value));
+    // }
 
     public function getUpdatedAtAttribute($value)
     {

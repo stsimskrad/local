@@ -54,8 +54,8 @@
                                 <i class="bx bx-category"></i>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" @click="filter('-', 'all', 'category')" :class="[(category == '-') ? 'text-primary' : '']">All</a></li>
-                                <li><a class="dropdown-item" @click="filter(status.id, status.name, 'category')" v-for="status in categories" v-bind:key="status.id" :class="[(category == status.id) ? 'text-primary' : '']">{{status.name}}</a></li>
+                                <li><a class="dropdown-item" @click="filter('-', 'all', 'program')" :class="[(program == '-') ? 'text-primary' : '']">All</a></li>
+                                <li><a class="dropdown-item" @click="filter(p.id, p.name, 'program')" v-for="p in programs" v-bind:key="p.id" :class="[(program == p.id) ? 'text-primary' : '']">{{p.name}}</a></li>
                             </ul>
                         </div>
                     </li>
@@ -119,7 +119,7 @@
                             <p v-else class="font-size-11 text-muted mb-0">{{user.address.name.toUpperCase() }}</p>
                         </td>
                         <td class="text-center">
-                            <h5 class="font-size-13 mb-0 text-dark">{{user.category.name}}</h5>
+                            <h5 class="font-size-13 mb-0 text-dark">{{user.program.name}}</h5>
                             <p class="font-size-11 text-muted mb-0">{{(user.is_undergrad) ? 'Undergraduate' : 'JLSS Program' }}</p>
                         </td>
                         <td class="text-center">
@@ -159,7 +159,7 @@ import Update from './Modals/Update.vue';
 import FilterLocation from './Modals/FilterLocation.vue';
 import FilterEducation from './Modals/FilterEducation.vue';
 export default {
-    props: ['dropdowns','regions'],
+    props: ['dropdowns','regions', 'programs'],
     data(){
         return {
             currentUrl: window.location.origin,
@@ -168,7 +168,7 @@ export default {
             pagination: {},
             keyword: '',
             users : [],
-            category: '-',
+            program: '-',
             status: '-',
             year: '-',
             arr: {},
@@ -184,9 +184,6 @@ export default {
     computed:{
         statuses : function() {
             return this.dropdowns.filter(x => x.classification === 'Status');
-        },
-        categories : function() {
-            return this.dropdowns.filter(x => x.classification === 'Category');
         }
     },
 
@@ -204,15 +201,21 @@ export default {
         },
 
         fetch(page_url) {
-            let vm = this; let key,s,c,y,a,e;
-            (this.keyword != '' && this.keyword != null) ? key = this.keyword : key = '-';
-            (this.status != '' && this.status != null) ? s = this.status : s = '-';
-            (this.category != '' && this.category != null) ? c = this.category : c = '-';
-            (this.year === '' || this.year == null) ? y = '-' : y = this.year;
-            (Object.keys(this.arr).length == 0) ? a = '-' : a = JSON.stringify(this.arr);
-            (Object.keys(this.arr2).length == 0) ? e = '-' : e = JSON.stringify(this.arr2);
-            page_url = page_url || this.currentUrl + '/request/scholar/'+s+'/'+c+'/'+this.counts+'/'+y+'/'+key+'/'+a+'/'+e;
+            let vm = this; 
 
+            let info = {
+                'keyword' :  (this.keyword != '' && this.keyword != null) ? this.keyword : '',
+                'status' : (this.status != '' && this.status != null) ? this.status : '',
+                'program' : (this.program != '' && this.program != null) ? this.program : '',
+                'year' : (this.year === '' || this.year == null) ? '' : this.year,
+                'counts' : this.counts
+            };
+
+            info = (Object.keys(info).length == 0) ? '-' : JSON.stringify(info);
+            let location = (Object.keys(this.arr).length == 0) ? '-' : JSON.stringify(this.arr);
+            let education = (Object.keys(this.arr2).length == 0) ? '-' : JSON.stringify(this.arr2);
+
+            page_url = page_url || this.currentUrl + '/request/scholar/'+info+'/'+education+'/'+location;
             axios.get(page_url)
             .then(response => {
                 this.users = response.data.data;
@@ -223,9 +226,9 @@ export default {
 
         filter(data,name,type){
             switch(type){
-                case 'category':
-                    this.category = data;
-                    this.$emit('status', 'category', name);
+                case 'program':
+                    this.program = data;
+                    this.$emit('status', 'program', name);
                 break;
                 case 'status':
                     this.status = data;
@@ -233,12 +236,18 @@ export default {
                 break;
             }
 
-            let vm = this; let key,a,e;
-            (this.year === '' || this.year == null) ? this.year = '-' : this.year = this.year;
-            (this.keyword != '' && this.keyword != null) ? key = this.keyword : key = '-';
-            (Object.keys(this.arr).length == 0) ? a = '-' : a = JSON.stringify(this.arr);
-            (Object.keys(this.arr2).length == 0) ? e = '-' : e = JSON.stringify(this.arr2);
-            this.fetch(this.currentUrl + '/request/scholar/'+this.status+'/'+this.category+'/'+this.counts+'/'+this.year+'/'+key+'/'+a+'/'+e);
+            let info = {
+                'keyword' :  (this.keyword != '' && this.keyword != null) ? this.keyword : '-',
+                'status' : (this.status != '' && this.status != null) ? this.status : '-',
+                'program' : (this.program != '' && this.program != null) ? this.program : '-',
+                'year' : (this.year === '' || this.year == null) ? '-' : this.year,
+                'counts' : this.counts
+            };
+
+            info = (Object.keys(info).length == 0) ? '-' : JSON.stringify(info);
+            let location = (Object.keys(this.arr).length == 0) ? '-' : JSON.stringify(this.arr);
+            let education = (Object.keys(this.arr2).length == 0) ? '-' : JSON.stringify(this.arr2);
+            this.fetch(this.currentUrl + '/request/scholar/'+info+'/'+education+'/'+location);
         },
 
         update(user){

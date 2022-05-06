@@ -10,7 +10,9 @@
                 user: {profile: {}},
                 dropdowns: [],
                 regions: [],
-                expenses: []
+                expenses: [],
+                benefits: [],
+                programs: []
             }
         },
         components: {
@@ -33,6 +35,8 @@
                     this.user = response.data.profile;
                     this.regions = response.data.regions;
                     this.expenses = response.data.expenses;
+                    this.programs = response.data.programs;
+                    this.benefits = response.data.benefits;
                 })
                 .catch(err => console.log(err));
             },
@@ -44,11 +48,11 @@
 <template>
     <div>
         <Vertical :user="user" v-if="layoutType === 'vertical'">
-            <router-view :user="user" :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
+            <router-view :user="user" :benefits="benefits" :programs="programs" :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
         </Vertical>
 
         <Horizontal :user="user" v-if="layoutType === 'horizontal'">
-            <router-view :user="user" :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
+            <router-view :user="user" :benefits="benefits" :programs="programs" :expenses="expenses" :regions="regions" :dropdowns="dropdowns"></router-view>
         </Horizontal>
     </div>
 </template>

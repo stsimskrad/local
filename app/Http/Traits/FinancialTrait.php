@@ -2,7 +2,6 @@
 
 namespace App\Http\Traits;
 
-use App\Models\Dropdown;
 use App\Models\Scholar;
 use App\Models\ScholarFinancialList;
 use App\Http\Resources\DefaultResource;

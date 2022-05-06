@@ -24,8 +24,8 @@ return new class extends Migration
             $table->boolean('is_waiting')->default(0);
             $table->boolean('is_referral')->default(0);
             $table->boolean('is_qualified')->nullable();
-            $table->tinyInteger('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->tinyInteger('program_id')->unsigned()->index();
+            $table->foreign('program_id')->references('id')->on('list_programs')->onDelete('cascade');
             $table->bigInteger('profile_id')->unsigned()->index();
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->timestamps();

@@ -227,12 +227,8 @@ __webpack_require__.r(__webpack_exports__);
       this.keyword != '' && this.keyword != null ? key = this.keyword : key = '-';
       this.fetch(this.currentUrl + '/request/qualifiers/' + this.counts + '/' + this.category + '/' + this.year + '/' + key);
     },
-    sync: function sync() {
-      $("#sync").modal('show');
-    },
     edit: function edit(user) {
       this.editable = true;
-      $("#new").modal('show');
       this.$refs.create.edit(user, true);
     },
     yr: function yr() {
@@ -251,7 +247,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$bvModal.show("referral");
     },
     addScholar: function addScholar(user) {
-      this.editable = 'confirmed';
+      this.editable = 'qualifier';
       this.$refs.add.set(user);
       this.$bvModal.show("add");
     },
@@ -265,7 +261,7 @@ __webpack_require__.r(__webpack_exports__);
           Vue.$toast.success('<strong>Successfully Updated</strong>', {
             position: 'bottom-right'
           });
-        } else if (this.editable == 'confirmed') {
+        } else if (this.editable == 'qualifier') {
           var i = this.users.map(function (item) {
             return item.id;
           }).indexOf(user);
@@ -413,49 +409,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dropdowns', 'regions'],
@@ -464,11 +417,11 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       errors: [],
       user: {
-        category_id: {}
+        program_id: {}
       },
       profile_id: '',
       lrn: '',
-      category_id: '',
+      program_id: '',
       schools: [],
       courses: [],
       level: '',
@@ -501,7 +454,7 @@ __webpack_require__.r(__webpack_exports__);
         qualifier_id: this.user.id,
         spas_id: this.user.spas_id,
         profile_id: this.user.profile_id,
-        category_id: this.user.category_id.id,
+        program_id: this.user.program_id.id,
         is_undergrad: this.user.is_undergrad,
         status_id: 30,
         is_completed: 0,
@@ -511,7 +464,8 @@ __webpack_require__.r(__webpack_exports__);
         region_code: this.region != '' ? this.region.code : '',
         province_code: this.province != '' ? this.province.code : '',
         municipality_code: this.municipality != '' ? this.municipality.code : '',
-        barangay_code: this.barangay != '' ? this.barangay.code : ''
+        barangay_code: this.barangay != '' ? this.barangay.code : '',
+        editable: 'qualifier'
       }).then(function (response) {
         _this.$emit('status', response.data.data);
 
@@ -665,7 +619,7 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       errors: [],
       user: {
-        category_id: {},
+        program_id: {},
         info: {
           requirements: {},
           address: {}
@@ -1757,7 +1711,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                      _vm._v(_vm._s(user.category_id.name)),
+                      _vm._v(_vm._s(user.program_id.name)),
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "font-size-12 text-muted mb-0" }, [
@@ -1989,7 +1943,7 @@ var render = function () {
                     " "
                 ),
                 _c("span", { staticClass: "text-muted font-size-11 ml-2" }, [
-                  _vm._v("(" + _vm._s(_vm.user.category_id.name) + ")"),
+                  _vm._v("(" + _vm._s(_vm.user.program_id.name) + ")"),
                 ]),
               ]
             ),
@@ -2312,7 +2266,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "font-weight-bold text-dark mb-0" }, [
-              _vm._v(_vm._s(_vm.user.category_id.name)),
+              _vm._v(_vm._s(_vm.user.program_id.name)),
             ]),
           ]),
           _vm._v(" "),

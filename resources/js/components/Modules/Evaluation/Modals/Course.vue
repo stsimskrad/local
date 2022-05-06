@@ -71,10 +71,10 @@
             },
             
             save(){
-                axios.post(this.currentUrl + '/request/scholar/subcourse/store', {
+                axios.post(this.currentUrl + '/request/scholar/store', {
                     id: this.id,
                     subcourse_id: this.subcourse.id,
-                    editable: true
+                    editable: 'course'
                 })
                 .then(response => {
                     this.$emit('status', response.data.data);

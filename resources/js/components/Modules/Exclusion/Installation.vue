@@ -5,8 +5,14 @@
                 <img src="/images/logo-dost.png" alt="" height="20" class="auth-logo-dark mx-auto" />
             </a>
             <p class="font-size-11 mt-3">Department of Science & Technology <br> Scholarship Information Management System</p>
+            <div id="v-2-2-3">
+                <h4 class="mb-4">
+                    <span class="text-primary">STSIMS v1.0.0</span>
+                    <small class="text-muted font-size-14"> - Installation </small>
+                </h4>
+            </div>
         </div>
-        <div class="mb-4" style="width: 400px;">
+        <div class="mb-4" style="width: 700px;">
             <div class="">
                 <div class="table-responsive">
                     <table class="table table-nowrap table-centered table-hover mb-0 align-middle">
@@ -21,26 +27,38 @@
                                 </td>
                                 <td>
                                     <h5 class="font-size-13 mb-0"><a  class="text-dark">Philippine Standard Geographic Code</a></h5>
-                                    <small>Region : {{regions.count }}</small>
+                                    <small  v-for="(address,name,index) in addresses" v-bind:key="index" ><span v-if="index != 0">,</span> {{name}} : {{address.count }}</small>
                                 </td>
                                 <td>
-                                    <div class="text-center"><a @click="downloadRegion()" class="text-dark"><i class="bx bx-download h3 m-0"></i></a></div>
+                                    <div class="text-center" v-if="!downloaded1">
+                                        <button v-if="r" @click="downloadRegion" type="button" class="btn btn-sm btn-label btn-primary"><i class="bx bx-download label-icon"></i> Download </button>
+                                        <button v-else type="button" class="btn btn-sm btn-label btn-warning"><i class="bx bx-loader-circle bx-spin label-icon"></i> Downloading </button>
+                                    </div>
+                                    <div class="text-center" v-else>
+                                       <span class="badge bg-success">Downloaded</span>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="avatar-sm">
                                         <span class="avatar-title rounded-circle bg-soft bg-primary text-primary font-size-24">
-                                            <i class="bx bx-buildings"></i>
+                                            <i class="bx bx-list-ul"></i>
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="font-size-14 mb-0"><a href="javascript: void(0);" class="text-dark">DOST Agencies</a></h5>
-                                    <small>Total : {{agencies.count }}</small>
+                                    <h5 class="font-size-14 mb-0"><a href="javascript: void(0);" class="text-dark">Lists of tables</a></h5>
+                                    <small  v-for="(list,name,index) in lists" v-bind:key="index" ><span v-if="index != 0">,</span> {{name}} : {{list.count }} </small>
                                 </td>
                                 <td>
-                                    <div class="text-center"><a @click="downloadLists()" class="text-dark"><i class="bx bx-download h3 m-0"></i></a></div>
+                                    <div class="text-center" v-if="!downloaded2">
+                                        <button v-if="l" :disabled="low" @click="downloadLists" type="button" class="btn btn-sm btn-label btn-primary"><i class="bx bx-download label-icon"></i> Download </button>
+                                        <button v-else type="button" class="btn btn-sm btn-label btn-warning"><i class="bx bx-loader-circle bx-spin label-icon"></i> Downloading </button>
+                                    </div>
+                                    <div class="text-center" v-else>
+                                       <span class="badge bg-success">Downloaded</span>
+                                    </div>
                                 </td>
                             </tr>
                         
@@ -48,7 +66,7 @@
                     </table>
                 </div>
                 <center>
-                    <button @click="proceed" :disabled="(agencies.data.length == 0)" type="button" class="mt-4 mb-4 btn w-lg btn-primary">Proceed</button>
+                    <button @click="proceed" v-if="show" type="button" class="mt-4 mb-4 btn w-lg btn-primary">Proceed</button>
                 </center>
             </div>
         </div>
@@ -70,26 +88,21 @@ export default {
             isLoading: false,
             fullPage: true,
             lists : [],
-            agency: '',
-            region: ''
+            low : true,
+            show : false,
+            r: true,
+            l: true,
+            downloaded1: false,
+            downloaded2: false
         }
     },
 
     created(){
-        this.fetch();
         this.fetchLocations();
         this.fetchLists();
     },
 
     methods : {
-        fetch() {
-            axios.get(this.currentUrl + '/request/download/info')
-            .then(response => {
-                this.agency = response.data.agency;
-                this.region = response.data.region;
-            })
-            .catch(err => console.log(err));
-        },
 
         fetchLocations() {
             this.isLoading = true;
@@ -97,17 +110,21 @@ export default {
             .then(response => {
                 this.isLoading = false;
                 this.addresses = response.data;
-                this.regions = response.data.Regions;
             })
             .catch(err => console.log(err));
         },
 
          downloadRegion() {
-            this.isLoading = true;
+            // this.isLoading = true; 
+            this.r = false;
             let category = 'Regions';
-            axios.get(this.currentUrl + '/sync/addresses/download/' + category)
+        
+            axios.get(this.currentUrl + '/sync/addresses/download/all')
             .then(response => {
-                this.isLoading = false;
+                // this.isLoading = false;
+                this.low = false;
+                this.r = true;
+                this.downloaded1 = true;
                 Vue.$toast.success('<strong>' + category + ' lists was downloaded!</strong>', {
                     position: 'bottom-right'
                 });
@@ -119,17 +136,17 @@ export default {
             axios.get(this.currentUrl + '/sync/lists/check/all')
             .then(response => {
                 this.lists = response.data;
-                this.agencies = response.data.Agencies;
             })
             .catch(err => console.log(err));
         },
 
          downloadLists() {
-            let category = 'Agencies';
-            this.isLoading = true;
-            axios.get(this.currentUrl + '/sync/lists/download/' + category)
+            this.l = false;
+            axios.get(this.currentUrl + '/sync/lists/download/all')
             .then(response => {
-                this.isLoading = false;
+                this.l = true;
+                this.show = true;
+                this.downloaded2 = true;
                 this.fetchLists();
                 if(response.data == 0){
                     Vue.$toast.error('<strong>Please download PSGC Regions first.</strong>', {

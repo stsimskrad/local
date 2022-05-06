@@ -61,7 +61,7 @@ export default {
 
     methods : {
         set(prospectus){
-            this.pros = JSON.parse(prospectus.information);
+            this.pros = JSON.parse(prospectus);
             this.updated_at = prospectus.updated_at
         }
     }

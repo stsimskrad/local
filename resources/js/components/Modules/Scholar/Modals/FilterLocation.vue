@@ -147,7 +147,8 @@
                 this.province = '';
                 this.municipality = '';
                 this.barangay = '';
-                // this.$bvModal.hide("filter");
+                this.fil = {};
+                this.$emit('status', this.fil);
             }
             
         }, components : { Multiselect }

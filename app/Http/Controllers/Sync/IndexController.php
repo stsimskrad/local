@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Sync;
 
-use App\Models\Agency;
-use App\Models\Course;
-use App\Models\Dropdown;
-use App\Models\Expense;
+use App\Models\ListAgency;
+use App\Models\ListCourse;
+use App\Models\ListDropdown;
+use App\Models\ListExpense;
+use App\Models\ListProgram;
+use App\Models\ListBenefit;
 use App\Models\School;
 use App\Models\SchoolCampus;
 use App\Models\LocationRegion;
@@ -114,7 +116,7 @@ class IndexController extends Controller
 
     public function lists($type,$category){
         if($category == 'all'){
-            $arrays = ['agencies','dropdowns','courses','expenses'];
+            $arrays = ['agencies','dropdowns','courses','expenses','programs','benefits'];
         }else{
             $arrays = [];
             array_push($arrays,strtolower($category));
@@ -145,16 +147,22 @@ class IndexController extends Controller
                 foreach($datas as $data){
                     switch($array){
                         case 'agencies':
-                            ($type == 'check') ? $agencies[] = (array)$data : $q = Agency::insertOrIgnore((array)$data); 
+                            ($type == 'check') ? $agencies[] = (array)$data : $q = ListAgency::insertOrIgnore((array)$data); 
                         break;
                         case 'dropdowns':
-                            ($type == 'check') ? $dropdowns[] = (array)$data : $q = Dropdown::insertOrIgnore((array)$data); 
+                            ($type == 'check') ? $dropdowns[] = (array)$data : $q = ListDropdown::insertOrIgnore((array)$data); 
                         break;
                         case 'courses':
-                            ($type == 'check') ? $courses[] = (array)$data : $q = Course::insertOrIgnore((array)$data); 
+                            ($type == 'check') ? $courses[] = (array)$data : $q = ListCourse::insertOrIgnore((array)$data); 
                         break;
                         case 'expenses':
-                            ($type == 'check') ? $expenses[] = (array)$data : $q = Expense::insertOrIgnore((array)$data); 
+                            ($type == 'check') ? $expenses[] = (array)$data : $q = ListExpense::insertOrIgnore((array)$data); 
+                        break;
+                        case 'programs':
+                            ($type == 'check') ? $programs[] = (array)$data : $q = ListProgram::insertOrIgnore((array)$data); 
+                        break;
+                        case 'benefits':
+                            ($type == 'check') ? $benefits[] = (array)$data : $q = ListBenefit::insertOrIgnore((array)$data); 
                         break;
                         case 'schools':
                             $arr = (array)$data;
@@ -175,24 +183,34 @@ class IndexController extends Controller
         if($type == 'check'){
             $addresses = [
                 'Dropdowns' => [
-                    'data' => Dropdown::all(),
-                    'downloaded' => Dropdown::count(),
+                    'data' => ListDropdown::all(),
+                    'downloaded' => ListDropdown::count(),
                     'count' => count($dropdowns)
                 ],
                 'Agencies' => [
-                    'data' => Agency::all(),
-                    'downloaded' => Agency::count(),
+                    'data' => ListAgency::all(),
+                    'downloaded' => ListAgency::count(),
                     'count' => count($agencies)
                 ],
                 'Courses' => [
-                    'data' => Course::all(),
-                    'downloaded' => Course::count(),
+                    'data' => ListCourse::all(),
+                    'downloaded' => ListCourse::count(),
                     'count' => count($courses)
                 ],
                 'Expenses' => [
-                    'data' => Expense::all(),
-                    'downloaded' => Expense::count(),
+                    'data' => ListExpense::all(),
+                    'downloaded' => ListExpense::count(),
                     'count' => count($expenses)
+                ],
+                'Benefits' => [
+                    'data' => ListBenefit::all(),
+                    'downloaded' => ListBenefit::count(),
+                    'count' => count($benefits)
+                ],
+                'Programs' => [
+                    'data' => ListProgram::all(),
+                    'downloaded' => ListProgram::count(),
+                    'count' => count($programs)
                 ],
             ];
             return $addresses;
@@ -203,16 +221,22 @@ class IndexController extends Controller
         }else{
             switch($array){
                 case 'agencies':
-                    return Agency::count();
+                    return ListAgency::count();
                 break;
                 case 'dropdowns':
-                    return Dropdown::count();
+                    return ListDropdown::count();
                 break;
                 case 'courses':
-                    return Course::count();
+                    return ListCourse::count();
                 break;
                 case 'expenses':
-                    return Expense::count();
+                    return ListExpense::count();
+                break;
+                case 'programs':
+                    return ListProgram::count();
+                break;
+                case 'benefits':
+                    return ListBenefit::count();
                 break;
             }
         }
@@ -221,11 +245,11 @@ class IndexController extends Controller
     public function schools($type,$category,$agency_id = null){
         if($category == 'local' || $category == 'all'){
             $agency_id = config('app.agency');
-            $agency = Agency::where('id',$agency_id)->first();
+            $agency = ListAgency::where('id',$agency_id)->first();
             $region_code = $agency->region_code;
         }else{ //custom region
             $agency_id = $agency_id;
-            $agency = Agency::where('id',$agency_id)->first();
+            $agency = ListAgency::where('id',$agency_id)->first();
             $region_code = $agency->region_code;
         }
 
@@ -269,7 +293,7 @@ class IndexController extends Controller
 
         if($type == 'check'){
             $agency_id = config('app.agency');
-            $agency = Agency::where('id',$agency_id)->first();
+            $agency = ListAgency::where('id',$agency_id)->first();
             $region = $agency->region_code;
 
             $schools = [

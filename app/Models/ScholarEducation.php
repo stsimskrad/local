@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ScholarEducation extends Model
 {
     use HasFactory;
-    protected $fillable = ['information','course_id','school_id'];
+    protected $fillable = ['information','course_id','school_id','level_id','award_id'];
 
     public function scholar()
     {
@@ -22,9 +22,9 @@ class ScholarEducation extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Course', 'course_id', 'id');
+        return $this->belongsTo('App\Models\ListCourse', 'course_id', 'id');
     }
-    
+
     public function subcourse()
     {
         return $this->belongsTo('App\Models\SchoolCourse', 'subcourse_id', 'id');
@@ -32,7 +32,12 @@ class ScholarEducation extends Model
 
     public function level()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'level_id', 'id');
+        return $this->belongsTo('App\Models\ListDropdown', 'level_id', 'id');
+    }
+
+    public function award()
+    {
+        return $this->belongsTo('App\Models\ListDropdown', 'award_id', 'id');
     }
 
     public function getUpdatedAtAttribute($value)

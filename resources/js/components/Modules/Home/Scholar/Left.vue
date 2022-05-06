@@ -108,7 +108,7 @@
         </div>
 
         <div @click="selected = 6; view(false);"  class="card border shadow-none"  style="margin-bottom: 4px;">
-            <router-link :to="{ name: 'prospectus' }" class="text-body">
+            <router-link :to="{ name: 'reimbursement' }" class="text-body">
                 <div class="p-1">
                     <div class="d-flex mt-1">
                         <div class="avatar-xs align-self-center ms-2 me-2">

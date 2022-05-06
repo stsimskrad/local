@@ -18,7 +18,7 @@ class QualifierResource extends JsonResource
             'code' => $code,
             'spas_id' => $this->spas_id,
             'lrn' => ($this->lrn == null) ? 'n/a' : $this->lrn,
-            'category_id' => $this->category,
+            'program_id' => $this->program,
             'is_undergrad' => $this->is_undergrad,
             'year' => $this->year,
             'profile_id' => $this->profile->id,

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Course;
+use App\Models\ListCourse;
 use App\Models\Scholar;
 use App\Models\SchoolCampus;
-use App\Models\Dropdown;
-use App\Models\Expense;
+use App\Models\ListDropdown;
+use App\Models\ListExpense;
+use App\Models\ListBenefit;
+use App\Models\ListProgram;
 use App\Models\LocationRegion;
 use App\Models\LocationProvince;
 use App\Models\LocationMunicipality;
@@ -24,7 +26,9 @@ class ListController extends Controller
             'dropdowns' => $this->dropdowns(),
             'regions' => $this->regions(),
             'profile' => $this->profile(),
-            'expenses' => $this->expenses()
+            'expenses' => $this->expenses(),
+            'programs' => $this->programs(),
+            'benefits' => $this->benefits()
         ];
 
         return $datas;
@@ -33,7 +37,7 @@ class ListController extends Controller
     public function profile()
     {   
         if(\Auth::user()->role == 'Scholar'){
-            $data = User::with('scholar.scholar.status','scholar.scholar.category')->where('id',\Auth::id())->first();
+            $data = User::with('scholar.scholar.status','scholar.scholar.program')->where('id',\Auth::id())->first();
         }else{
             $data = User::with('profile')->where('id',\Auth::id())->first();
         }
@@ -41,12 +45,22 @@ class ListController extends Controller
     }
 
     public function dropdowns(){
-        $data = Dropdown::all();
+        $data = ListDropdown::all();
         return DefaultResource::collection($data);
     }
 
     public function expenses(){
-        $data = Expense::all();
+        $data = ListExpense::all();
+        return DefaultResource::collection($data);
+    }
+
+    public function programs(){
+        $data = ListProgram::all();
+        return DefaultResource::collection($data);
+    }
+
+    public function benefits(){
+        $data = ListBenefit::all();
         return DefaultResource::collection($data);
     }
 
@@ -90,7 +104,7 @@ class ListController extends Controller
 
     public function courses(Request $request){
         $keyword = $request->input('word');
-        $data = Course::where('name','LIKE','%'.$keyword.'%')->get()->take(10);
+        $data = ListCourse::where('name','LIKE','%'.$keyword.'%')->get()->take(10);
         return DefaultResource::collection($data);
     }
 

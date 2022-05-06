@@ -52,7 +52,7 @@ Route::prefix('request')->group(function(){
         });
 
         Route::prefix('prospectus')->group(function(){
-            Route::controller(App\Http\Controllers\Evaluation\ProspectusController::class)->group(function () {
+            Route::controller(App\Http\Controllers\Scholarship\Evaluation\ProspectusController::class)->group(function () {
                 Route::get('/{school}/{course}/{count}/{keyword}', 'index');
                 Route::get('/{id}', 'view');
                 Route::post('/store', 'store');
@@ -84,48 +84,57 @@ Route::prefix('request')->group(function(){
         });
 
         Route::prefix('scholar')->group(function(){
-            Route::controller(App\Http\Controllers\Scholar\IndexController::class)->group(function () {
-                Route::get('/{status}/{category}/{counts}/{year}/{key}/{array}/{array2}', 'lists');
+            Route::controller(App\Http\Controllers\Scholarship\IndexController::class)->group(function () {
+                Route::get('/{info}/{education}/{location}', 'lists');
                 Route::post('/store', 'store');
-                Route::post('/status', 'status');
                 Route::get('/{id}', 'view');
-                Route::post('/subcourse/store', 'subcourse');
-                Route::get('filter/{status}/{school}/{year}/{level}/{key}', 'filter');
+                Route::get('/search/{keyword}', 'search');
+                Route::get('/filter/{info}', 'filter');
+                // Route::get('filter/{status}/{school}/{year}/{level}/{key}', 'filter');
             });
 
             Route::prefix('reports')->group(function(){
-                Route::controller(App\Http\Controllers\Scholar\ReportController::class)->group(function () {
+                Route::controller(App\Http\Controllers\Scholarship\ReportController::class)->group(function () {
                     Route::get('/category', 'category');
                     Route::get('/status', 'status');
                     Route::get('/totals', 'totals');
                     Route::get('/dashboard', 'dashboard');
                     Route::get('/cats', 'cats');
+                    Route::get('/scholars/generate/{array}', 'scholars');
+                });
+            });
+
+            Route::prefix('tracer')->group(function(){
+                Route::controller(App\Http\Controllers\Scholarship\TraceController::class)->group(function () {
+                    Route::post('/store', 'store');
+                    Route::get('/{type}/{id}/{count}', 'index');
                 });
             });
         });
 
         Route::prefix('evaluation')->group(function(){
             Route::prefix('enrollment')->group(function(){
-                Route::controller(App\Http\Controllers\Evaluation\EnrollmentController::class)->group(function () {
+                Route::controller(App\Http\Controllers\Scholarship\Evaluation\EnrollmentController::class)->group(function () {
                     Route::get('/search/{key}', 'search');
                     Route::post('/store', 'store');
                     Route::get('/lists/{id}', 'lists');
                     Route::get('/prospectus/{key}', 'prospectus');
                     Route::post('/switch', 'switch');
+                    Route::get('/{id}/{keyword}', 'index');
                 });
-                Route::controller(App\Http\Controllers\Evaluation\ReportController::class)->group(function () {
+                Route::controller(App\Http\Controllers\Scholarship\Evaluation\ReportController::class)->group(function () {
                     Route::get('/reports', 'reports');
                 });
             });
 
             Route::prefix('grading')->group(function(){
-                Route::controller(App\Http\Controllers\Evaluation\GradeController::class)->group(function () {
+                Route::controller(App\Http\Controllers\Scholarship\Evaluation\GradeController::class)->group(function () {
                     Route::post('/store', 'store');
                 });
             });
 
             Route::prefix('prospectus')->group(function(){
-                Route::controller(App\Http\Controllers\Evaluation\ProspectusController::class)->group(function () {
+                Route::controller(App\Http\Controllers\Scholarship\Evaluation\ProspectusController::class)->group(function () {
                     Route::get('/{school}/{course}/{count}/{keyword}', 'index');
                     Route::get('/{id}', 'view');
                     Route::post('/store', 'store');
@@ -135,13 +144,21 @@ Route::prefix('request')->group(function(){
         });
 
         Route::prefix('benefit')->group(function(){
-            Route::controller(App\Http\Controllers\Benefit\IndexController::class)->group(function () {
+            Route::controller(App\Http\Controllers\Scholarship\Benefit\GroupController::class)->group(function () {
+                Route::get('/group/latest', 'latest');
+                Route::get('/generate/{array}', 'benefits');
                 Route::post('/store', 'store');
-                Route::get('/{id}/{counts}', 'index');
-                Route::get('/stipend/x/{id}', 'stipend');
-                Route::get('/breakdown/x/{id}', 'breakdown');
-                Route::get('/{keyword}/{year}/{count}', 'lists');
-                Route::get('/{array}', 'profile');
+                Route::post('/storegroup', 'storegroup');
+                Route::get('/lists/{key}', 'lists');
+                Route::get('/view/{id}', 'view');
+            });
+            Route::controller(App\Http\Controllers\Scholarship\Benefit\IndexController::class)->group(function () {
+                // Route::post('/store', 'store');
+                // Route::get('/{id}/{counts}', 'index');
+                // Route::get('/stipend/x/{id}', 'stipend');
+                // Route::get('/breakdown/x/{id}', 'breakdown');
+                // Route::get('/{keyword}/{year}/{count}', 'lists');
+                // Route::get('/{array}', 'profile');
             });
         });
 
@@ -186,8 +203,8 @@ Route::prefix('excel')->group(function(){
     Route::post('/qualifier/import', [App\Http\Controllers\Qualifier\ImportController::class, 'index']);
     Route::post('/qualifier/store', [App\Http\Controllers\Qualifier\ImportController::class, 'store']);
 
-    Route::post('/scholar/import', [App\Http\Controllers\Scholar\ImportController::class, 'index']);
-    Route::post('/scholar/store', [App\Http\Controllers\Scholar\ImportController::class, 'store']);
+    Route::post('/scholar/import', [App\Http\Controllers\Scholarship\ImportController::class, 'index']);
+    Route::post('/scholar/store', [App\Http\Controllers\Scholarship\ImportController::class, 'store']);
 });
 
 

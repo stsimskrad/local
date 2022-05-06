@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('school_id')->unsigned()->index();
             $table->foreign('school_id')->references('id')->on('school_campuses')->onDelete('cascade');
             $table->integer('course_id')->unsigned()->index();
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('list_courses')->onDelete('cascade');
             $table->timestamps();
         });
     }

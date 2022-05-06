@@ -30,12 +30,17 @@ class ScholarEnrollment extends Model
   
       public function level()
       {
-          return $this->belongsTo('App\Models\Dropdown', 'level_id', 'id');
+          return $this->belongsTo('App\Models\ListDropdown', 'level_id', 'id');
       }
 
       public function failed()
       {
         return $this->hasMany('App\Models\ScholarEnrollmentList', 'enrollment_id')->where('is_failed',1)->count();
+      }
+
+      public function empty()
+      {
+        return $this->hasMany('App\Models\ScholarEnrollmentList', 'enrollment_id')->where('grade',NULL)->count();
       }
   
       public function semester()

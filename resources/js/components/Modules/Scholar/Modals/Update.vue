@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <div class="mr-3"><i class="bx bxs-quote-alt-left text-primary font-size-14"></i></div>
                 <div>
-                    <p class="mb-1 fw-bold text-primary">{{ user.profile.lastname}}, {{ user.profile.firstname}} {{ user.profile.middlename }} <span class="text-muted font-size-11 ml-2">({{user.category.name}})</span> </p>
+                    <p class="mb-1 fw-bold text-primary">{{ user.profile.lastname}}, {{ user.profile.firstname}} {{ user.profile.middlename }} <span class="text-muted font-size-11 ml-2">({{user.program.name}})</span> </p>
                 </div>
             </div>
             <div class="row font-size-11 mt-2">
@@ -52,42 +52,26 @@
                         :show-labels="false">
                     </multiselect> 
                 </div>
-                    <!-- <div class="row">
-                        <div class="col-md-12">
-                            <label>School: <span v-if="errors.school_id" class="haveerror">({{ errors.school_id[0] }})</span></label>
-                            <multiselect v-model="school" id="ajax" label="name" track-by="id"
-                                placeholder="Search School" open-direction="bottom" :options="schools"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false"
-                                @search-change="asyncSchool">
-                            </multiselect> 
-                        </div>
-                        <div class="col-md-12">
-                            <label>Course: <span v-if="errors.course_id" class="haveerror">({{ errors.course_id[0] }})</span></label>
-                            <multiselect v-model="course" id="ajax" label="name" track-by="id"
-                                placeholder="Search Course" open-direction="bottom" :options="courses"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false"
-                                @search-change="asyncCourse">
-                            </multiselect> 
-                        </div>
-                        <div class="col-md-12">
-                            <label>Level: <span v-if="errors.level_id" class="haveerror">({{ errors.level_id[0] }})</span></label>
-                            <multiselect 
-                                v-model="level" 
-                                id="ajax" 
-                                label="name" track-by="id"
-                                placeholder="Search Level" 
-                                open-direction="bottom" 
-                                :options="levels"
-                                :searchable="true" 
-                                :allow-empty="false"
-                                :show-labels="false">
-                            </multiselect> 
-                        </div>
-                    </div>    -->
+                <div class="col-md-12 mt-2 mb-1" v-if="user.status.name == 'Graduated'">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" v-model="has_award" id="gridCheck"/>
+                        <label class="form-check-label" for="gridCheck">Does the scholar has Academic award?</label>
+                    </div>
+                </div>
+                <div class="col-md-12" v-if="user.status.name == 'Graduated' && has_award == true">
+                    <label>Award: <span v-if="errors.award_id" class="haveerror">({{ errors.award_id[0] }})</span></label>
+                    <multiselect 
+                        v-model="award" 
+                        id="ajax" 
+                        label="name" track-by="id"
+                        placeholder="Select Award" 
+                        open-direction="bottom" 
+                        :options="awards"
+                        :searchable="true" 
+                        :allow-empty="false"
+                        :show-labels="false">
+                    </multiselect> 
+                </div>
                 <div class="col-md-12 mt-4">
                     <button type="submit" class="btn btn-info btn-sm btn-block waves-effect waves-light mb-4">UPDATE SCHOLAR</button>
                 </div>
@@ -104,7 +88,7 @@
                 currentUrl: window.location.origin,
                 errors: [],
                 user: {
-                    category: {},
+                    program: {},
                     profile: {},
                     address: {name: ''},
                     status: {},
@@ -113,28 +97,34 @@
                 },
                 profile_id : '',
                 lrn: '',
-                category_id: '',
+                program_id: '',
                 schools: [],
                 courses: [],
                 level: '',
                 school: '',
                 course: '',
+                award: '',
                 provinces: [],
                 municipalities: [],
                 region: '',
                 province: '',
-                municipality: ''
+                municipality: '',
+                has_award: false
             }
         },
 
         computed:{
             levels : function() {
               return this.dropdowns.filter(x => x.classification === 'Level');
+            },
+            awards : function() {
+              return this.dropdowns.filter(x => x.classification === 'Award');
             }
         },
         methods : {
             set(data){
                 this.user = data;
+                this.errors = [];
             },
 
             submit(){
@@ -148,7 +138,7 @@
                 (!this.user.education.has_school) ? data.append('school_id',(this.school != '') ? this.school.id : '') : '';
                 (!this.user.education.has_course) ? data.append('course_id', (this.course != '') ? this.course.id : '') : '';
                 (!this.user.education.has_level) ? data.append('level_id', (this.level != '') ? this.level.id : '') : '';
-
+                (this.has_award) ? data.append('award_id', (this.award != '') ? this.award.id : '') : '';
 
                 axios.post(this.currentUrl + '/request/scholar/store', data)
                 .then(response => {
@@ -224,6 +214,7 @@
                 this.municipality = '';
                 this.school = '';
                 this.course = '';
+                this.award = '';
                 this.$bvModal.hide("update");
             }
             

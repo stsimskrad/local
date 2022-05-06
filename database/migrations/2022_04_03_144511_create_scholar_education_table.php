@@ -21,11 +21,13 @@ return new class extends Migration
             $table->integer('school_id')->unsigned()->nullable();
             $table->foreign('school_id')->references('id')->on('school_campuses')->onDelete('cascade');
             $table->integer('course_id')->unsigned()->nullable();
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('list_courses')->onDelete('cascade');
             $table->integer('subcourse_id')->unsigned()->nullable();
             $table->foreign('subcourse_id')->references('id')->on('school_courses')->onDelete('cascade');
             $table->tinyInteger('level_id')->unsigned()->nullable();
-            $table->foreign('level_id')->references('id')->on('dropdowns')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
+            $table->tinyInteger('award_id')->unsigned()->nullable();
+            $table->foreign('award_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->json('information');
             $table->timestamps();
         });

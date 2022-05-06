@@ -26,8 +26,8 @@ class Qualifier extends Model
         return $this->belongsTo('App\Models\Profile', 'profile_id', 'id');
     }
 
-    public function category()
+    public function program()
     {
-        return $this->belongsTo('App\Models\Dropdown', 'category_id', 'id');
+        return $this->belongsTo('App\Models\ListProgram', 'program_id', 'id');
     }  
 }

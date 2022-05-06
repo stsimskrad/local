@@ -5,20 +5,20 @@
                 <div class="py-4 border-bottom" style="margin-top: -20px;">
                     <div class="media">
                         <div class="align-self-center me-3">
-                            <img class="rounded avatar-md" :src="currentUrl+'/images/avatars/'+user.avatar" alt="">
+                            <img class="rounded avatar-md" :src="currentUrl+'/images/avatars/'+user.profile.avatar" alt="">
                         </div>
                         <div class="media-body">
                             <h5 class="font-size-15 mt-0 mb-1 mt-1">
-                                {{user.firstname}} {{user.lastname}}
+                                {{user.profile.firstname}} {{user.profile.lastname}}
                             </h5>
                             <p class="text-muted font-size-11 fw-bold mb-0">{{user.spas_id}}</p>
-                            <p class="text-muted mb-0"><span :class="'badge bg-'+user.status_id.color">{{user.status_id.name}} </span></p>
+                            <p class="text-muted mb-0"><span :class="'badge bg-'+user.status.color">{{user.status.name}} </span></p>
                         </div>
                         <b-dropdown menu-class="dropdown-menu-end" class="chat-noti-dropdown active" right variant="white">
                             <template v-slot:button-content>
                                 <i class="bx bx-bell bx-tada"></i>
                             </template>
-                            <b-dropdown-item @click="updateStatus(user.id,user.status_id)">Update Status</b-dropdown-item>
+                            <b-dropdown-item @click="updateStatus(user.id,user.status.id)">Update Status</b-dropdown-item>
                             <b-dropdown-item>Update Level</b-dropdown-item>
                         </b-dropdown>
                     </div>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div @click="selected = 2" class="card border shadow-none"  style="margin-bottom:4px;">
-                    <router-link :to="{ name: 'profilee',  params: {data : user }}" class="text-body">
+                    <router-link :to="{ name: 'profilee/view',  params: {data : user }}" class="text-body">
                         <div class="p-1">
                             <div class="d-flex mt-1">
                                 <div class="avatar-xs align-self-center ms-2 me-2">
@@ -66,7 +66,7 @@
                 </div>
 
                 <div @click="selected = 3" class="card border shadow-none"  style="margin-bottom: 4px;">
-                    <router-link :to="{ name: 'financial'}" class="text-body">
+                    <router-link :to="{ name: 'financial/view'}" class="text-body">
                         <div class="p-1">
                             <div class="d-flex mt-1">
                                 <div class="avatar-xs align-self-center ms-2 me-2">
@@ -83,7 +83,7 @@
                 </div>
 
                 <div @click="selected = 4" class="card border shadow-none"  style="margin-bottom: 4px;">
-                    <router-link :to="{ name: 'enrollment' }" class="text-body">
+                    <router-link :to="{ name: 'enrollment/view' }" class="text-body">
                         <div class="p-1">
                             <div class="d-flex mt-1">
                                 <div class="avatar-xs align-self-center ms-2 me-2">
@@ -100,7 +100,7 @@
                 </div>
                 
                 <div @click="selected = 5"  class="card border shadow-none"  style="margin-bottom: 4px;">
-                    <router-link :to="{ name: 'trace' }" class="text-body">
+                    <router-link :to="{ name: 'trace/view' }" class="text-body">
                         <div class="p-1">
                             <div class="d-flex mt-1">
                                 <div class="avatar-xs align-self-center ms-2 me-2">
@@ -117,7 +117,7 @@
                 </div>
 
                 <div @click="selected = 6"  class="card border shadow-none"  style="margin-bottom: 4px;">
-                    <router-link :to="{ name: 'prospectus' }" class="text-body">
+                    <router-link :to="{ name: 'prospectus/view' }" class="text-body">
                         <div class="p-1">
                             <div class="d-flex mt-1">
                                 <div class="avatar-xs align-self-center ms-2 me-2">
@@ -159,16 +159,31 @@
                 currentUrl: window.location.origin,
                 height: this.$parent.$parent.$parent.$parent.height,
                 user: {
-                    status_id: {}
+                    status: {}, profile: {}, program: {}
                 },
                 selects : [],
                 selected: 1,
-                id : this.$route.params.id
+                id : this.$route.params.id,
+                thePath: ''
             }
         },
 
         created(){
             this.fetch();
+            this.thePath = window.location.pathname.split("/").pop();
+            if(this.thePath == 'profile'){
+                this.selected = 2;
+            }else if(this.thePath == 'financial'){
+                this.selected = 3;
+            }else if(this.thePath == 'enrollment'){
+                this.selected = 4;
+            }else if(this.thePath == 'trace'){
+                this.selected = 5;
+            }else if(this.thePath == 'prospectus'){
+                this.selected = 6;
+            }else{
+                this.selected = 1;
+            }
         },
 
         methods : {

@@ -51,10 +51,13 @@
                 <tbody>
                     <tr>
                         <td colspan="2" class="border-0">
+                            <a v-if="prospectus.is_locked == 1" href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-file-document font-size-16 align-middle text-primary me-1"></i> index.html</a>
+                            <input v-if="prospectus.is_locked == 0" multiple ref="fileupload" type="file" @change="uploadFieldChange" class="form-control form-control-sm float-end" :class="[(errors['files.'+0]) ? 'text-danger' : '']" style="width: 250px;" id="formFileSm"/>
                             <b-button v-if="prospectus.is_locked == 0" @click="locked(prospectus.id)" type="button" class="btn-sm" variant="primary">
                                 <i class="bx bxs-lock-alt "></i>
                             </b-button>
                             <b-button v-if="prospectus.is_locked == 0" @click="save" type="button" class="btn-sm w-lg" variant="primary">Save</b-button>
+                            
                         </td>
                         <td style="width: 10%;" class="border-0 text-center">
                             <h5 class="m-0 text-info fw-bold">{{ units }}</h5>
@@ -75,11 +78,12 @@
     import Swal from "sweetalert2";
     import simplebar from "simplebar-vue";
     export default {
-        props: ['height','lists','prospectus'],
+        props: ['height','lists','prospectus','user','current'],
         data() {
             return {
                 currentUrl: window.location.origin,
-                errors: []
+                errors: [],
+                attachments: []
             }
         },
 
@@ -123,19 +127,45 @@
         },
 
         methods: {
+            uploadFieldChange(e) {
+                e.preventDefault();
+                var files = e.target.files || e.dataTransfer.files;
+
+                if (!files.length)
+                    return;
+                for (var i = files.length - 1; i >= 0; i--) {
+                    this.attachments.push(files[i]);
+                }
+            },
+
             save(evt) {
                 evt.preventDefault();
-                axios.post(this.currentUrl + '/request/evaluation/grading/store', {
-                    id: this.id,
-                    lists: this.lists
-                })
+
+                let data = new FormData();
+                if(this.attachments.length > 0){
+                    for (var i = this.attachments.length - 1; i >= 0; i--) {
+                        data.append('files[]', this.attachments[i]);
+                    }
+                }else{
+                    data.append('files[]', []);
+                }
+                data.append('enrollment_id', (this.current != undefined) ? this.current.id : '');
+                data.append('scholar_id', (this.user != undefined) ? this.user : '');
+                data.append('lists', (this.lists.length != 0) ? JSON.stringify(this.lists) : '');
+                data.append('file_type', 'grade');
+
+                axios.post(this.currentUrl + '/request/evaluation/grading/store', data)
                 .then(response => {
-                    // Swal.fire("Grades Saved!", "", "success");
+                    this.attachments = [];
+                    this.$refs.fileupload.value=null;
                     this.$emit('status', response.data.data);
                 })
                 .catch(error => {
                     if (error.response.status == 422) {
                         this.errors = error.response.data.errors;
+                        Vue.$toast.warning('<strong>Please attach a copy of your grades</strong>', {
+                            position: 'bottom-right'
+                        });
                     }
                 });
             },

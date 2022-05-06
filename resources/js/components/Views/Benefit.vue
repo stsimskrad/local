@@ -1,7 +1,7 @@
 <template>
 <div>
     <PageHeader :title="title" :items="items" />
-    <Index :height="height" :dropdowns="dropdowns"/> 
+    <Index ref="benefit" :height="height" :dropdowns="dropdowns"/> 
 </div>
 </template>
 <script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Hashids\Hashids;
 use App\Models\ScholarEnrollment;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -19,21 +20,26 @@ class EnrollmentRequest extends FormRequest
 
     public function rules()
     {
-        $data = ScholarEnrollment::where('scholar_id',$this->scholar_id)->where('is_clear',0)->count();
-        if($data > 0){
-            return '';
-        }
+        $hashids = new Hashids('krad',10);
+        $scholar_id = $hashids->decode($this->scholar_id);
+        $scholar_id = $scholar_id[0];
+
+        // $data = ScholarEnrollment::where('scholar_id',$scholar_id)->where('is_clear',0)->count();
+        // if($data > 0){
+        //     return '';
+        // }
         
         return [
             'academic_year' => 'sometimes|required|string',
             'level_id' => 'sometimes|required|integer',
-            'semester_id' => 'sometimes|required|integer|unique:scholar_enrollments,semester_id,NULL,'.$this->id.',level_id,'.$this->level_id.',scholar_id,'.$this->scholar_id,
-            'scholar_id' => 'sometimes|required|integer',
+            'semester_id' => 'sometimes|required|integer|unique:scholar_enrollments,semester_id,NULL,'.$this->id.',level_id,'.$this->level_id.',scholar_id,'.$scholar_id,
+            'scholar_id' => 'sometimes|required',
             'start_at' => 'sometimes|required|date',
             'end_at' => 'sometimes|required|date',
             'subcourse' => 'sometimes|required|integer',
-            'lists' => 'sometimes|required|array|min:1',
-            'is_locked' => 'sometimes|required|integer'
+            'lists' => 'sometimes|required|min:1',
+            'is_locked' => 'sometimes|required|integer',
+            'files.*' => 'sometimes|required|mimes:pdf,docx|max:2000'
         ];
     }
 

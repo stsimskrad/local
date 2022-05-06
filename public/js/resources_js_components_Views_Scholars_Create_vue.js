@@ -308,7 +308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['regions', 'dropdowns'],
+  props: ['regions', 'dropdowns', 'programs'],
   data: function data() {
     return {
       currentUrl: window.location.origin,
@@ -330,7 +330,7 @@ __webpack_require__.r(__webpack_exports__);
         mother: '',
         lrn: '',
         spas: '',
-        category_id: '',
+        program_id: '',
         status_id: '',
         awarded_year: '',
         spas_id: '',
@@ -376,11 +376,6 @@ __webpack_require__.r(__webpack_exports__);
     statuses: function statuses() {
       return this.dropdowns.filter(function (x) {
         return x.classification === 'Status';
-      });
-    },
-    categories: function categories() {
-      return this.dropdowns.filter(function (x) {
-        return x.classification === 'Category';
       });
     },
     levels: function levels() {
@@ -432,13 +427,14 @@ __webpack_require__.r(__webpack_exports__);
       data.append('course_id', this.user.course != undefined ? this.user.course.id : '');
       data.append('school_id', this.user.school != undefined ? this.user.school.id : '');
       data.append('level_id', this.user.level != undefined ? this.user.level.id : '');
-      data.append('category_id', this.user.category_id != undefined ? this.user.category_id.id : '');
+      data.append('program_id', this.user.program_id != undefined ? this.user.program_id.id : '');
       data.append('status_id', this.user.status_id != undefined ? this.user.status_id.id : '');
       data.append('region_code', this.user.region != undefined ? this.user.region.code : '');
       data.append('province_code', this.user.province != undefined ? this.user.province.code : '');
       data.append('municipality_code', this.user.municipality != undefined ? this.user.municipality.code : '');
       data.append('address', this.user.address != undefined ? this.user.address : '');
-      data.append('editable', 'new');
+      data.append('is_undergrad', 1);
+      data.append('editable', 'single');
       axios.post(this.currentUrl + '/request/scholar/store', data).then(function (response) {
         _this.clear();
 
@@ -448,7 +444,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.isLoading = false;
 
         _this.$router.push({
-          name: 'scholar/lists'
+          name: 'scholars'
         });
       })["catch"](function (error) {
         if (error.response.status == 422) {
@@ -566,7 +562,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dropdowns', 'regions'],
+  props: ['dropdowns', 'regions', 'programs'],
   components: {
     PageHeader: _Layouts_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Index: _Modules_Scholar_Create_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -3278,11 +3274,11 @@ var render = function () {
                       { staticClass: "form-group" },
                       [
                         _c("label", [
-                          _vm._v("Category: "),
-                          _vm.errors.category_id
+                          _vm._v("Program: "),
+                          _vm.errors.program_id
                             ? _c("span", { staticClass: "haveerror" }, [
                                 _vm._v(
-                                  "(" + _vm._s(_vm.errors.category_id[0]) + ")"
+                                  "(" + _vm._s(_vm.errors.program_id[0]) + ")"
                                 ),
                               ])
                             : _vm._e(),
@@ -3290,19 +3286,19 @@ var render = function () {
                         _vm._v(" "),
                         _c("multiselect", {
                           attrs: {
-                            options: _vm.categories,
+                            options: _vm.programs,
                             "show-labels": false,
                             label: "name",
                             "track-by": "id",
                             "allow-empty": false,
-                            placeholder: "Select Category",
+                            placeholder: "Select Program",
                           },
                           model: {
-                            value: _vm.user.category_id,
+                            value: _vm.user.program_id,
                             callback: function ($$v) {
-                              _vm.$set(_vm.user, "category_id", $$v)
+                              _vm.$set(_vm.user, "program_id", $$v)
                             },
-                            expression: "user.category_id",
+                            expression: "user.program_id",
                           },
                         }),
                       ],
@@ -4319,7 +4315,11 @@ var render = function () {
               },
               [
                 _c("Index", {
-                  attrs: { regions: _vm.regions, dropdowns: _vm.dropdowns },
+                  attrs: {
+                    regions: _vm.regions,
+                    programs: _vm.programs,
+                    dropdowns: _vm.dropdowns,
+                  },
                 }),
               ],
               1

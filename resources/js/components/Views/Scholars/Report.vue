@@ -3,7 +3,7 @@
     <PageHeader :title="title" :items="items" />
     <div class="row">
         <div class="col-12">
-            <Index :dropdowns="dropdowns" />
+            <Index :dropdowns="dropdowns" :programs="programs"/>
         </div>
     </div>
 </div>
@@ -13,7 +13,7 @@
     import PageHeader from '../../Layouts/Header.vue';
 
     export default {
-        props: ['dropdowns'],
+        props: ['dropdowns','programs'],
         components: { PageHeader, Index },
         data() {
             return {

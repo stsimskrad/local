@@ -42,12 +42,8 @@
                         </div>
                         <div class="card-body border-bottom p-2">
                             <div class="mt-1">
-                                <p class="font-size-11 text-muted mb-0"><i
-                                        class='bx bx-radio-circle-marked me-1 text-primary'></i>{{ user.school.name }}
-                                </p>
-                                <p class="font-size-11 text-muted mb-1"><i
-                                        class='bx bx-radio-circle-marked me-1 text-primary'></i>{{ user.course.name }}
-                                </p>
+                                <p class="font-size-11 text-muted mb-0"><i class='bx bx-radio-circle-marked me-1 text-primary'></i>{{ user.education.school.name }} </p>
+                                <p class="font-size-11 text-muted mb-1"><i class='bx bx-radio-circle-marked me-1 text-primary'></i>{{ user.education.course.name }} </p>
                             </div>
                         </div>
                         <div class="card-body" :style="{ height: (hayt-290) + 'px' }">
@@ -58,6 +54,9 @@
                                         <table class="table table-nowrap align-mid table-hover mb-0">
                                             <tbody>
                                                 <tr v-for="list in user.enrollments" v-bind:key="list.id">
+                                                     <td>
+                                                        <i @click="win(list.attachment.enrollments.file)" class='bx bxs-file-pdf font-size-24 mt-1 me-n3' style="cursor: pointer;"></i>
+                                                    </td>
                                                     <td @click="fetchLists(list)" style="cursor: pointer;">
                                                         <h5 class="text-truncate font-size-13 mb-0">
                                                             <a href="javascript: void(0);" class="text-dark">
@@ -116,8 +115,11 @@
                             </div> -->
                             <Prospectus :height="height" ref="prospectus" />
                         </div>
-                        <Create :user="user.id" 
-                        :course="user.course" 
+                        <Create :user="user.code" 
+                        :level="user.education.level" 
+                        :pros="user.education.information"
+                        :class_type="user.education.school.class"
+                        :enrollments="user.enrollments"
                         @status="message" 
                         :dropdowns="dropdowns"
                         :height="height" ref="sem" 
@@ -125,7 +127,7 @@
                         />
 
                         <Lists v-else :lists="lists" 
-                        :height="height" @status="message" 
+                        :height="height" :current="current" :user="user.code" @status="message" 
                         :prospectus="prospectus"/>
                         
                     </div>
@@ -136,9 +138,14 @@
             </div>
         </div>
         <Course @status="update" ref="course" />
+        <WindowPortal v-model="open">
+            <HelloWorld :attachment="attachment"/>
+        </WindowPortal>
     </div>
 </template>
 <script>
+    import WindowPortal from './Window/WindowPortal.vue';
+    import HelloWorld from './Window/HelloWorld.vue';
     import Dashboard from './Dashboard.vue';
     import Prospectus from './Prospectus.vue';
     import Course from './Modals/Course.vue';
@@ -147,6 +154,17 @@
     import Multiselect from 'vue-multiselect';
     import simplebar from "simplebar-vue";
     export default {
+        components: {
+            Multiselect,
+            simplebar,
+            Create,
+            Lists,
+            Course,
+            Dashboard,
+            Prospectus,
+            WindowPortal,
+            HelloWorld
+        },
         props: ['height', 'dropdowns'],
         data() {
             return {
@@ -160,7 +178,10 @@
                 show: 'empty',
                 prospectus: {},
                 pros: {},
-                count: 0
+                count: 0,
+                current: '',
+                open: false,
+                attachment: ''
             }
         },
 
@@ -186,23 +207,22 @@
                 (this.keyword != '' && this.keyword != null) ? key = this.keyword: key = '-';
 
                 if (key != '-') {
-                    axios.get(this.currentUrl + '/request/evaluation/enrollment/search/' + key)
-                        .then(response => {
-                            this.user = response.data.data;
-                            if (this.user.course.subcourse == null) {
-                                this.$bvModal.show("course");
-                                this.$refs.course.set(this.user.id, this.user.profile, this.user.school, this.user
-                                    .course);
-                            } else {
-                                this.$nextTick(function () {
-                                    this.$refs.prospectus.set(this.user.course)
-                                });
-                            }
-                            this.check();
-                            this.lists = [];
-                            this.show = 'empty';
-                        })
-                        .catch(err => console.log(err));
+                    axios.get(this.currentUrl + '/request/scholar/search/' + key)
+                    .then(response => {
+                        this.user = response.data.data;
+                        if (this.user.education.subcourse == null) {
+                            this.$bvModal.show("course");
+                            this.$refs.course.set(this.user.id, this.user.profile, this.user.education.school, this.user.education.course);
+                        } else {
+                            this.$nextTick(function () {
+                                this.$refs.prospectus.set(this.user.education.information)
+                            });
+                        }
+                        this.check();
+                        this.lists = [];
+                        this.show = 'empty';
+                    })
+                    .catch(err => console.log(err));
                 } else {
                     this.user = {};
                 }
@@ -211,11 +231,12 @@
             addNew() {
                 this.show = 'create';
                 this.$nextTick(function () {
-                    this.$refs.sem.fetchSemesters(this.user.school.id, this.user.awarded_year);
+                    this.$refs.sem.fetchSemesters(this.user.education.school.id, this.user.awarded_year);
                 });
             },
 
             fetchLists(list) {
+                this.current = list;
                 this.show = 'lists';
                 this.prospectus = list;
                 axios.get(this.currentUrl + '/request/evaluation/enrollment/lists/' + list.id)
@@ -253,17 +274,13 @@
                     count = this.user.enrollments.filter(x => x.is_locked === 0);
                     this.count = count.length;
                 }
+            },
+            
+            win(attachment){
+                this.open = true;
+                this.attachment = attachment;
             }
         },
-        components: {
-            Multiselect,
-            simplebar,
-            Create,
-            Lists,
-            Course,
-            Dashboard,
-            Prospectus
-        }
     }
 
 </script>
