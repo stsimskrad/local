@@ -57,22 +57,22 @@
                 "text": "Notifications",
                 "subtext": "View All",
                 "order": {
-                    "title": "Your order is placed",
+                    "title": "test",
                     "text": "If several languages coalesce the grammar",
                     "time": "3 min ago"
                 },
                 "james": {
-                    "title": "James Lemire",
+                    "title": "test1",
                     "text": "It will seem like simplified English.",
                     "time": "1 hours ago"
                 },
                 "item": {
-                    "title": "Your item is shipped",
+                    "title": "test2",
                     "text": "If several languages coalesce the grammar",
                     "time": "3 min ago"
                 },
                 "salena": {
-                    "title": "Salena Layfield",
+                    "title": "test3",
                     "text": "As a skeptical Cambridge friend of mine occidental.",
                     "time": "1 hours ago"
                 },
