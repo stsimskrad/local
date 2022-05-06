@@ -29,8 +29,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '010000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -42,8 +42,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '020000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -55,8 +55,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '030000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -68,8 +68,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '040000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -81,8 +81,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '030000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -94,8 +94,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '170000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             6 => 
             array (
@@ -107,8 +107,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '050000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             7 => 
             array (
@@ -120,8 +120,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '060000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             8 => 
             array (
@@ -133,8 +133,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '070000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             9 => 
             array (
@@ -146,8 +146,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '080000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             10 => 
             array (
@@ -159,8 +159,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '090000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             11 => 
             array (
@@ -172,8 +172,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '100000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             12 => 
             array (
@@ -185,8 +185,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '110000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             13 => 
             array (
@@ -198,8 +198,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '120000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             14 => 
             array (
@@ -211,8 +211,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '120000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             15 => 
             array (
@@ -224,8 +224,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '160000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             16 => 
             array (
@@ -237,8 +237,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '140000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             17 => 
             array (
@@ -250,8 +250,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '150000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             18 => 
             array (
@@ -263,8 +263,8 @@ class ListAgenciesTableSeeder extends Seeder
                 'avatar' => 'avatar.jpg',
                 'status' => 'Active',
                 'region_code' => '130000000',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         
