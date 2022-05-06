@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$RnZcTUb5A2vTRIpJzgYXfOsQsHXAtksvcv/4UZNow/e4bzpKP6/2y',
                 'avatar' => 'avatar.jpg',
                 'role' => 'Super Administrator',
-                'is_active' => 0,
+                'is_active' => 1,
                 'welcome_valid_until' => NULL,
                 'remember_token' => NULL,
                 'created_at' => '2022-02-21 08:08:13',
