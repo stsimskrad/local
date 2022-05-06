@@ -29,8 +29,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 1,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -42,8 +42,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 1,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -55,8 +55,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 0,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -68,8 +68,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 0,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -81,8 +81,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 1,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -94,8 +94,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 0,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             6 => 
             array (
@@ -107,8 +107,8 @@ class ListBenefitsTableSeeder extends Seeder
                 'is_fixed' => 1,
                 'is_active' => 1,
                 'information' => '[]',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         

@@ -26,8 +26,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 0,
                 'is_active' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -36,8 +36,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 0,
                 'is_active' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -46,8 +46,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 0,
                 'is_active' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -56,8 +56,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 1,
                 'is_active' => 0,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -66,8 +66,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 1,
                 'is_active' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -76,8 +76,8 @@ class ListProgramsTableSeeder extends Seeder
                 'others' => 'n/a',
                 'is_sub' => 1,
                 'is_active' => 1,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         

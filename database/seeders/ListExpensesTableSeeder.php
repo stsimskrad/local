@@ -25,8 +25,8 @@ class ListExpensesTableSeeder extends Seeder
             'name' => 'Honorarium of One (1) Project Leader',
                 'code' => 'HONORARIUM-PLeader',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -34,8 +34,8 @@ class ListExpensesTableSeeder extends Seeder
             'name' => 'Honorarium of One (1) Project Coordinator',
                 'code' => 'HONORARIUM-PCoord',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -43,8 +43,8 @@ class ListExpensesTableSeeder extends Seeder
             'name' => 'Honorarium of Three (3) Regional Program Support Staff',
                 'code' => 'HONORARIUM-RegStaff',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -52,8 +52,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Inter-Agency Committee Meeting',
                 'code' => 'InterCOMMITTEE',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -61,8 +61,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'University Coordinator',
                 'code' => 'UnivCOORDINATOR',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -70,8 +70,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'honorarium greatM',
                 'code' => 'HgreatM',
                 'expenditure_id' => 18,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             6 => 
             array (
@@ -79,8 +79,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Supplies and Materials, Communication Expenses, Traveling Allowances, Coordination, Meeting, Workshop and other Related Expenses',
                 'code' => 'SUPPLIES-MATERIALS',
                 'expenditure_id' => 19,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             7 => 
             array (
@@ -88,8 +88,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Tuition and Other School Fees',
                 'code' => 'TOSF',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             8 => 
             array (
@@ -97,8 +97,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Monthly Stipends',
                 'code' => 'STIPENDS',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             9 => 
             array (
@@ -106,8 +106,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Book allowance',
                 'code' => 'bA',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             10 => 
             array (
@@ -115,8 +115,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'PE/MS Allowances',
                 'code' => 'PMA',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             11 => 
             array (
@@ -124,8 +124,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Actual Transportation Allowance of Scholars',
                 'code' => 'aTAS',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             12 => 
             array (
@@ -133,8 +133,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'STLAP',
                 'code' => 'STLAP',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             13 => 
             array (
@@ -142,8 +142,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Group Health and Accident Insurance',
                 'code' => 'GHAAI',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             14 => 
             array (
@@ -151,8 +151,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Financial Assistance during Summer',
                 'code' => 'FADS',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             15 => 
             array (
@@ -160,8 +160,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Graduation Allowance',
                 'code' => 'gA',
                 'expenditure_id' => 20,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             16 => 
             array (
@@ -169,8 +169,8 @@ class ListExpensesTableSeeder extends Seeder
                 'name' => 'Capital outlay',
                 'code' => 'CO',
                 'expenditure_id' => 21,
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         

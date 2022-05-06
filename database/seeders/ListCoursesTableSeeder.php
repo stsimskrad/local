@@ -25,8 +25,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Agricultural Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             1 => 
             array (
@@ -34,8 +34,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Agricultural Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             2 => 
             array (
@@ -43,8 +43,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Agro-forestry Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             3 => 
             array (
@@ -52,8 +52,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Asso. Computer Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             4 => 
             array (
@@ -61,8 +61,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Asso. Information Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             5 => 
             array (
@@ -70,8 +70,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Associate Computer',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             6 => 
             array (
@@ -79,8 +79,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Associate Computer Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             7 => 
             array (
@@ -88,8 +88,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Associate Geodetic Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             8 => 
             array (
@@ -97,8 +97,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Automechanical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             9 => 
             array (
@@ -106,8 +106,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Automotive Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             10 => 
             array (
@@ -115,8 +115,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Automotive Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             11 => 
             array (
@@ -124,8 +124,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor In Agricultural Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             12 => 
             array (
@@ -133,8 +133,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Applied Statistics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             13 => 
             array (
@@ -142,8 +142,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Technical Teacher Education',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             14 => 
             array (
@@ -151,8 +151,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Beed Elementary Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             15 => 
             array (
@@ -160,8 +160,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Biochemical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             16 => 
             array (
@@ -169,8 +169,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bridging Program',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             17 => 
             array (
@@ -178,8 +178,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science ',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             18 => 
             array (
@@ -187,8 +187,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural And Biosystems Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             19 => 
             array (
@@ -196,8 +196,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Biotechnology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             20 => 
             array (
@@ -205,8 +205,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Business',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             21 => 
             array (
@@ -214,8 +214,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             22 => 
             array (
@@ -223,8 +223,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             23 => 
             array (
@@ -232,8 +232,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agriculture',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             24 => 
             array (
@@ -241,8 +241,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agronomy',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             25 => 
             array (
@@ -250,8 +250,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Mathematics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             26 => 
             array (
@@ -259,8 +259,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Mathematics With Applied Computer Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             27 => 
             array (
@@ -268,8 +268,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Physics',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             28 => 
             array (
@@ -277,8 +277,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Physics With Applied Computer Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             29 => 
             array (
@@ -286,8 +286,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Physics With Materials Science And Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             30 => 
             array (
@@ -295,8 +295,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Applied Statistics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             31 => 
             array (
@@ -304,8 +304,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Basic Medical Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             32 => 
             array (
@@ -313,8 +313,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biochemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             33 => 
             array (
@@ -322,8 +322,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biochemistry/ Bs Mechanical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             34 => 
             array (
@@ -331,8 +331,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biological Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             35 => 
             array (
@@ -340,8 +340,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             36 => 
             array (
@@ -349,8 +349,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biology For Teachers',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             37 => 
             array (
@@ -358,8 +358,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Biotechnology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             38 => 
             array (
@@ -367,8 +367,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Botany',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             39 => 
             array (
@@ -376,8 +376,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Ceramics Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             40 => 
             array (
@@ -385,8 +385,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             41 => 
             array (
@@ -394,8 +394,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             42 => 
             array (
@@ -403,8 +403,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry For Teachers',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             43 => 
             array (
@@ -412,8 +412,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry W/acs',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             44 => 
             array (
@@ -421,8 +421,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry With Applied Computer Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             45 => 
             array (
@@ -430,8 +430,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry With Materials Science And Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             46 => 
             array (
@@ -439,8 +439,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Chemistry-physics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             47 => 
             array (
@@ -448,8 +448,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Civil Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             48 => 
             array (
@@ -457,8 +457,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Clothing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             49 => 
             array (
@@ -466,8 +466,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Community Nutrition',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             50 => 
             array (
@@ -475,8 +475,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Computer Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             51 => 
             array (
@@ -484,8 +484,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Computer Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             52 => 
             array (
@@ -493,8 +493,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Computer Science-it',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             53 => 
             array (
@@ -502,8 +502,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Computer Science-mathematics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             54 => 
             array (
@@ -511,8 +511,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Education',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             55 => 
             array (
@@ -520,8 +520,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Electrical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             56 => 
             array (
@@ -529,8 +529,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Electronics And Communications Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             57 => 
             array (
@@ -538,8 +538,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Electronics Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             58 => 
             array (
@@ -547,8 +547,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Electronics Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             59 => 
             array (
@@ -556,8 +556,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Engineering Technology Management',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             60 => 
             array (
@@ -565,8 +565,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Environmental Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             61 => 
             array (
@@ -574,8 +574,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Environmental Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             62 => 
             array (
@@ -583,8 +583,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Fisheries',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             63 => 
             array (
@@ -592,8 +592,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Food And Nutrition',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             64 => 
             array (
@@ -601,8 +601,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Food Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             65 => 
             array (
@@ -610,8 +610,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Food Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             66 => 
             array (
@@ -619,8 +619,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Forest Product Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             67 => 
             array (
@@ -628,8 +628,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Forestry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             68 => 
             array (
@@ -637,8 +637,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In General Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             69 => 
             array (
@@ -646,8 +646,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Geodetic Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             70 => 
             array (
@@ -655,8 +655,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Geological Science And Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             71 => 
             array (
@@ -664,8 +664,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Geology',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             72 => 
             array (
@@ -673,8 +673,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Geothermal Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             73 => 
             array (
@@ -682,8 +682,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             74 => 
             array (
@@ -691,8 +691,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Management Engineering-information Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             75 => 
             array (
@@ -700,8 +700,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             76 => 
             array (
@@ -709,8 +709,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Information And Computer Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             77 => 
             array (
@@ -718,8 +718,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Information Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             78 => 
             array (
@@ -727,8 +727,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Instrumentation And Control Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             79 => 
             array (
@@ -736,8 +736,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Instrumentation And Control Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             80 => 
             array (
@@ -745,8 +745,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Management Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             81 => 
             array (
@@ -754,8 +754,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Manufacturing Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             82 => 
             array (
@@ -763,8 +763,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Manufacturing Engineering And Management With Biomedical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             83 => 
             array (
@@ -772,8 +772,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Manufacturing Engineering Management-mechatronics And Robotics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             84 => 
             array (
@@ -781,8 +781,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Marine Biology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             85 => 
             array (
@@ -790,8 +790,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Marine Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             86 => 
             array (
@@ -799,8 +799,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Marine Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             87 => 
             array (
@@ -808,8 +808,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Materials Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             88 => 
             array (
@@ -817,8 +817,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mathematical Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             89 => 
             array (
@@ -826,8 +826,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mathematics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             90 => 
             array (
@@ -835,8 +835,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mathematics And Science Teaching',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             91 => 
             array (
@@ -844,8 +844,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mathematics For Teachers',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             92 => 
             array (
@@ -853,8 +853,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mechanical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             93 => 
             array (
@@ -862,8 +862,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Medical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             94 => 
             array (
@@ -871,8 +871,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Metallurgical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             95 => 
             array (
@@ -880,8 +880,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Metallurgy',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             96 => 
             array (
@@ -889,8 +889,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Meteorology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             97 => 
             array (
@@ -898,8 +898,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Microbiology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             98 => 
             array (
@@ -907,8 +907,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mining Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             99 => 
             array (
@@ -916,8 +916,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Molecular Biology And Biotechnology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             100 => 
             array (
@@ -925,8 +925,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Nutrition',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             101 => 
             array (
@@ -934,8 +934,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Nutrition And Dietetics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             102 => 
             array (
@@ -943,8 +943,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Petroleum Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             103 => 
             array (
@@ -952,8 +952,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physical Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             104 => 
             array (
@@ -961,8 +961,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             105 => 
             array (
@@ -970,8 +970,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics For Teachers',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             106 => 
             array (
@@ -979,8 +979,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics W/mse',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             107 => 
             array (
@@ -988,8 +988,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics With Applied Computer Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             108 => 
             array (
@@ -997,8 +997,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics With Materials Science',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             109 => 
             array (
@@ -1006,8 +1006,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Physics With Materials Science Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             110 => 
             array (
@@ -1015,8 +1015,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Psychology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             111 => 
             array (
@@ -1024,8 +1024,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Sociology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             112 => 
             array (
@@ -1033,8 +1033,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Statistics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             113 => 
             array (
@@ -1042,8 +1042,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Sugar Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             114 => 
             array (
@@ -1051,8 +1051,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Veterinary Medicine',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             115 => 
             array (
@@ -1060,8 +1060,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Zoology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             116 => 
             array (
@@ -1069,8 +1069,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Biological Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             117 => 
             array (
@@ -1078,8 +1078,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Biology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             118 => 
             array (
@@ -1087,8 +1087,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Biology-chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             119 => 
             array (
@@ -1096,8 +1096,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             120 => 
             array (
@@ -1105,8 +1105,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Computer',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             121 => 
             array (
@@ -1114,8 +1114,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Elementary Education',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             122 => 
             array (
@@ -1123,8 +1123,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Environmental Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             123 => 
             array (
@@ -1132,8 +1132,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine General Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             124 => 
             array (
@@ -1141,8 +1141,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Mathematics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             125 => 
             array (
@@ -1150,8 +1150,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Mathematics And Science Teaching',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             126 => 
             array (
@@ -1159,8 +1159,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Physical Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             127 => 
             array (
@@ -1168,8 +1168,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Physics',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             128 => 
             array (
@@ -1177,8 +1177,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Physics And Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'SPECIAL',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             129 => 
             array (
@@ -1186,8 +1186,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Physics-chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             130 => 
             array (
@@ -1195,8 +1195,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Physics-mathematics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             131 => 
             array (
@@ -1204,8 +1204,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science Ine Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             132 => 
             array (
@@ -1213,8 +1213,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Certificate In Forestry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             133 => 
             array (
@@ -1222,8 +1222,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Chemical Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             134 => 
             array (
@@ -1231,8 +1231,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Chemical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             135 => 
             array (
@@ -1240,8 +1240,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Civil Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             136 => 
             array (
@@ -1249,8 +1249,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Civil Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             137 => 
             array (
@@ -1258,8 +1258,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer And Electronics Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             138 => 
             array (
@@ -1267,8 +1267,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer And Information Management',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             139 => 
             array (
@@ -1276,8 +1276,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer And Information Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             140 => 
             array (
@@ -1285,8 +1285,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             141 => 
             array (
@@ -1294,8 +1294,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer Hardware And Servicing',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             142 => 
             array (
@@ -1303,8 +1303,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer Programming',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             143 => 
             array (
@@ -1312,8 +1312,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer Programming And Operation',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             144 => 
             array (
@@ -1321,8 +1321,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer System And Network Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             145 => 
             array (
@@ -1330,8 +1330,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer System Design And Programming',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             146 => 
             array (
@@ -1339,8 +1339,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer System Programming',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             147 => 
             array (
@@ -1348,8 +1348,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer System Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             148 => 
             array (
@@ -1357,8 +1357,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Computer Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             149 => 
             array (
@@ -1366,8 +1366,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Digital Logic Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             150 => 
             array (
@@ -1375,8 +1375,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Diploma In Automation Maintenance Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             151 => 
             array (
@@ -1384,8 +1384,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Diploma In Chemistry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             152 => 
             array (
@@ -1393,8 +1393,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Diploma Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             153 => 
             array (
@@ -1402,8 +1402,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Drafting Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             154 => 
             array (
@@ -1411,8 +1411,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electrical Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             155 => 
             array (
@@ -1420,8 +1420,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electrical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             156 => 
             array (
@@ -1429,8 +1429,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electromechanical And Process Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             157 => 
             array (
@@ -1438,8 +1438,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electromechanical Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             158 => 
             array (
@@ -1447,8 +1447,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electromechanical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             159 => 
             array (
@@ -1456,8 +1456,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics And Communications Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             160 => 
             array (
@@ -1465,8 +1465,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics And Communications Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             161 => 
             array (
@@ -1474,8 +1474,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics Data Process Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             162 => 
             array (
@@ -1483,8 +1483,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             163 => 
             array (
@@ -1492,8 +1492,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics Service Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             164 => 
             array (
@@ -1501,8 +1501,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Electronics Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             165 => 
             array (
@@ -1510,8 +1510,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             166 => 
             array (
@@ -1519,8 +1519,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Fisheries Processing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             167 => 
             array (
@@ -1528,8 +1528,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Fisheries Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             168 => 
             array (
@@ -1537,8 +1537,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food And Beverage Preparation And Service',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             169 => 
             array (
@@ -1546,8 +1546,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food And Beverages Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             170 => 
             array (
@@ -1555,8 +1555,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             171 => 
             array (
@@ -1564,8 +1564,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food Service Management',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             172 => 
             array (
@@ -1573,8 +1573,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             173 => 
             array (
@@ -1582,8 +1582,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Food Trades Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             174 => 
             array (
@@ -1591,8 +1591,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Forest Ranger Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             175 => 
             array (
@@ -1600,8 +1600,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Forestry Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             176 => 
             array (
@@ -1609,8 +1609,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Foundry Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             177 => 
             array (
@@ -1618,8 +1618,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Garments Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             178 => 
             array (
@@ -1627,8 +1627,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Geodetic And Geomatic Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             179 => 
             array (
@@ -1636,8 +1636,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Geodetic Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             180 => 
             array (
@@ -1645,8 +1645,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Geodetic Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             181 => 
             array (
@@ -1654,8 +1654,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Graphics Arts And Printing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             182 => 
             array (
@@ -1663,8 +1663,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Heating Ventilating Airconditioning And Refrigeration',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             183 => 
             array (
@@ -1672,8 +1672,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Industrial Automation And Control Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             184 => 
             array (
@@ -1681,8 +1681,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Industrial Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             185 => 
             array (
@@ -1690,8 +1690,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Information And Communication Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             186 => 
             array (
@@ -1699,8 +1699,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Information Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             187 => 
             array (
@@ -1708,8 +1708,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Instrumentation And Control Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             188 => 
             array (
@@ -1717,8 +1717,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Instrumentation And Control Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             189 => 
             array (
@@ -1726,8 +1726,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Instrumentation And Food Processing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             190 => 
             array (
@@ -1735,8 +1735,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Instrumentation And Process Control Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             191 => 
             array (
@@ -1744,8 +1744,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Machine Shop Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             192 => 
             array (
@@ -1753,8 +1753,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Manufacturing Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             193 => 
             array (
@@ -1762,8 +1762,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Manufacturing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             194 => 
             array (
@@ -1771,8 +1771,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Materials Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             195 => 
             array (
@@ -1780,8 +1780,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Materials Science Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             196 => 
             array (
@@ -1789,8 +1789,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Mechanical And Product Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             197 => 
             array (
@@ -1798,8 +1798,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Mechanical Design And Fabrication Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             198 => 
             array (
@@ -1807,8 +1807,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Mechanical Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             199 => 
             array (
@@ -1816,8 +1816,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Mechanical Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             200 => 
             array (
@@ -1825,8 +1825,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Mediatronics Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             201 => 
             array (
@@ -1834,8 +1834,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Metal Working Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             202 => 
             array (
@@ -1843,8 +1843,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Metallurgical Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             203 => 
             array (
@@ -1852,8 +1852,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Non-destructive Testing Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             204 => 
             array (
@@ -1861,8 +1861,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Nutrition And Food Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             205 => 
             array (
@@ -1870,8 +1870,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Product Design And Development Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             206 => 
             array (
@@ -1879,8 +1879,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Radio Communication Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             207 => 
             array (
@@ -1888,8 +1888,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Refrigeration And Airconditioning Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             208 => 
             array (
@@ -1897,8 +1897,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Refrigeration And Airconditioning Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             209 => 
             array (
@@ -1906,8 +1906,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Sprint',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             210 => 
             array (
@@ -1915,8 +1915,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Technical Drafting Graphics Arts And Design',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             211 => 
             array (
@@ -1924,8 +1924,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Tool And Die Engineering Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             212 => 
             array (
@@ -1933,8 +1933,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Tool And Die Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             213 => 
             array (
@@ -1942,8 +1942,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Welding And Fabrication Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             214 => 
             array (
@@ -1951,8 +1951,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Pharmacy',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             215 => 
             array (
@@ -1960,8 +1960,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor In Mathematics Education',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             216 => 
             array (
@@ -1969,8 +1969,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Medical Laboratory Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             217 => 
             array (
@@ -1978,8 +1978,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agribusiness',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             218 => 
             array (
@@ -1987,8 +1987,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agribusiness Management',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             219 => 
             array (
@@ -1996,8 +1996,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Economics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             220 => 
             array (
@@ -2005,8 +2005,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             221 => 
             array (
@@ -2014,8 +2014,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Animal Husbandry',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             222 => 
             array (
@@ -2023,8 +2023,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Animal Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             223 => 
             array (
@@ -2032,8 +2032,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Food Science And Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             224 => 
             array (
@@ -2041,8 +2041,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Design',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             225 => 
             array (
@@ -2050,8 +2050,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Information Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             226 => 
             array (
@@ -2059,8 +2059,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mechanical Engineering With Mechatronics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             227 => 
             array (
@@ -2068,8 +2068,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Public Health',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             228 => 
             array (
@@ -2077,8 +2077,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Doctor Of Veterinary Medicine',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             229 => 
             array (
@@ -2086,8 +2086,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Aeronautical Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             230 => 
             array (
@@ -2095,8 +2095,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Pharmacy',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             231 => 
             array (
@@ -2104,8 +2104,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Human Biology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             232 => 
             array (
@@ -2113,8 +2113,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Information And Communications Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'n/a',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             233 => 
             array (
@@ -2122,8 +2122,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Medical Laboratory Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             234 => 
             array (
@@ -2131,8 +2131,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Life Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             235 => 
             array (
@@ -2140,8 +2140,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Mechatronics Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             236 => 
             array (
@@ -2149,8 +2149,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Astronomy',
                 'abbreviation' => 'n/a',
                 'others' => 'n/a',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             237 => 
             array (
@@ -2158,8 +2158,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Management Information Systems',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             238 => 
             array (
@@ -2167,8 +2167,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Pharmaceutical Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             239 => 
             array (
@@ -2176,8 +2176,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Geography',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             240 => 
             array (
@@ -2185,8 +2185,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Library And Information Science',
                 'abbreviation' => 'n/a',
                 'others' => 'n/a',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             241 => 
             array (
@@ -2194,8 +2194,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Astronomy Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER DISCIPLINE',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             242 => 
             array (
@@ -2203,8 +2203,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Health Sciences',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             243 => 
             array (
@@ -2212,8 +2212,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Industrial Psychology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             244 => 
             array (
@@ -2221,8 +2221,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Library And Information Science',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             245 => 
             array (
@@ -2230,8 +2230,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor In Technology And Livelihood Education-information And Communication Technology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             246 => 
             array (
@@ -2239,8 +2239,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Technology Teacher Education',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             247 => 
             array (
@@ -2248,8 +2248,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agribusiness Management And Entrepreneurship',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             248 => 
             array (
@@ -2257,8 +2257,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Agricultural And Applied Economics',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             249 => 
             array (
@@ -2266,8 +2266,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Architecture',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             250 => 
             array (
@@ -2275,8 +2275,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Aerospace Engineering',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
             251 => 
             array (
@@ -2284,8 +2284,8 @@ class ListCoursesTableSeeder extends Seeder
                 'name' => 'Bachelor Of Science In Speech Pathology',
                 'abbreviation' => 'n/a',
                 'others' => 'OTHER',
-                'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'created_at' => '2022-05-06 09:26:49',
+                'updated_at' => '2022-05-06 09:26:49',
             ),
         ));
         
