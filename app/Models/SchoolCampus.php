@@ -38,6 +38,11 @@ class SchoolCampus extends Model
         return $this->hasMany('App\Models\SchoolSemester', 'school_id')->orderBy('created_at','DESC');
     } 
 
+    public function scholars()
+    {
+        return $this->hasMany('App\Models\ScholarEducation', 'school_id');
+    } 
+
     public function getCampusAttribute($value){
         return strtoupper($value);
     }

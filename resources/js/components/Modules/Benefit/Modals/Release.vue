@@ -65,8 +65,8 @@
                     'number': this.month.releases.length + 1
                 })
                 .then(response => {
-                    this.$parent.$parent.set();
                     this.$parent.$parent.$parent.fetchLatest();
+                    this.$parent.$parent.$parent.set();
                     this.$bvModal.hide("newrelease");
                     Vue.$toast.success('<strong>Successfully Created</strong>', {
                         position: 'bottom-right'

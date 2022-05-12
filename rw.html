@@ -1,0 +1,23 @@
+apt-get install php8.0-cli php8.0-fpm php8.0-mbstring php8.0-mysql php8.0-mcrypt php8.0-curl php8.0-mbstring php8.0-gd
+
+apt-get install php-gd
+apt-get install php-xml
+apt install php-zip
+apt-get install php-curl
+apt install php-mysql
+apt install zip
+sudo apt-get install php7.0-xml
+sudo apt-get install php8.0-gmp
+
+chown -R www-data:www-data /var/www/html/stsims-local
+
+sudo chown -R $USER:$USER /var/www/stsims.rjumli.me/public
+sudo chown -R $USER:$USER /var/www/seconddomain.com/html
+
+cd /var/www/stsims.rjumli.me/
+
+GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'KKradsbg44!';
+
+GRANT ALL ON stsims_local.* TO 'root'@'localhost' IDENTIFIED BY 'KKradsbg44!' WITH GRANT OPTION;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'KKradsbg44!'

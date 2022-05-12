@@ -14,13 +14,13 @@
                 </ol>
             </div>
             <div class="float-end mt-n2">
-                <button @click="back" type="button" class="mt-n4 btn btn-sm btn-label btn-secondary"><i
-                        class="bx bxs-chevrons-left label-icon"></i> Back </button>
+                <button @click="back" type="button" class="mt-n4 btn btn-sm btn-label btn-secondary">
+                <i class="bx bxs-chevrons-left label-icon"></i> Back </button>
             </div>
         </div>
         <div class="card-body border-bottom">
             <div class="row mb-n3">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <ul class="list-inline user-chat-nav text-start ms-4 mt-1 dropdown">
                         <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                             <button  @click="show(selected.lists)" type="button" class="btn btn-sm w-sm ms-n4 me-n3 ml-1 btn-secondary">Scholars ({{selected.lists.length}})</button>
@@ -39,7 +39,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="input-group input-group-sm mb-2">
                         <label class="input-group-text" style="width: 110px;">Month Count : {{selected.months.length}}</label>
                         <select @change="select" v-model="month" class="form-select form-select-sm">
@@ -112,7 +112,7 @@
                 group: {
                     semester: {}
                 },
-                selected: { lists: []},
+                selected: { lists: [], months: []},
                 list: '',
                 month: ''
             }
@@ -131,6 +131,7 @@
             },
 
             set(data) {
+                console.log(data);
                 this.group = data;
                 this.fetch(data.id);
             },

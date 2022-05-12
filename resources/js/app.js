@@ -6,6 +6,7 @@ import VueToast from 'vue-toast-notification';
 import vClickOutside from "v-click-outside";
 import { BootstrapVue } from "bootstrap-vue";
 import VueRouter from 'vue-router';
+import VueApexCharts from 'vue-apexcharts';
 
 Vue.prototype.$isDev = process.env.MIX_APP_ENV !== "production";
 Vue.config.devtools = Vue.prototype.$isDev;
@@ -17,6 +18,7 @@ Vue.use(BootstrapVue);
 Vue.use(vClickOutside);
 Vue.use(VueToast);
 
+Vue.component('apexchart', VueApexCharts)
 Vue.component("layout", require("./components/Layouts/main.vue").default);
 Vue.component("installation", require("./components/Modules/Exclusion/Installation.vue").default);
 

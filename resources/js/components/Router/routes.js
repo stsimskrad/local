@@ -158,14 +158,20 @@ const routes = [{
         name: 'scholar/reports',
         beforeEnter: coordinator
     },
-
     {
-        path: '/evaluations',
+        path: '/enrollments',
         component: () =>
-            import ('../Views/Evaluation.vue'),
-        name: 'evaluations',
+            import ('../Views/Enrollment.vue'),
+        name: 'enrollments',
         beforeEnter: coordinator
     },
+    // {
+    //     path: '/evaluations',
+    //     component: () =>
+    //         import ('../Views/Evaluation.vue'),
+    //     name: 'evaluations',
+    //     beforeEnter: coordinator
+    // },
     {
         path: '/benefits',
         component: () =>

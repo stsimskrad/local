@@ -175,7 +175,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -233,6 +232,9 @@ __webpack_require__.r(__webpack_exports__);
     formatMoney: function formatMoney(value) {
       var val = (value / 1).toFixed(2).replace(',', '.');
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    set: function set() {
+      this.$refs.main.set(this.latest.group);
     }
   }
 });
@@ -567,9 +569,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'dv_no': this.dv_no,
         'number': this.month.releases.length + 1
       }).then(function (response) {
-        _this.$parent.$parent.set();
-
         _this.$parent.$parent.$parent.fetchLatest();
+
+        _this.$parent.$parent.$parent.set();
 
         _this.$bvModal.hide("newrelease");
 
@@ -893,7 +895,8 @@ __webpack_require__.r(__webpack_exports__);
         semester: {}
       },
       selected: {
-        lists: []
+        lists: [],
+        months: []
       },
       list: '',
       month: ''
@@ -913,6 +916,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     set: function set(data) {
+      console.log(data);
       this.group = data;
       this.fetch(data.id);
     },
@@ -2918,12 +2922,7 @@ var render = function () {
                                     staticClass:
                                       "font-size-13 text-truncate mb-0",
                                   },
-                                  [
-                                    _vm._v(
-                                      _vm._s(_vm.latest.month.name.month) +
-                                        "\n                                        "
-                                    ),
-                                  ]
+                                  [_vm._v(_vm._s(_vm.latest.month.name.month))]
                                 ),
                                 _vm._v(" "),
                                 _c(
@@ -2938,7 +2937,7 @@ var render = function () {
                                         _vm._s(
                                           _vm.latest.month.pending.length
                                         ) +
-                                        " Pending Scholar"
+                                        " Pending Scholar\n                                            "
                                     ),
                                     _vm.latest.month.pending.length > 1
                                       ? _c("span", [_vm._v("s")])
@@ -2984,18 +2983,19 @@ var render = function () {
                             _vm._l(
                               _vm.latest.month.name.releases,
                               function (list) {
-                                return _c("tr", { key: list.id }, [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticStyle: { cursor: "pointer" },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.fetchLists(list)
-                                        },
+                                return _c(
+                                  "tr",
+                                  {
+                                    key: list.id,
+                                    staticStyle: { cursor: "pointer" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.set()
                                       },
                                     },
-                                    [
+                                  },
+                                  [
+                                    _c("td", [
                                       _c(
                                         "h5",
                                         {
@@ -3038,38 +3038,40 @@ var render = function () {
                                         },
                                         [_vm._v(_vm._s(list.created_at))]
                                       ),
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "text-end" }, [
-                                    _c(
-                                      "p",
-                                      { staticClass: "mb-0 font-size-12" },
-                                      [
-                                        _vm._v(
-                                          "₱" +
-                                            _vm._s(_vm.formatMoney(list.total))
-                                        ),
-                                      ]
-                                    ),
+                                    ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass:
-                                          "text-muted mb-0 font-size-12",
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(list.scholars) + " Scholar"
-                                        ),
-                                        list.scholars > 1
-                                          ? _c("span", [_vm._v("s")])
-                                          : _vm._e(),
-                                      ]
-                                    ),
-                                  ]),
-                                ])
+                                    _c("td", { staticClass: "text-end" }, [
+                                      _c(
+                                        "p",
+                                        { staticClass: "mb-0 font-size-12" },
+                                        [
+                                          _vm._v(
+                                            "₱" +
+                                              _vm._s(
+                                                _vm.formatMoney(list.total)
+                                              )
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "p",
+                                        {
+                                          staticClass:
+                                            "text-muted mb-0 font-size-12",
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(list.scholars) + " Scholar"
+                                          ),
+                                          list.scholars > 1
+                                            ? _c("span", [_vm._v("s")])
+                                            : _vm._e(),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]
+                                )
                               }
                             ),
                             0
@@ -4025,7 +4027,7 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "card-body border-bottom" }, [
         _c("div", { staticClass: "row mb-n3" }, [
-          _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "col-md-9" }, [
             _c(
               "ul",
               {
@@ -4132,7 +4134,7 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
+          _c("div", { staticClass: "col-md-3" }, [
             _c("div", { staticClass: "input-group input-group-sm mb-2" }, [
               _c(
                 "label",

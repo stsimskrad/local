@@ -121,6 +121,7 @@ Route::prefix('request')->group(function(){
                     Route::get('/prospectus/{key}', 'prospectus');
                     Route::post('/switch', 'switch');
                     Route::get('/{id}/{keyword}', 'index');
+                    Route::get('/info', 'latest');
                 });
                 Route::controller(App\Http\Controllers\Scholarship\Evaluation\ReportController::class)->group(function () {
                     Route::get('/reports', 'reports');
@@ -184,6 +185,12 @@ Route::prefix('request')->group(function(){
                     Route::post('/store', 'store');
                     Route::get('/{key}/{counts}', 'index');
                 });
+            });
+        });
+
+        Route::prefix('dashboard')->group(function(){
+            Route::controller(App\Http\Controllers\Home\CoordinatorController::class)->group(function () {
+                Route::get('/index', 'index');
             });
         });
 

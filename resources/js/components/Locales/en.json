@@ -123,8 +123,8 @@
                 "disbursements": "Disbursements"
             }
         },
-        "evaluations": {
-            "text": "Evaluations"
+        "enrollments": {
+            "text": "Enrollments"
         },
         "benefits": {
             "text": "Financial Benefits"

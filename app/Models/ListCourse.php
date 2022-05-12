@@ -12,6 +12,11 @@ class ListCourse extends Model
     protected $fillable = [
         'name', 'abbreviation', 'others'
     ];
+    
+    public function scholars()
+    {
+        return $this->hasMany('App\Models\ScholarEducation', 'course_id');
+    } 
 
     public function lists()
     {

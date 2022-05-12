@@ -10,7 +10,7 @@ class SchoolResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->school->name,
+            'name' => ucwords(strtolower($this->school->name)),
             'class' => $this->school->class->name,
             'avatar' => $this->school->avatar,
             'shortcut' => $this->shortcut,

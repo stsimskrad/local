@@ -64,11 +64,10 @@
                                             </div>
                                         </div>
                                         <div class="overflow-hidden me-auto">
-                                            <h5 class="font-size-13 text-truncate mb-0">{{ latest.month.name.month }}
-                                            </h5>
+                                            <h5 class="font-size-13 text-truncate mb-0">{{ latest.month.name.month }}</h5>
                                             <p class="text-muted text-truncate mb-0">
-                                                {{ latest.month.pending.length}} Pending Scholar<span
-                                                    v-if="latest.month.pending.length > 1">s</span>
+                                                {{ latest.month.pending.length }} Pending Scholar
+                                                <span v-if="latest.month.pending.length > 1">s</span>
                                             </p>
                                         </div>
                                         <div class="ms-2 mt-1 mb-n2">
@@ -82,8 +81,8 @@
                         <div class="table-responsive mb-4" data-simplebar :style="{ height: (height-323) + 'px' }">
                             <table class="table table-nowrap align-mid table-hover mt-2 mb-0">
                                 <tbody>
-                                    <tr v-for="list in latest.month.name.releases" v-bind:key="list.id">
-                                        <td @click="fetchLists(list)" style="cursor: pointer;">
+                                    <tr v-for="list in latest.month.name.releases" v-bind:key="list.id" @click="set()" style="cursor: pointer;">
+                                        <td>
                                             <h5 class="text-truncate font-size-13 mb-0">
                                                 <a href="javascript: void(0);" class="text-dark">
                                                     <span class="text-primary fw-bold">Release
@@ -189,6 +188,10 @@
                 let val = (value / 1).toFixed(2).replace(',', '.')
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             },
+
+            set(){
+                this.$refs.main.set(this.latest.group);
+            }
         }
     }
 

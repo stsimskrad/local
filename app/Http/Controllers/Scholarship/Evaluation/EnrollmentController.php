@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Scholarship\Evaluation;
 
 use App\Models\Scholar;
+use App\Models\FinancialGroup;
 use App\Models\ScholarEducation;
 use App\Models\ScholarEnrollment;
 use App\Models\ScholarEnrollmentList;
@@ -105,5 +106,31 @@ class EnrollmentController extends Controller
         $p->save();   
 
         return new DefaultResource($p);
+    }
+
+    public function latest(){
+        $group = FinancialGroup::with('semester')
+        ->where('is_active',1)
+        ->orderBy('created_at','DESC')->first();
+
+        $academic_year = $group->academic_year;
+        $semester_id = $group->semester_id;
+
+        $enrolled = ScholarEnrollment::whereHas('semester',function ($query) use ($academic_year,$semester_id) {
+            $query->where('academic_year',$academic_year)->where('semester_id',$semester_id);
+        })->get();
+
+        $ongoing = Scholar::whereHas('status',function ($query){
+            $query->where('type','ongoing');
+        })->count();
+
+
+        $data = [
+            'group' => $group,
+            'enrolled' => $enrolled,
+            'ongoing' => $ongoing
+        ];
+
+        return $data;
     }
 }

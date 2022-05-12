@@ -62,12 +62,19 @@ export const menuItems = [{
         ]
     },
     {
-        id: 22,
-        label: "menuitems.evaluations.text",
+        id: 24,
+        label: "menuitems.enrollments.text",
         icon: "bxs-folder-open",
-        link: "/evaluations",
+        link: "/enrollments",
         user: ['Scholarship Coordinator']
     },
+    // {
+    //     id: 22,
+    //     label: "menuitems.evaluations.text",
+    //     icon: "bxs-folder-open",
+    //     link: "/evaluations",
+    //     user: ['Scholarship Coordinator']
+    // },
     {
         id: 23,
         label: "menuitems.benefits.text",
