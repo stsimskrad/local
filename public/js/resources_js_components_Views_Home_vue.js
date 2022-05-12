@@ -1668,6 +1668,7 @@ var render = function () {
                     {
                       staticClass:
                         "table table-centered table-nowrap align-middle",
+                      staticStyle: { "table-layout": "fixed" },
                     },
                     [
                       _vm._m(6),

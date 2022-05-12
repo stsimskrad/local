@@ -179,7 +179,7 @@
                     </div>
                     <div class="card-body" style="height: 330px;">
                         <div class="simplebar-content" style="padding: 0px;">
-                            <table class="table table-centered table-nowrap align-middle">
+                            <table class="table table-centered table-nowrap align-middle" style="table-layout: fixed;">
                                 <colgroup>
                                     <col width="10%" />
                                     <col width="75%" />
