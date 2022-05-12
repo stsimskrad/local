@@ -31,7 +31,7 @@ Route::prefix('request')->group(function(){
         });
     });
 
-    Route::middleware(['auth','role:Super Administrator'])->group(function () {
+   
         Route::prefix('user')->group(function(){
             Route::controller(App\Http\Controllers\UserController::class)->group(function () {
                 Route::get('/lists/{key}/{counts}', 'lists');
@@ -73,7 +73,6 @@ Route::prefix('request')->group(function(){
                 Route::post('/scholars', 'scholars');
             });
         });
-    });
 
 
     Route::middleware(['auth','role:Scholarship Coordinator,Scholarship Staff'])->group(function () {
