@@ -433,6 +433,24 @@ class ListDropdownsTableSeeder extends Seeder
                 'color' => 'n/a',
                 'others' => '5',
             ),
+            46 => 
+            array (
+                'id' => 47,
+                'name' => 'Announcement',
+                'classification' => 'Post',
+                'type' => 'n/a',
+                'color' => 'n/a',
+                'others' => 'n/a',
+            ),
+            47 => 
+            array (
+                'id' => 48,
+                'name' => 'News',
+                'classification' => 'Post',
+                'type' => 'n/a',
+                'color' => 'n/a',
+                'others' => 'n/a',
+            ),
         ));
         
         
