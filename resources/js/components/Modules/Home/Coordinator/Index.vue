@@ -24,76 +24,7 @@
                 </div>
 
                 <div class="card mt-n2">
-                    <div class="card-body" style="height: 440px;">
-
-                        <ul class="list-inline user-chat-nav text-start ms-4 mt-1 dropdown">
-                            <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
-                                <button type="button"
-                                    class="btn btn-sm w-sm ms-n4 me-n3 ml-1 btn-secondary">Update</button>
-                            </li>
-                            <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
-                                <i class="bx bxs-check-circle text-success h4"
-                                    style="margin-left: -22px; position: absolute;"></i>
-                                <span class="text-muted font-size-11">Completed : 1</span>
-                            </li>
-                            <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
-                                <i class="bx bxs-info-circle text-warning h4"
-                                    style="margin-left: -22px; position: absolute;"></i>
-                                <span class="text-muted font-size-11">Incomplete : 1</span>
-                            </li>
-                            <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" v-model="subprogram"
-                                        id="gridCheck" />
-                                    <label class="form-check-label font-size-11" for="gridCheck">Show
-                                        Sub-Programs</label>
-                                </div>
-                            </li>
-                        </ul>
-                        <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
-                            <b-tab active title="Provinces">
-                                <b-card-text>
-                                    <div class="table-responsive">
-                                        <table class="table table-centered table-bordered table-nowrap mb-0">
-                                            <thead class="thead-light">
-                                                <tr class="font-size-10">
-                                                    <th style="width: 20%;" class="text-center">Province</th>
-                                                    <th style="width: 13%;" class="text-center"
-                                                        v-for="program in programs" v-bind:key="program.id">
-                                                        {{ program.name }}</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                        <table class="table table-centered table-bordered table-nowrap">
-                                            <tbody class="font-size-11">
-                                                <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                                    <td style="width: 20%;" class="text-center">
-                                                        {{ province.province.name }}</td>
-                                                    <td style="width: 13%;" class="text-center fw-bold"
-                                                        v-for="(count,index) in province.count" v-bind:key="index">
-                                                        {{ count }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <!-- <table class="table table-centered table-bordered table-nowrap mb-0">
-                                        <tfoot class="thead-light">
-                                            <tr class="font-size-12">
-                                                <th style="width: 80%;" colspan="3"></th>
-                                                <th class="text-center text-primary" style="width: 10%;">{{ units }}</th>
-                                                <th class="text-center text-primary" style="width: 10%;">{{ total }}</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table> -->
-                                    </div>
-                                </b-card-text>
-                            </b-tab>
-                            <b-tab title="Programs">
-                                <b-card-text>
-
-                                </b-card-text>
-                            </b-tab>
-                        </b-tabs>
-                    </div>
+                    <Lists />
                 </div>
             </div>
             <div class="col-md-4">
@@ -122,47 +53,75 @@
                         </div>
                     </div>
                     <div class="col-md-12 mt-n2">
-                        <div class="card">
-                            <div class="card-body" style="height: 440px;">
+                        <div class="card mb-3">
+                            <div class="card-body" style="height: 150px;">
                                 <div class="card border shadow-none">
-                                    <a class="text-body">
-                                        <div class="p-1">
-                                            <button type="button" class="float-end btn btn-sm w-sm btn-light mt-1">Set
-                                                Year</button>
-                                            <div class="d-flex mt-1">
-                                                <div class="avatar-xs align-self-center ml-2 mr-2">
-                                                    <div class="avatar-title rounded bg-transparent">
-                                                        <i class="text-success bx bxs-calendar h4 mt-1"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="overflow-hidden mr-auto align-self-center">
-                                                    <h5 class="font-size-12 text-muted mt-1">Academic Year</h5>
+                                    <div class="p-1">
+                                        <router-link :to="'/qualifier/lists'"><button type="button" class="float-end btn btn-sm w-sm btn-light mt-1 me-1">View</button></router-link>
+                                        <div class="d-flex mt-1">
+                                            <div class="avatar-xs align-self-center ml-2 mr-2">
+                                                <div class="avatar-title rounded bg-transparent">
+                                                    <i class="text-primary bx bxs-user-circle h4 mt-1"></i>
                                                 </div>
                                             </div>
+                                            <div class="overflow-hidden mr-auto align-self-center">
+                                                <h5 class="text-primary fw-bold font-size-12 mt-1">Qualifiers</h5>
+                                            </div>
                                         </div>
-                                    </a>
+                                    </div>
+                                </div>
+                                <table class="table table-centered table-bordered table-sm table-nowrap mt-n3 mb-0">
+                                    <thead class="thead-light">
+                                        <tr class="font-size-10">
+                                            <th style="width: 50%;" class="text-center" v-for="(value, name, index) in qualifiers" v-bind:key="index">{{ name }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                            <td style="width: 50%;" class="text-center" v-for="(value, index) in qualifiers" v-bind:key="index">{{ value }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body mt-n1" style="height: 278px;">
+                                <div class="card border shadow-none">
+                                    <div class="p-1">
+                                        <button type="button" class="float-end btn btn-sm w-sm btn-light mt-1 me-1">Set Year</button>
+                                        <div class="d-flex mt-1">
+                                            <div class="avatar-xs align-self-center ml-2 mr-2">
+                                                <div class="avatar-title rounded bg-transparent">
+                                                    <i class="text-primary bx bxs-calendar h4 mt-1"></i>
+                                                </div>
+                                            </div>
+                                            <div class="overflow-hidden mr-auto align-self-center">
+                                                <h5 class="text-primary font-size-12 fw-bold mt-1">Academic Year</h5>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <h6>
                                     <i class='bx bx-chevrons-right text-primary'></i>
-                                    {{ academic_year.academic_year }} - {{ academic_year.semester.name }}
+                                    {{ academic_year.group.academic_year }} - {{ academic_year.group.semester.name }}
                                     <span class="font-size-10 text-success">(Active)</span>
                                 </h6>
-                                <div class="card border shadow-none mt-4">
-                                    <a class="text-body">
-                                        <div class="p-1">
-                                            <div class="d-flex mt-1">
-                                                <div class="avatar-xs align-self-center ml-2 mr-2">
-                                                    <div class="avatar-title rounded bg-transparent">
-                                                        <i class="text-secondary bx bxs-cog h4 mt-1"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="overflow-hidden mr-auto align-self-center">
-                                                    <h5 class="font-size-12 text-muted mt-1">Settings</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                <hr>
+                                <table class="table table-centered table-bordered table-sm table-nowrap mt-3 mb-0">
+                                    <thead class="thead-light">
+                                        <tr class="font-size-10">
+                                            <th style="width: 50%;" class="text-center">Enrolled</th>
+                                            <th style="width: 50%;" class="text-center">Ongoing Scholars</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                            <td style="width: 50%;" class="text-center">{{ academic_year.enrolled }}</td>
+                                            <td style="width: 50%;" class="text-center">{{ academic_year.ongoing }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
                             </div>
                         </div>
                     </div>
@@ -200,7 +159,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="text-center my-3"><a href="javascript:void(0);" class="text-success">See All .. </a></div>
+                            <div class="text-center my-3"><a href="javascript:void(0);" class="text-success">See All ..
+                                </a></div>
                         </div>
                     </div>
                 </div>
@@ -234,9 +194,10 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="text-center my-3"><a href="javascript:void(0);" class="text-success">See All .. </a></div>
+                        <div class="text-center my-3"><a href="javascript:void(0);" class="text-success">See All .. </a>
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md-4">
@@ -246,8 +207,16 @@
                             <h6 class="fw-bold mb-n1">REIMBURSEMENTS</h6>
                         </div>
                     </div>
-                    <div class="card-body" style="height: 330px;">
-
+                    <div class="card-body align-items-center d-flex justify-content-center" style="height: 138px;">
+                        <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-info align-middle">No reimbursement request found.</div>
+                    </div>
+                    <div class="card-body border-bottom border-top">
+                        <div class="page-title-left">
+                            <h6 class="fw-bold mb-n1">REQUESTS</h6>
+                        </div>
+                    </div>
+                    <div class="card-body align-items-center d-flex justify-content-center" style="height: 139px;">
+                        <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-info align-middle">No information request found.</div>
                     </div>
                 </div>
             </div>
@@ -255,20 +224,18 @@
     </div>
 </template>
 <script>
+    import Lists from "./Lists.vue";
     export default {
+        components : { Lists },
         data() {
             return {
                 currentUrl: window.location.origin,
-                provinces: [],
-                programs: [],
                 totals: [],
                 staffs: [],
-                academic_year: {
-                    semester: {}
-                },
-                subprogram: false,
+                academic_year: {group:{ semester: {}}},
                 schools: [],
-                courses: []
+                courses: [],
+                qualifiers: [],
             }
         },
 
@@ -281,12 +248,11 @@
             fetch() {
                 axios.get(this.currentUrl + '/request/dashboard/index')
                     .then(response => {
-                        this.provinces = response.data.provinces.provinces;
-                        this.programs = response.data.provinces.programs;
                         this.staffs = response.data.staffs;
                         this.academic_year = response.data.academic_year;
                         this.schools = response.data.schools;
                         this.courses = response.data.courses;
+                        this.qualifiers = response.data.qualifiers;
                     })
                     .catch(err => console.log(err));
             },

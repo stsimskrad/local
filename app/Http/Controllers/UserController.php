@@ -23,7 +23,7 @@ class UserController extends Controller
             $query->where(\DB::raw('concat(firstname," ",lastname)'), 'LIKE', '%'.$keyword.'%')->orWhere(\DB::raw('concat(lastname," ",firstname)'), 'LIKE', '%'.$keyword.'%');
         })
         ->orWhere(function ($query) use ($keyword) {
-            $query->where('email', 'LIKE', '%'.$keyword.'%');
+            $query->where('email', 'LIKE', '%'.$keyword.'%')->where('role','!=','Scholar');
         })
         ->orderBy('id','DESC')->paginate($count);
         return UserResource::collection($data);

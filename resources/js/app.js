@@ -7,12 +7,16 @@ import vClickOutside from "v-click-outside";
 import { BootstrapVue } from "bootstrap-vue";
 import VueRouter from 'vue-router';
 import VueApexCharts from 'vue-apexcharts';
+import Scrollspy from 'vue2-scrollspy';
+import VueScrollTo from 'vue-scrollto';
 
 Vue.prototype.$isDev = process.env.MIX_APP_ENV !== "production";
 Vue.config.devtools = Vue.prototype.$isDev;
 Vue.config.debug = Vue.prototype.$isDev;
 Vue.config.silent = !Vue.prototype.$isDev;
 
+Vue.use(Scrollspy);
+Vue.use(VueScrollTo);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(vClickOutside);
@@ -21,6 +25,7 @@ Vue.use(VueToast);
 Vue.component('apexchart', VueApexCharts)
 Vue.component("layout", require("./components/Layouts/main.vue").default);
 Vue.component("installation", require("./components/Modules/Exclusion/Installation.vue").default);
+Vue.component("landing", require("./components/Layouts/Landing.vue").default);
 
 import Layouts from "./components/Layouts/layouts.mixin";
 import router from './components/Router/index';

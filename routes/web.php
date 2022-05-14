@@ -205,6 +205,10 @@ Route::prefix('request')->group(function(){
 
 });
 
+Route::prefix('public')->group(function(){
+    Route::get('/lists', [App\Http\Controllers\Home\PublicController::class, 'index']);
+});
+
 Route::prefix('excel')->group(function(){
     Route::post('/qualifier/import', [App\Http\Controllers\Qualifier\ImportController::class, 'index']);
     Route::post('/qualifier/store', [App\Http\Controllers\Qualifier\ImportController::class, 'store']);

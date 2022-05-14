@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Lists_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Lists.vue */ "./resources/js/components/Modules/Home/Coordinator/Lists.vue");
 //
 //
 //
@@ -267,51 +268,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Lists: _Lists_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       currentUrl: window.location.origin,
-      provinces: [],
-      programs: [],
       totals: [],
       staffs: [],
       academic_year: {
-        semester: {}
+        group: {
+          semester: {}
+        }
       },
-      subprogram: false,
       schools: [],
-      courses: []
+      courses: [],
+      qualifiers: []
     };
   },
   created: function created() {
@@ -323,12 +297,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get(this.currentUrl + '/request/dashboard/index').then(function (response) {
-        _this.provinces = response.data.provinces.provinces;
-        _this.programs = response.data.provinces.programs;
         _this.staffs = response.data.staffs;
         _this.academic_year = response.data.academic_year;
         _this.schools = response.data.schools;
         _this.courses = response.data.courses;
+        _this.qualifiers = response.data.qualifiers;
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -1343,230 +1316,7 @@ var render = function () {
           0
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card mt-n2" }, [
-          _c(
-            "div",
-            { staticClass: "card-body", staticStyle: { height: "440px" } },
-            [
-              _c(
-                "ul",
-                {
-                  staticClass:
-                    "list-inline user-chat-nav text-start ms-4 mt-1 dropdown",
-                },
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "list-inline-item d-non d-sm-inline-block",
-                      staticStyle: { "margin-right": "50px" },
-                    },
-                    [
-                      _c("div", { staticClass: "form-check" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.subprogram,
-                              expression: "subprogram",
-                            },
-                          ],
-                          staticClass: "form-check-input",
-                          attrs: { type: "checkbox", id: "gridCheck" },
-                          domProps: {
-                            checked: Array.isArray(_vm.subprogram)
-                              ? _vm._i(_vm.subprogram, null) > -1
-                              : _vm.subprogram,
-                          },
-                          on: {
-                            change: function ($event) {
-                              var $$a = _vm.subprogram,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.subprogram = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.subprogram = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.subprogram = $$c
-                              }
-                            },
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label font-size-11",
-                            attrs: { for: "gridCheck" },
-                          },
-                          [
-                            _vm._v(
-                              "Show\n                                    Sub-Programs"
-                            ),
-                          ]
-                        ),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-tabs",
-                {
-                  attrs: {
-                    pills: "",
-                    "nav-class": "bg-light rounded",
-                    "content-class": "mt-3",
-                    small: "",
-                  },
-                },
-                [
-                  _c(
-                    "b-tab",
-                    { attrs: { active: "", title: "Provinces" } },
-                    [
-                      _c("b-card-text", [
-                        _c("div", { staticClass: "table-responsive" }, [
-                          _c(
-                            "table",
-                            {
-                              staticClass:
-                                "table table-centered table-bordered table-nowrap mb-0",
-                            },
-                            [
-                              _c("thead", { staticClass: "thead-light" }, [
-                                _c(
-                                  "tr",
-                                  { staticClass: "font-size-10" },
-                                  [
-                                    _c(
-                                      "th",
-                                      {
-                                        staticClass: "text-center",
-                                        staticStyle: { width: "20%" },
-                                      },
-                                      [_vm._v("Province")]
-                                    ),
-                                    _vm._v(" "),
-                                    _vm._l(_vm.programs, function (program) {
-                                      return _c(
-                                        "th",
-                                        {
-                                          key: program.id,
-                                          staticClass: "text-center",
-                                          staticStyle: { width: "13%" },
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                                    " +
-                                              _vm._s(program.name)
-                                          ),
-                                        ]
-                                      )
-                                    }),
-                                  ],
-                                  2
-                                ),
-                              ]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "table",
-                            {
-                              staticClass:
-                                "table table-centered table-bordered table-nowrap",
-                            },
-                            [
-                              _c(
-                                "tbody",
-                                { staticClass: "font-size-11" },
-                                _vm._l(
-                                  _vm.provinces,
-                                  function (province, index) {
-                                    return _c(
-                                      "tr",
-                                      { key: index },
-                                      [
-                                        _c(
-                                          "td",
-                                          {
-                                            staticClass: "text-center",
-                                            staticStyle: { width: "20%" },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                    " +
-                                                _vm._s(province.province.name)
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._l(
-                                          province.count,
-                                          function (count, index) {
-                                            return _c(
-                                              "td",
-                                              {
-                                                key: index,
-                                                staticClass:
-                                                  "text-center fw-bold",
-                                                staticStyle: { width: "13%" },
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                    " +
-                                                    _vm._s(count)
-                                                ),
-                                              ]
-                                            )
-                                          }
-                                        ),
-                                      ],
-                                      2
-                                    )
-                                  }
-                                ),
-                                0
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-tab",
-                    { attrs: { title: "Programs" } },
-                    [_c("b-card-text")],
-                    1
-                  ),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-        ]),
+        _c("div", { staticClass: "card mt-n2" }, [_c("Lists")], 1),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
@@ -1615,12 +1365,96 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-12 mt-n2" }, [
+            _c("div", { staticClass: "card mb-3" }, [
+              _c(
+                "div",
+                { staticClass: "card-body", staticStyle: { height: "150px" } },
+                [
+                  _c("div", { staticClass: "card border shadow-none" }, [
+                    _c(
+                      "div",
+                      { staticClass: "p-1" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/qualifier/lists" } },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass:
+                                  "float-end btn btn-sm w-sm btn-light mt-1 me-1",
+                                attrs: { type: "button" },
+                              },
+                              [_vm._v("View")]
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-centered table-bordered table-sm table-nowrap mt-n3 mb-0",
+                    },
+                    [
+                      _c("thead", { staticClass: "thead-light" }, [
+                        _c(
+                          "tr",
+                          { staticClass: "font-size-10" },
+                          _vm._l(_vm.qualifiers, function (value, name, index) {
+                            return _c(
+                              "th",
+                              {
+                                key: index,
+                                staticClass: "text-center",
+                                staticStyle: { width: "50%" },
+                              },
+                              [_vm._v(_vm._s(name))]
+                            )
+                          }),
+                          0
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("tbody", [
+                        _c(
+                          "tr",
+                          _vm._l(_vm.qualifiers, function (value, index) {
+                            return _c(
+                              "td",
+                              {
+                                key: index,
+                                staticClass: "text-center",
+                                staticStyle: { width: "50%" },
+                              },
+                              [_vm._v(_vm._s(value))]
+                            )
+                          }),
+                          0
+                        ),
+                      ]),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "card" }, [
               _c(
                 "div",
-                { staticClass: "card-body", staticStyle: { height: "440px" } },
+                {
+                  staticClass: "card-body mt-n1",
+                  staticStyle: { height: "278px" },
+                },
                 [
-                  _vm._m(3),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c("h6", [
                     _c("i", {
@@ -1628,9 +1462,9 @@ var render = function () {
                     }),
                     _vm._v(
                       "\n                                " +
-                        _vm._s(_vm.academic_year.academic_year) +
+                        _vm._s(_vm.academic_year.group.academic_year) +
                         " - " +
-                        _vm._s(_vm.academic_year.semester.name) +
+                        _vm._s(_vm.academic_year.group.semester.name) +
                         "\n                                "
                     ),
                     _c("span", { staticClass: "font-size-10 text-success" }, [
@@ -1638,7 +1472,40 @@ var render = function () {
                     ]),
                   ]),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-centered table-bordered table-sm table-nowrap mt-3 mb-0",
+                    },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("tbody", [
+                        _c("tr", [
+                          _c(
+                            "td",
+                            {
+                              staticClass: "text-center",
+                              staticStyle: { width: "50%" },
+                            },
+                            [_vm._v(_vm._s(_vm.academic_year.enrolled))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass: "text-center",
+                              staticStyle: { width: "50%" },
+                            },
+                            [_vm._v(_vm._s(_vm.academic_year.ongoing))]
+                          ),
+                        ]),
+                      ]),
+                    ]
+                  ),
                 ]
               ),
             ]),
@@ -1650,7 +1517,7 @@ var render = function () {
     _c("div", { staticClass: "row g-3" }, [
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "card mt-n2" }, [
-          _vm._m(5),
+          _vm._m(3),
           _vm._v(" "),
           _c(
             "div",
@@ -1671,9 +1538,9 @@ var render = function () {
                       staticStyle: { "table-layout": "fixed" },
                     },
                     [
-                      _vm._m(6),
+                      _vm._m(4),
                       _vm._v(" "),
-                      _vm._m(7),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -1696,7 +1563,7 @@ var render = function () {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(8),
+                  _vm._m(6),
                 ]
               ),
             ]
@@ -1706,7 +1573,7 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "card mt-n2" }, [
-          _vm._m(9),
+          _vm._m(7),
           _vm._v(" "),
           _c(
             "div",
@@ -1719,9 +1586,9 @@ var render = function () {
                   staticStyle: { "table-layout": "fixed" },
                 },
                 [
-                  _vm._m(10),
+                  _vm._m(8),
                   _vm._v(" "),
-                  _vm._m(11),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -1744,13 +1611,13 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(12),
+              _vm._m(10),
             ]
           ),
         ]),
       ]),
       _vm._v(" "),
-      _vm._m(13),
+      _vm._m(11),
     ]),
   ])
 }
@@ -1759,111 +1626,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      {
-        staticClass: "list-inline-item d-non d-sm-inline-block",
-        staticStyle: { "margin-right": "50px" },
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm w-sm ms-n4 me-n3 ml-1 btn-secondary",
-            attrs: { type: "button" },
-          },
-          [_vm._v("Update")]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      {
-        staticClass: "list-inline-item d-non d-sm-inline-block",
-        staticStyle: { "margin-right": "50px" },
-      },
-      [
-        _c("i", {
-          staticClass: "bx bxs-check-circle text-success h4",
-          staticStyle: { "margin-left": "-22px", position: "absolute" },
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-muted font-size-11" }, [
-          _vm._v("Completed : 1"),
+    return _c("div", { staticClass: "d-flex mt-1" }, [
+      _c("div", { staticClass: "avatar-xs align-self-center ml-2 mr-2" }, [
+        _c("div", { staticClass: "avatar-title rounded bg-transparent" }, [
+          _c("i", { staticClass: "text-primary bx bxs-user-circle h4 mt-1" }),
         ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      {
-        staticClass: "list-inline-item d-non d-sm-inline-block",
-        staticStyle: { "margin-right": "50px" },
-      },
-      [
-        _c("i", {
-          staticClass: "bx bxs-info-circle text-warning h4",
-          staticStyle: { "margin-left": "-22px", position: "absolute" },
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "text-muted font-size-11" }, [
-          _vm._v("Incomplete : 1"),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card border shadow-none" }, [
-      _c("a", { staticClass: "text-body" }, [
-        _c("div", { staticClass: "p-1" }, [
-          _c(
-            "button",
-            {
-              staticClass: "float-end btn btn-sm w-sm btn-light mt-1",
-              attrs: { type: "button" },
-            },
-            [_vm._v("Set\n                                            Year")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "d-flex mt-1" }, [
-            _c(
-              "div",
-              { staticClass: "avatar-xs align-self-center ml-2 mr-2" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "avatar-title rounded bg-transparent" },
-                  [
-                    _c("i", {
-                      staticClass: "text-success bx bxs-calendar h4 mt-1",
-                    }),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "overflow-hidden mr-auto align-self-center" },
-              [
-                _c("h5", { staticClass: "font-size-12 text-muted mt-1" }, [
-                  _vm._v("Academic Year"),
-                ]),
-              ]
-            ),
-          ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "overflow-hidden mr-auto align-self-center" }, [
+        _c("h5", { staticClass: "text-primary fw-bold font-size-12 mt-1" }, [
+          _vm._v("Qualifiers"),
         ]),
       ]),
     ])
@@ -1872,37 +1644,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card border shadow-none mt-4" }, [
-      _c("a", { staticClass: "text-body" }, [
-        _c("div", { staticClass: "p-1" }, [
-          _c("div", { staticClass: "d-flex mt-1" }, [
-            _c(
-              "div",
-              { staticClass: "avatar-xs align-self-center ml-2 mr-2" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "avatar-title rounded bg-transparent" },
-                  [
-                    _c("i", {
-                      staticClass: "text-secondary bx bxs-cog h4 mt-1",
-                    }),
-                  ]
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "overflow-hidden mr-auto align-self-center" },
-              [
-                _c("h5", { staticClass: "font-size-12 text-muted mt-1" }, [
-                  _vm._v("Settings"),
-                ]),
-              ]
-            ),
+    return _c("div", { staticClass: "card border shadow-none" }, [
+      _c("div", { staticClass: "p-1" }, [
+        _c(
+          "button",
+          {
+            staticClass: "float-end btn btn-sm w-sm btn-light mt-1 me-1",
+            attrs: { type: "button" },
+          },
+          [_vm._v("Set Year")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex mt-1" }, [
+          _c("div", { staticClass: "avatar-xs align-self-center ml-2 mr-2" }, [
+            _c("div", { staticClass: "avatar-title rounded bg-transparent" }, [
+              _c("i", { staticClass: "text-primary bx bxs-calendar h4 mt-1" }),
+            ]),
           ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "overflow-hidden mr-auto align-self-center" },
+            [
+              _c(
+                "h5",
+                { staticClass: "text-primary font-size-12 fw-bold mt-1" },
+                [_vm._v("Academic Year")]
+              ),
+            ]
+          ),
         ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", { staticClass: "font-size-10" }, [
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "50%" } },
+          [_vm._v("Enrolled")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { width: "50%" } },
+          [_vm._v("Ongoing Scholars")]
+        ),
       ]),
     ])
   },
@@ -1950,7 +1741,7 @@ var staticRenderFns = [
       _c(
         "a",
         { staticClass: "text-success", attrs: { href: "javascript:void(0);" } },
-        [_vm._v("See All .. ")]
+        [_vm._v("See All ..\n                            ")]
       ),
     ])
   },
@@ -2016,10 +1807,57 @@ var staticRenderFns = [
           ]),
         ]),
         _vm._v(" "),
-        _c("div", {
-          staticClass: "card-body",
-          staticStyle: { height: "330px" },
-        }),
+        _c(
+          "div",
+          {
+            staticClass:
+              "card-body align-items-center d-flex justify-content-center",
+            staticStyle: { height: "138px" },
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "alert alert-info align-middle",
+                attrs: {
+                  role: "alert",
+                  "aria-live": "polite",
+                  "aria-atomic": "true",
+                },
+              },
+              [_vm._v("No reimbursement request found.")]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body border-bottom border-top" }, [
+          _c("div", { staticClass: "page-title-left" }, [
+            _c("h6", { staticClass: "fw-bold mb-n1" }, [_vm._v("REQUESTS")]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "card-body align-items-center d-flex justify-content-center",
+            staticStyle: { height: "139px" },
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "alert alert-info align-middle",
+                attrs: {
+                  role: "alert",
+                  "aria-live": "polite",
+                  "aria-atomic": "true",
+                },
+              },
+              [_vm._v("No information request found.")]
+            ),
+          ]
+        ),
       ]),
     ])
   },

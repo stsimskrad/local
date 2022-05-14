@@ -15,6 +15,7 @@ class Qualifier extends Model
         'school_code',
         'course_id',
         'profile_id',
+        'is_undergrad',
         'is_qualified',
         'is_waiting',
         'is_referral',
