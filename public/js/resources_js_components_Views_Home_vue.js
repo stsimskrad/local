@@ -268,6 +268,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1316,7 +1318,14 @@ var render = function () {
           0
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card mt-n2" }, [_c("Lists")], 1),
+        _c("div", { staticClass: "card mt-n2" }, [
+          _c(
+            "div",
+            { staticClass: "card-body", staticStyle: { height: "440px" } },
+            [_c("Lists")],
+            1
+          ),
+        ]),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [

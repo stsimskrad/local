@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Profile', 'user_id');
     } 
 
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post', 'user_id');
+    } 
+
     public function hasRole($roles)
     {
         foreach ($roles as $role) {

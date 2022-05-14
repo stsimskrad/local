@@ -207,6 +207,7 @@ Route::prefix('request')->group(function(){
 
 Route::prefix('public')->group(function(){
     Route::get('/lists', [App\Http\Controllers\Home\PublicController::class, 'index']);
+    Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
 });
 
 Route::prefix('excel')->group(function(){

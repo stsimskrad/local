@@ -24,7 +24,9 @@
                 </div>
 
                 <div class="card mt-n2">
-                    <Lists />
+                    <div class="card-body" style="height: 440px;">
+                        <Lists />
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">

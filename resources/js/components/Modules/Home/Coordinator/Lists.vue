@@ -1,5 +1,5 @@
 <template>
-    <div class="card-body" style="height: 440px;">
+    <div>
         <ul class="list-inline user-chat-nav text-start ms-4 mt-1 dropdown">
             <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                 <button type="button"
@@ -23,6 +23,14 @@
                         Sub-Programs</label>
                 </div>
             </li>
+             <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" v-model="graphical"
+                        id="gridCheck" />
+                    <label class="form-check-label font-size-11" for="gridCheck">Show
+                        Graphical View</label>
+                </div>
+            </li>
         </ul>
         <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
             <b-tab active title="Provinces">
@@ -31,7 +39,7 @@
                         <table class="table table-centered table-bordered table-nowrap mb-0">
                             <thead class="thead-light">
                                 <tr class="font-size-10">
-                                    <th style="width: 20%;" class="text-center">Province</th>
+                                    <th style="width: 20%;">Province</th>
                                     <th style="width: 13%;" class="text-center"
                                         v-for="program in programs_list" v-bind:key="program.id">
                                         {{ program.name }}</th>
@@ -41,7 +49,7 @@
                         <table class="table table-centered table-bordered table-nowrap">
                             <tbody class="font-size-11">
                                 <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                    <td style="width: 20%;" class="text-center">
+                                    <td style="width: 20%;">
                                         {{ province.province.name }}</td>
                                     <td style="width: 13%;" v-if="index < counts" class="text-center fw-bold" v-for="(count,index) in province.count" v-bind:key="index">
                                         {{ count }}
@@ -67,7 +75,7 @@
                         <table class="table table-centered table-bordered table-nowrap mb-0">
                             <thead class="thead-light">
                                 <tr class="font-size-10">
-                                    <th style="width: 40%;" class="text-center">Name</th>
+                                    <th style="width: 40%;">Name</th>
                                     <th style="width: 20%;" class="text-center">Undergraduate</th>
                                     <th style="width: 20%;" class="text-center">JLSS</th>
                                     <th style="width: 20%;" class="text-center">Total</th>
@@ -77,7 +85,7 @@
                         <table class="table table-centered table-bordered table-nowrap">
                             <tbody class="font-size-11">
                                 <tr v-for="(program,index) in undergraduates" v-bind:key="index">
-                                    <td style="width: 40%;" class="text-center fw-bold">
+                                    <td style="width: 40%;" class="fw-bold">
                                         {{ program.name }}
                                     </td>
                                     <td style="width: 20%;" class="text-center">
@@ -103,7 +111,8 @@ export default {
             type_programs: [],
             provinces: [],
             programs: { undergrad: []},
-            subprogram: false
+            subprogram: false,
+            graphical: false
         }
     },
 

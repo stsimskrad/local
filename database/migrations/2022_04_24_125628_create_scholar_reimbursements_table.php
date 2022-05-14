@@ -18,10 +18,14 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->decimal('amount',12,2);
             $table->json('attachment');
+            $table->boolean('is_approved')->default(0);
+            $table->boolean('is_reimbursed')->default(0);
             $table->tinyInteger('benefit_id')->unsigned()->index();
             $table->foreign('benefit_id')->references('id')->on('list_benefits')->onDelete('cascade');
             $table->bigInteger('scholar_id')->unsigned()->index();
             $table->foreign('scholar_id')->references('id')->on('scholars')->onDelete('cascade');
+            $table->bigInteger('checked_by')->unsigned()->index();
+            $table->foreign('checked_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
