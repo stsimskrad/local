@@ -197,7 +197,7 @@ Route::prefix('request')->group(function(){
 
     Route::middleware(['auth','role:Scholar'])->group(function () {
         Route::prefix('info')->group(function(){
-            Route::controller(App\Http\Controllers\Scholar\ProfileController::class)->group(function () {
+            Route::controller(App\Http\Controllers\ScholarNOTUSED\ProfileController::class)->group(function () {
                 Route::get('/', 'index');
             });
         });
@@ -209,7 +209,7 @@ Route::prefix('public')->group(function(){
     Route::get('/lists', [App\Http\Controllers\Home\PublicController::class, 'index']);
     Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
     Route::get('/view', [App\Http\Controllers\Home\PublicController::class, 'lists']);
-    Route::get('/totals', [App\Http\Controllers\Home\PublicController::class, 'totals']);
+    Route::get('/totalss', [App\Http\Controllers\Home\PublicController::class, 'totals']);
 });
 
 Route::prefix('excel')->group(function(){

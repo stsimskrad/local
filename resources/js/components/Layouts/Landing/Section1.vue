@@ -54,7 +54,7 @@
 
         methods : {
             fetchTotals() {
-                axios.get(this.currentUrl + '/public/totals')
+                axios.get(this.currentUrl + '/public/totalss')
                 .then(response => {
                     this.totals = response.data;
                 })
