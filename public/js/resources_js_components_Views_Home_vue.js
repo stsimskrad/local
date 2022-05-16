@@ -1329,6 +1329,7 @@ var render = function () {
                   "overflow-y": "auto",
                   "overflow-x": "hidden",
                 },
+                attrs: { "data-simplebar": "" },
               }),
             ],
             1

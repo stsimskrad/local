@@ -25,7 +25,7 @@
 
                 <div class="card mt-n2">
                     <div class="card-body" style="height: 440px;">
-                        <Lists style="height: 400px; overflow-y: auto; overflow-x: hidden;"/>
+                        <Lists data-simplebar style="height: 400px; overflow-y: auto; overflow-x: hidden;"/>
                     </div>
                 </div>
             </div>
@@ -261,10 +261,10 @@
 
             fetchTotals() {
                 axios.get(this.currentUrl + '/request/scholar/reports/totals')
-                    .then(response => {
-                        this.totals = response.data;
-                    })
-                    .catch(err => console.log(err));
+                .then(response => {
+                    this.totals = response.data;
+                })
+                .catch(err => console.log(err));
             },
 
             ucwords(str) {

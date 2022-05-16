@@ -4,52 +4,19 @@
             <div class="row mt-4">
                 <div class="col-lg-12">
                     <div class="row g-3">
-                        <div class="col-lg-4">
+                        <div class="col-lg-4" v-for="(total,index) in totals" v-bind:key="index">
                             <div class="card border mini-stats-wid">
                                 <div class="card-body">
                                     <div class="d-flex flex-wrap">
                                         <div class="me-3">
-                                            <p class="text-muted mb-2">Total Scholars</p>
-                                            <h5 class="mb-0">981</h5>
+                                            <p class="text-muted mb-2">{{ total.name }}</p>
+                                            <h5 class="mb-0">{{ total.counts }}</h5>
                                         </div>
                                         <div class="avatar-sm ms-auto">
-                                            <div
-                                                class="avatar-title bg-light rounded-circle font-size-20 text-success">
-                                                <i class="bx bx-group"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card border mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex flex-wrap">
-                                        <div class="me-3">
-                                            <p class="text-muted mb-2">Total Graduates</p>
-                                            <h5 class="mb-0">651</h5>
-                                        </div>
-                                        <div class="avatar-sm ms-auto">
-                                            <div
-                                                class="avatar-title bg-light rounded-circle font-size-20 text-info">
-                                                <i class="bx bxs-graduation"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card border mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex flex-wrap">
-                                        <div class="me-3">
-                                            <p class="text-muted mb-2">Ongoing Scholars</p>
-                                            <h5 class="mb-0">168</h5>
-                                        </div>
-                                        <div class="avatar-sm ms-auto">
-                                            <div
-                                                class="avatar-title bg-light rounded-circle font-size-20 text-primary">
-                                                <i class="bx bx-user-circle"></i></div>
+                                            <div class="avatar-title bg-light rounded-circle font-size-20"
+                                                :class="'text-'+total.color">
+                                                <i class="bx" :class="total.icon"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +43,23 @@
         components: { Lists },
         data() {
             return {
+                currentUrl: window.location.origin,
+                totals: []
             };
         },
+
+        created(){
+            this.fetchTotals();
+        },
+
+        methods : {
+            fetchTotals() {
+                axios.get(this.currentUrl + '/public/totals')
+                .then(response => {
+                    this.totals = response.data;
+                })
+                .catch(err => console.log(err));
+            },
+        }
     };
 </script>
