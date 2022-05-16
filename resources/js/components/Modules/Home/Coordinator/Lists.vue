@@ -35,34 +35,65 @@
         <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
             <b-tab active title="Provinces">
                 <b-card-text>
-                    <div class="table-responsive">
-                    
-                        <table class="table table-centered table-bordered table-nowrap">
-                             <thead class="thead-light">
-                                <tr class="font-size-10">
-                                    <th style="width: 20%;">Province</th>
-                                    <th style="width: 13%;" class="text-center"
-                                        v-for="program in programs_list" v-bind:key="program.id">
-                                        {{ program.name }}</th>
-                                    <th style="width: 13%;" class="text-center">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody class="font-size-11">
-                                <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                    <td style="width: 20%;">
-                                        {{ province.province.name }}</td>
-                                    <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
-                                        {{ count }}
-                                    </td>
-                                    <td style="width: 13%;" class="fw-bold text-center">{{ total(province.count) }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 20%;" class="fw-bold">Total</td>
-                                    <td style="width: 13%;" class="text-center fw-bold" v-if="index3 < counts" v-for="(total,index3) in totals" v-bind:key="index3">{{ total }}</td>
-                                    <td style="width: 13%;" class="fw-bold text-success text-center">{{ sum }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-md-3 g-0 ps-1">
+                                <table class="table table-centered table-bordered table-nowrap">
+                                    <thead class="thead-light">
+                                        <tr class="font-size-10">
+                                            <th style="width: 100%;">Province</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-size-11">
+                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                            <td @click="show(province)" style="width: 100%; cursor: pointer;">
+                                                {{ province.province.name }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%;" class="fw-bold">Total</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-8 g-0">
+                                <table class="table table-centered table-bordered table-nowrap">
+                                    <thead class="thead-light">
+                                        <tr class="font-size-10">
+                                            <th style="width: 13%;" class="text-center"
+                                                v-for="program in programs_list" v-bind:key="program.id">
+                                                {{ program.name }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-size-11">
+                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                            <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
+                                                {{ count }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 13%;" class="text-center fw-bold" v-if="index3 < counts" v-for="(total,index3) in totals" v-bind:key="index3">{{ total }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-1 g-0 pe-1">
+                                <table class="table table-centered table-bordered table-nowrap">
+                                    <thead class="thead-light">
+                                        <tr class="font-size-10">
+                                            <th style="width: 100%;" class="text-center">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="font-size-11">
+                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                            <td style="width: 13%;" class="fw-bold text-center">{{ total(province.count) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%;" class="fw-bold font-size-12 text-success text-center">{{ sum }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                         <!-- <table class="table table-centered table-bordered table-nowrap mb-0">
                         <tfoot class="thead-light">
                             <tr class="font-size-12">
@@ -72,7 +103,6 @@
                             </tr>
                         </tfoot>
                     </table> -->
-                    </div>
                 </b-card-text>
             </b-tab>
             <b-tab title="Programs">
@@ -91,7 +121,7 @@
                         <table class="table table-centered table-bordered table-nowrap">
                             <tbody class="font-size-11">
                                 <tr v-for="(program,index) in undergraduates" v-bind:key="index">
-                                    <td style="width: 40%;" class="fw-bold">
+                                    <td style="width: 40%; cursor: pointer;" class="fw-bold">
                                         {{ program.name }}
                                     </td>
                                     <td style="width: 20%;" class="text-center">
@@ -106,11 +136,14 @@
                 </b-card-text>
             </b-tab>
         </b-tabs>
+        <Province ref="show"/>
     </div>
 </template>
 
 <script>
+import Province from "../Coordinator/Modals/ViewProvince.vue";
 export default {
+    components : { Province },
     data(){
         return {
             currentUrl: window.location.origin,
@@ -178,6 +211,11 @@ export default {
         total(data){   
             const firstHalf = data.slice(0, this.counts) 
             return firstHalf.reduce((a, b) => a + b, 0);
+        },
+
+        show(province){
+            this.$bvModal.show("province");
+            this.$refs.show.set(province);
         }
     }
 }

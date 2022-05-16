@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Scholar;
+use App\Models\ScholarAddress;
 use App\Models\ListProgram;
 use App\Models\LocationProvince;
+use App\Models\LocationMunicipality;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,8 @@ class PublicController extends Controller
     }
 
     public function provinces(){
-        $provinces = ['097200000','097300000','098300000','099300000'];
+
+        $provinces = ScholarAddress::groupBy('province_code')->pluck('province_code');
         $provinces = LocationProvince::whereIn('code',$provinces)->get();
         $programs = ListProgram::all();
 
@@ -40,7 +43,8 @@ class PublicController extends Controller
 
             $array[] = [
                 'province' => $province,
-                'count' => $count
+                'count' => $count,
+                'total' => array_sum($count)
             ];
         }
 
@@ -70,6 +74,16 @@ class PublicController extends Controller
             'undergrad' => $undergrad,
             'jlss' => $jlss
         ];
+    }
+
+    public function lists(){
+        $province = '097200000';
+
+        $data = LocationMunicipality::select('province_code','district')->withCount('scholars')->where('province_code',$province)->groupBy('district')->get();
+        // return $data;   
+        
+        $data = ScholarAddress::where('province_code',$province)->count();
+        return $data;
     }
 
 }

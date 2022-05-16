@@ -21,4 +21,10 @@ class LocationMunicipality extends Model
     {
         return $this->hasMany('App\Models\LocationBarangay', 'municipality_code');
     } 
+
+    public function scholars()
+    {
+        return $this->hasMany('App\Models\ScholarAddress', 'municipality_code');
+    } 
+
 }
