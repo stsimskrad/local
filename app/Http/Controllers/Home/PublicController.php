@@ -25,16 +25,17 @@ class PublicController extends Controller
         $provinces = LocationProvince::whereIn('code',$provinces)->get();
         $programs = ListProgram::all();
 
-        $array = [];
+        $array = []; $sums = []; $total = [];
         
-        foreach($provinces as $province){
+        foreach($provinces as $key=>$province){
             $code = $province->code;
             $count = [];
-            foreach($programs as $program){
+            foreach($programs as $key2=>$program){
                 $data = Scholar::whereHas('address',function ($query) use ($code) {
                     $query->where('province_code',$code);
                 })->where('program_id',$program->id)->count();
-                array_push($count,$data);
+                array_push($count,$data);    
+                $sums[$key2][$key] = $data;
             }
 
             $array[] = [
@@ -42,8 +43,14 @@ class PublicController extends Controller
                 'count' => $count
             ];
         }
+
+        foreach($programs as $key2=>$program){
+            $total[] = array_sum($sums[$key2]); 
+        }
+        
         $all = [
             'provinces' => $array,
+            'totals' => $total,
             'programs' => $programs
         ];
 
@@ -64,4 +71,5 @@ class PublicController extends Controller
             'jlss' => $jlss
         ];
     }
+
 }

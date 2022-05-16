@@ -1,10 +1,10 @@
 <template>
     <div>
-        <ul class="list-inline user-chat-nav text-start ms-4 mt-1 dropdown">
-            <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
+        <ul class="list-inline user-chat-nav text-end ms-4 mt-1 dropdown float-end">
+            <!-- <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                 <button type="button"
                     class="btn btn-sm w-sm ms-n4 me-n3 ml-1 btn-secondary">Update</button>
-            </li>
+            </li> -->
             <!-- <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                 <i class="bx bxs-check-circle text-success h4"
                     style="margin-left: -22px; position: absolute;"></i>
@@ -18,16 +18,16 @@
             <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" v-model="subprogram"
-                        id="gridCheck" />
-                    <label class="form-check-label font-size-11" for="gridCheck">Show
+                        id="programs" />
+                    <label class="form-check-label font-size-11" for="programs">
                         Sub-Programs</label>
                 </div>
             </li>
-             <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
+             <li class="list-inline-item d-non d-sm-inline-block " style="margin-right: 50px;">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" v-model="graphical"
-                        id="gridCheck" />
-                    <label class="form-check-label font-size-11" for="gridCheck">Show
+                        id="graph" />
+                    <label class="form-check-label font-size-11" for="graph">
                         Graphical View</label>
                 </div>
             </li>
@@ -36,24 +36,30 @@
             <b-tab active title="Provinces">
                 <b-card-text>
                     <div class="table-responsive">
-                        <table class="table table-centered table-bordered table-nowrap mb-0">
-                            <thead class="thead-light">
+                    
+                        <table class="table table-centered table-bordered table-nowrap">
+                             <thead class="thead-light">
                                 <tr class="font-size-10">
                                     <th style="width: 20%;">Province</th>
                                     <th style="width: 13%;" class="text-center"
                                         v-for="program in programs_list" v-bind:key="program.id">
                                         {{ program.name }}</th>
+                                    <th style="width: 13%;" class="text-center">Total</th>
                                 </tr>
                             </thead>
-                        </table>
-                        <table class="table table-centered table-bordered table-nowrap">
                             <tbody class="font-size-11">
                                 <tr v-for="(province,index) in provinces" v-bind:key="index">
                                     <td style="width: 20%;">
                                         {{ province.province.name }}</td>
-                                    <td style="width: 13%;" v-if="index < counts" class="text-center fw-bold" v-for="(count,index) in province.count" v-bind:key="index">
+                                    <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
                                         {{ count }}
                                     </td>
+                                    <td style="width: 13%;" class="fw-bold text-center">{{ total(province.count) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%;" class="fw-bold">Total</td>
+                                    <td style="width: 13%;" class="text-center fw-bold" v-if="index3 < counts" v-for="(total,index3) in totals" v-bind:key="index3">{{ total }}</td>
+                                    <td style="width: 13%;" class="fw-bold text-success text-center">{{ sum }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -110,9 +116,10 @@ export default {
             currentUrl: window.location.origin,
             type_programs: [],
             provinces: [],
+            totals: [],
             programs: { undergrad: []},
             subprogram: false,
-            graphical: false
+            graphical: false,
         }
     },
 
@@ -144,6 +151,15 @@ export default {
         },
         counts : function(){
             return this.programs_list.length;
+        },
+        sum : function(){
+            var sum = 0;
+            for (var i = 0; i < this.totals.length; i++) {
+                if(i < this.counts){
+                    sum += this.totals[i];
+                }
+            }
+            return sum;
         }
     },
 
@@ -154,9 +170,15 @@ export default {
                 this.provinces = response.data.provinces.provinces;
                 this.type_programs = response.data.provinces.programs;
                 this.programs = response.data.programs;
+                this.totals = response.data.provinces.totals;
             })
             .catch(err => console.log(err));
         },
+
+        total(data){   
+            const firstHalf = data.slice(0, this.counts) 
+            return firstHalf.reduce((a, b) => a + b, 0);
+        }
     }
 }
 </script>

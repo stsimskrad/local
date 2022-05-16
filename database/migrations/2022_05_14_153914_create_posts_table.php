@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('content');
             $table->boolean('is_finished')->default(0);
+            $table->boolean('is_public')->default(1);
             $table->string('attachment')->default('default.jpg');
             $table->datetime('start_at')->nullable();
             $table->datetime('end_at')->nullable();
