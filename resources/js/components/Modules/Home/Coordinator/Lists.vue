@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="me-n2 ms-n2">
         <ul class="list-inline user-chat-nav text-end ms-4 mt-1 dropdown float-end">
             <!-- <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">
                 <button type="button"
@@ -35,65 +35,65 @@
         <b-tabs pills nav-class="bg-light rounded" content-class="mt-3" small>
             <b-tab active title="Provinces">
                 <b-card-text>
-                        <div class="row">
-                            <div class="col-md-3 g-0 ps-1">
-                                <table class="table table-centered table-bordered table-nowrap">
-                                    <thead class="thead-light">
-                                        <tr class="font-size-10">
-                                            <th style="width: 100%;">Province</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="font-size-11">
-                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                            <td @click="show(province)" style="width: 100%; cursor: pointer;">
-                                                {{ province.province.name }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 100%;" class="fw-bold">Total</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-8 g-0">
-                                <table class="table table-centered table-bordered table-nowrap">
-                                    <thead class="thead-light">
-                                        <tr class="font-size-10">
-                                            <th style="width: 13%;" class="text-center"
-                                                v-for="program in programs_list" v-bind:key="program.id">
-                                                {{ program.name }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="font-size-11">
-                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                            <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
-                                                {{ count }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 13%;" class="text-center fw-bold" v-if="index3 < counts" v-for="(total,index3) in totals" v-bind:key="index3">{{ total }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-1 g-0 pe-1">
-                                <table class="table table-centered table-bordered table-nowrap">
-                                    <thead class="thead-light">
-                                        <tr class="font-size-10">
-                                            <th style="width: 100%;" class="text-center">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="font-size-11">
-                                        <tr v-for="(province,index) in provinces" v-bind:key="index">
-                                            <td style="width: 13%;" class="fw-bold text-center">{{ total(province.count) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 100%;" class="fw-bold font-size-12 text-success text-center">{{ sum }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="row ms-n1 me-n1">
+                        <div class="col-md-3 g-0 ps-1">
+                            <table class="table table-centered table-bordered table-nowrap">
+                                <thead class="thead-light">
+                                    <tr class="font-size-10">
+                                        <th style="width: 100%;">Province</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-size-11">
+                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                        <td class="fw-bold" @click="show(province)" style="width: 100%; cursor: pointer;">
+                                            {{ province.province.name }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" class="fw-bold font-size-12 text-success">Total</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <div class="col-md-8 g-0">
+                            <table class="table table-centered table-bordered table-nowrap">
+                                <thead class="thead-light">
+                                    <tr class="font-size-10">
+                                        <th style="width: 13%;" class="text-center"
+                                            v-for="program in programs_list" v-bind:key="program.id">
+                                            {{ program.name }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-size-11">
+                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                        <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
+                                            {{ count }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 13%;" class="text-center font-size-12 text-success fw-bold" v-if="index3 < counts" v-for="(total,index3) in totals" v-bind:key="index3">{{ total }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-1 g-0 pe-1">
+                            <table class="table table-centered table-bordered table-nowrap">
+                                <thead class="thead-light">
+                                    <tr class="font-size-10">
+                                        <th style="width: 100%;" class="text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-size-11">
+                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                        <td style="width: 13%;" class="fw-bold text-center text-success">{{ total(province.count) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%;" class="font-size-12 w-bold  text-primary text-center">{{ sum }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                         <!-- <table class="table table-centered table-bordered table-nowrap mb-0">
                         <tfoot class="thead-light">
                             <tr class="font-size-12">
