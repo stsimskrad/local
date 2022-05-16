@@ -25,7 +25,7 @@
 
                 <div class="card mt-n2">
                     <div class="card-body" style="height: 440px;">
-                        <Lists />
+                        <Lists style="height: 400px; overflow-y: auto; overflow-x: hidden;"/>
                     </div>
                 </div>
             </div>

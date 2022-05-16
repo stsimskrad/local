@@ -1322,7 +1322,15 @@ var render = function () {
           _c(
             "div",
             { staticClass: "card-body", staticStyle: { height: "440px" } },
-            [_c("Lists")],
+            [
+              _c("Lists", {
+                staticStyle: {
+                  height: "400px",
+                  "overflow-y": "auto",
+                  "overflow-x": "hidden",
+                },
+              }),
+            ],
             1
           ),
         ]),
