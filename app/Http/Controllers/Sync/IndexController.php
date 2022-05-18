@@ -243,15 +243,15 @@ class IndexController extends Controller
     }
 
     public function schools($type,$category,$agency_id = null){
-        if($category == 'local' || $category == 'all'){
-            $agency_id = config('app.agency');
-            $agency = ListAgency::where('id',$agency_id)->first();
-            $region_code = $agency->region_code;
-        }else{ //custom region
-            $agency_id = $agency_id;
-            $agency = ListAgency::where('id',$agency_id)->first();
-            $region_code = $agency->region_code;
-        }
+        // if($category == 'local' || $category == 'all'){
+        //     $agency_id = config('app.agency');
+        //     $agency = ListAgency::where('id',$agency_id)->first();
+        //     $region_code = $agency->region_code;
+        // }else{ //custom region
+        //     $agency_id = $agency_id;
+        //     $agency = ListAgency::where('id',$agency_id)->first();
+        //     $region_code = $agency->region_code;
+        // }
 
         try{
             $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/schools';
@@ -341,6 +341,8 @@ class IndexController extends Controller
                 ]
             ];
             return $schools;
+        }else{
+            return true;
         }
     }
 
