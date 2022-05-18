@@ -198,34 +198,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -251,8 +223,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.fetch();
-    this.fetchSchools();
+    this.fetch(); // this.fetchSchools();
+
     this.fetchLocations();
     this.fetchLists();
   },
@@ -963,140 +935,21 @@ var render = function () {
                         staticStyle: { "margin-top": "-7px" },
                       },
                       [
-                        _c("div", { staticClass: "col-sm-6" }, [
-                          _c("div", [
-                            _c("h5", [_vm._v("Overall Schools")]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "text-muted mb-0" }, [
-                              _c("span", { staticClass: "fw-bold" }, [
-                                _vm._v(_vm._s(_vm.school.overall.all)),
-                              ]),
-                              _vm._v(" Total schools"),
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "text-muted mb-0" }, [
-                              _c("span", { staticClass: "fw-bold" }, [
-                                _vm._v(_vm._s(_vm.school.overall.campuses)),
-                              ]),
-                              _vm._v(" Total campuses"),
-                            ]),
-                          ]),
-                        ]),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary btn-sm w-md me-1",
+                            attrs: { type: "button" },
+                            on: { click: _vm.downloadSchools },
+                          },
+                          [_vm._v("Download")]
+                        ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-6" }, [
-                          _c(
-                            "div",
-                            { staticClass: "text-sm-start mt-4 mt-sm-0" },
-                            [
-                              _c("h5", [
-                                _vm._v(
-                                  _vm._s(_vm.agency.region.region) + " Schools"
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-muted mb-0" }, [
-                                _vm._v("Schools : "),
-                                _c("span", { staticClass: "fw-bold" }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.school.regional.downloaded_schools
-                                    ) +
-                                      " of " +
-                                      _vm._s(_vm.school.regional.all)
-                                  ),
-                                ]),
-                                _vm._v(" downloaded"),
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-muted mb-0" }, [
-                                _vm._v("Other Schools : "),
-                                _c("span", { staticClass: "fw-bold" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.school.regional.other_schools)
-                                  ),
-                                ]),
-                                _vm._v(" downloaded"),
-                              ]),
-                            ]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", {
-                          staticClass: "col-sm-12 border-top mb-2 mt-2",
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-6 mb-n2" }, [
-                          _c("div", [
-                            _c("p", { staticClass: "text-muted mb-0" }, [
-                              _c("span", { staticClass: "fw-bold" }, [
-                                _vm._v(_vm._s(_vm.school.regional.all)),
-                              ]),
-                              _vm._v(
-                                " Schools within " +
-                                  _vm._s(_vm.agency.region.region)
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "text-muted mb-0" }, [
-                              _c("span", { staticClass: "fw-bold" }, [
-                                _vm._v(_vm._s(_vm.school.regional.campuses)),
-                              ]),
-                              _vm._v(
-                                " Campuses within " +
-                                  _vm._s(_vm.agency.region.region)
-                              ),
-                            ]),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-6 mb-n2" }, [
-                          _c(
-                            "div",
-                            { staticClass: "text-sm-start mt-4 mt-sm-0" },
-                            [
-                              _c("p", { staticClass: "text-muted mb-0" }, [
-                                _vm._v("Campuses : "),
-                                _c("span", { staticClass: "fw-bold" }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.school.regional.downloaded_campuses
-                                    ) +
-                                      " of " +
-                                      _vm._s(_vm.school.regional.campuses)
-                                  ),
-                                ]),
-                                _vm._v(" downloaded"),
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-muted mb-2" }, [
-                                _vm._v("Other Campuses : "),
-                                _c("span", { staticClass: "fw-bold" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.school.regional.other_campuses)
-                                  ),
-                                ]),
-                                _vm._v(" downloaded"),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-primary btn-sm w-md me-1",
-                                  attrs: { type: "button" },
-                                  on: { click: _vm.downloadSchools },
-                                },
-                                [_vm._v("Download")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                { staticClass: "btn btn-light btn-sm w-md" },
-                                [_vm._v("Request")]
-                              ),
-                            ]
-                          ),
-                        ]),
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-light btn-sm w-md" },
+                          [_vm._v("Request")]
+                        ),
                       ]
                     ),
               ]),

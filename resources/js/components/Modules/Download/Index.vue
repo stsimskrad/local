@@ -91,37 +91,9 @@
                                 <i class='bx bx-loader-circle bx-spin bx-rotate-90 h1 mt-4'></i>
                             </div>
                             <div v-else class="row" style="margin-top: -7px;">
-                                <div class="col-sm-6">
-                                    <div>
-                                        <h5>Overall Schools</h5>
-                                        <p class="text-muted mb-0"><span class="fw-bold">{{ school.overall.all}}</span> Total schools</p>
-                                        <p class="text-muted mb-0"><span class="fw-bold">{{ school.overall.campuses}}</span> Total campuses</p>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="text-sm-start mt-4 mt-sm-0">
-                                        <h5>{{agency.region.region}} Schools</h5>
-                                        <p class="text-muted mb-0">Schools : <span class="fw-bold">{{ school.regional.downloaded_schools}} of {{ school.regional.all}}</span> downloaded</p>
-                                        <p class="text-muted mb-0">Other Schools : <span class="fw-bold">{{ school.regional.other_schools}}</span> downloaded</p>
-                                       
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 border-top mb-2 mt-2"></div>
-                                <div class="col-sm-6 mb-n2">
-                                    <div>
-                                       <p class="text-muted mb-0"><span class="fw-bold">{{ school.regional.all}}</span> Schools within {{agency.region.region}}</p>
-                                        <p class="text-muted mb-0"><span class="fw-bold">{{ school.regional.campuses}}</span> Campuses within {{agency.region.region}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 mb-n2">
-                                    <div class="text-sm-start mt-4 mt-sm-0">
-                                        <p class="text-muted mb-0">Campuses : <span class="fw-bold">{{ school.regional.downloaded_campuses}} of {{ school.regional.campuses}}</span> downloaded</p>
-                                        <p class="text-muted mb-2">Other Campuses : <span class="fw-bold">{{ school.regional.other_campuses}}</span> downloaded</p>
-                                        <button type="button" @click="downloadSchools" class="btn btn-primary btn-sm w-md me-1">Download</button>
-                                        <button class="btn btn-light btn-sm w-md">Request</button>
-                                    </div>
-                                </div>
+                                <button type="button" @click="downloadSchools" class="btn btn-primary btn-sm w-md me-1">Download</button>
+                                <button class="btn btn-light btn-sm w-md">Request</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -208,7 +180,7 @@
 
         created() {
             this.fetch();
-            this.fetchSchools();
+            // this.fetchSchools();
             this.fetchLocations();
             this.fetchLists();
         },

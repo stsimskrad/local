@@ -254,7 +254,7 @@ class IndexController extends Controller
         }
 
         try{
-            $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/schools/'.$category.'/'.$region_code;
+            $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/schools';
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -275,7 +275,7 @@ class IndexController extends Controller
             if($type == 'check'){
                 $s[] = (array)$datas->data;
             }else{
-                $lists= $datas->data;
+                $lists= $datas;
                 foreach($lists as $data){
                     $arr = (array)$data;
                     $campuses = array_splice($arr,9);
