@@ -1076,7 +1076,9 @@ var render = function () {
                             _c("td", { staticClass: "text-center" }, [
                               _vm._v(
                                 "\n                            " +
-                                  _vm._s(user.address) +
+                                  _vm._s(user.barangay) +
+                                  ", " +
+                                  _vm._s(user.municipality) +
                                   "\n                        "
                               ),
                             ]),

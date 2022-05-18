@@ -29,6 +29,7 @@ return new class extends Migration
             $table->tinyInteger('award_id')->unsigned()->nullable();
             $table->foreign('award_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->json('information');
+            $table->year('graduated_year')->nullable();
             $table->timestamps();
         });
     }

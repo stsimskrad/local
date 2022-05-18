@@ -30,7 +30,7 @@ class IndexController extends Controller
 
         foreach($arrays as $array){
             try{
-                $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/locations/'.$array;
+                $url = 'http://stsims.main/api/01101011%2001110010%2001100001%2001100100/location/'.$array;
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                 CURLOPT_URL => $url,

@@ -52,7 +52,7 @@ export const menuItems = [{
         label: "menuitems.scholars.text",
         icon: "bx-group",
         link: "/scholars",
-        user: ['Scholarship Coordinator'],
+        user: ['Scholarship Coordinator', 'Regional Director'],
         links: [{
                 link: "/import",
             },
@@ -102,6 +102,14 @@ export const menuItems = [{
                 parentId: 30,
             },
         ]
+    },
+
+    {
+        id: 33,
+        label: "menuitems.insights.text",
+        icon: "bx-line-chart",
+        link: "/insights",
+        user: ['Regional Director']
     },
 
 ];

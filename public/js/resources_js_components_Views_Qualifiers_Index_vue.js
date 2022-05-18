@@ -2368,7 +2368,7 @@ var render = function () {
       attrs: {
         id: "referral",
         "hide-footer": "",
-        title: "Refer Scholar",
+        title: "Endorse Scholar",
         centered: "",
       },
     },

@@ -44,4 +44,17 @@ class Profile extends Model
         }
         return date('M d, Y', strtotime($value));
     }
+
+    public function getGenderAttribute($value)
+    {
+        switch ($value)
+		{
+			case 1: $sex='Male';break;
+			case 2: $sex='Female';break;
+			default:$sex=NULL;break;
+		}
+
+        return $sex;
+        
+    }
 }

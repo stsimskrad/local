@@ -287,7 +287,7 @@ var render = function () {
               _vm._m(4),
               _vm._v(" "),
               _c("p", { staticClass: "fw-bold text-dark mb-0" }, [
-                _vm._v(_vm._s(_vm.scholar.category.name)),
+                _vm._v(_vm._s(_vm.scholar.program.name)),
               ]),
             ]),
             _vm._v(" "),
@@ -493,7 +493,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h6", { staticClass: "text-muted font-size-11 mb-0" }, [
       _c("i", { staticClass: "bx bx-category me-1 text-primary" }),
-      _vm._v("Category"),
+      _vm._v("Program"),
     ])
   },
   function () {

@@ -74,7 +74,7 @@
                                 <p class="font-size-10 text-muted mb-0">{{user.course}} - {{user.level}} year</p>
                             </td>
                                 <td class="text-center">
-                                {{user.address}}
+                                {{user.barangay}}, {{user.municipality}}
                             </td>
                             <td class="text-end">
                                 <span :class="'badge bg-'+user.status.color">{{user.status.name}}</span>

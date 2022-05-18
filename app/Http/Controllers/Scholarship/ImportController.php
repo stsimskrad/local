@@ -25,26 +25,26 @@ class ImportController extends Controller
             $failed = array();
             $duplicate = array();
             
-            foreach ($scholars as $key => $val)
-            {
-                $names[$key] = $val['awarded_year'];
-            }
-            array_multisort($names, SORT_ASC, $scholars);
+            // foreach ($scholars as $key => $val)
+            // {
+            //     $names[$key] = $val['awarded_year'];
+            // }
+            // array_multisort($names, SORT_ASC, $scholars);
 
             foreach($scholars as $scholar){
                 $count = Scholar::where('old_id',$scholar['id'])->count();
                 if($count == 0){
 
                     $parents = [
-                        'mother' => 'n/a',
-                        'father' => 'n/a',
+                        'mother' => ($scholar['mother'] == '') ? 'n/a' : $scholar['mother'],
+                        'father' => ($scholar['father'] == '') ? 'n/a' : $scholar['father'],
                     ];
     
                     $information = [
                         'birth_place' => 'n/a',
                         'course' => $scholar['course'],
                         'school' => $scholar['school'],
-                        'address' => $scholar['address'],
+                        'municipality' => $scholar['municipality'],
                         'level' => $scholar['level'],
                         'parents' => $parents
                     ];
@@ -86,11 +86,12 @@ class ImportController extends Controller
                                 'course_id'=> $course,
                                 'school_id'=> $school,
                                 'level_id' => $this->level($scholar['level']),
+                                'graduated_year' => $scholar['graduated_year'],
                                 'created_at'	=> now(),
                                 'updated_at'	=> now()
                             ];
                             $s = ScholarEducation::insertOrIgnore($school);
-                            $address = $this->checkAddress($scholar['address'],$q->id);
+                            $address = $this->checkAddress($scholar['municipality'],$scholar['barangay'],$q->id);
                             array_push($success,$scholar['id']);
                             \DB::commit();
                         }else{
@@ -119,65 +120,30 @@ class ImportController extends Controller
 
     public function index(Request $request){
         $data =  Excel::toCollection(new ScholarImport,$request->import_file);
-        $suffixes = array('jr','jr.','sr.','sr','III','II','iii','ii');
         $rows = $data[0]; 
-        $year = '';
 
         foreach($rows as $row){ 
-            if($row[1] == ''){
-                $year = $row[0];
-            }else{
-                $test = explode(",",$row[1]);
-               
-                $lastname = $test[0];
-                $wew = preg_replace('/\s+/', ' ', $test[1]);
-                $name = preg_split('/\s+/', ltrim($wew));
-
-                switch(count($name)){
-                    case '2':
-                        $firstname = $name[0];
-                        $middlename = $name[1];
-                        $suffix = '';
-                    break;
-                    case '3':
-                        if(in_array($name[2],$suffixes)){ 
-                            $firstname = $name[0];
-                            $middlename = $name[1];
-                            $suffix = $$name[2];
-                        }else{
-                            $firstname = $name[0].' '.$name[1];
-                            $middlename = $name[2]; 
-                            $suffix = '';
-                        } 
-                    break;
-                    case '4':
-                        if(in_array($name[3],$suffixes)){ 
-                            $firstname = $name[0].' '.$name[1];
-                            $middlename = $name[2];
-                            $suffix = $$name[3];
-                        }else{
-                            $firstname = $name[0].' '.$name[1];
-                            $middlename = $name[2].' '.$name[3];
-                            $suffix = '';
-                        } 
-                    break;
-                }
-
-                $status = ListDropdown::where('classification','Status')->where('name',$row[5])->first();
+            if($row[1] != ''){
+                $status = ListDropdown::where('classification','Status')->where('name',$row[9])->first();
 
                 $information[] = [
                     'id' => $row[0],
-                    'firstname' => strtoupper($firstname),
-                    'middlename' => strtoupper($middlename),
-                    'lastname' => strtoupper($lastname),
-                    'suffix' => strtoupper($suffix),
-                    'school' => $row[2],
-                    'course' => $row[3],
-                    'level' => $row[4],
+                    'firstname' => ucwords(strtolower($row[1])),
+                    'middlename' => ucwords(strtolower($row[2])),
+                    'lastname' => ucwords(strtolower($row[3])),
+                    'suffix' => $row[4],
+                    'gender' => $row[5],
+                    'school' => $row[6],
+                    'course' => $row[7],
+                    'level' => $row[8],
                     'status' => $status,
-                    'address' => $row[6],
-                    'category' => $row[7],
-                    'awarded_year' => $year
+                    'awarded_year' => $row[10],
+                    'graduated_year' => $row[11],
+                    'father' => $row[12],
+                    'mother' => $row[13],
+                    'municipality' => $row[14],
+                    'barangay' => $row[15],
+                    'category' => $row[16],
                 ];
             }
         }

@@ -197,12 +197,16 @@ Route::prefix('request')->group(function(){
 
     Route::middleware(['auth','role:Scholar'])->group(function () {
         Route::prefix('info')->group(function(){
-            Route::controller(App\Http\Controllers\ScholarNOTUSED\ProfileController::class)->group(function () {
+            Route::controller(App\Http\Controllers\Scholarship\Profile\IndexController::class)->group(function () {
                 Route::get('/', 'index');
             });
         });
     });
 
+});
+
+Route::prefix('insights')->group(function(){
+    Route::get('/lists', [App\Http\Controllers\Insight\IndexController::class, 'index']);
 });
 
 Route::prefix('public')->group(function(){

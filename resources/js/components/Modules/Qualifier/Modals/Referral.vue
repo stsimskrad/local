@@ -1,5 +1,5 @@
 <template>
-    <b-modal id="referral" hide-footer title="Refer Scholar" centered>
+    <b-modal id="referral" hide-footer title="Endorse Scholar" centered>
         <blockquote class="p-3 border-light border rounded">
             <div class="d-flex">
                 <div class="mr-3"><i class="bx bxs-quote-alt-left text-primary font-size-14"></i></div>

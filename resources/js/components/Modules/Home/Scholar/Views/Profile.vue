@@ -19,8 +19,8 @@
                         <p class="fw-bold text-dark mb-0">{{(scholar.lrn == null) ? 'n/a' : scholar.lrn }}</p>
                     </div>
                     <div class="col-sm-3">
-                        <h6 class="text-muted font-size-11 mb-0"><i class="bx bx-category me-1 text-primary"></i>Category</h6>
-                        <p class="fw-bold text-dark mb-0">{{scholar.category.name}}</p>
+                        <h6 class="text-muted font-size-11 mb-0"><i class="bx bx-category me-1 text-primary"></i>Program</h6>
+                        <p class="fw-bold text-dark mb-0">{{scholar.program.name}}</p>
                     </div>
                     <div class="col-sm-3">
                         <h6 class="text-muted font-size-11 mb-0"><i class="bx bx-calendar me-1 text-primary"></i>Awarded Year</h6>

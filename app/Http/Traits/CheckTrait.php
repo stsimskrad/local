@@ -8,6 +8,7 @@ use App\Models\ListDropdown;
 use App\Models\ListProgram;
 use App\Models\SchoolCampus;
 use App\Models\ScholarAddress;
+use App\Models\LocationBarangay;
 use App\Models\LocationMunicipality;
 use App\Http\Resources\DefaultResource;
 
@@ -65,11 +66,12 @@ trait CheckTrait {
         return $data;
     }
 
-    public function checkAddress($address,$id){
-        $is_within = 1;
+    public function checkAddress($address,$barangay,$id){
+        $is_within = 1; $b= null;
         $agency_id = config('app.agency');
         $agency = ListAgency::with('region')->where('id',$agency_id)->pluck('region_code');
 
+        
         $data = LocationMunicipality::with('province.region')
         ->where(function($query) use ($address) {  
             $query->where('name','LIKE', '%'.$address.'%')->orWhere('old_name','LIKE', '%'.$address.'%');
@@ -89,12 +91,30 @@ trait CheckTrait {
             if($data != null){
                 $is_within = 0;
             }
+
+            if($barangay == ''){
+                $bar = LocationBarangay::where(function($query) use ($barangay) {  
+                    $query->where('name','LIKE', '%'.$barangay.'%')->orWhere('old_name','LIKE', '%'.$barangay.'%');
+                })
+                ->whereHas('municipality',function ($query) use ($data) {
+                    $query->where('code',$data->code);
+                })->first();
+
+                if($bar == null){
+                    $b = NULL;
+                }else{
+                    $b = $bar->code;
+                }
+            }else{
+                $b = NULL;
+            }
         }
 
         if($data != null){
             $address = [
                 'type' => 'Main',
                 'is_within' => $is_within,
+                'barangay_code' => $b,
                 'municipality_code' => $data->code,
                 'province_code' => $data->province->code,
                 'region_code' => $data->province->region->code,

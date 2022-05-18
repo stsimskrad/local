@@ -27,7 +27,8 @@ const routes = [{
                     import ('../Modules/Home/Scholar/Views/Reimbursement.vue'),
             },
         ]
-    }, {
+    },
+    {
         path: '/profile',
         component: () =>
             import ('../Views/Profile.vue'),
@@ -135,7 +136,7 @@ const routes = [{
         component: () =>
             import ('../Views/Scholars/Index.vue'),
         name: 'scholars',
-        beforeEnter: coordinator
+        beforeEnter: two
     },
     {
         path: '/scholar/import',
@@ -156,7 +157,7 @@ const routes = [{
         component: () =>
             import ('../Views/Scholars/Report.vue'),
         name: 'scholar/reports',
-        beforeEnter: coordinator
+        beforeEnter: two
     },
     {
         path: '/enrollments',
@@ -203,12 +204,30 @@ const routes = [{
         name: 'disbursements',
         beforeEnter: coordinator
     },
+
+    /////////////////////////////////////////
+    /// DIRECTOR ///
+    /////////////////////////////////////////
+
+    {
+        path: '/insights',
+        component: () =>
+            import ('../Views/Insights.vue'),
+        name: 'insights',
+        beforeEnter: director
+    },
 ];
 
 
 
 function admin(to, from, next) {
     (window.User.role == "Super Administrator") ? next(true): next({
+        path: '/home'
+    });
+}
+
+function director(to, from, next) {
+    (window.User.role == "Regional Director") ? next(true): next({
         path: '/home'
     });
 }
@@ -221,6 +240,12 @@ function coordinator(to, from, next) {
 
 function staff(to, from, next) {
     (window.User.role == "Scholarship Staff") ? next(true): next({
+        path: '/home'
+    });
+}
+
+function two(to, from, next) {
+    (window.User.role == "Regional Director" || window.User.role == "Scholarship Coordinator") ? next(true): next({
         path: '/home'
     });
 }
