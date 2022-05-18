@@ -208,7 +208,7 @@
                 axios.get(this.currentUrl + '/sync/schools/download/local')
                     .then(response => {
                         this.loading3 = false;
-                        this.fetchSchools();
+                        // this.fetchSchools();
                         Vue.$toast.success('<strong>Schools was downloaded!</strong>', {
                             position: 'bottom-right'
                         });

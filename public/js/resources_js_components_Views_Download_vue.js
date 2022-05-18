@@ -253,9 +253,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading3 = true;
       axios.get(this.currentUrl + '/sync/schools/download/local').then(function (response) {
-        _this3.loading3 = false;
-
-        _this3.fetchSchools();
+        _this3.loading3 = false; // this.fetchSchools();
 
         Vue.$toast.success('<strong>Schools was downloaded!</strong>', {
           position: 'bottom-right'
