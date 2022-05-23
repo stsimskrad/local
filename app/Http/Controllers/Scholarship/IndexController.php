@@ -18,11 +18,11 @@ class IndexController extends Controller
 {
     use ScholarTrait;
 
-    public function lists($info,$education,$location){
+    public function lists(Request $request){
 
-        $info = (!empty(json_decode($info))) ? json_decode($info) : NULL;
-        $education = (!empty(json_decode($education))) ? json_decode($education) : NULL;
-        $location = (!empty(json_decode($location))) ? json_decode($location) : NULL;
+        $info = (!empty(json_decode($request->info))) ? json_decode($request->info) : NULL;
+        $education = (!empty(json_decode($request->education))) ? json_decode($request->education) : NULL;
+        $location = (!empty(json_decode($request->location))) ? json_decode($request->location) : NULL;
         
         $data = Scholar::with('profile.user')
         ->with('address.municipality.province.region')
@@ -45,9 +45,10 @@ class IndexController extends Controller
             }
          })
         ->where(function ($query) use ($info) {
-            ($info->program == '-') ? '' : $query->where('program_id',$info->program);
-            ($info->status == '-') ? '' : $query->where('status_id',$info->status);
-            ($info->year == '-') ? '' : $query->where('awarded_year',$info->year);
+            ($info->program == null) ? '' : $query->where('program_id',$info->program);
+            ($info->status == null) ? '' : $query->where('status_id',$info->status);
+            ($info->is_undergrad == 'all') ? '' : $query->where('is_undergrad',$info->is_undergrad);
+            ($info->year == null) ? '' : $query->where('awarded_year',$info->year);
         })
         ->orderBy('awarded_year','DESC')->orderBy('id','DESC')->paginate($info->counts);
         return IndexResource::collection($data);

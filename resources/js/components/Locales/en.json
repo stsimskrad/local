@@ -131,6 +131,9 @@
         },
         "insights": {
             "text": "Insights"
+        },
+        "endorsements": {
+            "text": "Endorsements"
         }
     }
 }

@@ -144,7 +144,7 @@
                     editable: 'qualifier'
                 })
                 .then(response => {
-                    this.$emit('status', response.data.data);
+                    this.$emit('status', this.user);
                     this.clear();
                 })
                 .catch(error => {

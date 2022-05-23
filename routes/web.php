@@ -75,17 +75,21 @@ Route::prefix('request')->group(function(){
         });
     });
 
-
+    Route::prefix('endorsement')->group(function(){
+        Route::controller(App\Http\Controllers\Scholarship\EndorsementController::class)->group(function () {
+            Route::post('/store', 'store');
+        });
+    });
    
-        Route::prefix('qualifier')->group(function(){
+        Route::prefix('qualifiers')->group(function(){
             Route::controller(App\Http\Controllers\Qualifier\IndexController::class)->group(function () {
-                Route::get('{count}/{category}/{year}/{keyword}', 'index');
+                Route::get('/', 'index');
             });
         });
 
         Route::prefix('scholar')->group(function(){
             Route::controller(App\Http\Controllers\Scholarship\IndexController::class)->group(function () {
-                Route::get('/{info}/{education}/{location}', 'lists');
+                Route::get('/', 'lists');
                 Route::post('/store', 'store');
                 Route::get('/{id}', 'view');
                 Route::get('/search/{keyword}', 'search');

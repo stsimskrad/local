@@ -170,38 +170,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -215,12 +183,13 @@ __webpack_require__.r(__webpack_exports__);
       pagination: {},
       keyword: '',
       users: [],
-      program: '-',
-      status: '-',
-      year: '-',
+      program: null,
+      status: null,
+      year: null,
       arr: {},
       arr2: {},
-      show: false
+      show: false,
+      is_undergrad: 'all'
     };
   },
   created: function created() {
@@ -250,17 +219,24 @@ __webpack_require__.r(__webpack_exports__);
 
       var vm = this;
       var info = {
-        'keyword': this.keyword != '' && this.keyword != null ? this.keyword : '',
-        'status': this.status != '' && this.status != null ? this.status : '',
-        'program': this.program != '' && this.program != null ? this.program : '',
+        'keyword': this.keyword,
+        'status': this.status == null ? null : this.status.id,
+        'program': this.program == null ? null : this.program.id,
         'year': this.year === '' || this.year == null ? '' : this.year,
+        'is_undergrad': this.is_undergrad,
         'counts': this.counts
       };
       info = Object.keys(info).length == 0 ? '-' : JSON.stringify(info);
       var location = Object.keys(this.arr).length == 0 ? '-' : JSON.stringify(this.arr);
       var education = Object.keys(this.arr2).length == 0 ? '-' : JSON.stringify(this.arr2);
-      page_url = page_url || this.currentUrl + '/request/scholar/' + info + '/' + education + '/' + location;
-      axios.get(page_url).then(function (response) {
+      page_url = page_url || this.currentUrl + '/request/scholar';
+      axios.get(page_url, {
+        params: {
+          info: info,
+          location: location,
+          education: education
+        }
+      }).then(function (response) {
         _this.users = response.data.data;
         vm.makePagination(response.data.meta, response.data.links);
       })["catch"](function (err) {
@@ -284,7 +260,7 @@ __webpack_require__.r(__webpack_exports__);
         'keyword': this.keyword != '' && this.keyword != null ? this.keyword : '-',
         'status': this.status != '' && this.status != null ? this.status : '-',
         'program': this.program != '' && this.program != null ? this.program : '-',
-        'year': this.year === '' || this.year == null ? '-' : this.year,
+        'year': this.year,
         'counts': this.counts
       };
       info = Object.keys(info).length == 0 ? '-' : JSON.stringify(info);
@@ -1540,19 +1516,19 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "row mb-4" }, [
         _c(
           "div",
-          { staticClass: "col-xl-5 col-sm-5 d-inline-block" },
+          { staticClass: "col-xl-6" },
           [
             _c("router-link", { attrs: { to: { name: "scholar/create" } } }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-danger waves-effect waves-light",
+                  staticClass: "btn btn-sm w-sm mb-n3 btn-outline-light",
                   attrs: { type: "button" },
                 },
-                [_c("i", { staticClass: "bx bx-plus-medical" })]
+                [_vm._v("Create")]
               ),
             ]),
             _vm._v(" "),
@@ -1560,10 +1536,10 @@ var render = function () {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-info waves-effect waves-light",
+                  staticClass: "btn btn-sm w-sm mb-n3 btn-outline-light",
                   attrs: { type: "button" },
                 },
-                [_c("i", { staticClass: "bx bx-import" })]
+                [_vm._v("Import")]
               ),
             ]),
             _vm._v(" "),
@@ -1571,50 +1547,17 @@ var render = function () {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-info waves-effect waves-light",
+                  staticClass: "btn btn-sm w-sm mb-n3 btn-outline-light",
                   attrs: { type: "button" },
                 },
-                [_c("i", { staticClass: "bx bxs-report" })]
+                [_vm._v("Reports")]
               ),
-            ]),
-            _vm._v(" "),
-            _c("form", { staticClass: "d-inline-block ms-1" }, [
-              _c("div", { staticClass: "search-box" }, [
-                _c("div", { staticClass: "position-relative" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.keyword,
-                        expression: "keyword",
-                      },
-                    ],
-                    staticClass: "form-control bg-light border-light rounded",
-                    attrs: { type: "text", placeholder: "Search..." },
-                    domProps: { value: _vm.keyword },
-                    on: {
-                      keyup: function ($event) {
-                        return _vm.fetch()
-                      },
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.keyword = $event.target.value
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("i", { staticClass: "bx bx-search-alt search-icon" }),
-                ]),
-              ]),
             ]),
           ],
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xl-7 col-sm-7 mt-n1" }, [
+        _c("div", { staticClass: "col-xl-6" }, [
           _c(
             "ul",
             { staticClass: "list-inline user-chat-nav text-end mb-0 dropdown" },
@@ -1666,7 +1609,11 @@ var render = function () {
                         },
                       },
                     },
-                    [_c("i", { staticClass: "bx bx-chevron-left mt-1 h4" })]
+                    [
+                      _c("i", {
+                        staticClass: "bx bx-chevron-left h4 mb-n4 mt-1 me-n3",
+                      }),
+                    ]
                   ),
                 ]
               ),
@@ -1686,295 +1633,11 @@ var render = function () {
                         },
                       },
                     },
-                    [_c("i", { staticClass: "bx bx-chevron-right mt-1 h4" })]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _vm.show == true
-                ? _c(
-                    "li",
-                    { staticClass: "list-inline-item d-non d-sm-inline-block" },
                     [
-                      _c("div", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.year,
-                              expression: "year",
-                            },
-                          ],
-                          staticClass:
-                            "form-control bg-light border-light rounded",
-                          staticStyle: { width: "100px" },
-                          attrs: { type: "text", placeholder: "Enter Year" },
-                          domProps: { value: _vm.year },
-                          on: {
-                            keyup: function ($event) {
-                              return _vm.fetch()
-                            },
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.year = $event.target.value
-                            },
-                          },
-                        }),
-                      ]),
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-non d-sm-inline-block" },
-                [
-                  _c(
-                    "div",
-                    {
-                      attrs: {
-                        "data-toggle": "tooltip",
-                        "data-placement": "top",
-                        title: "",
-                        "data-original-title": "Filter by Award year",
-                      },
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-light me-n2",
-                          attrs: { type: "button" },
-                          on: { click: _vm.yr },
-                        },
-                        [_vm._m(1)]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-non d-sm-inline-block" },
-                [
-                  _c("div", { staticClass: "dropdown me-n2" }, [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      {
-                        staticClass: "dropdown-menu",
-                        attrs: { "aria-labelledby": "dropdownMenuButton1" },
-                      },
-                      [
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              class: [_vm.program == "-" ? "text-primary" : ""],
-                              on: {
-                                click: function ($event) {
-                                  return _vm.filter("-", "all", "program")
-                                },
-                              },
-                            },
-                            [_vm._v("All")]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          _vm._l(_vm.programs, function (p) {
-                            return _c(
-                              "a",
-                              {
-                                key: p.id,
-                                staticClass: "dropdown-item",
-                                class: [
-                                  _vm.program == p.id ? "text-primary" : "",
-                                ],
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.filter(p.id, p.name, "program")
-                                  },
-                                },
-                              },
-                              [_vm._v(_vm._s(p.name))]
-                            )
-                          }),
-                          0
-                        ),
-                      ]
-                    ),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-non d-sm-inline-block" },
-                [
-                  _c("div", { staticClass: "dropdown me-n2" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      {
-                        staticClass: "dropdown-menu",
-                        attrs: { "aria-labelledby": "dropdownMenuButton1" },
-                      },
-                      [
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              class: [_vm.status == "-" ? "text-primary" : ""],
-                              on: {
-                                click: function ($event) {
-                                  return _vm.filter("-", "all", "status")
-                                },
-                              },
-                            },
-                            [_vm._v("All")]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          _vm._l(_vm.statuses, function (s) {
-                            return _c(
-                              "a",
-                              {
-                                key: s.id,
-                                staticClass: "dropdown-item",
-                                class: [
-                                  _vm.status == s.id ? "text-primary" : "",
-                                ],
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.filter(s.id, s.name, "status")
-                                  },
-                                },
-                              },
-                              [_vm._v(_vm._s(s.name))]
-                            )
-                          }),
-                          0
-                        ),
-                      ]
-                    ),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-none d-sm-inline-block" },
-                [
-                  _c(
-                    "div",
-                    {
-                      attrs: {
-                        "data-toggle": "tooltip",
-                        "data-placement": "top",
-                        title: "",
-                        "data-original-title": "Refresh",
-                      },
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn me-n2",
-                          class:
-                            Object.keys(this.arr).length == 0
-                              ? "btn-light"
-                              : "btn-primary",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.location()
-                            },
-                          },
-                        },
-                        [_vm._m(4)]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-none d-sm-inline-block" },
-                [
-                  _c(
-                    "div",
-                    {
-                      attrs: {
-                        "data-toggle": "tooltip",
-                        "data-placement": "top",
-                        title: "",
-                        "data-original-title": "Refresh",
-                      },
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn me-n2",
-                          class:
-                            Object.keys(this.arr2).length == 0
-                              ? "btn-light"
-                              : "btn-primary",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.education()
-                            },
-                          },
-                        },
-                        [_vm._m(5)]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "list-inline-item d-none d-sm-inline-block" },
-                [
-                  _c(
-                    "div",
-                    {
-                      attrs: {
-                        "data-toggle": "tooltip",
-                        "data-placement": "top",
-                        title: "",
-                        "data-original-title": "Refresh",
-                      },
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-light",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.fetch()
-                            },
-                          },
-                        },
-                        [_vm._m(6)]
-                      ),
+                      _c("i", {
+                        staticClass:
+                          "bx bx-chevron-right h4 ms-n3 mb-n4 mt-1 me-n4",
+                      }),
                     ]
                   ),
                 ]
@@ -1982,11 +1645,253 @@ var render = function () {
             ]
           ),
         ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xl-12 d-inline-block mb-n3" }, [
+          _c("div", { ref: "www", staticClass: "input-group mb-2" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.keyword,
+                  expression: "keyword",
+                },
+              ],
+              staticClass: "form-control",
+              staticStyle: { width: "55%" },
+              attrs: { type: "text", placeholder: "Search..." },
+              domProps: { value: _vm.keyword },
+              on: {
+                keyup: function ($event) {
+                  return _vm.fetch()
+                },
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.keyword = $event.target.value
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.is_undergrad,
+                    expression: "is_undergrad",
+                  },
+                ],
+                staticClass: "form-select",
+                class: _vm.program == null ? "text-muted" : "",
+                staticStyle: { width: "100px", "font-weight": "500" },
+                on: {
+                  change: [
+                    function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.is_undergrad = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function ($event) {
+                      return _vm.fetch()
+                    },
+                  ],
+                },
+              },
+              [
+                _c("option", { attrs: { value: "all", selected: "" } }, [
+                  _vm._v("All"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1" } }, [
+                  _vm._v("Undergraduate"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "0" } }, [_vm._v("JLSS")]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.program,
+                    expression: "program",
+                  },
+                ],
+                staticClass: "form-select",
+                class: _vm.program == null ? "text-muted" : "",
+                staticStyle: { width: "100px" },
+                attrs: { placeholder: "Choose Program" },
+                on: {
+                  change: [
+                    function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.program = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function ($event) {
+                      return _vm.fetch()
+                    },
+                  ],
+                },
+              },
+              [
+                _c(
+                  "option",
+                  { attrs: { selected: "" }, domProps: { value: null } },
+                  [_vm._v("All Program")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.programs, function (program) {
+                  return _c(
+                    "option",
+                    { key: program.id, domProps: { value: program } },
+                    [_vm._v(_vm._s(program.name))]
+                  )
+                }),
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.status,
+                    expression: "status",
+                  },
+                ],
+                staticClass: "form-select",
+                class: _vm.status == null ? "text-muted" : "",
+                staticStyle: { width: "100px" },
+                attrs: { placeholder: "Choose Program" },
+                on: {
+                  change: [
+                    function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.status = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function ($event) {
+                      return _vm.fetch()
+                    },
+                  ],
+                },
+              },
+              [
+                _c(
+                  "option",
+                  { attrs: { selected: "" }, domProps: { value: null } },
+                  [_vm._v("All Status")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.statuses, function (stat) {
+                  return _c(
+                    "option",
+                    { key: stat.id, domProps: { value: stat } },
+                    [_vm._v(_vm._s(stat.name))]
+                  )
+                }),
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.year,
+                  expression: "year",
+                },
+              ],
+              staticClass: "form-control",
+              staticStyle: { width: "100px" },
+              attrs: { type: "text", placeholder: "Enter Year" },
+              domProps: { value: _vm.year },
+              on: {
+                keyup: function ($event) {
+                  return _vm.fetch()
+                },
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.year = $event.target.value
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "input-group-text bg-light",
+                staticStyle: { cursor: "pointer" },
+                on: {
+                  click: function ($event) {
+                    return _vm.location()
+                  },
+                },
+              },
+              [_c("i", { staticClass: "bx bxs-map" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "input-group-text bg-light",
+                staticStyle: { cursor: "pointer" },
+                on: {
+                  click: function ($event) {
+                    return _vm.education()
+                  },
+                },
+              },
+              [_c("i", { staticClass: "bx bxs-graduation" })]
+            ),
+          ]),
+        ]),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
         _c("table", { staticClass: "table table-centered table-nowrap" }, [
-          _vm._m(7),
+          _vm._m(2),
           _vm._v(" "),
           _c(
             "tbody",
@@ -2142,6 +2047,7 @@ var render = function () {
                               "button",
                               {
                                 staticClass: "bg-soft-info btn btn-light",
+                                staticStyle: { "margin-end": "-10px" },
                                 attrs: { type: "button" },
                               },
                               [
@@ -2228,68 +2134,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
-      _c("i", { staticClass: "bx bx-calendar" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-light dropdown-toggle",
-        attrs: {
-          type: "button",
-          id: "dropdownMenuButton1",
-          "data-bs-toggle": "dropdown",
-          "aria-expanded": "false",
-        },
-      },
-      [_c("i", { staticClass: "bx bx-category" })]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-light dropdown-toggle",
-        attrs: {
-          type: "button",
-          id: "dropdownMenuButton1",
-          "data-bs-toggle": "dropdown",
-          "aria-expanded": "false",
-        },
-      },
-      [_c("i", { staticClass: "bx bxs-grid" })]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
-      _c("i", { staticClass: "bx bxs-map" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
-      _c("i", { staticClass: "bx bxs-graduation" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
-      _c("i", { staticClass: "mdi mdi-refresh" }),
+    return _c("label", { staticClass: "input-group-text bg-light" }, [
+      _c("i", { staticClass: "bx bx-search-alt" }),
     ])
   },
   function () {

@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body" :style="{ height: height + 'px' }">
-                    <Index :regions="regions" :dropdowns="dropdowns" />
+                    <Index :regions="regions" :programs="programs" :dropdowns="dropdowns" />
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
     import PageHeader from '../../Layouts/Header.vue';
 
     export default {
-        props: ['dropdowns','regions'],
+        props: ['dropdowns','regions','programs'],
         components: { PageHeader, Index },
         data() {
             return {
@@ -29,6 +29,6 @@
                     {text: "Lists",active: true,},
                 ],
             };
-        },
+        }
     }
 </script>

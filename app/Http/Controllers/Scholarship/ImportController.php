@@ -39,12 +39,16 @@ class ImportController extends Controller
                         'mother' => ($scholar['mother'] == '') ? 'n/a' : $scholar['mother'],
                         'father' => ($scholar['father'] == '') ? 'n/a' : $scholar['father'],
                     ];
+
+                    $address = [
+                        'municipality' => $scholar['municipality'],
+                    ];
     
                     $information = [
                         'birth_place' => 'n/a',
                         'course' => $scholar['course'],
                         'school' => $scholar['school'],
-                        'municipality' => $scholar['municipality'],
+                        'address' => $address,
                         'level' => $scholar['level'],
                         'parents' => $parents
                     ];
