@@ -44,7 +44,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="font-size-11">
-                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                    <tr v-for="(province,index) in orderedProvince" v-bind:key="index">
                                         <td class="fw-bold" @click="show(province)" style="width: 100%; cursor: pointer;">
                                             {{ province.province.name }}
                                         </td>
@@ -65,7 +65,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="font-size-11">
-                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                    <tr v-for="(province,index) in orderedProvince" v-bind:key="index">
                                         <td style="width: 13%;" v-if="index2 < counts" class="text-center" v-for="(count,index2) in province.count" v-bind:key="index2">
                                             {{ count }}
                                         </td>
@@ -84,11 +84,11 @@
                                     </tr>
                                 </thead>
                                 <tbody class="font-size-11">
-                                    <tr v-for="(province,index) in provinces" v-bind:key="index">
+                                    <tr v-for="(province,index) in orderedProvince" v-bind:key="index">
                                         <td style="width: 13%;" class="fw-bold text-center text-success">{{ total(province.count) }}</td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 100%;" class="font-size-12 w-bold  text-primary text-center">{{ sum }}</td>
+                                        <td style="width: 100%;" class="font-size-12 fw-bold  text-primary text-center">{{ sum }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -193,6 +193,9 @@ export default {
                 }
             }
             return sum;
+        },
+        orderedProvince : function () {
+            return _.orderBy(this.provinces, 'total', 'desc')
         }
     },
 

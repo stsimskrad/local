@@ -22,4 +22,9 @@ class LocationProvince extends Model
     {
         return $this->hasMany('App\Models\LocationMunicipality', 'province_code');
     } 
+
+    public function scholars()
+    {
+        return $this->hasMany('App\Models\ScholarAddress', 'province_code');
+    } 
 }

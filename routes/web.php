@@ -211,6 +211,7 @@ Route::prefix('request')->group(function(){
 
 Route::prefix('insights')->group(function(){
     Route::get('/lists', [App\Http\Controllers\Insight\IndexController::class, 'index']);
+    Route::get('/years', [App\Http\Controllers\Insight\IndexController::class, 'years']);
 });
 
 Route::prefix('public')->group(function(){

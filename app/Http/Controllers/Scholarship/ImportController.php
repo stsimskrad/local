@@ -59,6 +59,7 @@ class ImportController extends Controller
                         'middlename' => $scholar['middlename'],
                         'lastname' => $scholar['lastname'],
                         'suffix' => $scholar['suffix'],
+                        'gender' => $scholar['gender'],
                         'information' => json_encode($information),
                         'created_at'	=> now(),
                         'updated_at'	=> now()
