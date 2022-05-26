@@ -50,8 +50,8 @@ class IndexController extends Controller
             'icon' => 'bxs-user-circle',
             'color' => 'danger',
             'series' => $array,
-            'number' => ($len != 0) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : '',
-            'percent' => round($d/$data[$len-1]['y']*100),
+            'number' => ($len != 0) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : 0,
+            'percent' => ($len != 0) ? round($d/$data[$len-1]['y']*100) : 0,
             'total' => Scholar::count(),
         ];
     }
@@ -73,8 +73,8 @@ class IndexController extends Controller
             'icon' => 'bx-notepad',
             'color' => 'primary',
             'series' => $array,
-            'number' =>  ($len != 0) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : 0,
-            'percent' => ($len != 0) ? round($d/$data[$len-1]['y']*100) : 0,
+            'number' =>  ($len != 0 && $len != 1) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : 0,
+            'percent' => ($len != 0 && $len != 1) ? round($d/$data[$len-1]['y']*100) : 0,
             'total' => Qualifier::count(),
         ];
     }
@@ -97,8 +97,8 @@ class IndexController extends Controller
             'icon' => 'bxs-graduation',
             'color' => 'success',
             'series' => $array,
-            'number' =>  ($len != 0) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : '',
-            'percent' => round($d/$data[$len-1]['y']*100),
+            'number' =>  ($len != 0) ? $d = $data[$len-1]['y']-$data[$len-2]['y'] : 0,
+            'percent' => ($len != 0) ? round($d/$data[$len-1]['y']*100) : 0,
             'total' => ScholarEducation::whereNotNull('graduated_year')->count(),
         ];
     }
