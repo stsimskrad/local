@@ -180,6 +180,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -223,16 +253,25 @@ __webpack_require__.r(__webpack_exports__);
     fetch: function fetch(page_url) {
       var _this = this;
 
-      page_url = page_url || this.currentUrl + '/request/qualifiers';
-      axios.get(page_url, {
-        params: {
+      var params;
+
+      if (this.type != 'Waiting') {
+        page_url = page_url || this.currentUrl + '/request/qualifiers';
+        params = {
           count: this.counts,
           program: this.program == null ? null : this.program.id,
           year: this.year,
           keyword: this.keyword,
           type: this.type,
           is_undergrad: this.is_undergrad
-        }
+        };
+      } else {
+        page_url = this.currentUrl + '/request/qualifiers/endorsement';
+        params = {};
+      }
+
+      axios.get(page_url, {
+        params: params
       }).then(function (response) {
         _this.users = response.data.data;
 
@@ -1775,6 +1814,10 @@ var render = function () {
                   _vm._v("Qualifiers"),
                 ]),
                 _vm._v(" "),
+                _c("option", { attrs: { value: "Waiting" } }, [
+                  _vm._v("Waiting"),
+                ]),
+                _vm._v(" "),
                 _c("option", { attrs: { value: "Endorsed" } }, [
                   _vm._v("Endorsed"),
                 ]),
@@ -1917,242 +1960,316 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table table-centered table-nowrap" }, [
-          _c("thead", { staticClass: "thead-light align-middle" }, [
-            _c("tr", { staticClass: "font-size-11" }, [
-              _c(
-                "th",
-                [
-                  _c("b-form-checkbox", {
-                    staticStyle: { "font-size": "16px" },
-                    attrs: {
-                      value: "all",
-                      "unchecked-value": "not_accepted",
-                      checked: "",
-                      plain: "",
-                    },
-                    on: {
-                      input: function ($event) {
-                        return _vm.checkAll()
-                      },
-                    },
-                    model: {
-                      value: _vm.isCheckAll,
-                      callback: function ($$v) {
-                        _vm.isCheckAll = $$v
-                      },
-                      expression: "isCheckAll",
-                    },
-                  }),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("th", { staticStyle: { width: "1%" } }),
-              _vm._v(" "),
-              _c("th", [_vm._v("Name ")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "text-center" }, [_vm._v("Program")]),
-              _vm._v(" "),
-              _c("th", { staticClass: "text-center" }, [_vm._v("Contact")]),
-              _vm._v(" "),
-              _vm.type != "Endorsed" ? _c("th") : _c("th", [_vm._v("Status")]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            { staticClass: "align-middle" },
-            _vm._l(_vm.users, function (user) {
-              return _c(
-                "tr",
-                {
-                  key: user.id,
-                  class: [
-                    user.info.requirements.count > 0 ? "table-warning" : "",
-                  ],
-                },
-                [
+        _vm.type != "Waiting"
+          ? _c("table", { staticClass: "table table-centered table-nowrap" }, [
+              _c("thead", { staticClass: "thead-light align-middle" }, [
+                _c("tr", { staticClass: "font-size-11" }, [
                   _c(
-                    "td",
-                    { staticStyle: { width: "1%" } },
+                    "th",
                     [
                       _c("b-form-checkbox", {
                         staticStyle: { "font-size": "16px" },
                         attrs: {
-                          id: "customCheck_" + user.id,
-                          value: user.id,
+                          value: "all",
                           "unchecked-value": "not_accepted",
                           checked: "",
                           plain: "",
                         },
                         on: {
-                          change: function ($event) {
-                            return _vm.updateCheckall()
+                          input: function ($event) {
+                            return _vm.checkAll()
                           },
                         },
                         model: {
-                          value: _vm.selected,
+                          value: _vm.isCheckAll,
                           callback: function ($$v) {
-                            _vm.selected = $$v
+                            _vm.isCheckAll = $$v
                           },
-                          expression: "selected",
+                          expression: "isCheckAll",
                         },
                       }),
                     ],
                     1
                   ),
                   _vm._v(" "),
-                  _c("td", [
-                    user.avatar == "n/a"
-                      ? _c("div", { staticClass: "avatar-xs" }, [
-                          _c(
-                            "span",
-                            { staticClass: "avatar-title rounded-circle" },
-                            [_vm._v(_vm._s(user.lastname.charAt(0)))]
-                          ),
-                        ])
-                      : _c("div", [
-                          _c("img", {
-                            staticClass: "rounded-circle avatar-xs",
-                            attrs: {
-                              src:
-                                _vm.currentUrl +
-                                "/images/avatars/" +
-                                user.avatar,
-                              alt: "",
-                            },
-                          }),
-                        ]),
-                  ]),
+                  _c("th", { staticStyle: { width: "1%" } }),
                   _vm._v(" "),
-                  _c(
-                    "td",
+                  _c("th", [_vm._v("Name ")]),
+                  _vm._v(" "),
+                  _c("th", { staticClass: "text-center" }, [_vm._v("Program")]),
+                  _vm._v(" "),
+                  _c("th", { staticClass: "text-center" }, [_vm._v("Contact")]),
+                  _vm._v(" "),
+                  _vm.type != "Endorsed"
+                    ? _c("th")
+                    : _c("th", [_vm._v("Status")]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                { staticClass: "align-middle" },
+                _vm._l(_vm.users, function (user) {
+                  return _c(
+                    "tr",
                     {
-                      staticStyle: { cursor: "pointer" },
-                      on: {
-                        click: function ($event) {
-                          return _vm.profile(user)
-                        },
-                      },
+                      key: user.id,
+                      class: [
+                        user.info.requirements.count > 0 ? "table-warning" : "",
+                      ],
                     },
                     [
-                      _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                        _vm._v(
-                          _vm._s(user.lastname) +
-                            ", " +
-                            _vm._s(user.firstname) +
-                            " " +
-                            _vm._s(user.middlename)
+                      _c(
+                        "td",
+                        { staticStyle: { width: "1%" } },
+                        [
+                          _c("b-form-checkbox", {
+                            staticStyle: { "font-size": "16px" },
+                            attrs: {
+                              id: "customCheck_" + user.id,
+                              value: user.id,
+                              "unchecked-value": "not_accepted",
+                              checked: "",
+                              plain: "",
+                            },
+                            on: {
+                              change: function ($event) {
+                                return _vm.updateCheckall()
+                              },
+                            },
+                            model: {
+                              value: _vm.selected,
+                              callback: function ($$v) {
+                                _vm.selected = $$v
+                              },
+                              expression: "selected",
+                            },
+                          }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("td", [
+                        user.avatar == "n/a"
+                          ? _c("div", { staticClass: "avatar-xs" }, [
+                              _c(
+                                "span",
+                                { staticClass: "avatar-title rounded-circle" },
+                                [_vm._v(_vm._s(user.lastname.charAt(0)))]
+                              ),
+                            ])
+                          : _c("div", [
+                              _c("img", {
+                                staticClass: "rounded-circle avatar-xs",
+                                attrs: {
+                                  src:
+                                    _vm.currentUrl +
+                                    "/images/avatars/" +
+                                    user.avatar,
+                                  alt: "",
+                                },
+                              }),
+                            ]),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticStyle: { cursor: "pointer" },
+                          on: {
+                            click: function ($event) {
+                              return _vm.profile(user)
+                            },
+                          },
+                        },
+                        [
+                          _c(
+                            "h5",
+                            { staticClass: "font-size-13 mb-0 text-dark" },
+                            [
+                              _vm._v(
+                                _vm._s(user.lastname) +
+                                  ", " +
+                                  _vm._s(user.firstname) +
+                                  " " +
+                                  _vm._s(user.middlename)
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "p",
+                            { staticClass: "font-size-11 text-muted mb-0" },
+                            [
+                              _vm._v("SPAS ID : "),
+                              _c("span", { staticClass: "fw-bold" }, [
+                                _vm._v(_vm._s(user.spas_id)),
+                              ]),
+                            ]
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-center" }, [
+                        _c(
+                          "h5",
+                          { staticClass: "font-size-13 mb-0 text-dark" },
+                          [_vm._v(_vm._s(user.program_id.name))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          { staticClass: "font-size-11 text-muted mb-0" },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                user.is_undergrad ? "Undergraduate" : "JLSS"
+                              )
+                            ),
+                          ]
                         ),
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
-                        _vm._v("SPAS ID : "),
-                        _c("span", { staticClass: "fw-bold" }, [
-                          _vm._v(_vm._s(user.spas_id)),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                      _vm._v(_vm._s(user.program_id.name)),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
-                      _vm._v(
-                        _vm._s(user.is_undergrad ? "Undergraduate" : "JLSS")
-                      ),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("h5", { staticClass: "font-size-11 mb-0 text-dark" }, [
-                      _vm._v(_vm._s(user.email) + " / " + _vm._s(user.mobile)),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
-                      _vm._v(
-                        _vm._s(user.barangay) +
-                          ", " +
-                          _vm._s(user.municipality) +
-                          ", " +
-                          _vm._s(user.province)
-                      ),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  user.is_referral == 0 && user.is_qualified == _vm.NULL
-                    ? _c("td", { staticClass: "text-end" }, [
-                        user.info.requirements.count > 0
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "bg-light btn btn-light",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.warning(user)
-                                  },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass:
-                                    "bx text-warning bxs-info-circle",
-                                }),
-                              ]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        user.info.requirements.count < 1
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "bg-light btn btn-light",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.addScholar(user)
-                                  },
-                                },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "bx text-info bx-plus-medical",
-                                }),
-                              ]
-                            )
-                          : _vm._e(),
+                      _c("td", { staticClass: "text-center" }, [
+                        _c(
+                          "h5",
+                          { staticClass: "font-size-11 mb-0 text-dark" },
+                          [
+                            _vm._v(
+                              _vm._s(user.email) + " / " + _vm._s(user.mobile)
+                            ),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
-                          "button",
-                          {
-                            staticClass: "bg-light btn btn-light",
-                            staticStyle: { "margin-end": "-10px" },
-                            attrs: { type: "button" },
-                            on: {
-                              click: function ($event) {
-                                return _vm.refer(user)
-                              },
-                            },
-                          },
-                          [_c("i", { staticClass: "bx bx-transfer-alt" })]
-                        ),
-                      ])
-                    : _c("td", [
-                        _vm._v(
-                          "\n                        n/a\n                    "
+                          "p",
+                          { staticClass: "font-size-11 text-muted mb-0" },
+                          [
+                            _vm._v(
+                              _vm._s(user.barangay) +
+                                ", " +
+                                _vm._s(user.municipality) +
+                                ", " +
+                                _vm._s(user.province)
+                            ),
+                          ]
                         ),
                       ]),
-                ]
-              )
-            }),
-            0
-          ),
-        ]),
+                      _vm._v(" "),
+                      user.is_referral == 0 && user.is_qualified == null
+                        ? _c("td", { staticClass: "text-end" }, [
+                            user.info.requirements.count > 0
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "bg-light btn btn-light",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.warning(user)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "bx text-warning bxs-info-circle",
+                                    }),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            user.info.requirements.count < 1
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "bg-light btn btn-light",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.addScholar(user)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "bx text-info bx-plus-medical",
+                                    }),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "bg-light btn btn-light",
+                                staticStyle: { "margin-end": "-10px" },
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.refer(user)
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "bx bx-transfer-alt" })]
+                            ),
+                          ])
+                        : _c("td", [
+                            _vm._v(
+                              "\n                        n/a\n                    "
+                            ),
+                          ]),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ])
+          : _c("table", { staticClass: "table table-centered table-nowrap" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                { staticClass: "align-middle" },
+                _vm._l(_vm.users, function (user) {
+                  return _c("tr", { key: user.id }, [
+                    _c("td"),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                       " +
+                          _vm._s(user.spas_id) +
+                          "\n                    "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
+                        _vm._v(_vm._s(user.name)),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(user.endorsed_by) +
+                          "\n                    "
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(user.created_at) +
+                          "\n                    "
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
       ]),
       _vm._v(" "),
       _c("Warning", { ref: "warning", on: { status: _vm.message } }),
@@ -2199,6 +2316,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "input-group-text bg-light" }, [
       _c("i", { staticClass: "bx bx-search-alt" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light align-middle" }, [
+      _c("tr", { staticClass: "font-size-11" }, [
+        _c("th", { staticStyle: { width: "1%" } }),
+        _vm._v(" "),
+        _c("th", [_vm._v("Spas ID ")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Region From")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Date")]),
+      ]),
     ])
   },
 ]

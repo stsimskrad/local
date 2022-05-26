@@ -48,6 +48,7 @@
                     <input type="text" class="form-control" style="width: 55%;" placeholder="Search..." v-model="keyword" @keyup="fetch()"/>
                      <select v-model="type" @change="fetch()" class="form-select" style="width: 100px; font-weight: 500;">
                         <option value="Qualifiers" selected="">Qualifiers</option>
+                        <option value="Waiting">Waiting</option>
                         <option value="Endorsed">Endorsed</option>
                         <option value="Qualified">Qualified</option>
                     </select>
@@ -67,7 +68,7 @@
         </div>
         
         <div class="table-responsive">
-            <table class="table table-centered table-nowrap">
+            <table class="table table-centered table-nowrap" v-if="type != 'Waiting'">
                 <thead class="thead-light align-middle">
                         <tr class="font-size-11">
                         <th>
@@ -110,7 +111,7 @@
                             <h5 class="font-size-11 mb-0 text-dark">{{user.email}} / {{user.mobile}}</h5>
                             <p class="font-size-11 text-muted mb-0">{{user.barangay}}, {{user.municipality}}, {{user.province}}</p>
                         </td>
-                        <td class="text-end" v-if="user.is_referral == 0 && user.is_qualified == NULL">
+                        <td class="text-end" v-if="user.is_referral == 0 && user.is_qualified == null">
                             <button type="button" @click="warning(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count > 0"><i class='bx text-warning bxs-info-circle'></i></button>
                             <button type="button" @click="addScholar(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count < 1"><i class='bx text-info bx-plus-medical'></i></button>
                             <button type="button" @click="refer(user)" class="bg-light btn btn-light" style="margin-end: -10px;"><i class='bx bx-transfer-alt'></i></button>
@@ -118,6 +119,35 @@
                         </td>
                         <td v-else>
                             n/a
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-centered table-nowrap" v-else>
+                <thead class="thead-light align-middle">
+                        <tr class="font-size-11">
+                        <th style="width: 1%;"></th>
+                        <th>Spas ID </th>
+                        <th>Name </th>
+                        <th class="text-center">Region From</th>
+                        <th class="text-center">Date</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    <tr v-for="user in users" v-bind:key="user.id">
+                        <td></td>
+                        <td>
+                           {{user.spas_id}}
+                        </td>
+                        
+                        <td >
+                            <h5 class="font-size-13 mb-0 text-dark">{{user.name}}</h5>
+                        </td>
+                         <td class="text-center">
+                            {{ user.endorsed_by }}
+                        </td>
+                        <td class="text-center">
+                            {{ user.created_at }}
                         </td>
                     </tr>
                 </tbody>
@@ -174,17 +204,23 @@ export default {
         },
 
         fetch(page_url) {
-            page_url = page_url || this.currentUrl + '/request/qualifiers';
-            axios.get(page_url,{ 
-                params: { 
-                    count : this.counts, 
-                    program : (this.program ==  null) ? null : this.program.id, 
-                    year: this.year, 
-                    keyword: this.keyword,
-                    type: this.type,
-                    is_undergrad: this.is_undergrad
-                }
-            })
+            let params;
+            if(this.type != 'Waiting'){
+                page_url = page_url || this.currentUrl + '/request/qualifiers';
+                params = { 
+                        count : this.counts, 
+                        program : (this.program ==  null) ? null : this.program.id, 
+                        year: this.year, 
+                        keyword: this.keyword,
+                        type: this.type,
+                        is_undergrad: this.is_undergrad
+                };
+            }else{
+                page_url = this.currentUrl + '/request/qualifiers/endorsement';        
+                params = {};         
+            }
+
+            axios.get(page_url,{ params: params })
             .then(response => {
                 this.users = response.data.data;
                 if (this.isCheckAll == 'all') { // Check all
