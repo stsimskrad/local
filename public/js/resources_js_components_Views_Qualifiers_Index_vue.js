@@ -743,7 +743,7 @@ __webpack_require__.r(__webpack_exports__);
     save: function save() {
       var _this = this;
 
-      axios.post(this.currentUrl + '/request/endorsement/store', {
+      axios.post(this.currentUrl + '/request/qualifiers/endorsement/store', {
         id: this.user.id,
         information: this.user,
         school_id: this.user.school.id,
@@ -2084,7 +2084,7 @@ var render = function () {
                     ]),
                   ]),
                   _vm._v(" "),
-                  !user.is_referral
+                  user.is_referral == 0 && user.is_qualified == _vm.NULL
                     ? _c("td", { staticClass: "text-end" }, [
                         user.info.requirements.count > 0
                           ? _c(

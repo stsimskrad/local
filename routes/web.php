@@ -74,16 +74,14 @@ Route::prefix('request')->group(function(){
             });
         });
     });
-
-    Route::prefix('endorsement')->group(function(){
-        Route::controller(App\Http\Controllers\Scholarship\EndorsementController::class)->group(function () {
-            Route::post('/store', 'store');
-        });
-    });
    
         Route::prefix('qualifiers')->group(function(){
-            Route::controller(App\Http\Controllers\Qualifier\IndexController::class)->group(function () {
-                Route::get('/', 'index');
+            Route::get('/', [App\Http\Controllers\Qualifier\IndexController::class, 'index']);
+            Route::prefix('endorsement')->group(function(){
+                Route::controller(App\Http\Controllers\Qualifier\EndorsementController::class)->group(function () {
+                    Route::post('/store', 'store');
+                    Route::get('/', 'index');
+                });
             });
         });
 
@@ -198,7 +196,6 @@ Route::prefix('request')->group(function(){
             });
         });
 
-
     Route::middleware(['auth','role:Scholar'])->group(function () {
         Route::prefix('info')->group(function(){
             Route::controller(App\Http\Controllers\Scholarship\Profile\IndexController::class)->group(function () {
@@ -228,7 +225,6 @@ Route::prefix('excel')->group(function(){
     Route::post('/scholar/import', [App\Http\Controllers\Scholarship\ImportController::class, 'index']);
     Route::post('/scholar/store', [App\Http\Controllers\Scholarship\ImportController::class, 'store']);
 });
-
 
 Route::prefix('lists')->group(function(){
     Route::get('/', [App\Http\Controllers\ListController::class, 'index']);

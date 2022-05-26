@@ -110,7 +110,7 @@
                             <h5 class="font-size-11 mb-0 text-dark">{{user.email}} / {{user.mobile}}</h5>
                             <p class="font-size-11 text-muted mb-0">{{user.barangay}}, {{user.municipality}}, {{user.province}}</p>
                         </td>
-                        <td class="text-end" v-if="!user.is_referral">
+                        <td class="text-end" v-if="user.is_referral == 0 && user.is_qualified == NULL">
                             <button type="button" @click="warning(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count > 0"><i class='bx text-warning bxs-info-circle'></i></button>
                             <button type="button" @click="addScholar(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count < 1"><i class='bx text-info bx-plus-medical'></i></button>
                             <button type="button" @click="refer(user)" class="bg-light btn btn-light" style="margin-end: -10px;"><i class='bx bx-transfer-alt'></i></button>

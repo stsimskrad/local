@@ -1,16 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Scholarship;
+namespace App\Http\Controllers\Qualifier;
 
 use App\Models\Qualifier;
+use App\Models\ListAgency;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EndorsementController extends Controller
 {
     public function index(){
+
+        $agency_id = config('app.agency');
+        $agency = ListAgency::where('id',$agency_id)->first();
+        $region_code = $agency->region_code;
+        
         try{
-            $url = 'http://stsims.main/api/endorsements';
+            $url = 'http://stsims.main/api/endorsements/'.$region_code;
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -22,13 +28,14 @@ class EndorsementController extends Controller
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET'
+            CURLOPT_CUSTOMREQUEST => 'GET',
             ));
-            
+
             $response = curl_exec($curl);
             curl_close($curl);
-            $data = json_decode($response);
-
+        return $datas = response()->json(json_decode($response));
+            $datas = json_decode($response);
+           
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }

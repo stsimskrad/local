@@ -21,6 +21,7 @@ class QualifierResource extends JsonResource
             'program_id' => $this->program,
             'is_undergrad' => $this->is_undergrad,
             'is_referral' => $this->is_referral,
+            'is_qualified' => $this->is_qualified,
             'year' => $this->year,
             'profile_id' => $this->profile->id,
             'avatar' => 'avatar.jpg',

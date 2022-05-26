@@ -57,7 +57,7 @@
                 this.user = data;
             },
             save(){
-                axios.post(this.currentUrl + '/request/endorsement/store', {
+                axios.post(this.currentUrl + '/request/qualifiers/endorsement/store', {
                     id: this.user.id,
                     information: this.user,
                     school_id: this.user.school.id,
