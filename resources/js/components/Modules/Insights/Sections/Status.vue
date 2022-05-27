@@ -19,12 +19,17 @@
                     </div>
                 </li>
             </ul>
+            <div @click="show" class="text-center my-3"><a href="javascript:void(0);" class="text-success">See All .. </a>
+            </div>
         </div>
+        <Status ref="status"/>
     </div>
 </template>
 <script>
+    import Status from "../Modals/Status.vue";
     export default {
         props: ['statuses','total'],
+        components : {Status},
         data() {
             return {
                 currentUrl: window.location.origin
@@ -33,6 +38,11 @@
         methods : {
             percentage(data){
                 return Math.floor((data/this.total)*100)+'%';
+            },
+
+            show(){
+                this.$refs.status.set(this.statuses,this.total);
+                this.$bvModal.show("stat");
             }
         }
     }
