@@ -214,7 +214,7 @@ const routes = [{
         component: () =>
             import ('../Views/Insights.vue'),
         name: 'insights',
-        beforeEnter: director
+        beforeEnter: two
     },
 ];
 

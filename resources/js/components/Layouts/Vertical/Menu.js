@@ -82,34 +82,34 @@ export const menuItems = [{
         link: "/benefits",
         user: ['Scholarship Coordinator']
     },
-    {
-        id: 30,
-        label: "menuitems.accounting.text",
-        icon: "bxs-wallet-alt ",
-        user: ['Scholarship Coordinator'],
-        subItems: [{
-                id: 1,
-                label: "menuitems.accounting.list.allotments",
-                link: "/allotments",
-                icon: "bxs-wallet",
-                parentId: 30,
-            },
-            {
-                id: 2,
-                label: "menuitems.accounting.list.disbursements",
-                link: "/disbursements",
-                icon: "bx-wallet",
-                parentId: 30,
-            },
-        ]
-    },
+    // {
+    //     id: 30,
+    //     label: "menuitems.accounting.text",
+    //     icon: "bxs-wallet-alt ",
+    //     user: ['Scholarship Coordinator'],
+    //     subItems: [{
+    //             id: 1,
+    //             label: "menuitems.accounting.list.allotments",
+    //             link: "/allotments",
+    //             icon: "bxs-wallet",
+    //             parentId: 30,
+    //         },
+    //         {
+    //             id: 2,
+    //             label: "menuitems.accounting.list.disbursements",
+    //             link: "/disbursements",
+    //             icon: "bx-wallet",
+    //             parentId: 30,
+    //         },
+    //     ]
+    // },
 
     {
         id: 33,
         label: "menuitems.insights.text",
         icon: "bx-line-chart",
         link: "/insights",
-        user: ['Regional Director']
+        user: ['Scholarship Coordinator', 'Regional Director']
     },
 
 ];
