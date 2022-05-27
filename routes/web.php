@@ -207,7 +207,8 @@ Route::prefix('request')->group(function(){
 });
 
 Route::prefix('insights')->group(function(){
-    Route::get('/lists', [App\Http\Controllers\Insight\IndexController::class, 'index']);
+    Route::get('/datas', [App\Http\Controllers\Insight\Index2Controller::class, 'index']);
+    Route::get('/data', [App\Http\Controllers\Insight\IndexController::class, 'index']);
     Route::get('/years', [App\Http\Controllers\Insight\IndexController::class, 'years']);
 });
 

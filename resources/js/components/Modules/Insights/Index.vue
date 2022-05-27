@@ -21,14 +21,7 @@
         </div>
         <div class="col-xl-4 mt-n2">
            <div class="card">
-                <div class="card-body border-bottom">
-                    <div class="page-title-left">
-                        <h6 class="fw-bold mb-n1">Statuses</h6>
-                    </div>
-                </div>
-                <div class="card-body" style="height: 388px;">
-                    s
-                </div>
+                <Statuses :statuses="statuses" :total="total"/>
             </div>
         </div>
         <div class="col-xl-12 mt-n2">
@@ -93,14 +86,16 @@
     import School from "./Sections/School.vue";
     import Course from "./Sections/Course.vue";
     import Gender from "./Sections/Gender.vue";
+    import Statuses from "./Sections/Status.vue";
     export default {
-        components : { Count, Program, Year, Lists, School, Course, Gender },
+        components : { Count, Program, Year, Lists, School, Course, Gender, Statuses },
         data() {
             return {
                 currentUrl: window.location.origin,
                 lists: {},
                 schools: [],
                 courses: [],
+                statuses: [],
                 years: [],
                 gender: [],
                 school: [],
@@ -128,21 +123,21 @@
 
         computed : {
             main(){
-                return this.types.lists.filter(car => car.is_sub == 0);
+                return this.lists.filter(car => car.is_sub == 0);
             }
         },
 
         methods: {
             fetch() {
-                axios.get(this.currentUrl + '/insights/lists')
+                axios.get(this.currentUrl + '/insights/data')
                 .then(response => {
-                    this.lists = response.data.arr;
-                    this.types = response.data.types;
-                    this.gender = response.data.types.gender;
-                    this.school = response.data.types.schools;
-                    this.schools = response.data.schools;
-                    this.courses = response.data.courses;
-                    this.total = response.data.total;
+                    this.lists = response.data.lists.graphs;
+                    this.schools = response.data.lists.schools;
+                    this.courses = response.data.lists.courses;
+                    this.statuses = response.data.lists.statuses;
+                    this.gender = response.data.counts.gender;
+                    this.school = response.data.counts.school;
+                    this.total = response.data.counts.total;
                     // this.$refs.realtimeChart.updateSeries(response.data.types.gender, false, true);
                 })
                 .catch(err => console.log(err));
