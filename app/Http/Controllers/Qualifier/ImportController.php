@@ -72,7 +72,7 @@ class ImportController extends Controller
                         'middlename' => preg_replace("/[*]/", "", $row[5]),
                         'suffix' => ($row[6] != '') ? $row[7] : '',
                         'birthday' => $birthday,
-                        'gender' => $row[8],
+                        'gender' => ($row[8] == 'M') ? 1 : 2,
                         'mobile' => '0'.$row[9],
                         'information' => $information,
                         'type' => ($request->type == 'Undergraduate') ? 1 : 0

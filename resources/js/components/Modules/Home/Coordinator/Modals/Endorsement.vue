@@ -1,5 +1,5 @@
 <template>
-    <b-modal id="endorsement" ok-title="Add as Scholar" title="Endorsement" centered>
+    <b-modal  @ok="create($event)" id="endorsement" ok-title="Add as Scholar" title="Endorsement" centered>
         <div class="media">
             <div class="align-self-center me-3">
                 <img class="rounded avatar-md" :src="currentUrl+'/images/avatars/'+user.information.avatar" alt="">
@@ -14,7 +14,7 @@
         </div>
         <hr/>
 
-        <blockquote class="p-3 border-light border rounded ">
+        <blockquote class="p-3 border-light border rounded">
             <div class="row font-size-12">
                 <div class="row font-size-12">
                     <div class="col-sm-12">
@@ -47,7 +47,7 @@
                 user: {
                     endorsed_by: {},
                     information: {
-                        school: {}, course : {}, program_id: {}
+                        school: {}, course : {}, program_id: {}, info: { parents : {}}
                     }
                 }
             }
@@ -56,7 +56,52 @@
         methods : {
             set(data){
                 this.user = data;
-            }
+            },
+
+            create(){
+                let data = new FormData();
+                data.append('email', (this.user.information.email != undefined) ? this.user.information.email : '');
+                data.append('firstname', (this.user.information.firstname != undefined) ? this.user.information.firstname : '');
+                data.append('lastname', (this.user.information.lastname != undefined) ? this.user.information.lastname : '');
+                data.append('middlename', (this.user.information.middlename != undefined) ? this.user.information.middlename : '');
+                data.append('suffix', (this.user.information.suffix != undefined) ? this.user.information.suffix : '');
+                data.append('gender', (this.user.information.gender != undefined) ? (this.user.information.gender == 'Male') ? 1 : 2 : '');
+                data.append('mobile', (this.user.information.mobile != undefined) ? this.user.information.mobile : '');
+                data.append('birthday', (this.user.information.birthday != undefined) ? this.user.information.birthday : '');
+                data.append('father', (this.user.information.info.parents.father != undefined) ? this.user.information.info.parents.father : '');
+                data.append('mother', (this.user.information.info.parents.mother != undefined) ? this.user.information.info.parents.mother : '');
+                data.append('lrn', (this.user.information.lrn != undefined) ? (this.user.information.lrn == 'N/A') ? '' : this.user.information.lrn : '');
+                data.append('spas_id', (this.user.spas_id != undefined) ? this.user.spas_id : '');
+                data.append('course_id', (this.user.information.course != undefined) ? this.user.information.course.id : '');
+                data.append('school_id', (this.user.information.school != undefined) ? this.user.information.school.id : '');
+                data.append('level_id', (this.user.information.is_undergrad) ? 2 : 4);
+                data.append('program_id', (this.user.information.program_id != undefined) ? this.user.information.program_id.id : '');
+                data.append('status_id', 30);
+                data.append('is_undergrad', (this.user.information.is_undergrad != undefined) ? this.user.information.is_undergrad : '');
+                data.append('editable', 'single');
+                
+                // data.append('region_code', (this.user.region != undefined) ? this.user.region.code : '');
+                // data.append('province_code', (this.user.province != undefined) ? this.user.province.code : '');
+                // data.append('municipality_code', (this.user.municipality != undefined) ? this.user.municipality.code : '');
+                // data.append('address', (this.user.address != undefined) ? this.user.address : '');
+
+                axios.post(this.currentUrl + '/request/scholar/store', data)
+                .then(response => {
+                    this.clear();
+                    Vue.$toast.success('<strong>Successfully Created</strong>', {
+                        position: 'bottom-right'
+                    });
+                    this.isLoading = false;
+                    this.$router.push({ name: 'scholars'})
+                })
+                .catch(error => {
+                    if (error.response.status == 422) {
+                        this.errors = error.response.data.errors;
+                        this.isLoading = false;
+                    }
+                });
+            },
+
         }
     }
 </script>
