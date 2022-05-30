@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Qualifier;
 
 use App\Models\Qualifier;
 use App\Models\ListAgency;
+use App\Models\SchoolCampus;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,7 @@ class EndorsementController extends Controller
 {
     public function index(){
 
-        $agency_id = config('app.agency');
-        $agency = ListAgency::where('id',$agency_id)->first();
-        $region_code = $agency->region_code;
+        $region_code = $this->agency();
         
         try{
             $url = 'http://stsims.main/api/endorsements/'.$region_code;
@@ -63,8 +62,8 @@ class EndorsementController extends Controller
                     'name' => $request->name,
                     'spas_id' => $request->spas_id,
                     'information' => json_encode($request->information),
-                    'endorsed_to' => '080000000',
-                    'endorsed_by' => '090000000',
+                    'endorsed_to' => $this->school($request->school_id),
+                    'endorsed_by' => $this->agency()
                 ),
             ));
 
@@ -84,5 +83,16 @@ class EndorsementController extends Controller
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
+    }
+
+    public function agency(){
+        $agency_id = config('app.agency');
+        $agency = ListAgency::where('id',$agency_id)->first();
+        return $region_code = $agency->region_code;
+    }
+
+    public function school($id){
+        $data = SchoolCampus::with('province.region')->where('id',$id)->first();
+        return $data->province->region->code;
     }
 }

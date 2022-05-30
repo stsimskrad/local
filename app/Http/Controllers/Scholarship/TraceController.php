@@ -46,7 +46,7 @@ class TraceController extends Controller
         $data->type = $request->type;
         $data->information = json_encode($json);
         $data->scholar_id = $id[0];
-        $data->added_by = \Auth::user()->id;
+        $data->checked_by = \Auth::user()->id;
         $data->save();
 
         return new TracerResource($data);
