@@ -37,13 +37,13 @@ class Profile extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
-    public function getBirthdayAttribute($value)
-    {
-        if($value == null){
-            return null;
-        }
-        return date('M d, Y', strtotime($value));
-    }
+    // public function getBirthdayAttribute($value)
+    // {
+    //     if($value == null){
+    //         return null;
+    //     }
+    //     return date('M d, Y', strtotime($value));
+    // }
 
     public function getGenderAttribute($value)
     {
