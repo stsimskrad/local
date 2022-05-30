@@ -33,8 +33,8 @@ class EndorsementController extends Controller
 
             $response = curl_exec($curl);
             curl_close($curl);
-        return $datas = response()->json(json_decode($response));
-            $datas = json_decode($response);
+            return $datas = response()->json(json_decode($response));
+            // $datas = json_decode($response);
            
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";

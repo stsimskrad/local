@@ -48,7 +48,6 @@
                     <input type="text" class="form-control" style="width: 55%;" placeholder="Search..." v-model="keyword" @keyup="fetch()"/>
                      <select v-model="type" @change="fetch()" class="form-select" style="width: 100px; font-weight: 500;">
                         <option value="Qualifiers" selected="">Qualifiers</option>
-                        <option value="Waiting">Waiting</option>
                         <option value="Endorsed">Endorsed</option>
                         <option value="Qualified">Qualified</option>
                     </select>
@@ -68,7 +67,7 @@
         </div>
         
         <div class="table-responsive">
-            <table class="table table-centered table-nowrap" v-if="type != 'Waiting'">
+            <table class="table table-centered table-nowrap">
                 <thead class="thead-light align-middle">
                         <tr class="font-size-11">
                         <th>
@@ -123,35 +122,7 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="table table-centered table-nowrap" v-else>
-                <thead class="thead-light align-middle">
-                        <tr class="font-size-11">
-                        <th style="width: 1%;"></th>
-                        <th>Spas ID </th>
-                        <th>Name </th>
-                        <th class="text-center">Region From</th>
-                        <th class="text-center">Date</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                    <tr v-for="user in users" v-bind:key="user.id">
-                        <td></td>
-                        <td>
-                           {{user.spas_id}}
-                        </td>
-                        
-                        <td >
-                            <h5 class="font-size-13 mb-0 text-dark">{{user.name}}</h5>
-                        </td>
-                         <td class="text-center">
-                            {{ user.endorsed_by }}
-                        </td>
-                        <td class="text-center">
-                            {{ user.created_at }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
         </div>
         <Warning @status="message" ref="warning"/>
         <Profile @status="message" ref="profile"/>
@@ -205,20 +176,15 @@ export default {
 
         fetch(page_url) {
             let params;
-            if(this.type != 'Waiting'){
-                page_url = page_url || this.currentUrl + '/request/qualifiers';
-                params = { 
-                        count : this.counts, 
-                        program : (this.program ==  null) ? null : this.program.id, 
-                        year: this.year, 
-                        keyword: this.keyword,
-                        type: this.type,
-                        is_undergrad: this.is_undergrad
-                };
-            }else{
-                page_url = this.currentUrl + '/request/qualifiers/endorsement';        
-                params = {};         
-            }
+            page_url = page_url || this.currentUrl + '/request/qualifiers';
+            params = { 
+                count : this.counts, 
+                program : (this.program ==  null) ? null : this.program.id, 
+                year: this.year, 
+                keyword: this.keyword,
+                type: this.type,
+                is_undergrad: this.is_undergrad
+            };
 
             axios.get(page_url,{ params: params })
             .then(response => {
