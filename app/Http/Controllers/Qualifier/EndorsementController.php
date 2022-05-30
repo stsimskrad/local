@@ -11,9 +11,7 @@ use Illuminate\Http\Request;
 class EndorsementController extends Controller
 {
     public function index(){
-
         $region_code = $this->agency();
-        
         try{
             $url = 'http://stsims.main/api/endorsements/'.$region_code;
             $curl = curl_init();
@@ -41,6 +39,7 @@ class EndorsementController extends Controller
     }
 
     public function store(Request $request){
+
         try{
             $url = 'http://stsims.main/api/endorsement/store';
             $curl = curl_init();
@@ -92,7 +91,7 @@ class EndorsementController extends Controller
     }
 
     public function school($id){
-        $data = SchoolCampus::with('province.region')->where('id',$id)->first();
-        return $data->province->region->code;
+        $data = SchoolCampus::with('municipality.province.region')->where('id',$id)->first();
+        return $data->municipality->province->region->code;
     }
 }
