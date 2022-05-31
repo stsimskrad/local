@@ -82,7 +82,7 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <tr v-for="user in users" v-bind:key="user.id" :class="[(user.info.requirements.count > 0) ? 'table-warning' : '']">
+                    <tr v-for="user in users" v-bind:key="user.id" :class="[(user.information.requirements.count > 0) ? 'table-warning' : (user.address.is_completed == 0) ? 'table-danger' : '']">
                         <td style="width: 1%;">
                             <b-form-checkbox :id="'customCheck_'+user.id" v-on:change='updateCheckall()'
                                 :value="user.id" v-model="selected" unchecked-value="not_accepted" checked plain 
@@ -91,29 +91,30 @@
                         </td>
                         <td>
                             <div class="avatar-xs" v-if="user.avatar == 'n/a'">
-                                <span class="avatar-title rounded-circle">{{user.lastname.charAt(0)}}</span>
+                                <span class="avatar-title rounded-circle">{{user.name.charAt(0)}}</span>
                             </div>
                             <div v-else>
                                 <img class="rounded-circle avatar-xs" :src="currentUrl+'/images/avatars/'+user.avatar" alt="">
                             </div>
                         </td>
                         <td style="cursor: pointer;" @click="profile(user)">
-                            <h5 class="font-size-13 mb-0 text-dark">{{user.lastname}}, {{user.firstname}} {{user.middlename}}</h5>
+                            <h5 class="font-size-13 mb-0 text-dark">{{user.name}}</h5>
                             <!-- <p class="font-size-11 text-muted mb-0">{{user.barangay}}, {{user.municipality}}, {{user.province}}</p> -->
                             <p class="font-size-11 text-muted mb-0">SPAS ID : <span class="fw-bold">{{user.spas_id}}</span></p>
                         </td>
                         <td class="text-center">
-                            <h5 class="font-size-13 mb-0 text-dark">{{user.program_id.name}}</h5>
+                            <h5 class="font-size-13 mb-0 text-dark">{{user.program.name}}</h5>
                             <p class="font-size-11 text-muted mb-0">{{(user.is_undergrad) ? 'Undergraduate' : 'JLSS'}}</p>
                         </td>
                         <td class="text-center">
-                            <h5 class="font-size-11 mb-0 text-dark">{{user.email}} / {{user.mobile}}</h5>
-                            <p class="font-size-11 text-muted mb-0">{{user.barangay}}, {{user.municipality}}, {{user.province}}</p>
+                            <h5 class="font-size-11 mb-0 text-dark">{{user.profile.email}} / {{user.profile.mobile}}</h5>
+                            <p class="font-size-11 text-muted mb-0">{{user.address.name}}</p>
                         </td>
                         <td class="text-end" v-if="user.is_referral == 0 && user.is_qualified == null">
-                            <button type="button" @click="warning(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count > 0"><i class='bx text-warning bxs-info-circle'></i></button>
-                            <button type="button" @click="addScholar(user)" class="bg-light btn btn-light" v-if="user.info.requirements.count < 1"><i class='bx text-info bx-plus-medical'></i></button>
-                            <button type="button" @click="refer(user)" class="bg-light btn btn-light" style="margin-end: -10px;"><i class='bx bx-transfer-alt'></i></button>
+                            <button type="button" @click="updateAddress(user)" class="bg-light btn btn-light" style="margin-end: -10px;" v-if="user.address.is_completed == 0"><i class='bx text-danger bxs-map'></i></button>
+                            <button type="button" @click="warning(user)" class="bg-light btn btn-light" v-if="user.information.requirements.count > 0"><i class='bx text-warning bxs-info-circle'></i></button>
+                            <button type="button" @click="addScholar(user)" class="bg-light btn btn-light" v-if="user.information.requirements.count < 1 && user.address.is_completed == 1"><i class='bx text-info bx-plus-medical'></i></button>
+                            <button type="button" @click="refer(user)" class="bg-light btn btn-light" v-if="user.address.is_completed == 1" style="margin-end: -10px;"><i class='bx bx-transfer-alt'></i></button>
                             <!-- <button type="button" @click="scholar(user)" class="btn btn-sm btn-danger w-sm waves-effect waves-light">Add Scholar</button> -->
                         </td>
                         <td v-else>
@@ -128,6 +129,7 @@
         <Profile @status="message" ref="profile"/>
         <Add :regions="regions" :dropdowns="dropdowns" @status="message" ref="add"/>
         <Referral @status="message" ref="referral"/>
+        <Address @status="message" ref="address"/>
     </div>
 </template>
 <script>
@@ -136,6 +138,7 @@ import Warning from './Modals/Warning.vue';
 import Profile from './Modals/Profile.vue';
 import Add from './Modals/Add.vue';
 import Referral from './Modals/Referral.vue';
+import Address from './Modals/Address.vue';
 export default {
     props: ['dropdowns','regions','programs'],
     data(){
@@ -242,12 +245,21 @@ export default {
             this.$bvModal.show("add");
         },
 
+        updateAddress(user){
+            this.editable = true;
+            this.$refs.address.set(user);
+            this.$bvModal.show("address");
+        },
+
         message(user){
             if(user){
                 if(this.editable == true){
+                    let index = this.users.findIndex(u => u.id === user.id);
+                    this.$set(this.users, index, user);
                     Vue.$toast.success('<strong>Successfully Updated</strong>', {
                         position: 'bottom-right'
                     });
+                   console.log(user);
                 }else if(this.editable == 'qualifier'){
                     this.users.splice(this.users.indexOf(user), 1);
                     Vue.$toast.success('<strong>Qualifier was added as Scholar</strong>', {
@@ -288,6 +300,6 @@ export default {
             // }
         },
 
-    }, components :{ Warning, Profile, Add, Referral, Multiselect }
+    }, components :{ Warning, Profile, Add, Referral, Multiselect, Address }
 }
 </script>

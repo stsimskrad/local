@@ -473,6 +473,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var data = new FormData();
+      var info = JSON.stringify(this.user.information.info);
+      data.append('information', this.user.information != undefined ? info : '');
       data.append('email', this.user.information.email != undefined ? this.user.information.email : '');
       data.append('firstname', this.user.information.firstname != undefined ? this.user.information.firstname : '');
       data.append('lastname', this.user.information.lastname != undefined ? this.user.information.lastname : '');
@@ -501,8 +503,7 @@ __webpack_require__.r(__webpack_exports__);
 
         Vue.$toast.success('<strong>Successfully Created</strong>', {
           position: 'bottom-right'
-        });
-        _this.isLoading = false;
+        }); // this.isLoading = false;
 
         _this.$router.push({
           name: 'scholars'

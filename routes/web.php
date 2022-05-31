@@ -77,6 +77,7 @@ Route::prefix('request')->group(function(){
    
         Route::prefix('qualifiers')->group(function(){
             Route::get('/', [App\Http\Controllers\Qualifier\IndexController::class, 'index']);
+            Route::post('/store', [App\Http\Controllers\Qualifier\IndexController::class, 'store']);
             Route::prefix('endorsement')->group(function(){
                 Route::controller(App\Http\Controllers\Qualifier\EndorsementController::class)->group(function () {
                     Route::post('/store', 'store');

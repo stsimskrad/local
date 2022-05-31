@@ -20,18 +20,19 @@ trait ScholarTrait { //Storing Scholar
             'father' => $request->father,
         ];
 
-        $information = [
+        $information2 = [
             'birth_place' => 'n/a',
             'course' => 'n/a',
             'school' => 'n/a',
             'address' => 'n/a',
             'parents' => $parents
         ];
+        ($request->information) ? $information = json_decode($request->information,true) : $information = $information2;
         $info = [];
 
         $data = Profile::create(array_merge($request->all(),['information' => json_encode($information)]));
+        $data->address()->create(array_merge($request->all(), ['type' => 'original']));
         $test = $data->scholar()->create(array_merge($request->all(), ['awarded_year' => '2022']));
-        $test->address()->create(array_merge($request->all(), ['type' => 'original']));
         $test->education()->create(array_merge($request->all(),['information' => json_encode($info)]));
         $data = Scholar::findOrFail($test->id);
 
@@ -41,12 +42,12 @@ trait ScholarTrait { //Storing Scholar
     public static function qualifier($request){
         $info = [];
         $data = Scholar::create($request->all());
-        $data->address()->create(array_merge($request->all(), ['type' => 'original']));
+        // $data->address()->create(array_merge($request->all(), ['type' => 'original']));
         $data->education()->create(['information' => json_encode($info)]);
         if($data){
             $user = User::create(array_merge($request->all(), ['password' => bcrypt('dost9ict'),'role' => 'Scholar']));
             $data->profile()->update(['user_id'=> $user->id]);
-            $qualifier = Qualifier::where('id',$request->qualifier_id)->update(['is_qualified' => 1]);
+            $qualifier = Qualifier::where('id',$request->id)->update(['is_qualified' => 1]);
 
             return new IndexResource($data);
         }

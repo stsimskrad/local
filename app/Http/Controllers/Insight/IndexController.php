@@ -11,7 +11,7 @@ use App\Models\ListAgency;
 use App\Models\ListProgram;
 use App\Models\ListDropdown;
 use App\Models\SchoolCampus;
-use App\Models\ScholarAddress;
+use App\Models\ProfileAddress;
 use App\Models\LocationProvince;
 use App\Models\ScholarEducation;
 use App\Http\Controllers\Controller;
@@ -154,7 +154,7 @@ class IndexController extends Controller
     }
 
     public function years(Request $request){
-        $provinces = ScholarAddress::groupBy('province_code')->pluck('province_code');
+        $provinces = ProfileAddress::groupBy('province_code')->pluck('province_code');
         $programs = ListProgram::all();
         $year = 1994; $current_year =  date('Y'); $years = [];
         $province = ($request->province) ? $request->province : null;
@@ -171,8 +171,10 @@ class IndexController extends Controller
                 'scholar', 
                 'scholar as scholar_count' => function ($query) use ($year,$province,$is_undergrad,$pro){
                     $query->where('awarded_year', $year)
-                    ->whereHas('address',function ($query) use ($province,$pro) {
-                        ($province != null) ? $query->where('province_code', $province) : '';
+                    ->whereHas('profile',function ($query) use ($province,$pro) {
+                        $query->whereHas('address',function ($query) use ($province,$pro) {
+                            ($province != null) ? $query->where('province_code', $province) : '';
+                        });
                     });
                     ($is_undergrad != null) ? $query->where('is_undergrad', $is_undergrad) : '';
                     ($pro != null) ? $query->where('program_id', $pro) : '';

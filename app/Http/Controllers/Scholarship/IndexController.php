@@ -25,18 +25,20 @@ class IndexController extends Controller
         $location = (!empty(json_decode($request->location))) ? json_decode($request->location) : NULL;
         
         $data = Scholar::with('profile.user')
-        ->with('address.municipality.province.region')
+        ->with('profile.address.region','profile.address.province','profile.address.municipality','profile.address.barangay')
         ->with('education.school.school','education.course')
         ->whereHas('profile',function ($query) use ($info) {
             ($info->keyword == '-') ? '' : $query->where(\DB::raw('concat(firstname," ",lastname)'), 'LIKE', '%'.$info->keyword.'%')->orWhere(\DB::raw('concat(lastname," ",firstname)'), 'LIKE', '%'.$info->keyword.'%');;
         })
-        ->whereHas('address',function ($query) use ($location) {
-           if(!empty($location)){
-                (property_exists($location, 'region')) ? $query->where('region_code',$location->region) : '';
-                (property_exists($location, 'province')) ? $query->where('province_code',$location->province) : '';
-                (property_exists($location, 'municipality')) ? $query->where('municipality_code',$location->municipality) : '';
-                (property_exists($location, 'barangay')) ? $query->where('barangay_code',$location->barangay) : '';
-           }
+        ->whereHas('profile',function ($query) use ($location) {
+            $query->whereHas('address',function ($query) use ($location) {
+                if(!empty($location)){
+                    (property_exists($location, 'region')) ? $query->where('region_code',$location->region) : '';
+                    (property_exists($location, 'province')) ? $query->where('province_code',$location->province) : '';
+                    (property_exists($location, 'municipality')) ? $query->where('municipality_code',$location->municipality) : '';
+                    (property_exists($location, 'barangay')) ? $query->where('barangay_code',$location->barangay) : '';
+                }
+            });
         })
         ->whereHas('education',function ($query) use ($education) {
             if(!empty($education)){

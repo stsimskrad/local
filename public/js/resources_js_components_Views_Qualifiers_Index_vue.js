@@ -49,6 +49,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modals_Profile_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Modals/Profile.vue */ "./resources/js/components/Modules/Qualifier/Modals/Profile.vue");
 /* harmony import */ var _Modals_Add_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modals/Add.vue */ "./resources/js/components/Modules/Qualifier/Modals/Add.vue");
 /* harmony import */ var _Modals_Referral_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modals/Referral.vue */ "./resources/js/components/Modules/Qualifier/Modals/Referral.vue");
+/* harmony import */ var _Modals_Address_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modals/Address.vue */ "./resources/js/components/Modules/Qualifier/Modals/Address.vue");
 //
 //
 //
@@ -181,6 +182,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 
 
 
@@ -288,12 +292,22 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.add.set(user);
       this.$bvModal.show("add");
     },
+    updateAddress: function updateAddress(user) {
+      this.editable = true;
+      this.$refs.address.set(user);
+      this.$bvModal.show("address");
+    },
     message: function message(user) {
       if (user) {
         if (this.editable == true) {
+          var index = this.users.findIndex(function (u) {
+            return u.id === user.id;
+          });
+          this.$set(this.users, index, user);
           Vue.$toast.success('<strong>Successfully Updated</strong>', {
             position: 'bottom-right'
           });
+          console.log(user);
         } else if (this.editable == 'qualifier') {
           this.users.splice(this.users.indexOf(user), 1);
           Vue.$toast.success('<strong>Qualifier was added as Scholar</strong>', {
@@ -338,7 +352,8 @@ __webpack_require__.r(__webpack_exports__);
     Profile: _Modals_Profile_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     Add: _Modals_Add_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     Referral: _Modals_Referral_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default())
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default()),
+    Address: _Modals_Address_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 });
 
@@ -348,6 +363,86 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Add.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dropdowns', 'regions'],
+  components: {
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      currentUrl: window.location.origin,
+      errors: [],
+      user: {
+        program: {},
+        address: {}
+      }
+    };
+  },
+  methods: {
+    set: function set(data) {
+      this.user = data;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      axios.post(this.currentUrl + '/request/scholar/store', {
+        id: this.user.id,
+        spas_id: this.user.spas_id,
+        profile_id: this.user.profile.id,
+        email: this.user.profile.email,
+        program_id: this.user.program.id,
+        is_undergrad: this.user.is_undergrad,
+        status_id: 30,
+        is_completed: 0,
+        awarded_year: new Date().getFullYear(),
+        editable: 'qualifier'
+      }).then(function (response) {
+        _this.$emit('status', _this.user);
+
+        _this.$bvModal.hide("add");
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this.errors = error.response.data.errors;
+          _this.isLoading = false;
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -436,15 +531,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dropdowns', 'regions'],
@@ -453,16 +539,9 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       errors: [],
       user: {
-        program_id: {}
+        program: {},
+        address: {}
       },
-      profile_id: '',
-      lrn: '',
-      program_id: '',
-      schools: [],
-      courses: [],
-      level: '',
-      school: '',
-      course: '',
       provinces: [],
       municipalities: [],
       barangays: [],
@@ -472,38 +551,39 @@ __webpack_require__.r(__webpack_exports__);
       barangay: ''
     };
   },
-  computed: {
-    levels: function levels() {
-      return this.dropdowns.filter(function (x) {
-        return x.classification === 'Level';
-      });
-    }
-  },
   methods: {
     set: function set(data) {
       this.user = data;
+
+      if (this.user.address.has_region) {
+        this.region = this.user.address.region;
+        this.onChangeProvince(this.region.code);
+      }
+
+      if (this.user.address.has_province) {
+        this.province = this.user.address.province;
+        this.onChangeMunicipality(this.province.code);
+      }
+
+      if (this.user.address.has_municipality) {
+        this.municipality = this.user.address.municipality;
+        this.fetchBarangay(this.municipality.code);
+      }
     },
-    submit: function submit() {
+    save: function save() {
       var _this = this;
 
-      axios.post(this.currentUrl + '/request/scholar/store', {
+      axios.post(this.currentUrl + '/request/qualifiers/store', {
+        id: this.user.address.id,
         qualifier_id: this.user.id,
-        spas_id: this.user.spas_id,
-        profile_id: this.user.profile_id,
-        program_id: this.user.program_id.id,
-        is_undergrad: this.user.is_undergrad,
-        status_id: 30,
-        is_completed: 0,
-        email: this.user.email,
-        awarded_year: new Date().getFullYear(),
-        address: this.user.info.address.street,
         region_code: this.region != '' ? this.region.code : '',
         province_code: this.province != '' ? this.province.code : '',
         municipality_code: this.municipality != '' ? this.municipality.code : '',
         barangay_code: this.barangay != '' ? this.barangay.code : '',
-        editable: 'qualifier'
+        is_completed: 1,
+        editable: 'address'
       }).then(function (response) {
-        _this.$emit('status', _this.user);
+        _this.$emit('status', response.data.data);
 
         _this.clear();
       })["catch"](function (error) {
@@ -513,55 +593,29 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    asyncSchool: function asyncSchool(value) {
+    fetchProvince: function fetchProvince($id) {
       var _this2 = this;
 
-      if (value.length > 5) {
-        axios.post(this.currentUrl + '/lists/search/schools', {
-          word: value
-        }).then(function (response) {
-          _this2.schools = response.data.data;
-        })["catch"](function (err) {
-          return console.log(err);
-        });
-      }
-    },
-    asyncCourse: function asyncCourse(value) {
-      var _this3 = this;
-
-      if (value.length > 5) {
-        axios.post(this.currentUrl + '/lists/search/courses', {
-          word: value
-        }).then(function (response) {
-          _this3.courses = response.data.data;
-        })["catch"](function (err) {
-          return console.log(err);
-        });
-      }
-    },
-    fetchProvince: function fetchProvince($id) {
-      var _this4 = this;
-
       axios.get(this.currentUrl + '/lists/provinces/' + $id).then(function (response) {
-        _this4.provinces = response.data.data;
+        _this2.provinces = response.data.data;
       })["catch"](function (err) {
         return console.log(err);
       });
     },
     fetchMunicipality: function fetchMunicipality($id) {
-      var _this5 = this;
+      var _this3 = this;
 
       axios.get(this.currentUrl + '/lists/municipalities/' + $id).then(function (response) {
-        _this5.municipalities = response.data.data;
+        _this3.municipalities = response.data.data;
       })["catch"](function (err) {
         return console.log(err);
       });
     },
     fetchBarangay: function fetchBarangay($id) {
-      var _this6 = this;
+      var _this4 = this;
 
       axios.get(this.currentUrl + '/lists/barangays/' + $id).then(function (response) {
-        _this6.barangays = response.data.data;
+        _this4.barangays = response.data.data;
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -580,14 +634,11 @@ __webpack_require__.r(__webpack_exports__);
       this.barangay = '';
     },
     clear: function clear() {
-      this.awarded_year = '';
       this.region = '';
       this.province = '';
       this.municipality = '';
       this.barangay = '';
-      this.school = '';
-      this.course = '';
-      this.$bvModal.hide("add");
+      this.$bvModal.hide("address");
     }
   },
   components: {
@@ -1081,6 +1132,45 @@ component.options.__file = "resources/js/components/Modules/Qualifier/Modals/Add
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Address.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Address.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Address.vue?vue&type=template&id=40a73f3a& */ "./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a&");
+/* harmony import */ var _Address_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Address.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Address_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modules/Qualifier/Modals/Address.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Qualifier/Modals/Profile.vue":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Modules/Qualifier/Modals/Profile.vue ***!
@@ -1285,6 +1375,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Address.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************!*\
   !*** ./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js& ***!
@@ -1409,6 +1515,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Add_vue_vue_type_template_id_5918bbe0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Add_vue_vue_type_template_id_5918bbe0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Add.vue?vue&type=template&id=5918bbe0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Add.vue?vue&type=template&id=5918bbe0&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Address.vue?vue&type=template&id=40a73f3a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a&");
 
 
 /***/ }),
@@ -1972,7 +2095,11 @@ var render = function () {
                 {
                   key: user.id,
                   class: [
-                    user.info.requirements.count > 0 ? "table-warning" : "",
+                    user.information.requirements.count > 0
+                      ? "table-warning"
+                      : user.address.is_completed == 0
+                      ? "table-danger"
+                      : "",
                   ],
                 },
                 [
@@ -2012,7 +2139,7 @@ var render = function () {
                           _c(
                             "span",
                             { staticClass: "avatar-title rounded-circle" },
-                            [_vm._v(_vm._s(user.lastname.charAt(0)))]
+                            [_vm._v(_vm._s(user.name.charAt(0)))]
                           ),
                         ])
                       : _c("div", [
@@ -2041,13 +2168,7 @@ var render = function () {
                     },
                     [
                       _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                        _vm._v(
-                          _vm._s(user.lastname) +
-                            ", " +
-                            _vm._s(user.firstname) +
-                            " " +
-                            _vm._s(user.middlename)
-                        ),
+                        _vm._v(_vm._s(user.name)),
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
@@ -2061,7 +2182,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c("h5", { staticClass: "font-size-13 mb-0 text-dark" }, [
-                      _vm._v(_vm._s(user.program_id.name)),
+                      _vm._v(_vm._s(user.program.name)),
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
@@ -2073,23 +2194,42 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", { staticClass: "text-center" }, [
                     _c("h5", { staticClass: "font-size-11 mb-0 text-dark" }, [
-                      _vm._v(_vm._s(user.email) + " / " + _vm._s(user.mobile)),
+                      _vm._v(
+                        _vm._s(user.profile.email) +
+                          " / " +
+                          _vm._s(user.profile.mobile)
+                      ),
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "font-size-11 text-muted mb-0" }, [
-                      _vm._v(
-                        _vm._s(user.barangay) +
-                          ", " +
-                          _vm._s(user.municipality) +
-                          ", " +
-                          _vm._s(user.province)
-                      ),
+                      _vm._v(_vm._s(user.address.name)),
                     ]),
                   ]),
                   _vm._v(" "),
                   user.is_referral == 0 && user.is_qualified == null
                     ? _c("td", { staticClass: "text-end" }, [
-                        user.info.requirements.count > 0
+                        user.address.is_completed == 0
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "bg-light btn btn-light",
+                                staticStyle: { "margin-end": "-10px" },
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.updateAddress(user)
+                                  },
+                                },
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "bx text-danger bxs-map",
+                                }),
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        user.information.requirements.count > 0
                           ? _c(
                               "button",
                               {
@@ -2110,7 +2250,8 @@ var render = function () {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        user.info.requirements.count < 1
+                        user.information.requirements.count < 1 &&
+                        user.address.is_completed == 1
                           ? _c(
                               "button",
                               {
@@ -2130,20 +2271,22 @@ var render = function () {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "bg-light btn btn-light",
-                            staticStyle: { "margin-end": "-10px" },
-                            attrs: { type: "button" },
-                            on: {
-                              click: function ($event) {
-                                return _vm.refer(user)
+                        user.address.is_completed == 1
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "bg-light btn btn-light",
+                                staticStyle: { "margin-end": "-10px" },
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.refer(user)
+                                  },
+                                },
                               },
-                            },
-                          },
-                          [_c("i", { staticClass: "bx bx-transfer-alt" })]
-                        ),
+                              [_c("i", { staticClass: "bx bx-transfer-alt" })]
+                            )
+                          : _vm._e(),
                       ])
                     : _c("td", [
                         _vm._v(
@@ -2169,6 +2312,8 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("Referral", { ref: "referral", on: { status: _vm.message } }),
+      _vm._v(" "),
+      _c("Address", { ref: "address", on: { status: _vm.message } }),
     ],
     1
   )
@@ -2232,10 +2377,14 @@ var render = function () {
     {
       attrs: {
         id: "add",
-        size: "lg",
-        "hide-footer": "",
-        title: "Confirm Scholar",
+        "ok-title": "Confirm",
+        title: "Mark as Scholar",
         centered: "",
+      },
+      on: {
+        ok: function ($event) {
+          return _vm.submit($event)
+        },
       },
     },
     [
@@ -2255,16 +2404,84 @@ var render = function () {
                 class: [_vm.user.gender == 0 ? "text-danger" : "text-primary"],
               },
               [
-                _vm._v(
-                  _vm._s(_vm.user.lastname) +
-                    ", " +
-                    _vm._s(_vm.user.firstname) +
-                    " " +
-                    _vm._s(_vm.user.middlename) +
-                    " "
-                ),
+                _vm._v(_vm._s(_vm.user.name) + " "),
                 _c("span", { staticClass: "text-muted font-size-11 ml-2" }, [
-                  _vm._v("(" + _vm._s(_vm.user.program_id.name) + ")"),
+                  _vm._v("(" + _vm._s(_vm.user.program.name) + ")"),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row font-size-11 mt-0" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("p", { staticClass: "fw-bold text-danger mb-0" }, [
+              _vm._v(_vm._s(_vm.user.address.name)),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-modal",
+    {
+      attrs: {
+        id: "address",
+        "ok-title": "Update",
+        title: "Update Scholar Address",
+        centered: "",
+      },
+      on: {
+        ok: function ($event) {
+          return _vm.save($event)
+        },
+      },
+    },
+    [
+      _c("blockquote", { staticClass: "p-3 border-light border rounded" }, [
+        _c("div", { staticClass: "d-flex" }, [
+          _c("div", { staticClass: "mr-3" }, [
+            _c("i", {
+              staticClass: "bx bxs-quote-alt-left text-primary font-size-14",
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "p",
+              {
+                staticClass: "mb-1 fw-bold",
+                class: [_vm.user.gender == 0 ? "text-danger" : "text-primary"],
+              },
+              [
+                _vm._v(_vm._s(_vm.user.name) + " "),
+                _c("span", { staticClass: "text-muted font-size-11 ml-2" }, [
+                  _vm._v("(" + _vm._s(_vm.user.program.name) + ")"),
                 ]),
               ]
             ),
@@ -2274,13 +2491,7 @@ var render = function () {
         _c("div", { staticClass: "row font-size-11 mt-2" }, [
           _c("div", { staticClass: "col-sm-12" }, [
             _c("p", { staticClass: "fw-bold text-danger mb-0" }, [
-              _vm._v(
-                _vm._s(_vm.user.barangay) +
-                  ", " +
-                  _vm._s(_vm.user.municipality) +
-                  ", " +
-                  _vm._s(_vm.user.province)
-              ),
+              _vm._v(_vm._s(_vm.user.address.name)),
             ]),
             _vm._v(" "),
             _c("p", { staticClass: "fw-bold text-dark mb-0" }, [
@@ -2306,207 +2517,186 @@ var render = function () {
           },
         },
         [
-          _c(
-            "div",
-            {
-              staticClass: "row customerform",
-              staticStyle: { "margin-right": "5px", "margin-left": "5px" },
-            },
-            [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [
-                          _vm._v("Region: "),
-                          _vm.errors.region_code
-                            ? _c("span", { staticClass: "haveerror" }, [
-                                _vm._v(
-                                  "(" + _vm._s(_vm.errors.region_code[0]) + ")"
-                                ),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _c("multiselect", {
-                          attrs: {
-                            options: _vm.regions,
-                            "allow-empty": false,
-                            "show-labels": false,
-                            label: "region",
-                            "track-by": "code",
-                            placeholder: "Select Region",
+          _c("div", { staticClass: "row customerform" }, [
+            !_vm.user.address.has_region
+              ? _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [
+                        _vm._v("Region: "),
+                        _vm.errors.region_code
+                          ? _c("span", { staticClass: "haveerror" }, [
+                              _vm._v(
+                                "(" + _vm._s(_vm.errors.region_code[0]) + ")"
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("multiselect", {
+                        attrs: {
+                          options: _vm.regions,
+                          "allow-empty": false,
+                          "show-labels": false,
+                          label: "region",
+                          "track-by": "code",
+                          placeholder: "Select Region",
+                        },
+                        on: {
+                          input: function ($event) {
+                            return _vm.onChangeRegion(_vm.region.code)
                           },
-                          on: {
-                            input: function ($event) {
-                              return _vm.onChangeRegion(_vm.region.code)
-                            },
+                        },
+                        model: {
+                          value: _vm.region,
+                          callback: function ($$v) {
+                            _vm.region = $$v
                           },
-                          model: {
-                            value: _vm.region,
-                            callback: function ($$v) {
-                              _vm.region = $$v
-                            },
-                            expression: "region",
+                          expression: "region",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.user.address.has_province
+              ? _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [
+                        _vm._v("Province: "),
+                        _vm.errors.province_code
+                          ? _c("span", { staticClass: "haveerror" }, [
+                              _vm._v(
+                                "(" + _vm._s(_vm.errors.province_code[0]) + ")"
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("multiselect", {
+                        attrs: {
+                          options: _vm.provinces,
+                          "allow-empty": false,
+                          "show-labels": false,
+                          label: "name",
+                          "track-by": "code",
+                          placeholder: "Select Province",
+                        },
+                        on: {
+                          input: function ($event) {
+                            return _vm.onChangeProvince(_vm.province.code)
                           },
-                        }),
-                      ],
-                      1
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [
-                          _vm._v("Province: "),
-                          _vm.errors.province_code
-                            ? _c("span", { staticClass: "haveerror" }, [
-                                _vm._v(
-                                  "(" +
-                                    _vm._s(_vm.errors.province_code[0]) +
-                                    ")"
-                                ),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _c("multiselect", {
-                          attrs: {
-                            options: _vm.provinces,
-                            "allow-empty": false,
-                            "show-labels": false,
-                            label: "name",
-                            "track-by": "code",
-                            placeholder: "Select Province",
+                        },
+                        model: {
+                          value: _vm.province,
+                          callback: function ($$v) {
+                            _vm.province = $$v
                           },
-                          on: {
-                            input: function ($event) {
-                              return _vm.onChangeProvince(_vm.province.code)
-                            },
+                          expression: "province",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.user.address.has_municipality
+              ? _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [
+                        _vm._v("Municipality: "),
+                        _vm.errors.municipality_code
+                          ? _c("span", { staticClass: "haveerror" }, [
+                              _vm._v(
+                                "(" +
+                                  _vm._s(_vm.errors.municipality_code[0]) +
+                                  ")"
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("multiselect", {
+                        attrs: {
+                          options: _vm.municipalities,
+                          "allow-empty": false,
+                          "show-labels": false,
+                          label: "name",
+                          "track-by": "code",
+                          placeholder: "Select Municipality",
+                        },
+                        on: {
+                          input: function ($event) {
+                            return _vm.onChangeMunicipality(
+                              _vm.municipality.code
+                            )
                           },
-                          model: {
-                            value: _vm.province,
-                            callback: function ($$v) {
-                              _vm.province = $$v
-                            },
-                            expression: "province",
+                        },
+                        model: {
+                          value: _vm.municipality,
+                          callback: function ($$v) {
+                            _vm.municipality = $$v
                           },
-                        }),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [
-                          _vm._v("Municipality: "),
-                          _vm.errors.municipality_code
-                            ? _c("span", { staticClass: "haveerror" }, [
-                                _vm._v(
-                                  "(" +
-                                    _vm._s(_vm.errors.municipality_code[0]) +
-                                    ")"
-                                ),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _c("multiselect", {
-                          attrs: {
-                            options: _vm.municipalities,
-                            "allow-empty": false,
-                            "show-labels": false,
-                            label: "name",
-                            "track-by": "code",
-                            placeholder: "Select Municipality",
+                          expression: "municipality",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.user.address.has_barangay
+              ? _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [
+                        _vm._v("Barangay: "),
+                        _vm.errors.barangay_code
+                          ? _c("span", { staticClass: "haveerror" }, [
+                              _vm._v(
+                                "(" + _vm._s(_vm.errors.barangay_code[0]) + ")"
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("multiselect", {
+                        attrs: {
+                          options: _vm.barangays,
+                          "allow-empty": false,
+                          "show-labels": false,
+                          label: "name",
+                          "track-by": "code",
+                          placeholder: "Select Barangay",
+                        },
+                        model: {
+                          value: _vm.barangay,
+                          callback: function ($$v) {
+                            _vm.barangay = $$v
                           },
-                          on: {
-                            input: function ($event) {
-                              return _vm.onChangeMunicipality(
-                                _vm.municipality.code
-                              )
-                            },
-                          },
-                          model: {
-                            value: _vm.municipality,
-                            callback: function ($$v) {
-                              _vm.municipality = $$v
-                            },
-                            expression: "municipality",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("label", [
-                          _vm._v("Barangay: "),
-                          _vm.errors.barangay_code
-                            ? _c("span", { staticClass: "haveerror" }, [
-                                _vm._v(
-                                  "(" +
-                                    _vm._s(_vm.errors.barangay_code[0]) +
-                                    ")"
-                                ),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _c("multiselect", {
-                          attrs: {
-                            options: _vm.barangays,
-                            "allow-empty": false,
-                            "show-labels": false,
-                            label: "name",
-                            "track-by": "code",
-                            placeholder: "Select Barangay",
-                          },
-                          model: {
-                            value: _vm.barangay,
-                            callback: function ($$v) {
-                              _vm.barangay = $$v
-                            },
-                            expression: "barangay",
-                          },
-                        }),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-12 mt-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "btn btn-info btn-sm btn-block waves-effect waves-light mb-4",
-                    attrs: { type: "submit" },
-                  },
-                  [_vm._v("COMFIRM SCHOLAR")]
-                ),
-              ]),
-            ]
-          ),
+                          expression: "barangay",
+                        },
+                      }),
+                    ],
+                    1
+                  ),
+                ])
+              : _vm._e(),
+          ]),
         ]
       ),
     ]

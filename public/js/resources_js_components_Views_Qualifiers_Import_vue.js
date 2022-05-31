@@ -211,34 +211,7 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
-    res: function res(data) {
-      var _this2 = this;
-
-      this.success = data.success.length;
-      data.success.forEach(function (value, index) {
-        var ind = _this2.users.findIndex(function (x) {
-          return x.spas_id === value;
-        });
-
-        $("#" + value).addClass("table-success");
-      });
-      this.failed = data.failed.length;
-      data.failed.forEach(function (value, index) {
-        var ind = _this2.users.findIndex(function (x) {
-          return x.spas_id === value;
-        });
-
-        $("#" + value).addClass("table-danger");
-      });
-      this.duplicate = data.duplicate.length;
-      data.duplicate.forEach(function (value, index) {
-        var ind = _this2.users.findIndex(function (x) {
-          return x.spas_id === value;
-        });
-
-        $("#" + value).addClass("table-warning");
-      });
-    },
+    res: function res(data) {},
     sync: function sync() {
       this.$bvModal.show("confirm");
     }

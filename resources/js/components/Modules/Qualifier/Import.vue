@@ -168,21 +168,7 @@
             },
 
             res(data){
-                this.success = data.success.length;
-                data.success.forEach((value, index) => {
-                    var ind = this.users.findIndex(x => x.spas_id === value);
-                    $("#"+value).addClass("table-success");
-                });
-                this.failed = data.failed.length;
-                data.failed.forEach((value, index) => {
-                    var ind = this.users.findIndex(x => x.spas_id === value);
-                    $("#"+value).addClass("table-danger");
-                });
-                this.duplicate = data.duplicate.length;
-                data.duplicate.forEach((value, index) => {
-                    var ind = this.users.findIndex(x => x.spas_id === value);
-                    $("#"+value).addClass("table-warning");
-                });
+              
             },
 
             sync(){

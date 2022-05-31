@@ -32,6 +32,11 @@ class Profile extends Model
         return $this->hasOne('App\Models\Scholar', 'profile_id');
     } 
 
+    public function address()
+    {
+        return $this->hasOne('App\Models\ProfileAddress', 'profile_id');
+    } 
+
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');

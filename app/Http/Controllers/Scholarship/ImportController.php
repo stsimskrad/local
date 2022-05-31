@@ -11,10 +11,11 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Traits\CheckTrait;
+use App\Http\Traits\AddressTrait;
 
 class ImportController extends Controller
 {
-    use CheckTrait;
+    use CheckTrait, AddressTrait;
 
     public function store(Request $request){
         set_time_limit(0);
@@ -96,7 +97,13 @@ class ImportController extends Controller
                                 'updated_at'	=> now()
                             ];
                             $s = ScholarEducation::insertOrIgnore($school);
-                            $address = $this->checkAddress($scholar['municipality'],$scholar['barangay'],$q->id);
+                            // $address = $this->checkAddress($scholar['municipality'],$scholar['barangay'],$q->id);
+
+                            $address = $this->searchAddress(null,$scholar['municipality'],$scholar['barangay'],$profile->id,1);
+                            if($address == null){
+                                $address = $this->searchAddress(null,$scholar['municipality'],$scholar['barangay'],$profile->id,0);
+                            }
+
                             array_push($success,$scholar['id']);
                             \DB::commit();
                         }else{

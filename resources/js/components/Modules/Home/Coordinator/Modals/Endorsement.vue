@@ -60,6 +60,8 @@
 
             create(){
                 let data = new FormData();
+                let info = JSON.stringify(this.user.information.info);
+                data.append('information', (this.user.information != undefined) ? info : '');
                 data.append('email', (this.user.information.email != undefined) ? this.user.information.email : '');
                 data.append('firstname', (this.user.information.firstname != undefined) ? this.user.information.firstname : '');
                 data.append('lastname', (this.user.information.lastname != undefined) ? this.user.information.lastname : '');
@@ -91,7 +93,7 @@
                     Vue.$toast.success('<strong>Successfully Created</strong>', {
                         position: 'bottom-right'
                     });
-                    this.isLoading = false;
+                    // this.isLoading = false;
                     this.$router.push({ name: 'scholars'})
                 })
                 .catch(error => {

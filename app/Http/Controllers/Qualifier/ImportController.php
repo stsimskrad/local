@@ -9,9 +9,13 @@ use App\Imports\QualifierImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Traits\CheckTrait;
+use App\Http\Traits\AddressTrait;
 
 class ImportController extends Controller
 {
+    use CheckTrait, AddressTrait;
+
     public function index(Request $request)
     {
         $validated = $request->validate([
@@ -165,6 +169,11 @@ class ImportController extends Controller
                         ];
                         
                         $q = Qualifier::insertOrIgnore($haha); 
+                        $address = $this->searchAddress($qualifier['information']['address']['province'],$qualifier['information']['address']['municipality'],$qualifier['information']['address']['barangay'],$profile->id,1);
+                        if($address == null){
+                            $address = $this->searchAddress($qualifier['information']['address']['province'],$qualifier['information']['address']['municipality'],$qualifier['information']['address']['barangay'],$profile->id,0);
+                        }
+
                         if($q){
                             array_push($success,$qualifier['spas_id']);
                             \DB::commit();

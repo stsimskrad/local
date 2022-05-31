@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Scholar;
-use App\Models\ScholarAddress;
+use App\Models\ProfileAddress;
 use App\Models\ListProgram;
 use App\Models\LocationProvince;
 use App\Models\LocationMunicipality;
@@ -24,7 +24,7 @@ class PublicController extends Controller
 
     public function provinces(){
 
-        $provinces = ScholarAddress::groupBy('province_code')->pluck('province_code');
+        $provinces = ProfileAddress::groupBy('province_code')->pluck('province_code');
         $provinces = LocationProvince::whereIn('code',$provinces)->get();
         $programs = ListProgram::all();
 
@@ -34,9 +34,12 @@ class PublicController extends Controller
             $code = $province->code;
             $count = [];
             foreach($programs as $key2=>$program){
-                $data = Scholar::whereHas('address',function ($query) use ($code) {
-                    $query->where('province_code',$code);
-                })->where('program_id',$program->id)->count();
+                $data = Scholar::whereHas('profile',function ($query) use ($code) {
+                    $query->whereHas('address',function ($query) use ($code) {
+                        $query->where('province_code',$code);
+                    });
+                })
+                ->where('program_id',$program->id)->count();
                 array_push($count,$data);    
                 $sums[$key2][$key] = $data;
             }
@@ -82,7 +85,7 @@ class PublicController extends Controller
         $data = LocationMunicipality::select('province_code','district')->withCount('scholars')->where('province_code',$province)->groupBy('district')->get();
         // return $data;   
         
-        $data = ScholarAddress::where('province_code',$province)->count();
+        $data = ProfileAddress::where('province_code',$province)->count();
         return $data;
     }
 
