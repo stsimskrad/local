@@ -803,7 +803,7 @@ __webpack_require__.r(__webpack_exports__);
         school_id: this.user.school.id,
         course_id: this.user.course.id,
         spas_id: this.user.spas_id,
-        name: this.user.lastname + ', ' + this.user.firstname + ' ' + this.user.middlename
+        name: this.user.name
       }).then(function (response) {
         _this.$emit('status', _this.user);
 

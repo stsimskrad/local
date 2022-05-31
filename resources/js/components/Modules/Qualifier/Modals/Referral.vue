@@ -63,7 +63,7 @@
                     school_id: this.user.school.id,
                     course_id: this.user.course.id,
                     spas_id: this.user.spas_id,
-                    name: this.user.lastname+', '+this.user.firstname+' '+this.user.middlename
+                    name: this.user.name
                 })
                 .then(response => {
                     this.$emit('status', this.user);
