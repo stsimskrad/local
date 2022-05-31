@@ -457,7 +457,8 @@ __webpack_require__.r(__webpack_exports__);
         information: {
           school: {},
           course: {},
-          program_id: {},
+          address: {},
+          program: {},
           info: {
             parents: {}
           }
@@ -474,30 +475,30 @@ __webpack_require__.r(__webpack_exports__);
 
       var data = new FormData();
       var info = JSON.stringify(this.user.information);
-      data.append('information', this.user.information != undefined ? info : '');
-      data.append('email', this.user.information.email != undefined ? this.user.information.email : '');
-      data.append('firstname', this.user.information.firstname != undefined ? this.user.information.firstname : '');
-      data.append('lastname', this.user.information.lastname != undefined ? this.user.information.lastname : '');
-      data.append('middlename', this.user.information.middlename != undefined ? this.user.information.middlename : '');
-      data.append('suffix', this.user.information.suffix != undefined ? this.user.information.suffix : '');
-      data.append('gender', this.user.information.gender != undefined ? this.user.information.gender == 'Male' ? 1 : 2 : '');
-      data.append('mobile', this.user.information.mobile != undefined ? this.user.information.mobile : '');
-      data.append('birthday', this.user.information.birthday != undefined ? this.user.information.birthday : '');
-      data.append('father', this.user.information.info.parents.father != undefined ? this.user.information.info.parents.father : '');
-      data.append('mother', this.user.information.info.parents.mother != undefined ? this.user.information.info.parents.mother : '');
+      data.append('information', this.user.information != undefined ? JSON.stringify(this.user.information.information) : '');
+      data.append('email', this.user.information.profile.email != undefined ? this.user.information.profile.email : '');
+      data.append('firstname', this.user.information.profile.firstname != undefined ? this.user.information.profile.firstname : '');
+      data.append('lastname', this.user.information.profile.lastname != undefined ? this.user.information.profile.lastname : '');
+      data.append('middlename', this.user.information.profile.middlename != undefined ? this.user.information.profile.middlename : '');
+      data.append('suffix', this.user.information.profile.suffix != undefined ? this.user.information.profile.suffix : '');
+      data.append('gender', this.user.information.profile.gender != undefined ? this.user.information.profile.gender == 'Male' ? 1 : 2 : '');
+      data.append('mobile', this.user.information.profile.mobile != undefined ? this.user.information.profile.mobile : '');
+      data.append('birthday', this.user.information.profile.birthday != undefined ? this.user.information.profile.birthday : '');
+      data.append('father', this.user.information.information.parents.father != undefined ? this.user.information.information.parents.father : '');
+      data.append('mother', this.user.information.information.parents.mother != undefined ? this.user.information.information.parents.mother : '');
       data.append('lrn', this.user.information.lrn != undefined ? this.user.information.lrn == 'N/A' ? '' : this.user.information.lrn : '');
-      data.append('spas_id', this.user.spas_id != undefined ? this.user.spas_id : '');
+      data.append('spas_id', this.user.information.spas_id != undefined ? this.user.information.spas_id : '');
       data.append('course_id', this.user.information.course != undefined ? this.user.information.course.id : '');
       data.append('school_id', this.user.information.school != undefined ? this.user.information.school.id : '');
       data.append('level_id', this.user.information.is_undergrad ? 2 : 4);
-      data.append('program_id', this.user.information.program_id != undefined ? this.user.information.program_id.id : '');
-      data.append('status_id', 30);
+      data.append('program_id', this.user.information.program != undefined ? this.user.information.program.id : '');
+      data.append('status_id', 31);
       data.append('is_undergrad', this.user.information.is_undergrad != undefined ? this.user.information.is_undergrad : '');
-      data.append('region_code', this.user.address.has_region ? this.user.address.region.code : null);
-      data.append('province_code', this.user.address.has_province ? this.user.address.province.code : null);
-      data.append('municipality_code', this.user.address.has_municipality ? this.user.address.municipality.code : null);
-      data.append('barangay_code', this.user.address.has_barangay ? this.user.address.barangay.code : null);
-      data.append('barangay_code', this.user.address.has_barangay ? this.user.address.barangay.code : null);
+      data.append('region_code', this.user.information.address.has_region ? this.user.information.address.region.code : null);
+      data.append('province_code', this.user.information.address.has_province ? this.user.information.address.province.code : null);
+      data.append('municipality_code', this.user.information.address.has_municipality ? this.user.information.address.municipality.code : null);
+      data.append('barangay_code', this.user.information.address.has_barangay ? this.user.information.address.barangay.code : null);
+      data.append('barangay_code', this.user.information.address.has_barangay ? this.user.information.address.barangay.code : null);
       data.append('editable', 'single'); // data.append('region_code', (this.user.region != undefined) ? this.user.region.code : '');
       // data.append('province_code', (this.user.province != undefined) ? this.user.province.code : '');
       // data.append('municipality_code', (this.user.municipality != undefined) ? this.user.municipality.code : '');
@@ -2406,10 +2407,7 @@ var render = function () {
           _c("img", {
             staticClass: "rounded avatar-md",
             attrs: {
-              src:
-                _vm.currentUrl +
-                "/images/avatars/" +
-                _vm.user.information.avatar,
+              src: _vm.currentUrl + "/images/avatars/avatar.jpg",
               alt: "",
             },
           }),
@@ -2428,7 +2426,7 @@ var render = function () {
           _vm._v(" "),
           _c("p", { staticClass: "text-muted mb-0" }, [
             _c("span", { staticClass: "badge bg-primary" }, [
-              _vm._v(_vm._s(_vm.user.information.program_id.name)),
+              _vm._v(_vm._s(_vm.user.information.program.name)),
             ]),
           ]),
         ]),

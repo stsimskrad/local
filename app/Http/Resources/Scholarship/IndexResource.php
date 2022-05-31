@@ -12,8 +12,9 @@ class IndexResource extends JsonResource
         $info =  json_decode($this->profile->information);
         $hashids = new Hashids('krad',10);
         $id = $hashids->encode($this->id);
-        $address = ['name' =>  (property_exists($info->address, 'name2')) ? $info->address->name2 : $info->address->municipality, 'is_migrated' => 0];
+        // $address = ['name' =>  (property_exists($info->address, 'name2')) ? $info->address->name2 : $info->address->municipality, 'is_migrated' => 0];
         $this->education->courseInfo = ['name' => $info->course];
+        $this->profile->address->info = ['info' => $info->address];
         
         return [
             'id' => $this->id,
@@ -26,7 +27,8 @@ class IndexResource extends JsonResource
             'is_completed' => $this->is_completed,
             'is_undergrad' => $this->is_undergrad,
             'profile' => new ProfileResource($this->profile), 
-            'address' => ($this->profile->address->region_code != NULL) ? new AddressResource($this->profile->address) : $address,
+            // 'address' => ($this->profile->address->region_code != NULL) ? new AddressResource($this->profile->address) : $address,
+            'address' => new AddressResource($this->profile->address),
             'education' =>  new EducationResource($this->education),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

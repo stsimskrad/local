@@ -183,6 +183,9 @@ __webpack_require__.r(__webpack_exports__);
       pagination: {},
       keyword: '',
       users: [],
+      user: {
+        profile: {}
+      },
       program: null,
       status: null,
       year: null,

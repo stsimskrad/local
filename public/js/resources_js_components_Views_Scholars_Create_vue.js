@@ -304,6 +304,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -339,6 +353,7 @@ __webpack_require__.r(__webpack_exports__);
         region: '',
         province: '',
         municipality: '',
+        barangay: '',
         school: '',
         course: '',
         level: ''
@@ -368,6 +383,7 @@ __webpack_require__.r(__webpack_exports__);
       fullPage: true,
       provinces: [],
       municipalities: [],
+      barangays: [],
       schools: [],
       courses: []
     };
@@ -432,6 +448,7 @@ __webpack_require__.r(__webpack_exports__);
       data.append('region_code', this.user.region != undefined ? this.user.region.code : '');
       data.append('province_code', this.user.province != undefined ? this.user.province.code : '');
       data.append('municipality_code', this.user.municipality != undefined ? this.user.municipality.code : '');
+      data.append('barangay_code', this.user.barangay != undefined ? this.user.barangay.code : '');
       data.append('address', this.user.address != undefined ? this.user.address : '');
       data.append('is_undergrad', 1);
       data.append('editable', 'single');
@@ -487,6 +504,15 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
+    fetchBarangay: function fetchBarangay($id) {
+      var _this4 = this;
+
+      axios.get(this.currentUrl + '/lists/barangays/' + $id).then(function (response) {
+        _this4.barangays = response.data.data;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
     onChangeRegion: function onChangeRegion($id) {
       this.fetchProvince($id);
       this.province = '';
@@ -496,27 +522,31 @@ __webpack_require__.r(__webpack_exports__);
       this.fetchMunicipality($id);
       this.municipality = '';
     },
+    onChangeMunicipality: function onChangeMunicipality($id) {
+      this.fetchBarangay($id);
+      this.barangay = '';
+    },
     asyncSchool: function asyncSchool(value) {
-      var _this4 = this;
+      var _this5 = this;
 
       if (value.length > 5) {
         axios.post(this.currentUrl + '/lists/search/schools', {
           word: value
         }).then(function (response) {
-          _this4.schools = response.data.data;
+          _this5.schools = response.data.data;
         })["catch"](function (err) {
           return console.log(err);
         });
       }
     },
     asyncCourse: function asyncCourse(value) {
-      var _this5 = this;
+      var _this6 = this;
 
       if (value.length > 5) {
         axios.post(this.currentUrl + '/lists/search/courses', {
           word: value
         }).then(function (response) {
-          _this5.courses = response.data.data;
+          _this6.courses = response.data.data;
         })["catch"](function (err) {
           return console.log(err);
         });
@@ -3950,6 +3980,13 @@ var render = function () {
                             "track-by": "code",
                             placeholder: "Select Municipality",
                           },
+                          on: {
+                            input: function ($event) {
+                              return _vm.onChangeMunicipality(
+                                _vm.user.municipality.code
+                              )
+                            },
+                          },
                           model: {
                             value: _vm.user.municipality,
                             callback: function ($$v) {
@@ -3972,39 +4009,71 @@ var render = function () {
                       },
                       [
                         _c("label", [
-                          _vm._v("Address: "),
-                          _vm.errors.address
+                          _vm._v("Barangay: "),
+                          _vm.errors.barangay
                             ? _c("span", { staticClass: "haveerror" }, [
                                 _vm._v(
-                                  "(" + _vm._s(_vm.errors.address[0]) + ")"
+                                  "(" + _vm._s(_vm.errors.barangay[0]) + ")"
                                 ),
                               ])
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.user.address,
-                              expression: "user.address",
+                        _c("multiselect", {
+                          attrs: {
+                            options: _vm.barangays,
+                            "allow-empty": false,
+                            "show-labels": false,
+                            label: "name",
+                            "track-by": "code",
+                            placeholder: "Select Barangay",
+                          },
+                          model: {
+                            value: _vm.user.barangay,
+                            callback: function ($$v) {
+                              _vm.$set(_vm.user, "barangay", $$v)
                             },
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.user.address },
-                          on: {
-                            input: function ($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.user, "address", $event.target.value)
-                            },
+                            expression: "user.barangay",
                           },
                         }),
-                      ]
+                      ],
+                      1
                     ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [
+                        _vm._v("Address: "),
+                        _vm.errors.address
+                          ? _c("span", { staticClass: "haveerror" }, [
+                              _vm._v("(" + _vm._s(_vm.errors.address[0]) + ")"),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.address,
+                            expression: "user.address",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.user.address },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.user, "address", $event.target.value)
+                          },
+                        },
+                      }),
+                    ]),
                   ]),
                   _vm._v(" "),
                   _vm._m(6),

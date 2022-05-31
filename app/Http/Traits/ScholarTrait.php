@@ -31,7 +31,7 @@ trait ScholarTrait { //Storing Scholar
         $info = [];
 
         $data = Profile::create(array_merge($request->all(),['information' => json_encode($information)]));
-        $data->address()->create(array_merge($request->all(), ['type' => 'original']));
+        $data->address()->create(array_merge($request->all(), ['type' => 'original','is_completed' => 1]));
         $test = $data->scholar()->create(array_merge($request->all(), ['awarded_year' => '2022']));
         $test->education()->create(array_merge($request->all(),['information' => json_encode($info)]));
         $data = Scholar::findOrFail($test->id);

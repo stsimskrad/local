@@ -187,6 +187,7 @@
                                     <multiselect 
                                     v-model="user.municipality" 
                                     :options="municipalities"
+                                    @input="onChangeMunicipality(user.municipality.code)"
                                     :allow-empty="false"
                                     :show-labels="false"
                                     label="name" track-by="code"
@@ -196,10 +197,23 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group" style="margin-top: -10px;">
+                                <label>Barangay: <span v-if="errors.barangay" class="haveerror">({{( errors.barangay[0] )}})</span></label>
+                                    <multiselect 
+                                    v-model="user.barangay" 
+                                    :options="barangays"
+                                    :allow-empty="false"
+                                    :show-labels="false"
+                                    label="name" track-by="code"
+                                    placeholder="Select Barangay">
+                                </multiselect>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label>Address: <span v-if="errors.address" class="haveerror">({{( errors.address[0] )}})</span></label>
                                 <input type="text" class="form-control" v-model="user.address">
                             </div>
-                        </div>
+                        </div> 
 
                         <div class="col-md-12 mt-2"><hr></div>
                         <div class="col-md-12"> 
@@ -290,6 +304,7 @@
                     region: '',
                     province: '',
                     municipality: '',
+                    barangay: '',
                     school: '',
                     course: '',
                     level: '',
@@ -313,6 +328,7 @@
                 fullPage: true,
                 provinces: [],
                 municipalities: [],
+                barangays: [],
                 schools: [],
                 courses: []
             }
@@ -373,6 +389,7 @@
                 data.append('region_code', (this.user.region != undefined) ? this.user.region.code : '');
                 data.append('province_code', (this.user.province != undefined) ? this.user.province.code : '');
                 data.append('municipality_code', (this.user.municipality != undefined) ? this.user.municipality.code : '');
+                data.append('barangay_code', (this.user.barangay != undefined) ? this.user.barangay.code : '');
                 data.append('address', (this.user.address != undefined) ? this.user.address : '');
                 data.append('is_undergrad',1);
                 data.append('editable', 'single');
@@ -430,6 +447,14 @@
                 .catch(err => console.log(err));
             },
 
+            fetchBarangay($id){
+                axios.get(this.currentUrl + '/lists/barangays/'+$id)
+                .then(response => {
+                    this.barangays = response.data.data;
+                })
+                .catch(err => console.log(err));
+            },
+
             onChangeRegion($id) {
                 this.fetchProvince($id);
                 this.province = '';
@@ -439,6 +464,11 @@
             onChangeProvince($id) {
                 this.fetchMunicipality($id);
                 this.municipality = '';
+            },
+
+            onChangeMunicipality($id) {
+                this.fetchBarangay($id);
+                this.barangay = '';
             },
 
             asyncSchool(value) {

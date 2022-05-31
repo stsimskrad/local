@@ -136,6 +136,7 @@ export default {
             pagination: {},
             keyword: '',
             users : [],
+            user: {profile:{}},
             program: null,
             status: null,
             year: null,
