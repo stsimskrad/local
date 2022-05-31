@@ -2902,17 +2902,13 @@ var render = function () {
               "p",
               {
                 staticClass: "mb-2 fw-bold",
-                class: [_vm.user.gender == 0 ? "text-danger" : "text-primary"],
+                class: [
+                  _vm.user.profile.gender == "Female"
+                    ? "text-danger"
+                    : "text-primary",
+                ],
               },
-              [
-                _vm._v(
-                  _vm._s(_vm.user.lastname) +
-                    ", " +
-                    _vm._s(_vm.user.firstname) +
-                    " " +
-                    _vm._s(_vm.user.middlename)
-                ),
-              ]
+              [_vm._v(_vm._s(_vm.user.name))]
             ),
           ]),
         ]),

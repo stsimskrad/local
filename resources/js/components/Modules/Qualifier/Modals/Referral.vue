@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <div class="mr-3"><i class="bx bxs-quote-alt-left text-primary font-size-14"></i></div>
                 <div>
-                    <p class="mb-2 fw-bold" v-bind:class="[(user.gender == 0? 'text-danger' : 'text-primary')]">{{ user.lastname}}, {{ user.firstname}} {{ user.middlename }}</p>
+                    <p class="mb-2 fw-bold" v-bind:class="[(user.profile.gender == 'Female' ? 'text-danger' : 'text-primary')]">{{ user.name }}</p>
                 </div>
             </div>
         </blockquote> 
