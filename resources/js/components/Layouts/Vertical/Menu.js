@@ -82,6 +82,14 @@ export const menuItems = [{
         link: "/benefits",
         user: ['Scholarship Coordinator']
     },
+
+    {
+        id: 30,
+        label: "menuitems.accounting.text",
+        icon: "bxs-wallet",
+        link: "/accounting",
+        user: ['Scholarship Coordinator', 'Regional Director']
+    },
     // {
     //     id: 30,
     //     label: "menuitems.accounting.text",

@@ -10,6 +10,7 @@ class EducationResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'is_completed' => $this->is_completed,
             'school' => ($this->school == null) ? 'n/a' : new SchoolResource($this->school),
             'level' => ($this->level == null) ? 'n/a' : $this->level,
             'course' => ($this->course == null) ? $this->courseInfo['name'] : $this->course,

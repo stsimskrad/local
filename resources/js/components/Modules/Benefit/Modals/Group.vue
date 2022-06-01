@@ -51,7 +51,7 @@
                 currentUrl: window.location.origin,
                 errors: [],
                 is_regular: false,
-                is_active: false,
+                is_active: true,
                 from: '',
                 semester: ''
             }

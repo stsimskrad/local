@@ -8,7 +8,7 @@
                 <router-link :to="{ name: 'qualifier/import' }">
                     <button type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Import</button>
                 </router-link>
-                <button type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Mail</button>
+                <button @click="mailing" type="button" class="btn btn-sm w-sm mb-n3 btn-outline-light">Mail</button>
                  <!-- <router-link :to="{ name: 'qualifier/sync' }"> 
                     <button type="button" class="btn btn-danger waves-effect waves-light mr-2"><i class='bx bx-sync'></i></button>
                 </router-link>
@@ -22,6 +22,9 @@
                 <ul class="list-inline user-chat-nav text-end mb-0 dropdown">
                     <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;" v-if="selected.length > 0">     
                         <i class='bx bx-check-square text-success h4' style="margin-left: -22px; position: absolute;"></i> <span class="text-muted font-size-11">{{selected.length}} Qualifiers selected</span>
+                    </li>
+                    <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">     
+                        <i class='bx bxs-map text-danger h4' style="margin-left: -22px; position: absolute;"></i> <span class="text-muted font-size-11">Address Update</span>
                     </li>
                     <li class="list-inline-item d-non d-sm-inline-block" style="margin-right: 50px;">     
                         <i class='bx bxs-error-circle text-warning h4' style="margin-left: -22px; position: absolute;"></i> <span class="text-muted font-size-11">With Remarks</span>
@@ -130,6 +133,7 @@
         <Add :regions="regions" :dropdowns="dropdowns" @status="message" ref="add"/>
         <Referral @status="message" ref="referral"/>
         <Address @status="message" ref="address"/>
+        <Mailing />
     </div>
 </template>
 <script>
@@ -139,6 +143,8 @@ import Profile from './Modals/Profile.vue';
 import Add from './Modals/Add.vue';
 import Referral from './Modals/Referral.vue';
 import Address from './Modals/Address.vue';
+import Mailing from './Modals/Mailing.vue';
+
 export default {
     props: ['dropdowns','regions','programs'],
     data(){
@@ -233,6 +239,10 @@ export default {
             this.$bvModal.show("warning");
         },
 
+        mailing(){
+            this.$bvModal.show("mailing");
+        },
+
         refer(user){
             this.editable = 'endorsement';
             this.$refs.referral.set(user);
@@ -300,6 +310,6 @@ export default {
             // }
         },
 
-    }, components :{ Warning, Profile, Add, Referral, Multiselect, Address }
+    }, components :{ Warning, Profile, Add, Referral, Multiselect, Address, Mailing }
 }
 </script>

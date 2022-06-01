@@ -1,5 +1,5 @@
 <template>
-    <b-modal @ok="create($event)" id="create" title="Create Disbursement" ok-title="Save" centered>
+    <b-modal @ok="create($event)" id="createD" title="Create Disbursement" ok-title="Save" centered>
         <b-form class="customform mb-2">
             <div class="row">
                 

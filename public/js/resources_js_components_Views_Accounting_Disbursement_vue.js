@@ -268,7 +268,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addnew: function addnew() {
-      this.$bvModal.show("create");
+      this.$bvModal.show("createD");
       this.$refs.create.clear();
     },
     view: function view(list) {
@@ -277,7 +277,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     edit: function edit(list) {
       this.editable = true;
-      this.$bvModal.show("create");
+      this.$bvModal.show("createD");
       this.$refs.create.edit(list, true);
     },
     message: function message(list) {
@@ -921,7 +921,7 @@ var render = function () {
     "b-modal",
     {
       attrs: {
-        id: "create",
+        id: "createD",
         title: "Create Disbursement",
         "ok-title": "Save",
         centered: "",

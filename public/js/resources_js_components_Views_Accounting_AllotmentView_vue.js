@@ -238,12 +238,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addnew: function addnew() {
-      this.$bvModal.show("create");
+      this.$bvModal.show("createS");
       this.$refs.create.clear();
     },
     edit: function edit(list) {
       this.editable = true;
-      this.$bvModal.show("create");
+      this.$bvModal.show("createS");
       this.$refs.create.edit(list, true);
     },
     message: function message(list) {
@@ -263,7 +263,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
 
-        this.$bvModal.hide("create");
+        this.$bvModal.hide("createS");
         this.editable = false;
       }
     },
@@ -768,7 +768,7 @@ var render = function () {
     "b-modal",
     {
       attrs: {
-        id: "create",
+        id: "createS",
         title: "Add Items to Allotment",
         "ok-title": "Save",
         centered: "",

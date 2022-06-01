@@ -1,5 +1,5 @@
 <template>
-<b-modal @ok="create($event)" id="create" title="Add Items to Allotment" ok-title="Save" centered>
+<b-modal @ok="create($event)" id="createS" title="Add Items to Allotment" ok-title="Save" centered>
     <b-form class="customform mb-2">
         <div class="row">
             <div class="col-md-12">

@@ -132,6 +132,9 @@
         "insights": {
             "text": "Insights"
         },
+        "accountings": {
+            "text": "Acounting"
+        },
         "endorsements": {
             "text": "Endorsements"
         }

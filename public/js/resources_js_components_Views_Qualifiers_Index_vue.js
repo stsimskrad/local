@@ -50,6 +50,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modals_Add_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modals/Add.vue */ "./resources/js/components/Modules/Qualifier/Modals/Add.vue");
 /* harmony import */ var _Modals_Referral_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modals/Referral.vue */ "./resources/js/components/Modules/Qualifier/Modals/Referral.vue");
 /* harmony import */ var _Modals_Address_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modals/Address.vue */ "./resources/js/components/Modules/Qualifier/Modals/Address.vue");
+/* harmony import */ var _Modals_Mailing_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modals/Mailing.vue */ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue");
 //
 //
 //
@@ -184,6 +185,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -282,6 +288,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.warning.set(user);
       this.$bvModal.show("warning");
     },
+    mailing: function mailing() {
+      this.$bvModal.show("mailing");
+    },
     refer: function refer(user) {
       this.editable = 'endorsement';
       this.$refs.referral.set(user);
@@ -353,7 +362,8 @@ __webpack_require__.r(__webpack_exports__);
     Add: _Modals_Add_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     Referral: _Modals_Referral_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default()),
-    Address: _Modals_Address_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Address: _Modals_Address_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Mailing: _Modals_Mailing_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
@@ -648,6 +658,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      currentUrl: window.location.origin,
+      errors: []
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js& ***!
@@ -786,7 +830,8 @@ __webpack_require__.r(__webpack_exports__);
           requirements: {}
         },
         school: '',
-        course: ''
+        course: '',
+        profile: {}
       }
     };
   },
@@ -1171,6 +1216,45 @@ component.options.__file = "resources/js/components/Modules/Qualifier/Modals/Add
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Mailing.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Mailing.vue?vue&type=template&id=3dff23ba& */ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba&");
+/* harmony import */ var _Mailing_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Mailing.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Mailing_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modules/Qualifier/Modals/Mailing.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Qualifier/Modals/Profile.vue":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Modules/Qualifier/Modals/Profile.vue ***!
@@ -1391,6 +1475,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Mailing_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Mailing.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Mailing_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************!*\
   !*** ./resources/js/components/Modules/Qualifier/Modals/Profile.vue?vue&type=script&lang=js& ***!
@@ -1532,6 +1632,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Address_vue_vue_type_template_id_40a73f3a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Address.vue?vue&type=template&id=40a73f3a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Address.vue?vue&type=template&id=40a73f3a&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Mailing_vue_vue_type_template_id_3dff23ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Mailing.vue?vue&type=template&id=3dff23ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba&");
 
 
 /***/ }),
@@ -1711,6 +1828,7 @@ var render = function () {
               {
                 staticClass: "btn btn-sm w-sm mb-n3 btn-outline-light",
                 attrs: { type: "button" },
+                on: { click: _vm.mailing },
               },
               [_vm._v("Mail")]
             ),
@@ -1749,6 +1867,8 @@ var render = function () {
                 : _vm._e(),
               _vm._v(" "),
               _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "li",
@@ -1834,7 +1954,7 @@ var render = function () {
         _vm._v(" "),
         _c("div", { staticClass: "col-xl-12 d-inline-block mb-n3" }, [
           _c("div", { ref: "www", staticClass: "input-group mb-2" }, [
-            _vm._m(1),
+            _vm._m(2),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -2314,11 +2434,35 @@ var render = function () {
       _c("Referral", { ref: "referral", on: { status: _vm.message } }),
       _vm._v(" "),
       _c("Address", { ref: "address", on: { status: _vm.message } }),
+      _vm._v(" "),
+      _c("Mailing"),
     ],
     1
   )
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      {
+        staticClass: "list-inline-item d-non d-sm-inline-block",
+        staticStyle: { "margin-right": "50px" },
+      },
+      [
+        _c("i", {
+          staticClass: "bx bxs-map text-danger h4",
+          staticStyle: { "margin-left": "-22px", position: "absolute" },
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "text-muted font-size-11" }, [
+          _vm._v("Address Update"),
+        ]),
+      ]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -2699,6 +2843,56 @@ var render = function () {
           ]),
         ]
       ),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Qualifier/Modals/Mailing.vue?vue&type=template&id=3dff23ba& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-modal",
+    {
+      attrs: {
+        id: "mailing",
+        "hide-footer": "",
+        title: "Mailing Service",
+        centered: "",
+      },
+    },
+    [
+      _c("blockquote", { staticClass: "p-3 border-light border rounded" }, [
+        _c("div", { staticClass: "d-flex" }, [
+          _c("div", { staticClass: "mr-3" }, [
+            _c("i", {
+              staticClass: "bx bxs-quote-alt-left text-primary font-size-14",
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("p", { staticClass: "mb-1 fw-bold" }, [_vm._v("WAITING..")]),
+          ]),
+        ]),
+      ]),
     ]
   )
 }

@@ -116,7 +116,7 @@ class ReportController extends Controller
             ($info->from != '' && $info->to != '') ? $query->whereBetween('awarded_year',[$info->from,$info->to]) : '';
         })
         ->with('profile.user','status','program')
-        ->with('address.municipality.province.region')
+        ->with('profile.address.municipality.province.region')
         ->with('education.school.school','education.course','education.award')
         ->orderBy('awarded_year','DESC')->get();
 

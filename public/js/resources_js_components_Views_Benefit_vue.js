@@ -373,7 +373,7 @@ __webpack_require__.r(__webpack_exports__);
       currentUrl: window.location.origin,
       errors: [],
       is_regular: false,
-      is_active: false,
+      is_active: true,
       from: '',
       semester: ''
     };

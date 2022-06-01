@@ -96,13 +96,13 @@
             },
 
             addnew(){
-                this.$bvModal.show("create");
+                this.$bvModal.show("createS");
                 this.$refs.create.clear();
             },
 
             edit(list){
                 this.editable = true;
-                this.$bvModal.show("create");
+                this.$bvModal.show("createS");
                 this.$refs.create.edit(list,true);
             },
 
@@ -120,7 +120,7 @@
                             position: 'bottom-right'
                         });
                     }
-                    this.$bvModal.hide("create");
+                    this.$bvModal.hide("createS");
                     this.editable = false;
                 }
             },

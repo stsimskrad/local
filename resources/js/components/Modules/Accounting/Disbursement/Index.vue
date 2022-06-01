@@ -114,7 +114,7 @@ export default {
         },
 
         addnew(){
-            this.$bvModal.show("create");
+            this.$bvModal.show("createD");
             this.$refs.create.clear();
         },
 
@@ -125,7 +125,7 @@ export default {
 
         edit(list){
             this.editable = true;
-            this.$bvModal.show("create");
+            this.$bvModal.show("createD");
             this.$refs.create.edit(list,true);
         },
 

@@ -204,6 +204,13 @@ const routes = [{
         name: 'disbursements',
         beforeEnter: coordinator
     },
+    {
+        path: '/accounting',
+        component: () =>
+            import ('../Views/Accounting/Index.vue'),
+        name: 'accounting',
+        beforeEnter: coordinator
+    },
 
     /////////////////////////////////////////
     /// DIRECTOR ///

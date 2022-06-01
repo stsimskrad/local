@@ -87,6 +87,10 @@ class ImportController extends Controller
                         
                         $q = Scholar::create($haha); 
                         if($q){
+                            $is_completed = 1;
+                            ($course == null) ? $is_completed = 0 : '';
+                            ($school == null) ? $is_completed = 0 : '';
+
                             $school = [
                                 'scholar_id' => $q->id,
                                 'course_id'=> $course,
@@ -94,7 +98,8 @@ class ImportController extends Controller
                                 'level_id' => $this->level($scholar['level']),
                                 'graduated_year' => $scholar['graduated_year'],
                                 'created_at'	=> now(),
-                                'updated_at'	=> now()
+                                'updated_at'	=> now(),
+                                'is_completed' => $is_completed
                             ];
                             $s = ScholarEducation::insertOrIgnore($school);
                             // $address = $this->checkAddress($scholar['municipality'],$scholar['barangay'],$q->id);

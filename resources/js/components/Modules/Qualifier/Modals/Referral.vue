@@ -47,7 +47,8 @@
                         requirements: {}
                     },
                     school : '',
-                    course: ''
+                    course: '',
+                    profile: {}
                 }
             }
         },

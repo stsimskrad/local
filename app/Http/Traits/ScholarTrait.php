@@ -40,10 +40,16 @@ trait ScholarTrait { //Storing Scholar
     }
 
     public static function qualifier($request){
-        $info = [];
+        $info = []; $is_completed = 1;
+
+        (\Request::has('school_id')) ? '' : $is_completed = 0;
+        (\Request::has('course_id')) ? '' : $is_completed = 0;
+        // (\Request::has('subcourse_id')) ? '' : $is_completed = 0;
+        (\Request::has('level_id')) ? '' : $is_completed = 0;
+
         $data = Scholar::create($request->all());
         // $data->address()->create(array_merge($request->all(), ['type' => 'original']));
-        $data->education()->create(['information' => json_encode($info)]);
+        $data->education()->create(['information' => json_encode($info), 'is_completed' => $is_completed]);
         if($data){
             $user = User::create(array_merge($request->all(), ['password' => bcrypt('dost9ict'),'role' => 'Scholar']));
             $data->profile()->update(['user_id'=> $user->id]);
@@ -63,7 +69,7 @@ trait ScholarTrait { //Storing Scholar
             'updated_by' => \Auth::user()->id,
         ]);
         if($request->type == 'old'){
-            $data->education()->update($request->except('id','editable','is_completed','type','status_id'));
+            $data->education()->update($request->except('id','editable','type','status_id'));
             $data = Scholar::with('profile')->with('address.municipality.province.region')->with('education.school.school','education.course')->where('id',$request->id)->first();
         }
 
@@ -86,4 +92,5 @@ trait ScholarTrait { //Storing Scholar
             return new EvaluationResource($data);
         }   
     }
+
 }
