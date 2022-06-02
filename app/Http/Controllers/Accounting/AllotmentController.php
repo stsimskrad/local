@@ -17,9 +17,9 @@ class AllotmentController extends Controller
 {
     use AccountingTrait;
 
-    public function index($keyword,$count){
-        ($keyword == '-') ? $keyword = '' : $keyword;
-        $data = Allotment::orderBy('id','DESC')->paginate($count);
+    public function index(Request $request){
+        // ($request->keyword == '-') ? $request->keyword = '' : $request->keyword;
+        $data = Allotment::orderBy('id','DESC')->paginate($request->counts);
         return AllotmentResource::collection($data);
     }
 

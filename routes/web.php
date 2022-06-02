@@ -177,7 +177,7 @@ Route::prefix('request')->group(function(){
             Route::prefix('allotment')->group(function(){
                 Route::controller(App\Http\Controllers\Accounting\AllotmentController::class)->group(function () {
                     Route::post('/store', 'store');
-                    Route::get('/{key}/{counts}', 'index');
+                    Route::get('/', 'index');
                     Route::get('/{id}', 'view');
                     Route::post('/list/store', 'storeList');
                 });
@@ -186,7 +186,7 @@ Route::prefix('request')->group(function(){
             Route::prefix('disbursement')->group(function(){
                 Route::controller(App\Http\Controllers\Accounting\DisbursementController::class)->group(function () {  
                     Route::post('/store', 'store');
-                    Route::get('/{key}/{counts}', 'index');
+                    Route::get('/', 'index');
                 });
             });
         });

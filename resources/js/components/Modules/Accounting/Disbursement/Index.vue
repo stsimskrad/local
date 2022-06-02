@@ -75,7 +75,7 @@ export default {
     data(){
         return {
             currentUrl: window.location.origin,
-            counts: this.$parent.$parent.$parent.$parent.counts,
+            counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
             errors: [],
             pagination: {},
             keyword: '',
@@ -103,9 +103,14 @@ export default {
         fetch(page_url) {
             let vm = this; let key;
             (this.keyword != '' && this.keyword != null) ? key = this.keyword : key = '-';
-            page_url = page_url || this.currentUrl + '/request/accounting/disbursement/'+key+'/'+this.counts;
+            page_url = page_url || this.currentUrl + '/request/accounting/disbursement/';
 
-            axios.get(page_url)
+            axios.get(page_url,{
+                params: {  
+                    counts : this.counts,
+                    keyword : key,
+                }
+            })
             .then(response => {
                 this.lists = response.data.data;
                 vm.makePagination(response.data.meta, response.data.links);

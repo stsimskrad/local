@@ -12,9 +12,9 @@ use Hashids\Hashids;
 
 class DisbursementController extends Controller
 {
-    public function index($keyword,$count){
-        ($keyword == '-') ? $keyword = '' : $keyword;
-        $data = Disbursement::with('expense')->with('user.profile')->orderBy('id','DESC')->paginate($count);
+    public function index(Request $request){
+        // ($keyword == '-') ? $keyword = '' : $keyword;
+        $data = Disbursement::with('expense')->with('user.profile')->orderBy('id','DESC')->paginate($request->count);
         return DisbursementResource::collection($data);
     }
 

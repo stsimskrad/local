@@ -101,8 +101,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(this.currentUrl + '/request/accounting/allotment/store', {
         id: this.id,
         check_no: this.check_no,
-        checked_at: this.check,
-        credited_at: this.credited,
+        checked_at: this.check != '' ? new Date(this.check).toLocaleDateString("af-ZA") : '',
+        credited_at: this.credited_at != '' ? new Date(this.credited).toLocaleDateString("af-ZA") : '',
         remarks: this.remarks,
         editable: this.editable,
         type: 'Allotment'
@@ -229,7 +229,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentUrl: window.location.origin,
-      counts: this.$parent.$parent.$parent.$parent.counts,
+      counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
       errors: [],
       pagination: {},
       keyword: '',
@@ -257,8 +257,13 @@ __webpack_require__.r(__webpack_exports__);
       var vm = this;
       var key;
       this.keyword != '' && this.keyword != null ? key = this.keyword : key = '-';
-      page_url = page_url || this.currentUrl + '/request/accounting/allotment/' + key + '/' + this.counts;
-      axios.get(page_url).then(function (response) {
+      page_url = page_url || this.currentUrl + '/request/accounting/allotment/';
+      axios.get(page_url, {
+        params: {
+          counts: this.counts,
+          keyword: key
+        }
+      }).then(function (response) {
         _this.lists = response.data.data;
         vm.makePagination(response.data.meta, response.data.links);
       })["catch"](function (err) {

@@ -22,7 +22,7 @@ class AllotmentList extends Model
 
     public function expense()
     {
-        return $this->belongsTo('App\Models\Expense', 'expense_id', 'id');
+        return $this->belongsTo('App\Models\ListExpense', 'expense_id', 'id');
     }
 
     public function getUpdatedAtAttribute($value)

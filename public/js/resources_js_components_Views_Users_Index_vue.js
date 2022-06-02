@@ -161,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
         mobile: '',
         avatar: ''
       },
-      roles: ['Super Administrator', 'Scholarship Coordinator', 'Scholarship Staff', 'Regional Director'],
+      roles: ['Super Administrator', 'Regional Director', 'Accountant', 'Scholarship Coordinator', 'Scholarship Staff'],
       photo: {
         show: false,
         url: '',

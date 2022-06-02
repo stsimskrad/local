@@ -231,7 +231,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentUrl: window.location.origin,
-      counts: this.$parent.$parent.$parent.$parent.counts,
+      counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
       errors: [],
       pagination: {},
       keyword: '',
@@ -259,8 +259,13 @@ __webpack_require__.r(__webpack_exports__);
       var vm = this;
       var key;
       this.keyword != '' && this.keyword != null ? key = this.keyword : key = '-';
-      page_url = page_url || this.currentUrl + '/request/accounting/disbursement/' + key + '/' + this.counts;
-      axios.get(page_url).then(function (response) {
+      page_url = page_url || this.currentUrl + '/request/accounting/disbursement/';
+      axios.get(page_url, {
+        params: {
+          counts: this.counts,
+          keyword: key
+        }
+      }).then(function (response) {
         _this.lists = response.data.data;
         vm.makePagination(response.data.meta, response.data.links);
       })["catch"](function (err) {

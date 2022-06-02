@@ -56,8 +56,8 @@
                 axios.post(this.currentUrl + '/request/accounting/allotment/store', {
                     id: this.id,
                     check_no: this.check_no,
-                    checked_at: this.check,
-                    credited_at: this.credited,
+                    checked_at: (this.check != '') ? new Date(this.check).toLocaleDateString("af-ZA") : '',
+                    credited_at: (this.credited_at != '') ? new Date(this.credited).toLocaleDateString("af-ZA") : '',
                     remarks: this.remarks,
                     editable: this.editable,
                     type: 'Allotment'

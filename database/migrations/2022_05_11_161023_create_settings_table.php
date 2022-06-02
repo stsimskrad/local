@@ -17,6 +17,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->tinyIncrements('id');
             $table->json('provinces');
+            $table->json('quarters');
         });
     }
 

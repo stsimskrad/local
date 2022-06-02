@@ -66,7 +66,6 @@
                 pagination: {},
                 keyword: '',
                 errors: [], 
-                expenses: [],
                 allotment: {},
                 id : this.$route.params.id,
                 editable : false

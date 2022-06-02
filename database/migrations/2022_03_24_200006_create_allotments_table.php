@@ -18,11 +18,11 @@ return new class extends Migration
             $table->increments('id');
             $table->string('code')->unique(); 
             $table->string('check_no'); 
+            $table->date('credited_at');
+            $table->date('checked_at');
             $table->string('remarks'); 
             $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade');
-            $table->date('credited_at');
-            $table->date('checked_at');
             $table->timestamps();
         });
     }

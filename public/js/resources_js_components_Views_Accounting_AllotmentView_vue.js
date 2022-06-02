@@ -208,7 +208,6 @@ __webpack_require__.r(__webpack_exports__);
       pagination: {},
       keyword: '',
       errors: [],
-      expenses: [],
       allotment: {},
       id: this.$route.params.id,
       editable: false
