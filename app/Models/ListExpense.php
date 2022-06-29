@@ -15,6 +15,21 @@ class ListExpense extends Model
         return $this->belongsTo('App\Models\ListDropdown', 'expenditure_id', 'id');
     }
 
+    public function allotments()
+    {
+        return $this->hasMany('App\Models\AllotmentList', 'expense_id');
+    } 
+
+    public function disbursements()
+    {
+        return $this->hasMany('App\Models\Disbursement', 'expense_id');
+    } 
+
+    public function balances()
+    {
+        return $this->hasMany('App\Models\AllotmentBalance', 'expense_id');
+    } 
+
     public function getUpdatedAtAttribute($value)
     {
         return date('M d, Y g:i a', strtotime($value));

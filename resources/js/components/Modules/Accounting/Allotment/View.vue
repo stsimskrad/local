@@ -13,7 +13,7 @@
                         <h5 class="font-size-13"> <span class="font-size-12 text-muted mb-0">Credited Date: </span>{{ allotment.credited_at }}</h5>
                     </div>
                     <div class="col-md-4">
-                        <router-link :to="{name: 'allotments'}" class="waves-effect float-end"><button style="margin-top: 5px;" type="button"  class="btn btn-light waves-effect waves-light me-2"><i class='bx bx-left-arrow-circle'></i></button></router-link>
+                        <button @click="back" style="margin-top: 5px;" type="button"  class="float-end btn btn-light waves-effect waves-light me-2"><i class='bx bx-left-arrow-circle'></i></button>
                         <button @click="addnew" style="margin-top: 5px;" type="button"  class="btn btn-danger waves-effect waves-light me-2 float-end"><i class='bx bx-plus-medical'></i></button>
                     </div>
                 </div>
@@ -72,10 +72,6 @@
             }
         },
 
-        created(){
-            this.fetch();
-        },
-
         computed: {
             total() {
                 return this.allotment.lists.reduce((a, req) => {
@@ -86,8 +82,8 @@
         },
 
         methods : {
-            fetch(){
-                axios.get(this.currentUrl + '/request/accounting/allotment/'+this.$route.params.id)
+            fetch(id){
+                axios.get(this.currentUrl + '/request/accounting/allotment/'+id)
                 .then(response => {
                     this.allotment = response.data.data;
                 })
@@ -103,6 +99,10 @@
                 this.editable = true;
                 this.$bvModal.show("createS");
                 this.$refs.create.edit(list,true);
+            },
+
+            back(){
+                 this.$emit('res',true);
             },
 
             message(list){

@@ -10,13 +10,13 @@ use App\Models\FinancialGroupMonth;
 use App\Models\FinancialGroupMonthRelease;
 use App\Models\FinancialGroupMonthReleaseScholar;
 use App\Models\FinancialGroupMonthReleaseScholarList;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Resources\Benefit\Group\IndexResource;
 use App\Http\Resources\Benefit\Group\ListResource;
 use App\Http\Resources\Benefit\Group\GroupResource;
 use App\Http\Resources\Scholarship\Sub\MonthResource;
 use App\Http\Requests\ReleaseRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {

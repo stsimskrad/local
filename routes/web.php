@@ -189,6 +189,11 @@ Route::prefix('request')->group(function(){
                     Route::get('/', 'index');
                 });
             });
+            Route::prefix('reports')->group(function(){
+                Route::controller(App\Http\Controllers\Accounting\ReportController::class)->group(function () {  
+                    Route::get('/', 'index');
+                });
+            });
         });
 
         Route::prefix('dashboard')->group(function(){

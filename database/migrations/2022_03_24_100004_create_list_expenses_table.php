@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('code',20)->default('n/a');
             $table->tinyInteger('expenditure_id')->unsigned()->index();
             $table->foreign('expenditure_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

@@ -57,6 +57,9 @@ const app = new Vue({
         },
         counts: function() {
             return Math.floor((this.height - 175) / 58);
+        },
+        counts2: function() {
+            return Math.floor((this.height - 175) / 50);
         }
     },
 });

@@ -211,7 +211,7 @@
             },
 
             swtch(selected){
-                this.$refs.swtch.set(this.subjects,selected,this.user);
+                this.$refs.swtch.set(this.subjects,selected,this.user); 
                 this.$bvModal.show("switch");
             },
 

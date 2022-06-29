@@ -18,6 +18,7 @@ return new class extends Migration
             $table->tinyIncrements('id');
             $table->json('provinces');
             $table->json('quarters');
+            $table->string('balance')->nullable();
         });
     }
 

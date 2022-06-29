@@ -58,7 +58,7 @@
                 this.profile = profile;
                 this.school = school;
                 this.course = course;
-                this.id = id
+                this.id = id;
                 this.fetchSubcourse();
             },
 

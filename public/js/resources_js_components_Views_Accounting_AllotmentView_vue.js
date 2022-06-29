@@ -213,9 +213,6 @@ __webpack_require__.r(__webpack_exports__);
       editable: false
     };
   },
-  created: function created() {
-    this.fetch();
-  },
   computed: {
     total: function total() {
       var _this = this;
@@ -227,10 +224,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    fetch: function fetch() {
+    fetch: function fetch(id) {
       var _this2 = this;
 
-      axios.get(this.currentUrl + '/request/accounting/allotment/' + this.$route.params.id).then(function (response) {
+      axios.get(this.currentUrl + '/request/accounting/allotment/' + id).then(function (response) {
         _this2.allotment = response.data.data;
       })["catch"](function (err) {
         return console.log(err);
@@ -244,6 +241,9 @@ __webpack_require__.r(__webpack_exports__);
       this.editable = true;
       this.$bvModal.show("createS");
       this.$refs.create.edit(list, true);
+    },
+    back: function back() {
+      this.$emit('res', true);
     },
     message: function message(list) {
       if (list) {
@@ -919,44 +919,31 @@ var render = function () {
               ]),
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-md-4" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "waves-effect float-end",
-                    attrs: { to: { name: "allotments" } },
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-light waves-effect waves-light me-2",
-                        staticStyle: { "margin-top": "5px" },
-                        attrs: { type: "button" },
-                      },
-                      [_c("i", { staticClass: "bx bx-left-arrow-circle" })]
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "btn btn-danger waves-effect waves-light me-2 float-end",
-                    staticStyle: { "margin-top": "5px" },
-                    attrs: { type: "button" },
-                    on: { click: _vm.addnew },
-                  },
-                  [_c("i", { staticClass: "bx bx-plus-medical" })]
-                ),
-              ],
-              1
-            ),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "float-end btn btn-light waves-effect waves-light me-2",
+                  staticStyle: { "margin-top": "5px" },
+                  attrs: { type: "button" },
+                  on: { click: _vm.back },
+                },
+                [_c("i", { staticClass: "bx bx-left-arrow-circle" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "btn btn-danger waves-effect waves-light me-2 float-end",
+                  staticStyle: { "margin-top": "5px" },
+                  attrs: { type: "button" },
+                  on: { click: _vm.addnew },
+                },
+                [_c("i", { staticClass: "bx bx-plus-medical" })]
+              ),
+            ]),
           ]),
         ]),
       ]),

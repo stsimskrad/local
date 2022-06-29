@@ -1,69 +1,74 @@
 <template>
     <div>
-        <div class="row mb-3">
-            <div class="col-xl-6 col-sm-6 d-inline-block">
-                <button type="button" @click="addnew" class="btn btn-danger waves-effect waves-light me-1"><i class='bx bx-plus-medical'></i></button>
-                <form class="d-inline-block">
-                    <div class="search-box">
-                        <div class="position-relative">
-                            <input type="text" class="form-control bg-light border-light rounded" placeholder="Search..." v-model="keyword" @keyup="fetch()">
-                            <i class='bx bx-search-alt search-icon'></i>
+        <div v-if="!view">
+            <div class="row mb-2">
+                <div class="col-xl-6 col-sm-6 d-inline-block">
+                    <button type="button" @click="addnew" class="btn btn-danger waves-effect waves-light me-1"><i class='bx bx-plus-medical'></i></button>
+                    <form class="d-inline-block">
+                        <div class="search-box">
+                            <div class="position-relative">
+                                <input type="text" class="form-control bg-light border-light rounded" placeholder="Search..." v-model="keyword" @keyup="fetch()">
+                                <i class='bx bx-search-alt search-icon'></i>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="col-xl-6 col-sm-6">
+                    <ul class="list-inline user-chat-nav text-end mb-0 dropdown">
+                        <li class="list-inline-item d-none d-sm-inline-block font-size-12">
+                            {{(pagination.current_page == 1) ? '1' : ((pagination.current_page -1) * pagination.per_page) + 1 }}-{{(pagination.last_page == pagination.current_page) ? pagination.total : pagination.current_page * pagination.per_page }} of {{pagination.total}}
+                        </li>
+                        <li class="list-inline-item d-none d-sm-inline-block">
+                            <a class="btn nav-btn" v-bind:class="[{disabled: !pagination.prev_page_url}]" @click="fetch(pagination.prev_page_url)">
+                                <i class='bx bx-chevron-left h4'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item d-none d-sm-inline-block">
+                            <a class="btn nav-btn" v-bind:class="[{disabled: !pagination.next_page_url}]" @click="fetch(pagination.next_page_url)">
+                                <i class='bx bx-chevron-right h4'></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-xl-6 col-sm-6">
-                <ul class="list-inline user-chat-nav text-end mb-0 dropdown">
-                    <li class="list-inline-item d-none d-sm-inline-block font-size-12">
-                        {{(pagination.current_page == 1) ? '1' : ((pagination.current_page -1) * pagination.per_page) + 1 }}-{{(pagination.last_page == pagination.current_page) ? pagination.total : pagination.current_page * pagination.per_page }} of {{pagination.total}}
-                    </li>
-                    <li class="list-inline-item d-none d-sm-inline-block">
-                        <a class="btn nav-btn" v-bind:class="[{disabled: !pagination.prev_page_url}]" @click="fetch(pagination.prev_page_url)">
-                            <i class='bx bx-chevron-left h4'></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item d-none d-sm-inline-block">
-                        <a class="btn nav-btn" v-bind:class="[{disabled: !pagination.next_page_url}]" @click="fetch(pagination.next_page_url)">
-                            <i class='bx bx-chevron-right h4'></i>
-                        </a>
-                    </li>
-                </ul>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap">
+                    <thead class="thead-light">
+                        <tr class="font-size-11">
+                            <th style="width: 2%;"></th>
+                            <th>Check #</th>
+                            <th class="text-center">Amount</th>
+                            <th class="text-center">Check Date</th>
+                            <th class="text-center">Credited Date</th>
+                            <th class="text-center">Added By</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="list in lists" v-bind:key="list.id">
+                            <td>
+                                
+                            </td>
+                            <td>{{list.check_no}}</td>
+                            <td class="text-center">₱{{ formatAmount(list.total)}}</td>
+                            <td class="text-center">{{list.checked_at}}</td>
+                            <td class="text-center">{{list.credited_at}}</td>
+                            <td class="text-center">{{list.added_by}}</td>
+                            <td class="text-end">
+                                <a class="me-3 text-warning" @click="edit(list)"><i class='bx bx-edit-alt'></i></a>
+                                <a class="me-3" @click="showlist(list.c)">
+                                    <i class='bx bxs-show'></i>
+                                </a>
+                                <a class="text-danger"><i class='bx bx-trash'></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <div class="table-responsive">
-            <table class="table table-centered table-nowrap">
-                <thead class="thead-light">
-                    <tr class="font-size-11">
-                        <th style="width: 2%;"></th>
-                        <th>Check #</th>
-                        <th class="text-center">Amount</th>
-                        <th class="text-center">Check Date</th>
-                        <th class="text-center">Credited Date</th>
-                        <th class="text-center">Added By</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="list in lists" v-bind:key="list.id">
-                        <td>
-                            
-                        </td>
-                        <td>{{list.check_no}}</td>
-                        <td class="text-center">₱{{ formatAmount(list.total)}}</td>
-                        <td class="text-center">{{list.checked_at}}</td>
-                        <td class="text-center">{{list.credited_at}}</td>
-                        <td class="text-center">{{list.added_by}}</td>
-                        <td class="text-end">
-                            <a class="me-3 text-warning" @click="edit(list)"><i class='bx bx-edit-alt'></i></a>
-                            <router-link :to="{ path: '/allotment/'+list.c }" class="me-3">
-                                <i class='bx bxs-show'></i>
-                            </router-link>
-                            <a class="text-danger"><i class='bx bx-trash'></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div v-else>
+            <Show @res="up" ref="shw"/>
         </div>
         <Create @status="message" ref="create" />
     </div>
@@ -71,17 +76,18 @@
 
 
 <script>
-
+import Show from './View.vue';
 import Create from './Create.vue';
 export default {
+    props: ['counts'],
     data(){
         return {
             currentUrl: window.location.origin,
-            counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
             errors: [],
             pagination: {},
             keyword: '',
             lists : [],
+            view: false
         }
     },
 
@@ -131,6 +137,17 @@ export default {
             this.$refs.create.edit(list,true);
         },
 
+        showlist(id){
+            this.view = true;
+            this.$nextTick(function () {
+                this.$refs.shw.fetch(id);
+            });
+        },
+
+        up(){
+            this.view = false;
+        },
+
         message(list){
             if(list){
                 if(this.editable == true){
@@ -154,6 +171,6 @@ export default {
             let val = (value/1).toFixed(2).replace(',', '.')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         },
-    }, components : { Create }
+    }, components : { Create, Show }
 }
 </script>

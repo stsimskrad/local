@@ -227,11 +227,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['expenses'],
+  props: ['expenses', 'counts'],
   data: function data() {
     return {
       currentUrl: window.location.origin,
-      counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
       errors: [],
       pagination: {},
       keyword: '',
@@ -1077,7 +1076,7 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "row mb-2" }, [
         _c("div", { staticClass: "col-xl-6 col-sm-6 d-inline-block" }, [
           _c(
             "button",
@@ -1212,7 +1211,15 @@ var render = function () {
               return _c("tr", { key: list.id }, [
                 _c("td"),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(list.expense_id.name))]),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      list.expense_id.name.length < 70
+                        ? list.expense_id.name
+                        : list.expense_id.code
+                    )
+                  ),
+                ]),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _vm._v("₱" + _vm._s(_vm.formatAmount(list.amount))),

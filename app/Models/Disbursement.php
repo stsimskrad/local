@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Disbursement extends Model
 {
     use HasFactory;
-    protected $fillable = ['expense_id','amount','remarks','added_by'];
+    protected $fillable = ['expense_id','amount','remarks','added_by','is_editable'];
 
     public function expense()
     {

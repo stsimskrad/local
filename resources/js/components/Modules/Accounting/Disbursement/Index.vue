@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row mb-3">
+        <div class="row mb-2">
             <div class="col-xl-6 col-sm-6 d-inline-block">
                 <button type="button" @click="addnew" class="btn btn-danger waves-effect waves-light me-1"><i class='bx bx-plus-medical'></i></button>
                 <form class="d-inline-block">
@@ -48,7 +48,7 @@
                         <td>
                             
                         </td>
-                        <td>{{list.expense_id.name}}</td>
+                        <td>{{(list.expense_id.name.length < 70) ? list.expense_id.name : list.expense_id.code}}</td>
                         <td class="text-center">₱{{formatAmount(list.amount)}}</td>
                         <td class="text-center">{{list.created_at}}</td>
                         <td class="text-center">{{list.added_by}}</td>
@@ -71,11 +71,10 @@
 import Create from './Create.vue';
 import Show from './View.vue';
 export default {
-    props: ['expenses'],
+    props: ['expenses','counts'],
     data(){
         return {
             currentUrl: window.location.origin,
-            counts: this.$parent.$parent.$parent.$parent.$parent.$parent.$parent.counts,
             errors: [],
             pagination: {},
             keyword: '',

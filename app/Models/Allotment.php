@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Allotment extends Model
 {
     use HasFactory;
-    protected $fillable = ['code','check_no','checked_at','credited_at','remarks','added_by'];
+    protected $fillable = ['code','check_no','checked_at','credited_at','remarks','added_by','is_editable'];
 
     public function total()
     {

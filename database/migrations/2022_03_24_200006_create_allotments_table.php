@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('credited_at');
             $table->date('checked_at');
             $table->string('remarks'); 
+            $table->boolean('is_editable')->default(1);
             $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

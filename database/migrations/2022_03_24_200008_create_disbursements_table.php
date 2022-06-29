@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('expense_id')->references('id')->on('list_expenses')->onDelete('cascade');
             $table->bigInteger('added_by')->unsigned()->index();
             $table->foreign('added_by')->references('id')->on('users')->onDelete('cascade'); 
+            $table->boolean('is_editable')->default(1);
             $table->timestamps();
         });
     }

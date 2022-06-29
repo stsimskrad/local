@@ -209,7 +209,25 @@ const routes = [{
         component: () =>
             import ('../Views/Accounting/Index.vue'),
         name: 'accounting',
-        beforeEnter: coordinator
+        beforeEnter: coordinator,
+        children: [{
+                path: "allotments",
+                name: "accounting/allotments",
+                component: () =>
+                    import ('../Modules/Accounting/Allotment/Index.vue'),
+            }, {
+                path: "disbursements",
+                name: "accounting/disbursements",
+                component: () =>
+                    import ('../Modules/Accounting/Disbursement/Index.vue'),
+            },
+            {
+                path: "reports",
+                name: "accounting/reports",
+                component: () =>
+                    import ('../Modules/Accounting/Report/Index.vue'),
+            },
+        ]
     },
 
     /////////////////////////////////////////
